@@ -54,6 +54,9 @@ class HomeController extends Controller
             abort(404);
         }
 
+
+
+        
         $instansi_s = RefDataInstansi::all();
         return view('landing.v2.info', [
             'instansi_s' => $instansi_s,
