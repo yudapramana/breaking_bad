@@ -1,7 +1,8 @@
 <!-- Tambah Group -->
-<div class="modal fade" id="tambahGroup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+<div class="modal fade" id="tambahGroup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
     <div class="modal-dialog modal-lg" role="document">
-        <form id="groupForm" method="post" action="/information/services/store" enctype="multipart/form-data">
+        <form id="groupForm" method="post" action="{{ route('services.store') }}" enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="modal-content">
                 <div class="modal-header">
@@ -55,13 +56,17 @@
                             <div class="row mb-3">
                                 <label for="cover_image_url" class="col-sm-2 col-form-label">Cover Image</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" type="hidden" name="new-cover_image_url" id="new-cover_image_url">
-                                    <button type="button" id="cover_image_url_btn" class="btn btn-secondary btn-sm">Unggah Cover</button>
+                                    <input class="form-control" type="hidden" name="new-cover_image_url"
+                                        id="new-cover_image_url">
+                                    <button type="button" id="cover_image_url_btn"
+                                        class="btn btn-secondary btn-sm">Unggah Cover</button>
 
                                     <div class="show-cover-box" style="display:none;">
-                                        <img class="mb-2" id="preview-cover" src="" alt="logo_instansi" height="200"><br>
+                                        <img class="mb-2" id="preview-cover" src="" alt="logo_instansi"
+                                            height="200"><br>
                                         <div class="mb-2">
-                                            <button type="button" id="retry-cover-btn" class="btn btn-secondary btn-sm">Unggah Ulang</button>
+                                            <button type="button" id="retry-cover-btn"
+                                                class="btn btn-secondary btn-sm">Unggah Ulang</button>
                                         </div>
                                     </div>
                                 </div>
@@ -70,13 +75,17 @@
                             <div class="row mb-3">
                                 <label for="content_image_url" class="col-sm-2 col-form-label">Content Image</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" type="hidden" name="new-content_image_url" id="new-content_image_url">
-                                    <button type="button" id="content_image_url_btn" class="btn btn-secondary btn-sm">Unggah Content</button>
+                                    <input class="form-control" type="hidden" name="new-content_image_url"
+                                        id="new-content_image_url">
+                                    <button type="button" id="content_image_url_btn"
+                                        class="btn btn-secondary btn-sm">Unggah Content</button>
 
                                     <div class="show-content-box" style="display:none;">
-                                        <img class="mb-2" id="preview-content" src="" alt="logo_instansi" height="200"><br>
+                                        <img class="mb-2" id="preview-content" src="" alt="logo_instansi"
+                                            height="200"><br>
                                         <div class="mb-2">
-                                            <button type="button" id="retry-content-btn" class="btn btn-secondary btn-sm">Unggah Ulang</button>
+                                            <button type="button" id="retry-content-btn"
+                                                class="btn btn-secondary btn-sm">Unggah Ulang</button>
                                         </div>
                                     </div>
                                 </div>
@@ -85,7 +94,8 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Featured</label>
                                 <div class="col-sm-10">
-                                    <select class="form-select" id="featured" name="featured" aria-label="Default select example">
+                                    <select class="form-select" id="featured" name="featured"
+                                        aria-label="Default select example">
                                         <option selected="">Pilihan
                                         </option>
                                         <option selected value="no">no</option>
@@ -97,7 +107,8 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Listed</label>
                                 <div class="col-sm-10">
-                                    <select class="form-select" id="listed" name="listed" aria-label="Default select example">
+                                    <select class="form-select" id="listed" name="listed"
+                                        aria-label="Default select example">
                                         <option selected="">Pilihan
                                         </option>
                                         <option selected value="no">no</option>
@@ -109,7 +120,8 @@
                             <div class="row mb-3">
                                 <label for="inputText" class="col-sm-2 col-form-label">Next URL</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="next_url" name="next_url" placeholder="next url">
+                                    <input type="text" class="form-control" id="next_url" name="next_url"
+                                        placeholder="next url">
                                 </div>
                             </div>
 

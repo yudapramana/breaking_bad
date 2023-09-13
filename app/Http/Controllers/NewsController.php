@@ -19,7 +19,7 @@ class NewsController extends Controller
      */
     public function index(Request $request)
     {
-        $posts = Post::where('is_news', 'yes')->orderBy('created_at', 'DESC')->get();
+        $posts = Post::where('type', 'news')->orderBy('created_at', 'DESC')->get();
 
 
         if ($request->ajax()) {
@@ -115,7 +115,7 @@ class NewsController extends Controller
         $post->desc         = $request->desc;
         $post->keywords     = $request->keywords;
         $post->meta_desc    = $request->meta_desc;
-        $post->is_news      = 'yes'; 
+        $post->type         = 'news'; 
         $post->save();
 
         $post->tags()->attach($request->tags);
@@ -186,7 +186,6 @@ class NewsController extends Controller
         $post->desc         = $request->desc;
         $post->keywords     = $request->keywords;
         $post->meta_desc    = $request->meta_desc;
-        $post->is_news      = 'yes'; 
         $post->save();
 
         $post->tags()->sync($request->tags);

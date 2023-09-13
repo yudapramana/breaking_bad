@@ -78,4 +78,10 @@ class SectController extends Controller
             return Response::json(['errors' => $validator->errors()], 422);
         }
     }
+
+    public function gallery() {
+        return view('landing.v2.gallery', [
+            'title' => 'Galeri Kantor Wilayah Kementerian Agama Prov. Sumatera Barat',
+        ]);
+    }
 }

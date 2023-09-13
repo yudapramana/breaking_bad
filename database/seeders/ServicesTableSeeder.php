@@ -29,7 +29,7 @@ class ServicesTableSeeder extends Seeder
                 'next_url' => '/post/profil-ppid',
                 'title_id' => 'Selamat Datang di Portal PPID Kantor Wilayah Kementerian Agama Prov. Sumatera Barat',
                 'title_en' => 'Selamat Datang di Portal PPID Kantor Wilayah Kementerian Agama Prov. Sumatera Barat',
-                'name' => 'Selamat Datang di Portal PPID KemenagPessel',
+                'name' => 'Selamat Datang di Portal Web Kemenag Kanwil Prov Sumbar',
                 'slug' => NULL,
                 'featured' => 'yes',
                 'listed' => 'no',

@@ -8,7 +8,7 @@
 <meta name="title" content="{{$keterangan}}">
 <meta name="description" content="{{$keterangan}}" />
 <meta name="keywords" content="PPID Kemenag, PPID, Komisi Informasi" />
-<meta name="author" content="PPID KemenagPessel" />
+<meta name="author" content="Web Kemenag Kanwil Prov Sumbar" />
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 <meta name="revisit-after" content="1 Days" />
 

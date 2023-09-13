@@ -263,7 +263,7 @@
 
 
     $(document).ready(function() {
-        table.ajax.url('/information/activities').load();
+        table.ajax.url('{{ route("activities.index") }}').load();
         console.log('mana neeee');
 
         table.buttons().container()

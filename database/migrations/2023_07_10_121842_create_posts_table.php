@@ -29,7 +29,7 @@ class CreatePostsTable extends Migration
             $table->longText('desc');
             $table->string('keywords');
             $table->text('meta_desc');
-            $table->enum('is_news', ['no', 'yes'])->default('no');
+            $table->enum('type', ['post', 'news', 'article', 'interview', 'opinion'])->default('post');
             $table->bigInteger('reads')->unsigned()->default(0)->index();
             $table->timestamps();
             $table->softDeletes();

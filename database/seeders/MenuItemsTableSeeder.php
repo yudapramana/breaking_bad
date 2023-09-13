@@ -237,18 +237,6 @@ class MenuItemsTableSeeder extends Seeder
             ),
             18 => 
             array (
-                'id' => 24,
-                'created_at' => '2023-08-31 00:42:20',
-                'updated_at' => '2023-08-31 00:42:20',
-                'title' => 'Regulasi',
-                'name' => NULL,
-                'slug' => 'post/regulasi',
-                'type' => 'post',
-                'target' => '_self',
-                'menu_id' => 1,
-            ),
-            19 => 
-            array (
                 'id' => 25,
                 'created_at' => '2023-08-31 19:26:46',
                 'updated_at' => '2023-08-31 19:26:46',
@@ -259,7 +247,7 @@ class MenuItemsTableSeeder extends Seeder
                 'target' => '_self',
                 'menu_id' => 1,
             ),
-            20 => 
+            19 => 
             array (
                 'id' => 26,
                 'created_at' => '2023-08-31 19:30:37',
@@ -271,7 +259,7 @@ class MenuItemsTableSeeder extends Seeder
                 'target' => '_self',
                 'menu_id' => 1,
             ),
-            21 => 
+            20 => 
             array (
                 'id' => 29,
                 'created_at' => '2023-08-31 19:40:28',
@@ -283,7 +271,7 @@ class MenuItemsTableSeeder extends Seeder
                 'target' => '_self',
                 'menu_id' => 1,
             ),
-            22 => 
+            21 => 
             array (
                 'id' => 30,
                 'created_at' => '2023-08-31 19:40:28',
@@ -295,7 +283,7 @@ class MenuItemsTableSeeder extends Seeder
                 'target' => '_self',
                 'menu_id' => 1,
             ),
-            23 => 
+            22 => 
             array (
                 'id' => 31,
                 'created_at' => '2023-08-31 19:40:28',
@@ -307,7 +295,7 @@ class MenuItemsTableSeeder extends Seeder
                 'target' => '_self',
                 'menu_id' => 1,
             ),
-            24 => 
+            23 => 
             array (
                 'id' => 32,
                 'created_at' => '2023-08-31 19:40:28',
@@ -319,7 +307,7 @@ class MenuItemsTableSeeder extends Seeder
                 'target' => '_self',
                 'menu_id' => 1,
             ),
-            25 => 
+            24 => 
             array (
                 'id' => 33,
                 'created_at' => '2023-09-07 08:05:29',
@@ -331,7 +319,7 @@ class MenuItemsTableSeeder extends Seeder
                 'target' => '_self',
                 'menu_id' => 1,
             ),
-            26 => 
+            25 => 
             array (
                 'id' => 34,
                 'created_at' => '2023-09-07 09:16:27',
@@ -343,7 +331,7 @@ class MenuItemsTableSeeder extends Seeder
                 'target' => '_self',
                 'menu_id' => 1,
             ),
-            27 => 
+            26 => 
             array (
                 'id' => 35,
                 'created_at' => '2023-09-13 16:14:34',
@@ -355,7 +343,7 @@ class MenuItemsTableSeeder extends Seeder
                 'target' => '_self',
                 'menu_id' => 1,
             ),
-            28 => 
+            27 => 
             array (
                 'id' => 36,
                 'created_at' => '2023-09-13 16:15:15',
@@ -367,7 +355,7 @@ class MenuItemsTableSeeder extends Seeder
                 'target' => '_self',
                 'menu_id' => 1,
             ),
-            29 => 
+            28 => 
             array (
                 'id' => 37,
                 'created_at' => '2023-09-13 16:18:32',
@@ -376,6 +364,270 @@ class MenuItemsTableSeeder extends Seeder
                 'name' => NULL,
                 'slug' => 'post/struktur-organisasi',
                 'type' => 'post',
+                'target' => '_self',
+                'menu_id' => 1,
+            ),
+            29 => 
+            array (
+                'id' => 38,
+                'created_at' => '2023-09-13 21:06:49',
+                'updated_at' => '2023-09-13 22:03:13',
+                'title' => 'Galeri Foto & Video',
+                'name' => 'Media & Galeri',
+                'slug' => 'sect/gallery',
+                'type' => 'custom',
+                'target' => '_self',
+                'menu_id' => 1,
+            ),
+            30 => 
+            array (
+                'id' => 39,
+                'created_at' => '2023-09-13 21:08:10',
+                'updated_at' => '2023-09-13 21:41:17',
+                'title' => 'Artikel',
+                'name' => 'Artikel',
+                'slug' => 'blog?category=article',
+                'type' => 'custom',
+                'target' => '_self',
+                'menu_id' => 1,
+            ),
+            31 => 
+            array (
+                'id' => 41,
+                'created_at' => '2023-09-13 21:19:20',
+                'updated_at' => '2023-09-13 21:19:20',
+                'title' => 'Pengaduan Masyarakat',
+                'name' => NULL,
+                'slug' => '#',
+                'type' => 'custom',
+                'target' => '_self',
+                'menu_id' => 1,
+            ),
+            32 => 
+            array (
+                'id' => 42,
+                'created_at' => '2023-09-13 21:19:33',
+                'updated_at' => '2023-09-13 21:19:33',
+                'title' => 'Layanan Publik',
+                'name' => NULL,
+                'slug' => '#',
+                'type' => 'custom',
+                'target' => '_self',
+                'menu_id' => 1,
+            ),
+            33 => 
+            array (
+                'id' => 43,
+                'created_at' => '2023-09-13 21:20:19',
+                'updated_at' => '2023-09-13 21:20:19',
+                'title' => 'Kolom',
+                'name' => NULL,
+                'slug' => '#',
+                'type' => 'custom',
+                'target' => '_self',
+                'menu_id' => 1,
+            ),
+            34 => 
+            array (
+                'id' => 45,
+                'created_at' => '2023-09-13 21:21:41',
+                'updated_at' => '2023-09-13 21:41:08',
+                'title' => 'Opini',
+                'name' => 'Opini',
+                'slug' => 'blog?category=opini',
+                'type' => 'custom',
+                'target' => '_self',
+                'menu_id' => 1,
+            ),
+            35 => 
+            array (
+                'id' => 46,
+                'created_at' => '2023-09-13 21:22:03',
+                'updated_at' => '2023-09-13 21:41:22',
+                'title' => 'Wawancara',
+                'name' => 'Wawancara',
+                'slug' => 'blog?category=wawancara',
+                'type' => 'custom',
+                'target' => '_self',
+                'menu_id' => 1,
+            ),
+            36 => 
+            array (
+                'id' => 47,
+                'created_at' => '2023-09-13 21:23:03',
+                'updated_at' => '2023-09-13 21:23:22',
+                'title' => 'Data Pegawai',
+                'name' => 'Data Pegawai',
+                'slug' => 'https://simpeg.kemenag.go.id/laporan/total_pegawai.aspx',
+                'type' => 'custom',
+                'target' => '_blank',
+                'menu_id' => 1,
+            ),
+            37 => 
+            array (
+                'id' => 48,
+                'created_at' => '2023-09-13 21:25:52',
+                'updated_at' => '2023-09-13 21:25:52',
+                'title' => 'Sejarah Kementerian Agama',
+                'name' => NULL,
+                'slug' => 'post/sejarah-kementerian-agama',
+                'type' => 'post',
+                'target' => '_self',
+                'menu_id' => 1,
+            ),
+            38 => 
+            array (
+                'id' => 49,
+                'created_at' => '2023-09-13 21:28:24',
+                'updated_at' => '2023-09-13 21:28:24',
+                'title' => 'Visi Misi Kementerian Agama',
+                'name' => NULL,
+                'slug' => 'post/visi-misi-kementerian-agama',
+                'type' => 'post',
+                'target' => '_self',
+                'menu_id' => 1,
+            ),
+            39 => 
+            array (
+                'id' => 50,
+                'created_at' => '2023-09-13 21:31:37',
+                'updated_at' => '2023-09-13 21:31:37',
+                'title' => 'Kedudukan, Tugas dan Fungsi Kementerian Agama Provinsi',
+                'name' => NULL,
+                'slug' => 'post/kedudukan-tugas-dan-fungsi-kementerian-agama-provinsi',
+                'type' => 'post',
+                'target' => '_self',
+                'menu_id' => 1,
+            ),
+            40 => 
+            array (
+                'id' => 52,
+                'created_at' => '2023-09-13 21:34:09',
+                'updated_at' => '2023-09-13 21:35:46',
+                'title' => 'Informasi Setiap Saat',
+                'name' => 'Informasi Setiap Saat',
+                'slug' => 'info/informasi_setiap_saat',
+                'type' => 'custom',
+                'target' => '_self',
+                'menu_id' => 1,
+            ),
+            41 => 
+            array (
+                'id' => 53,
+                'created_at' => '2023-09-13 21:34:30',
+                'updated_at' => '2023-09-13 21:35:52',
+                'title' => 'Informasi Serta Merta',
+                'name' => 'Informasi Serta Merta',
+                'slug' => 'info/informasi_serta_merta',
+                'type' => 'custom',
+                'target' => '_self',
+                'menu_id' => 1,
+            ),
+            42 => 
+            array (
+                'id' => 54,
+                'created_at' => '2023-09-13 21:34:50',
+                'updated_at' => '2023-09-13 21:35:57',
+                'title' => 'Informasi Dikecualikan',
+                'name' => 'Informasi Dikecualikan',
+                'slug' => 'info/informasi_dikecualikan',
+                'type' => 'custom',
+                'target' => '_self',
+                'menu_id' => 1,
+            ),
+            43 => 
+            array (
+                'id' => 55,
+                'created_at' => '2023-09-13 21:36:44',
+                'updated_at' => '2023-09-13 21:36:44',
+                'title' => 'Semua Informasi',
+                'name' => NULL,
+                'slug' => 'info/semua_informasi_publik',
+                'type' => 'custom',
+                'target' => '_self',
+                'menu_id' => 1,
+            ),
+            44 => 
+            array (
+                'id' => 56,
+                'created_at' => '2023-09-13 21:38:23',
+                'updated_at' => '2023-09-13 21:38:23',
+                'title' => 'Data dan Informasi',
+                'name' => NULL,
+                'slug' => 'data-dan-informasi',
+                'type' => 'category',
+                'target' => '_self',
+                'menu_id' => 1,
+            ),
+            45 => 
+            array (
+                'id' => 57,
+                'created_at' => '2023-09-13 21:38:43',
+                'updated_at' => '2023-09-13 21:38:43',
+                'title' => 'Semua Informasi',
+                'name' => NULL,
+                'slug' => 'info/semua_informasi_publik',
+                'type' => 'custom',
+                'target' => '_self',
+                'menu_id' => 1,
+            ),
+            46 => 
+            array (
+                'id' => 58,
+                'created_at' => '2023-09-13 21:38:59',
+                'updated_at' => '2023-09-13 21:38:59',
+                'title' => 'Informasi Berkala',
+                'name' => NULL,
+                'slug' => 'info/informasi_berkala',
+                'type' => 'custom',
+                'target' => '_self',
+                'menu_id' => 1,
+            ),
+            47 => 
+            array (
+                'id' => 59,
+                'created_at' => '2023-09-13 21:39:26',
+                'updated_at' => '2023-09-13 21:39:26',
+                'title' => 'Informasi Serta Merta',
+                'name' => NULL,
+                'slug' => '/info/informasi_serta_merta',
+                'type' => 'custom',
+                'target' => '_self',
+                'menu_id' => 1,
+            ),
+            48 => 
+            array (
+                'id' => 60,
+                'created_at' => '2023-09-13 21:39:47',
+                'updated_at' => '2023-09-13 21:39:47',
+                'title' => 'Informasi Setiap Saat',
+                'name' => NULL,
+                'slug' => 'info/informasi_setiap_saat',
+                'type' => 'custom',
+                'target' => '_self',
+                'menu_id' => 1,
+            ),
+            49 => 
+            array (
+                'id' => 61,
+                'created_at' => '2023-09-13 21:40:05',
+                'updated_at' => '2023-09-13 21:40:05',
+                'title' => 'Informasi Dikecualikan',
+                'name' => NULL,
+                'slug' => 'info/informasi_dikecualikan',
+                'type' => 'custom',
+                'target' => '_self',
+                'menu_id' => 1,
+            ),
+            50 => 
+            array (
+                'id' => 62,
+                'created_at' => '2023-09-13 21:54:22',
+                'updated_at' => '2023-09-13 21:54:22',
+                'title' => 'Berita',
+                'name' => NULL,
+                'slug' => 'berita',
+                'type' => 'category',
                 'target' => '_self',
                 'menu_id' => 1,
             ),

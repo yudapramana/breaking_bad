@@ -65,13 +65,13 @@
                     </a>
                 </li>
                 @endcan
-                {{-- @can('page-information-galleries')
+                @can('page-information-galleries')
                 <li>
                     <a href="/information/galleries" class="@if (request()->segment(2) == 'galleries') active @endif">
                         <i class=" bi bi-circle"></i><span>Galleries</span>
                     </a>
                 </li>
-                @endcan --}}
+                @endcan
                 @can('page-information-carousels')
                 <li>
                     <a href="/information/carousels" class="@if (request()->segment(2) == 'carousels') active @endif">

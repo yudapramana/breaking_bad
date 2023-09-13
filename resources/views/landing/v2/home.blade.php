@@ -105,7 +105,7 @@
                 <div class="sidebar">
 
                     <div class="widget">
-                        <h5 class="widget_title">Recent Posts</h5>
+                        <h5 class="widget_title">Berita Terkini</h5>
                         <ul class="recent_post border_bottom_dash list_none">
 
                             @foreach($recent_posts as $key => $post)

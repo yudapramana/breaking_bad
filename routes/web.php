@@ -27,6 +27,9 @@ Route::get('permohonan', [App\Http\Controllers\PermohonanController::class, 'ind
 Route::post('permohonan/switch', [App\Http\Controllers\PermohonanController::class, 'switchStatus'])->name('permohonan.status.switch');
 
 
+Route::get('sect/gallery', [App\Http\Controllers\SectController::class, 'gallery'])->name('sect.gallery');
+
+
 Route::get('sect/permohonan_informasi', [App\Http\Controllers\SectController::class, 'permohonan'])->name('sect.permohonan');
 Route::post('sect/permohonan/store', [App\Http\Controllers\SectController::class, 'storePermohonan'])->name('permohonan.store');
 
@@ -64,7 +67,7 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('/contact', function () {
         return view('landing.v2.contact', [
-            'title' => 'Contact - PPID KemenagPessel',
+            'title' => 'Contact - Web Kemenag Kanwil Prov Sumbar',
             'accountfb' => 'pandanviewmandeh',
             'account' => 'pandanviewmandeh',
             'channel' =>  '@pandanviewmandehofficial4919'
@@ -78,7 +81,7 @@ Route::group(['middleware' => ['web']], function () {
 
         $filterTags = $galleries->pluck('filter_tag')->unique();
         return view('landing.gallery', [
-            'title' => 'Gallery PPID KemenagPessel',
+            'title' => 'Gallery Web Kemenag Kanwil Prov Sumbar',
             'accountfb' => 'pandanviewmandeh',
             'account' => 'pandanviewmandeh',
             'channel' =>  '@pandanviewmandehofficial4919',
@@ -90,7 +93,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/aboutus', function () {
 
         return view('landing.aboutus', [
-            'title' => 'PPID KemenagPessel - About Us',
+            'title' => 'Web Kemenag Kanwil Prov Sumbar - About Us',
             'accountfb' => 'pandanviewmandeh',
             'account' => 'pandanviewmandeh',
             'channel' =>  '@pandanviewmandehofficial4919'
@@ -123,7 +126,7 @@ Route::group(['middleware' => ['web']], function () {
         $services = \App\Models\Services::where('listed', 'yes')->get();
 
         return view('landing.all-services', [
-            'title' => 'PPID KemenagPessel - Semua Layanan',
+            'title' => 'Web Kemenag Kanwil Prov Sumbar - Semua Layanan',
             'accountfb' => 'pandanviewmandeh',
             'account' => 'pandanviewmandeh',
             'channel' =>  '@pandanviewmandehofficial4919',
@@ -156,10 +159,10 @@ Route::group(['middleware' => ['web']], function () {
 
         $categories = \App\Models\Category::withCount('posts')->get();
         $tags = \App\Models\Tag::all();
-        $recent_posts = \App\Models\Post::where('is_news', 'yes')->take(3)->get();
+        $recent_posts = \App\Models\Post::where('type', 'news')->take(3)->get();
 
         return view('landing.v2.blog', [
-            'title' => 'Blog PPID KemenagPessel',
+            'title' => 'Blog Web Kemenag Kanwil Prov Sumbar',
             'accountfb' => 'pandanviewmandeh',
             'account' => 'pandanviewmandeh',
             'channel' =>  '@pandanviewmandehofficial4919',
@@ -174,20 +177,20 @@ Route::group(['middleware' => ['web']], function () {
 
         if ($request->has('search')) {
             $search = $request->input('search');
-            $posts = \App\Models\Post::where('is_news', 'yes')->where('title', 'LIKE', "%{$search}%")
+            $posts = \App\Models\Post::where('type', 'news')->where('title', 'LIKE', "%{$search}%")
                 ->orWhere('desc', 'LIKE', "%{$search}%")->orderBy('created_at', 'DESC')->paginate(4);
         } elseif ($request->has('category')) {
             $search = $request->input('category');
-            $posts = \App\Models\Post::where('is_news', 'yes')->whereHas('category', function($q) use($search) {
+            $posts = \App\Models\Post::where('type', 'news')->whereHas('category', function($q) use($search) {
                 $q->where('slug', $search);
             })->orderBy('created_at', 'DESC')->paginate(4);
         } elseif ($request->has('tag')) {
             $search = $request->input('tag');
-            $posts = \App\Models\Post::where('is_news', 'yes')->whereHas('tags', function($q) use($search) {
+            $posts = \App\Models\Post::where('type', 'news')->whereHas('tags', function($q) use($search) {
                 $q->where('slug', $search);
             })->orderBy('created_at', 'DESC')->paginate(4);
         }else {
-            $posts = \App\Models\Post::where('is_news', 'yes')->orderBy('created_at', 'DESC')->paginate(4);
+            $posts = \App\Models\Post::where('type', 'news')->orderBy('created_at', 'DESC')->paginate(4);
         }
 
         $posts->appends(request()->input())->links();
@@ -195,10 +198,10 @@ Route::group(['middleware' => ['web']], function () {
 
         $categories = \App\Models\Category::withCount('posts')->get();
         $tags = \App\Models\Tag::all();
-        $recent_posts = \App\Models\Post::where('is_news', 'yes')->take(3)->get();
+        $recent_posts = \App\Models\Post::where('type', 'news')->take(3)->get();
 
         return view('landing.v2.news', [
-            'title' => 'Berita PPID KemenagPessel',
+            'title' => 'Berita Web Kemenag Kanwil Prov Sumbar',
             'accountfb' => 'pandanviewmandeh',
             'account' => 'pandanviewmandeh',
             'channel' =>  '@pandanviewmandehofficial4919',
@@ -216,7 +219,7 @@ Route::group(['middleware' => ['web']], function () {
 
         $categories = \App\Models\Category::withCount('posts')->get();
         $tags = \App\Models\Tag::all();
-        $recent_posts = \App\Models\Post::where('is_news', 'yes')->take(3)->get();
+        $recent_posts = \App\Models\Post::where('type', 'news')->take(3)->get();
 
         return view('landing.v2.activities', [
             'title' => 'Aktifitas KemenagPessel',
@@ -249,7 +252,7 @@ Route::group(['middleware' => ['web']], function () {
 
         $categories = \App\Models\Category::withCount('posts')->get();
         $tags = \App\Models\Tag::all();
-        $recent_posts = \App\Models\Post::where('is_news', 'yes')->take(3)->get();
+        $recent_posts = \App\Models\Post::where('type', 'news')->take(3)->get();
         return view('landing.v2.post', [
             'accountfb' => 'pandanviewmandeh',
             'account' => 'pandanviewmandeh',
@@ -273,13 +276,13 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin.home');
 
 Route::get('/information/services', [\App\Http\Controllers\Admin\ServicesController::class, 'index'])->name('services.index');
-Route::post('/information/services/store', [\App\Http\Controllers\Admin\ServicesController::class, 'store']);
+Route::post('/information/services/store', [\App\Http\Controllers\Admin\ServicesController::class, 'store'])->name('services.store');
 
 Route::get('/information/products', [\App\Http\Controllers\Admin\ProductController::class, 'index'])->name('products.index');
 Route::post('/information/products/store', [\App\Http\Controllers\Admin\ProductController::class, 'store']);
 
 Route::get('/information/activities', [\App\Http\Controllers\Admin\ActivityController::class, 'index'])->name('activities.index');
-Route::post('/information/activities/store', [\App\Http\Controllers\Admin\ActivityController::class, 'store']);
+Route::post('/information/activities/store', [\App\Http\Controllers\Admin\ActivityController::class, 'store'])->name('activities.store');
 Route::delete('/information/destroy/{id}', [\App\Http\Controllers\Admin\ActivityController::class, 'destroy'])->name('activities.destroy');
 
 
@@ -287,7 +290,7 @@ Route::get('/information/galleries', [\App\Http\Controllers\Admin\GalleryControl
 Route::post('/information/galleries/store', [\App\Http\Controllers\Admin\GalleryController::class, 'store']);
 
 Route::get('/information/carousels', [\App\Http\Controllers\Admin\CarouselController::class, 'index'])->name('carousels.index');
-Route::post('/information/carousels/store', [\App\Http\Controllers\Admin\CarouselController::class, 'store']);
+Route::post('/information/carousels/store', [\App\Http\Controllers\Admin\CarouselController::class, 'store'])->name('carousels.store');
 
 Route::get('/information/testimonies', [\App\Http\Controllers\Admin\TestimonyController::class, 'index'])->name('testimonies.index');
 Route::post('/information/testimonies/store', [\App\Http\Controllers\Admin\TestimonyController::class, 'store']);

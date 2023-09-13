@@ -89,6 +89,36 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => '2023-08-31 19:35:22',
                 'updated_at' => '2023-08-31 19:35:22',
             ),
+            7 => 
+            array (
+                'id' => 8,
+                'title' => 'Artikel',
+                'slug' => 'artikel',
+                'keywords' => 'artikel',
+                'meta_desc' => 'artikel',
+                'created_at' => '2023-09-13 21:12:55',
+                'updated_at' => '2023-09-13 21:12:55',
+            ),
+            8 => 
+            array (
+                'id' => 9,
+                'title' => 'Opini',
+                'slug' => 'opini',
+                'keywords' => 'opini',
+                'meta_desc' => 'opini',
+                'created_at' => '2023-09-13 21:13:05',
+                'updated_at' => '2023-09-13 21:13:05',
+            ),
+            9 => 
+            array (
+                'id' => 10,
+                'title' => 'Data dan Informasi',
+                'slug' => 'data-dan-informasi',
+                'keywords' => 'Data dan Informasi',
+                'meta_desc' => 'Data dan Informasi',
+                'created_at' => '2023-09-13 21:13:24',
+                'updated_at' => '2023-09-13 21:13:24',
+            ),
         ));
         
         

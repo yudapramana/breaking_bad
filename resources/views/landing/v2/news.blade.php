@@ -6,8 +6,8 @@
 {{-- Primary Meta Tags --}}
 <meta name="title" content="{{$title}}">
 <meta name="description" content="{{$title}}" />
-<meta name="keywords" content="PPID, PPID Kementerian Agama, PPID KemenagPessel, Komisi Informasi" />
-<meta name="author" content="PPID KemenagPessel" />
+<meta name="keywords" content="PPID, PPID Kementerian Agama, Web Kemenag Kanwil Prov Sumbar, Komisi Informasi" />
+<meta name="author" content="Web Kemenag Kanwil Prov Sumbar" />
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 <meta name="revisit-after" content="1 Days" />
 

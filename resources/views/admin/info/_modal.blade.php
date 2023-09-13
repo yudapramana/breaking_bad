@@ -14,10 +14,6 @@
 
                 <div class="modal-body">
 
-
-
-
-
                     <div class="row g-3">
                         <div class="col-md-4">
                             <div class="mb-3 form-group">
