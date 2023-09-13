@@ -268,7 +268,7 @@
 
 
     $(document).ready(function() {
-        table.ajax.url('/blog/posts').load();
+        table.ajax.url('{{ route("posts.index") }}').load();
         console.log('mana neeee');
 
         table.buttons().container()
