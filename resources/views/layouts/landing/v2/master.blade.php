@@ -8,9 +8,9 @@
     <meta content="Anil z" name="author">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description"
-        content="Selamat datang di halaman PPID (Pusat Informasi dan Dokumentasi) Kementerian Agama Kabupaten Pesisir Selatan. Kami menyediakan akses transparan terhadap informasi, dokumen, dan data terkait dengan berbagai aspek kegiatan dan layanan yang diselenggarakan oleh Kementerian Agama di wilayah Kabupaten Pesisir Selatan. Temukan beragam informasi berkualitas dan akurat yang mencakup program, kebijakan, berita, dan layanan yang kami tawarkan.">
+        content="Selamat datang di halaman Web Utama Kantor Wilayah Kementerian Agama Provinsi Sumatera Barat.">
     <meta name="keywords"
-        content="PPID, Pusat Informasi dan Dokumentasi, Kementerian Agama, Kabupaten Pesisir Selatan, informasi, dokumen, data, layanan, program, kebijakan, berita, transparansi.">
+        content="Web, Pusat Informasi dan Dokumentasi, Kementerian Agama, Kabupaten Pesisir Selatan, informasi, dokumen, data, layanan, program, kebijakan, berita, transparansi.">
 
     <!-- SITE TITLE -->
     <title>@yield('title')</title>
