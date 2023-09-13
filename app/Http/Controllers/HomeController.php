@@ -27,7 +27,7 @@ class HomeController extends Controller
         $totalpermohonanselesai = Permohonan::count();
 
         return view('landing.v2.home', [
-            'title' => 'PPID - Kementerian Agama Kab. Pesisir Selatan',
+            'title' => 'Web Kantor Wilayah Kementerian Agama Provinsi Sumatera Barat',
             'accountfb' => 'pandanviewmandeh',
             'account' => 'pandanviewmandeh',
             'channel' =>  '@pandanviewmandehofficial4919',
@@ -60,7 +60,7 @@ class HomeController extends Controller
             'klasifikasi_s' => $klasifikasi_s,
             'id_data_klasifikasi' => $id_data_klasifikasi,
             'sect' => $this->_toUpper($sect),
-            'title' => 'PPID - ' . $this->_toUpper($sect),
+            'title' => 'Web - ' . $this->_toUpper($sect),
         ]);
         
     }

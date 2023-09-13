@@ -7,7 +7,7 @@
 <meta name="title" content="{{$title}}">
 <meta name="description" content="{{$title}}" />
 <meta name="keywords" content="PPID, PPID Kementerian Agama, PPID KemenagPessel, Komisi Informasi" />
-<meta name="author" content="PPID Kementerian Agama Kab. Pesisir Selatan" />
+<meta name="author" content="PPID Kantor Wilayah Kementerian Agama Prov. Sumatera Barat" />
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 <meta name="revisit-after" content="1 Days" />
 
@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="{{$title}}">
 <meta property="og:title" content="{{$title}}">
 <meta property="og:locale" content="id_ID">
-<meta property="og:description" content="PPID - {{$title}}">
+<meta property="og:description" content="Web - {{$title}}">
 <meta property="og:image" content="{{ asset('sailor/img/logo.png') }}" />
 
 <meta property="og:type" content=website />
@@ -25,7 +25,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="{{$title}}" />
 <meta name="twitter:title" content="{{$title}}" />
-<meta name="twitter:description" content="PPID - {{$title}}">
+<meta name="twitter:description" content="Web - {{$title}}">
 <meta name="twitter:image" content="{{ asset('sailor/img/logo.png') }}" />
 <meta property="twitter:url" content="{{ URL::current() }}">
 

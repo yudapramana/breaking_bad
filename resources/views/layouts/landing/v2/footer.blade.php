@@ -52,7 +52,8 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <p class="copyright m-md-0 text-center text-md-left">© 2023 Kementerian Agama Kab. Pesisir Selatan
+                    <p class="copyright m-md-0 text-center text-md-left">© 2023 Kantor Wilayah Kementerian Agama Prov.
+                        Sumatera Barat
                     </p>
                 </div>
                 <div class="col-md-6">

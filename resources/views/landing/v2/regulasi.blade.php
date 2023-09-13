@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="{{$title}}">
 <meta property="og:title" content="{{$title}}">
 <meta property="og:locale" content="id_ID">
-<meta property="og:description" content="PPID - {{$title}}">
+<meta property="og:description" content="Web - {{$title}}">
 <meta property="og:image" content="{{ asset('sailor/img/logo.png') }}" />
 
 <meta property="og:type" content=website />
@@ -26,7 +26,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="{{$title}}" />
 <meta name="twitter:title" content="{{$title}}" />
-<meta name="twitter:description" content="PPID - {{$title}}">
+<meta name="twitter:description" content="Web - {{$title}}">
 <meta name="twitter:image" content="{{ asset('sailor/img/logo.png') }}" />
 <meta property="twitter:url" content="{{ URL::current() }}">
 

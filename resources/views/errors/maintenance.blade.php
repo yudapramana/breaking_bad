@@ -36,7 +36,8 @@
 <article>
     {{-- <h1>We&rsquo;ll be back soon!</h1>
     <div>
-        <p>Sorry for the inconvenience but we&rsquo;re performing some maintenance at the moment. If you need to you can always <a href="mailto:#">contact us</a>, otherwise we&rsquo;ll be back online shortly!</p>
+        <p>Sorry for the inconvenience but we&rsquo;re performing some maintenance at the moment. If you need to you can
+            always <a href="mailto:#">contact us</a>, otherwise we&rsquo;ll be back online shortly!</p>
         <p>&mdash; The Solo Programmer</p>
     </div> --}}
 
@@ -44,8 +45,9 @@
     <h1>Maaf, Sistem sedang diperbaiki!</h1>
     <div>
         <p>
-            Maaf atas ketidaknyamanan ini, tetapi kami sedang melakukan beberapa pemeliharaan saat ini. Jika perlu, Anda selalu dapat menghubungi kami, jika tidak, kami akan segera kembali online!
+            Maaf atas ketidaknyamanan ini, tetapi kami sedang melakukan beberapa pemeliharaan saat ini. Jika perlu, Anda
+            selalu dapat menghubungi kami, jika tidak, kami akan segera kembali online!
         </p>
-        <p>&mdash; Sub Bagian Tata Usaha Kementerian Agama Kab. Pesisir Selatan</p>
+        <p>&mdash; Sub Bagian Tata Usaha Kantor Wilayah Kementerian Agama Prov. Sumatera Barat</p>
     </div>
 </article>

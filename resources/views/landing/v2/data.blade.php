@@ -1,5 +1,5 @@
 @extends('layouts.landing.v2.master')
-@section('title', 'PPID - ' . $keterangan)
+@section('title', 'Web - ' . $keterangan)
 
 
 @section('_styles')
@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="{{$keterangan}}">
 <meta property="og:title" content="{{$keterangan}}">
 <meta property="og:locale" content="id_ID">
-<meta property="og:description" content="PPID - {{$keterangan}}">
+<meta property="og:description" content="Web - {{$keterangan}}">
 <meta property="og:image" content="{{ asset('sailor/img/logo.png') }}" />
 
 <meta property="og:type" content=website />
@@ -26,7 +26,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:site" content="{{$keterangan}}" />
 <meta name="twitter:title" content="{{$keterangan}}" />
-<meta name="twitter:description" content="PPID - {{$keterangan}}">
+<meta name="twitter:description" content="Web - {{$keterangan}}">
 <meta name="twitter:image" content="{{ asset('sailor/img/logo.png') }}" />
 <meta property="twitter:url" content="{{ URL::current() }}">
 

@@ -100,7 +100,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('regulasi', function() {
         return view('landing.v2.regulasi',
         [
-            'title' => 'PPID - Regulasi',
+            'title' => 'Web - Regulasi',
         ]);
     });
     

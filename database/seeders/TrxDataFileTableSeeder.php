@@ -61,7 +61,7 @@ class TrxDataFileTableSeeder extends Seeder
                 'ext' => 'pdf',
                 'url_file' => 'https://ppid.kemenagpessel.com/storage/2/LHKASN-Kepala-Kemenag-Kab.-Pesisir-Selatan.pdf',
                 'tags' => NULL,
-                'keterangan' => 'Laporan Harta Kekayaan ASN Kepala Kantor Kementerian Agama Kab. Pesisir Selatan Tahun 2022',
+                'keterangan' => 'Laporan Harta Kekayaan ASN Kepala Kantor Kantor Wilayah Kementerian Agama Prov. Sumatera Barat Tahun 2022',
                 'hits' => 4,
                 'download' => 0,
                 'tahun' => 2022,

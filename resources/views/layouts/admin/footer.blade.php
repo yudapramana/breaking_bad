@@ -1,5 +1,6 @@
 <footer id="footer" class="footer mt-auto">
-    <div class="copyright"> © 2023 <strong><span>Kementerian Agama Kab. Pesisir Selatan</span></strong>. All Rights
+    <div class="copyright"> © 2023 <strong><span>Kantor Wilayah Kementerian Agama Prov. Sumatera Barat</span></strong>.
+        All Rights
         Reserved</div>
     <div class="credits"> Made with &#128149; by ours Pranata Komputer YD</a></div>
 </footer>

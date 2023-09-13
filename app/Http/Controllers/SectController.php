@@ -13,7 +13,7 @@ class SectController extends Controller
 {
     public function permohonan() {
         return view('landing.v2.permohonan', [
-            'title' => 'PPID - Kementerian Agama Kab. Pesisir Selatan',
+            'title' => 'Web - Kantor Wilayah Kementerian Agama Prov. Sumatera Barat',
         ]);
     }
 

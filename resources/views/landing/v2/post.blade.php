@@ -1,5 +1,5 @@
 @extends('layouts.landing.v2.master')
-@section('title', 'PPID - ' . $post->title)
+@section('title', 'Web - ' . $post->title)
 
 @section('_styles')
 
