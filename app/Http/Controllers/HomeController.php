@@ -27,7 +27,7 @@ class HomeController extends Controller
         $totalpermohonanselesai = Permohonan::count();
 
         return view('landing.v2.home', [
-            'title' => 'Web Kantor Wilayah Kementerian Agama Provinsi Sumatera Barat',
+            'title' => 'Web Utama Kantor Wilayah Kementerian Agama Provinsi Sumatera Barat',
             'accountfb' => 'pandanviewmandeh',
             'account' => 'pandanviewmandeh',
             'channel' =>  '@pandanviewmandehofficial4919',
@@ -56,7 +56,7 @@ class HomeController extends Controller
 
 
 
-        
+
         $instansi_s = RefDataInstansi::all();
         return view('landing.v2.info', [
             'instansi_s' => $instansi_s,
