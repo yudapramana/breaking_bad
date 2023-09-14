@@ -28,7 +28,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-3">
-                    <a class="navbar-brand m-auto" href="/">
+                    <a class="navbar-brand m-auto" href="{{config('isec.base_url')}}">
                         <img class="logo_light" src="{{ asset('assets/images/logo/kanwil_logo2.png') }}" alt="logo" />
                         <img class="logo_dark" src="{{ asset('assets/images/logo/kanwil_logo2.png') }}" alt="logo" />
                         <img class="logo_default" src="{{ asset('assets/images/logo/kanwil_logo2.png') }}" alt="logo" />

@@ -83,7 +83,8 @@
                             @endif
                             <div class="blog_content bg-white">
                                 <div class="blog_text">
-                                    <h6 class="blog_title"><a href="/post/{{$post->slug}}">{{$post->title}}</a>
+                                    <h6 class="blog_title"><a
+                                            href="{{config('isec.base_url')}}/post/{{$post->slug}}">{{$post->title}}</a>
                                     </h6>
                                     <ul class="list_none blog_meta">
                                         <li><a href="#"><i class="ion-calendar"></i> {{ $post->created_at->format('d F
@@ -152,14 +153,14 @@
                             <li>
                                 <div class="post_footer">
                                     <div class="post_img">
-                                        <a href="/{{$post->slug}}">
+                                        <a href="{{config('isec.base_url')}}/post/{{$post->slug}}">
                                             @if($post->cover)
                                             <img src="{{$post->cover}}" alt="letest_post1" width="60">
                                             @endif
                                         </a>
                                     </div>
                                     <div class="post_content">
-                                        <h6><a href="/post/{{$post->slug}}">{{\Illuminate\Support\Str::limit($post->title,
+                                        <h6><a href="{{config('isec.base_url')}}/post/{{$post->slug}}">{{\Illuminate\Support\Str::limit($post->title,
                                                 20, $end='...')}}</a>
                                         </h6>
                                         <p class="small m-0">{{ $post->created_at->format('d F Y') }}</p>
@@ -175,7 +176,7 @@
                         <ul class="list_none widget_categories border_bottom_dash">
                             @foreach ($categories as $category)
 
-                            <li><a href="/blog?category={{$category->slug}}"><span
+                            <li><a href="{{config('isec.base_url')}}/blog?category={{$category->slug}}"><span
                                         class="categories_name">{{$category->title}}</span><span
                                         class="categories_num">({{$category->posts_count}})</span></a>
                             </li>
@@ -187,7 +188,7 @@
                         <h5 class="widget_title">tags</h5>
                         <div class="tags">
                             @foreach ($tags as $tag)
-                            <a href="/blog?tag={{$tag->slug}}"">{{$tag->name}}</a>
+                            <a href="{{config('isec.base_url')}}/blog?tag={{$tag->slug}}"">{{$tag->name}}</a>
                             @endforeach
 
                         </div>
