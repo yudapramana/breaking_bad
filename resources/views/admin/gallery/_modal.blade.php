@@ -1,7 +1,8 @@
 <!-- Tambah Group -->
-<div class="modal fade" id="tambahGroup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+<div class="modal fade" id="tambahGroup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
     <div class="modal-dialog modal-lg" role="document">
-        <form id="groupForm" method="post" action="/information/galleries/store" enctype="multipart/form-data">
+        <form id="groupForm" method="post" action="{{ route('galleries.store') }}" enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="modal-content">
                 <div class="modal-header">
@@ -50,13 +51,17 @@
                             <div class="row mb-3">
                                 <label for="cover_image_url" class="col-sm-2 col-form-label">Gambar</label>
                                 <div class="col-sm-10">
-                                    <input class="form-control" type="hidden" name="new-cover_image_url" id="new-cover_image_url">
-                                    <button type="button" id="cover_image_url_btn" class="btn btn-secondary btn-sm">Unggah Cover</button>
+                                    <input class="form-control" type="hidden" name="new-cover_image_url"
+                                        id="new-cover_image_url">
+                                    <button type="button" id="cover_image_url_btn"
+                                        class="btn btn-secondary btn-sm">Unggah Cover</button>
 
                                     <div class="show-cover-box" style="display:none;">
-                                        <img class="mb-2" id="preview-cover" src="" alt="logo_instansi" height="200"><br>
+                                        <img class="mb-2" id="preview-cover" src="" alt="logo_instansi"
+                                            height="200"><br>
                                         <div class="mb-2">
-                                            <button type="button" id="retry-cover-btn" class="btn btn-secondary btn-sm">Unggah Ulang</button>
+                                            <button type="button" id="retry-cover-btn"
+                                                class="btn btn-secondary btn-sm">Unggah Ulang</button>
                                         </div>
                                     </div>
                                 </div>

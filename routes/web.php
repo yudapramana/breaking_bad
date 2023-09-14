@@ -287,7 +287,7 @@ Route::delete('/information/destroy/{id}', [\App\Http\Controllers\Admin\Activity
 
 
 Route::get('/information/galleries', [\App\Http\Controllers\Admin\GalleryController::class, 'index'])->name('galleries.index');
-Route::post('/information/galleries/store', [\App\Http\Controllers\Admin\GalleryController::class, 'store']);
+Route::post('/information/galleries/store', [\App\Http\Controllers\Admin\GalleryController::class, 'store'])->name('galleries.store');
 
 Route::get('/information/carousels', [\App\Http\Controllers\Admin\CarouselController::class, 'index'])->name('carousels.index');
 Route::post('/information/carousels/store', [\App\Http\Controllers\Admin\CarouselController::class, 'store'])->name('carousels.store');
@@ -298,7 +298,7 @@ Route::post('/information/testimonies/store', [\App\Http\Controllers\Admin\Testi
 
 
 
-Route::get('/data/messages', [\App\Http\Controllers\Admin\MessageController::class, 'index'])->name('messages.admin.index');
+Route::get('/data/messages', [\App\Http\Controllers\Admin\MessageController::class, 'index'])->name('messages.index');
 
 Route::get('/data/users', [\App\Http\Controllers\Admin\UserController::class, 'index'])->name('users.index');
 Route::post('/data/users/store', [\App\Http\Controllers\Admin\UserController::class, 'store'])->name('users.store');
@@ -329,7 +329,7 @@ Route::delete('blog/news/{id}/delete-permanent', [App\Http\Controllers\NewsContr
 Route::resource('/blog/news', App\Http\Controllers\NewsController::class);
 
 
-Route::get('/blog/menus/{id?}',  [\App\Http\Controllers\Admin\MenuController::class, 'index']);	
+Route::get('/blog/menus/{id?}',  [\App\Http\Controllers\Admin\MenuController::class, 'index'])->name('menus.index');	
 Route::post('create-menu',  [\App\Http\Controllers\Admin\MenuController::class, 'store']);	
 Route::get('add-categories-to-menu',  [\App\Http\Controllers\Admin\MenuController::class, 'addCategory']);	
 Route::post('save-menu',  [\App\Http\Controllers\Admin\MenuController::class, 'saveMenu']);	

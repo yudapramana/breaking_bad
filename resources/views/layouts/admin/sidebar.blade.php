@@ -26,14 +26,14 @@
 
         <li class="nav-heading">Kelola Informasi</li>
         <li class="nav-item"> <a class="nav-link @if (request()->segment(1) == 'informasi') @else collapsed @endif"
-                href="/informasi">
+                href="{{ route('info.index') }}">
                 <i class="bi bi-clipboard-data"></i>
 
                 <span>Data & Informasi</span> </a>
         </li>
 
         <li class="nav-item"> <a class="nav-link @if (request()->segment(1) == 'permohonan') @else collapsed @endif"
-                href="/permohonan">
+                href="{{ route('permohonan.index') }}">
                 <i class="bi bi-clipboard"></i>
 
                 <span>Permohonan</span> </a>
@@ -53,28 +53,32 @@
                 data-bs-parent="#sidebar-nav" style="">
                 @can('page-information-services')
                 <li>
-                    <a href="/information/services" class="@if (request()->segment(2) == 'services') active @endif">
+                    <a href="{{ route('services.index') }}"
+                        class="@if (request()->segment(2) == 'services') active @endif">
                         <i class=" bi bi-circle"></i><span>Services</span>
                     </a>
                 </li>
                 @endcan
                 @can('page-information-products')
                 <li>
-                    <a href="/information/activities" class="@if (request()->segment(2) == 'activities') active @endif">
+                    <a href="{{ route('activities.index') }}"
+                        class="@if (request()->segment(2) == 'activities') active @endif">
                         <i class=" bi bi-circle"></i><span>Activities</span>
                     </a>
                 </li>
                 @endcan
                 @can('page-information-galleries')
                 <li>
-                    <a href="/information/galleries" class="@if (request()->segment(2) == 'galleries') active @endif">
+                    <a href="{{ route('galleries.index') }}"
+                        class="@if (request()->segment(2) == 'galleries') active @endif">
                         <i class=" bi bi-circle"></i><span>Galleries</span>
                     </a>
                 </li>
                 @endcan
                 @can('page-information-carousels')
                 <li>
-                    <a href="/information/carousels" class="@if (request()->segment(2) == 'carousels') active @endif">
+                    <a href="{{ route('carousels.index') }}"
+                        class="@if (request()->segment(2) == 'carousels') active @endif">
                         <i class=" bi bi-circle"></i><span>Carousels</span>
                     </a>
                 </li>
@@ -94,21 +98,22 @@
                 data-bs-parent="#sidebar-nav" style="">
                 @can('page-data-messages')
                 <li>
-                    <a href="/data/messages" class="@if (request()->segment(2) == 'messages') active @endif">
+                    <a href="{{ route('messages.index') }}"
+                        class="@if (request()->segment(2) == 'messages') active @endif">
                         <i class=" bi bi-circle"></i><span>Messages</span>
                     </a>
                 </li>
                 @endcan
                 @can('page-data-users')
                 <li>
-                    <a href="/data/users" class="@if (request()->segment(2) == 'users') active @endif">
+                    <a href="{{ route('users.index') }}" class="@if (request()->segment(2) == 'users') active @endif">
                         <i class=" bi bi-circle"></i><span>Users</span>
                     </a>
                 </li>
                 @endcan
                 @can('page-data-roles')
                 <li>
-                    <a href="/data/roles" class="@if (request()->segment(2) == 'roles') active @endif">
+                    <a href="{{ route('roles.index') }}" class="@if (request()->segment(2) == 'roles') active @endif">
                         <i class=" bi bi-circle"></i><span>Roles</span>
                     </a>
                 </li>
@@ -128,35 +133,36 @@
                 data-bs-parent="#sidebar-nav" style="">
                 @can('page-blog-categories')
                 <li>
-                    <a href="/blog/categories" class="@if (request()->segment(2) == 'categories') active @endif">
+                    <a href="{{ route('categories.index') }}"
+                        class="@if (request()->segment(2) == 'categories') active @endif">
                         <i class=" bi bi-circle"></i><span>Categories</span>
                     </a>
                 </li>
                 @endcan
                 @can('page-blog-tags')
                 <li>
-                    <a href="/blog/tags" class="@if (request()->segment(2) == 'tags') active @endif">
+                    <a href="{{ route('tags.index') }}" class="@if (request()->segment(2) == 'tags') active @endif">
                         <i class=" bi bi-circle"></i><span>Tags</span>
                     </a>
                 </li>
                 @endcan
                 @can('page-blog-posts')
                 <li>
-                    <a href="/blog/posts" class="@if (request()->segment(2) == 'posts') active @endif">
+                    <a href="{{ route('posts.index') }}" class="@if (request()->segment(2) == 'posts') active @endif">
                         <i class=" bi bi-circle"></i><span>Posts</span>
                     </a>
                 </li>
                 @endcan
                 {{-- @can('page-blog-news') --}}
                 <li>
-                    <a href="/blog/news" class="@if (request()->segment(2) == 'news') active @endif">
+                    <a href="{{ route('news.index') }}" class="@if (request()->segment(2) == 'news') active @endif">
                         <i class=" bi bi-circle"></i><span>News</span>
                     </a>
                 </li>
                 {{-- @endcan --}}
                 {{-- @can('page-blog-categories') --}}
                 <li>
-                    <a href="/blog/menus" class="@if (request()->segment(2) == 'menus') active @endif">
+                    <a href="{{ route('menus.index') }}" class="@if (request()->segment(2) == 'menus') active @endif">
                         <i class=" bi bi-circle"></i><span>Menus</span>
                     </a>
                 </li>
