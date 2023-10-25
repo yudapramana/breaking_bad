@@ -40,6 +40,7 @@ class DatabaseSeeder extends Seeder
         $this->call(RefDataInstansiTableSeeder::class);
         $this->call(RefDataKategoriTableSeeder::class);
         $this->call(RefDataClassificationSeeder::class);
+        $this->call(KotaTableSeeder::class);
         // $this->call(ActivitiesTableSeeder::class);
         // $this->call(DaftarPermohonanTableSeeder::class);
         // $this->call(DataFileRawDBSeeder::class);

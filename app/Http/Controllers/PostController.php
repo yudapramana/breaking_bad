@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{Category, Post, Tag};
+use App\Models\{Category, Kabkota, Post, Tag};
 use Auth;
 use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\DataTables;
@@ -18,7 +18,7 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-        $posts = Post::where('type', 'post')->orderBy('created_at', 'DESC')->get();
+        $posts = Post::orderBy('created_at', 'DESC')->get();
 
 
         if ($request->ajax()) {
@@ -72,10 +72,11 @@ class PostController extends Controller
     {
         $categories = Category::all();
         $tags       = Tag::all();
+        $kabkotas = Kabkota::all();
         $title = 'Posts';
         $br1 = 'Create';
         $br2 = 'Posts';
-        return view('admin.posts.create', compact('categories','tags','title','br1','br2'));
+        return view('admin.posts.create', compact('categories','tags','title','br1','br2', 'kabkotas'));
     }
 
     /**
@@ -114,7 +115,7 @@ class PostController extends Controller
         $post->desc         = $request->desc;
         $post->keywords     = $request->keywords;
         $post->meta_desc    = $request->meta_desc;
-        $post->type         = 'post';
+        $post->id_kabkota    = $request->kabkota;
         $post->save();
 
         $post->tags()->attach($request->tags);
@@ -180,11 +181,11 @@ class PostController extends Controller
         $post->cover        = isset($request->cover) ? $request->cover : null;
         $post->title        = $request->title;
         $post->slug         = $request->slug;
-        // $post->user_id      = Auth::user()->id;
         $post->category_id  = $request->category;
         $post->desc         = $request->desc;
         $post->keywords     = $request->keywords;
         $post->meta_desc    = $request->meta_desc;
+        $post->id_kabkota    = $request->kabkota;
         $post->save();
 
         $post->tags()->sync($request->tags);

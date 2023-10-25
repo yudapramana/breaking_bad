@@ -97,6 +97,9 @@ class GalleryController extends Controller
                 $gallery->image_url = isset($data['new-cover_image_url']) ? $data['new-cover_image_url'] : '';
                 $gallery->alt = $data['alt'];
                 $gallery->description = $data['deskripsi'];
+                $gallery->type = $data['type'];
+                $gallery->url = isset($data['url']) ? $data['url'] : '';
+
                 $gallery->save();
             } else {
                 $fGallery = Gallery::find($data['id_gallery']);
@@ -105,6 +108,8 @@ class GalleryController extends Controller
                 $fGallery->image_url = isset($data['new-cover_image_url']) ? $data['new-cover_image_url'] : '';
                 $fGallery->alt = $data['alt'];
                 $fGallery->description = $data['deskripsi'];
+                $fGallery->type = $data['type'];
+                $fGallery->url = isset($data['url']) ? $data['url'] : '';
                 $fGallery->save();
             }
 

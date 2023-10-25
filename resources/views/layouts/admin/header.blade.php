@@ -5,7 +5,7 @@
     --}}
     <div class="d-flex align-items-center justify-content-between">
         <a href="/" class="logo d-flex align-items-center"> <img
-                src="{{ asset('assets/images/logo/PPID-Cropped.png') }}" alt=""> <span class="d-none d-lg-block"></span>
+                src="{{ asset('assets/images/logo/kanwil_logo2.png') }}" alt=""> <span class="d-none d-lg-block"></span>
         </a>
         <i class="bi bi-list toggle-sidebar-btn"></i>
     </div>

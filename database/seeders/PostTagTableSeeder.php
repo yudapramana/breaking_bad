@@ -75,6 +75,86 @@ class PostTagTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
+            7 => 
+            array (
+                'id' => 8,
+                'post_id' => 8,
+                'tag_id' => 6,
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            8 => 
+            array (
+                'id' => 9,
+                'post_id' => 8,
+                'tag_id' => 7,
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            9 => 
+            array (
+                'id' => 10,
+                'post_id' => 9,
+                'tag_id' => 7,
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            10 => 
+            array (
+                'id' => 11,
+                'post_id' => 10,
+                'tag_id' => 7,
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            11 => 
+            array (
+                'id' => 12,
+                'post_id' => 11,
+                'tag_id' => 7,
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            12 => 
+            array (
+                'id' => 13,
+                'post_id' => 12,
+                'tag_id' => 7,
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            13 => 
+            array (
+                'id' => 14,
+                'post_id' => 13,
+                'tag_id' => 4,
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            14 => 
+            array (
+                'id' => 15,
+                'post_id' => 13,
+                'tag_id' => 7,
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            15 => 
+            array (
+                'id' => 16,
+                'post_id' => 14,
+                'tag_id' => 7,
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            16 => 
+            array (
+                'id' => 17,
+                'post_id' => 15,
+                'tag_id' => 7,
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
         ));
         
         

@@ -18,9 +18,9 @@ use Illuminate\Http\Request;
 
 Route::get('/users/all', function (Request $request) {
 
-//    $users = \App\Models\User::select('name', 'username', 'plain_password')->get();
-$users = DB::table('users')->select('name', 'username', 'plain_password as password')->get();
-   return $users;
+    //    $users = \App\Models\User::select('name', 'username', 'plain_password')->get();
+    $users = DB::table('users')->select('name', 'username', 'plain_password as password')->get();
+    return $users;
 });
 
 Route::get('permohonan', [App\Http\Controllers\PermohonanController::class, 'index'])->name('permohonan.index');
@@ -100,13 +100,15 @@ Route::group(['middleware' => ['web']], function () {
         ]);
     });
 
-    Route::get('regulasi', function() {
-        return view('landing.v2.regulasi',
-        [
-            'title' => 'Web - Regulasi',
-        ]);
+    Route::get('regulasi', function () {
+        return view(
+            'landing.v2.regulasi',
+            [
+                'title' => 'Web - Regulasi',
+            ]
+        );
     });
-    
+
 
     Route::get('/service/{slug}', function ($slug) {
 
@@ -136,22 +138,34 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('/blog', function (Request $request) {
 
+        $kabkotaname = '';
         if ($request->has('search')) {
             $search = $request->input('search');
             $posts = \App\Models\Post::where('title', 'LIKE', "%{$search}%")
                 ->orWhere('desc', 'LIKE', "%{$search}%")->orderBy('created_at', 'DESC')->paginate(4);
         } elseif ($request->has('category')) {
             $search = $request->input('category');
-            $posts = \App\Models\Post::whereHas('category', function($q) use($search) {
-                $q->where('slug', $search);
-            })->orderBy('created_at', 'DESC')->paginate(4);
+
+            if($request->has('id_kabkota')) {
+                $kabkotaname = \App\Models\Kabkota::find($request->input('id_kabkota'))->name;
+                $posts = \App\Models\Post::whereHas('category', function ($q) use ($search) {
+                    $q->where('slug', $search);
+                })
+                ->where('id_kabkota', $request->input('id_kabkota'))
+                ->orderBy('created_at', 'DESC')->paginate(8);
+            } else {
+                $posts = \App\Models\Post::whereHas('category', function ($q) use ($search) {
+                    $q->where('slug', $search);
+                })->orderBy('created_at', 'DESC')->paginate(8);
+            }
+            
         } elseif ($request->has('tag')) {
             $search = $request->input('tag');
-            $posts = \App\Models\Post::whereHas('tags', function($q) use($search) {
+            $posts = \App\Models\Post::whereHas('tags', function ($q) use ($search) {
                 $q->where('slug', $search);
-            })->orderBy('created_at', 'DESC')->paginate(4);
-        }else {
-            $posts = \App\Models\Post::orderBy('created_at', 'DESC')->paginate(4);
+            })->orderBy('created_at', 'DESC')->paginate(8);
+        } else {
+            $posts = \App\Models\Post::orderBy('created_at', 'DESC')->paginate(8);
         }
 
         $posts->appends(request()->input())->links();
@@ -159,7 +173,9 @@ Route::group(['middleware' => ['web']], function () {
 
         $categories = \App\Models\Category::withCount('posts')->get();
         $tags = \App\Models\Tag::all();
-        $recent_posts = \App\Models\Post::where('type', 'news')->take(3)->get();
+        $recent_posts = \App\Models\Post::whereHas('category', function ($q) {
+            $q->where('slug', 'utama');
+        })->take(3)->get();
 
         return view('landing.v2.blog', [
             'title' => 'Blog Web Kemenag Kanwil Prov Sumbar',
@@ -169,28 +185,37 @@ Route::group(['middleware' => ['web']], function () {
             'categories' =>  $categories,
             'posts' => $posts,
             'recent_posts' => $recent_posts,
-            'tags' => $tags
+            'tags' => $tags,
+            'kabkotaname' => $kabkotaname,
         ]);
-    });
+    })->name('blog.list');
 
     Route::get('/berita', function (Request $request) {
 
         if ($request->has('search')) {
             $search = $request->input('search');
-            $posts = \App\Models\Post::where('type', 'news')->where('title', 'LIKE', "%{$search}%")
+            $posts = \App\Models\Post::whereHas('category', function ($q) {
+                $q->where('slug', 'utama');
+            })->where('title', 'LIKE', "%{$search}%")
                 ->orWhere('desc', 'LIKE', "%{$search}%")->orderBy('created_at', 'DESC')->paginate(4);
         } elseif ($request->has('category')) {
             $search = $request->input('category');
-            $posts = \App\Models\Post::where('type', 'news')->whereHas('category', function($q) use($search) {
+            $posts = \App\Models\Post::whereHas('category', function ($q) {
+                $q->where('slug', 'utama');
+            })->whereHas('category', function ($q) use ($search) {
                 $q->where('slug', $search);
             })->orderBy('created_at', 'DESC')->paginate(4);
         } elseif ($request->has('tag')) {
             $search = $request->input('tag');
-            $posts = \App\Models\Post::where('type', 'news')->whereHas('tags', function($q) use($search) {
+            $posts = \App\Models\Post::whereHas('category', function ($q) {
+                $q->where('slug', 'utama');
+            })->whereHas('tags', function ($q) use ($search) {
                 $q->where('slug', $search);
             })->orderBy('created_at', 'DESC')->paginate(4);
-        }else {
-            $posts = \App\Models\Post::where('type', 'news')->orderBy('created_at', 'DESC')->paginate(4);
+        } else {
+            $posts = \App\Models\Post::whereHas('category', function ($q) {
+                $q->where('slug', 'utama');
+            })->orderBy('created_at', 'DESC')->paginate(4);
         }
 
         $posts->appends(request()->input())->links();
@@ -198,7 +223,9 @@ Route::group(['middleware' => ['web']], function () {
 
         $categories = \App\Models\Category::withCount('posts')->get();
         $tags = \App\Models\Tag::all();
-        $recent_posts = \App\Models\Post::where('type', 'news')->take(3)->get();
+        $recent_posts = \App\Models\Post::whereHas('category', function ($q) {
+            $q->where('slug', 'utama');
+        })->take(3)->get();
 
         return view('landing.v2.news', [
             'title' => 'Berita Web Kemenag Kanwil Prov Sumbar',
@@ -219,7 +246,9 @@ Route::group(['middleware' => ['web']], function () {
 
         $categories = \App\Models\Category::withCount('posts')->get();
         $tags = \App\Models\Tag::all();
-        $recent_posts = \App\Models\Post::where('type', 'news')->take(3)->get();
+        $recent_posts = \App\Models\Post::whereHas('category', function ($q) {
+            $q->where('slug', 'utama');
+        })->take(3)->get();
 
         return view('landing.v2.activities', [
             'title' => 'Aktifitas KemenagPessel',
@@ -233,18 +262,18 @@ Route::group(['middleware' => ['web']], function () {
         ]);
     });
 
-    Route::get('post/{slug}', function(Request $request, $slug) {
+    Route::get('post/{slug}', function (Request $request, $slug) {
         $post = \App\Models\Post::where('slug', $slug)->first();
 
-        $cookie_name = (\Str::replace('.','',($request->ip())).'-'. $post->id);
+        $cookie_name = (\Str::replace('.', '', ($request->ip())) . '-' . $post->id);
 
         $cookie = \Cookie::get($cookie_name);
-        if($cookie == ''){//check if cookie is set
-            $cookie = cookie($cookie_name, '1', 60);//set the cookie
-            $post->incrementReadCount();//count the view
-        } 
+        if ($cookie == '') { //check if cookie is set
+            $cookie = cookie($cookie_name, '1', 60); //set the cookie
+            $post->incrementReadCount(); //count the view
+        }
 
-        if($post->showPost()){// this will test if the user viwed the post or not
+        if ($post->showPost()) { // this will test if the user viwed the post or not
             // return $post;
         } else {
             \App\Models\PostView::createViewLog($post);
@@ -252,7 +281,9 @@ Route::group(['middleware' => ['web']], function () {
 
         $categories = \App\Models\Category::withCount('posts')->get();
         $tags = \App\Models\Tag::all();
-        $recent_posts = \App\Models\Post::where('type', 'news')->take(3)->get();
+        $recent_posts = \App\Models\Post::whereHas('category', function ($q) {
+            $q->where('slug', 'utama');
+        })->take(3)->get();
         return view('landing.v2.post', [
             'accountfb' => 'pandanviewmandeh',
             'account' => 'pandanviewmandeh',
@@ -261,7 +292,7 @@ Route::group(['middleware' => ['web']], function () {
             'recent_posts' => $recent_posts,
             'tags' => $tags,
             'post' => $post
-        ])->withCookie($cookie);//store the cookie;
+        ])->withCookie($cookie); //store the cookie;
 
     });
 
@@ -329,14 +360,14 @@ Route::delete('blog/news/{id}/delete-permanent', [App\Http\Controllers\NewsContr
 Route::resource('/blog/news', App\Http\Controllers\NewsController::class);
 
 
-Route::get('/blog/menus/{id?}',  [\App\Http\Controllers\Admin\MenuController::class, 'index'])->name('menus.index');	
-Route::post('create-menu',  [\App\Http\Controllers\Admin\MenuController::class, 'store']);	
-Route::get('add-categories-to-menu',  [\App\Http\Controllers\Admin\MenuController::class, 'addCategory']);	
-Route::post('save-menu',  [\App\Http\Controllers\Admin\MenuController::class, 'saveMenu']);	
-Route::get('add-posts-to-menu',  [\App\Http\Controllers\Admin\MenuController::class, 'addPost']);	
+Route::get('/blog/menus/{id?}',  [\App\Http\Controllers\Admin\MenuController::class, 'index'])->name('menus.index');
+Route::post('create-menu',  [\App\Http\Controllers\Admin\MenuController::class, 'store']);
+Route::get('add-categories-to-menu',  [\App\Http\Controllers\Admin\MenuController::class, 'addCategory']);
+Route::post('save-menu',  [\App\Http\Controllers\Admin\MenuController::class, 'saveMenu']);
+Route::get('add-posts-to-menu',  [\App\Http\Controllers\Admin\MenuController::class, 'addPost']);
 Route::get('add-custom-link',  [\App\Http\Controllers\Admin\MenuController::class, 'addCustomLink']);
-Route::post('update-menuitem/{id}/{k1}/{k2?}/{k3?}',  [\App\Http\Controllers\Admin\MenuController::class, 'updateItem']);	
-Route::get('delete-menuitem/{id}/{k1}/{k2?}/{k3?}',  [\App\Http\Controllers\Admin\MenuController::class, 'deleteItem']);	
+Route::post('update-menuitem/{id}/{k1}/{k2?}/{k3?}',  [\App\Http\Controllers\Admin\MenuController::class, 'updateItem']);
+Route::get('delete-menuitem/{id}/{k1}/{k2?}/{k3?}',  [\App\Http\Controllers\Admin\MenuController::class, 'deleteItem']);
 
 
 
@@ -384,6 +415,7 @@ Route::get('/data/download/{idx}', [\App\Http\Controllers\Landing\PostController
 
 Route::put('/kategori/add', [\App\Http\Controllers\MasterController::class, 'addKategori'])->name('kategori.add');
 Route::put('/instansi/add', [\App\Http\Controllers\MasterController::class, 'addInstansi'])->name('instansi.add');
+Route::put('/tag/add', [\App\Http\Controllers\MasterController::class, 'addTag'])->name('tag.add');
 
 
 Route::get('/subklasifikasi', function () {

@@ -27,7 +27,9 @@ class PostController extends Controller
 
             $categories = \App\Models\Category::withCount('posts')->get();
             $tags = \App\Models\Tag::all();
-            $recent_posts = \App\Models\Post::where('type', 'news')->take(3)->get();
+            $recent_posts = \App\Models\Post::whereHas('category', function($q){
+                $q->where('slug', 'utama');
+            })->take(3)->get();
 
             $dataFile->increment('hits');
             return view('landing.v2.data', [

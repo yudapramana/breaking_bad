@@ -12,7 +12,7 @@ class Post extends Model
 
     protected $with = ['category', 'user', 'tags'];
 
-    protected $appends = ['view_count', 'cover_small', 'rectangle_cover_image', 'square_cover_image', 'square_cover_image_high'];
+    protected $appends = ['tanggal', 'view_count', 'cover_small', 'rectangle_cover_image', 'square_cover_image', 'square_cover_image_high'];
 
     protected $guarded = [];
 
@@ -40,6 +40,11 @@ class Post extends Model
     public function view()
     {
         return $this->hasMany(PostView::class);
+    }
+
+    public function kabkota()
+    {
+        return $this->belongsTo(Kabkota::class, 'id_kabkota');
     }
 
     public function getViewCountAttribute()
@@ -70,7 +75,7 @@ class Post extends Model
 
             return $exp[0] . '/upload/c_fill,ar_16:9,q_5,f_avif/' . $exp[1];
         } else {
-            return '';
+            return "http://res.cloudinary.com/dezj1x6xp/image/upload/v1698216019/PandanViewMandeh/video-placeholder_kfnvxm.jpg";
         }
     }
 
@@ -84,7 +89,7 @@ class Post extends Model
 
             return $exp[0] . '/upload/c_fill,ar_16:9,q_50/' . $exp[1];
         } else {
-            return '';
+            return "http://res.cloudinary.com/dezj1x6xp/image/upload/v1698216019/PandanViewMandeh/video-placeholder_kfnvxm.jpg";
         }
     }
 
@@ -98,7 +103,7 @@ class Post extends Model
 
             return $exp[0] . '/upload/c_fill,h_200,w_200,f_avif,q_50/' . $exp[1];
         } else {
-            return '';
+            return "http://res.cloudinary.com/dezj1x6xp/image/upload/v1698216019/PandanViewMandeh/video-placeholder_kfnvxm.jpg";
         }
         // return $exp[0] . '/upload/c_fill,ar_4:3,q_50/' . $exp[1];
 
@@ -114,9 +119,19 @@ class Post extends Model
 
             return $exp[0] . '/upload/c_fill,h_200,w_200/' . $exp[1];
         } else {
-            return '';
+            return "http://res.cloudinary.com/dezj1x6xp/image/upload/v1698216019/PandanViewMandeh/video-placeholder_kfnvxm.jpg";
         }
         // return $exp[0] . '/upload/c_fill,ar_4:3,q_50/' . $exp[1];
 
+    }
+
+
+    public function getTanggalAttribute()
+    {
+
+        setlocale(LC_TIME, 'id_ID');
+        \Carbon\Carbon::setLocale('id');
+        $data = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes['created_at'])->isoFormat('dddd, D MMMM Y');
+        return $data;
     }
 }

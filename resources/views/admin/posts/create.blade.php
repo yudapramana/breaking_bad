@@ -7,6 +7,25 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.bootstrap5.min.css">
 {{-- <script src="https://cdn.ckeditor.com/ckeditor5/38.1.0/classic/ckeditor.js"></script> --}}
 {{-- <script src="{{ asset('ckeditor/ckeditor.js') }}"></script> --}}
+
+<style>
+    .ck-editor__editable_inline {
+        min-height: 400px;
+    }
+
+    .select2def {
+        border: 1px solid #ced4da !important;
+    }
+
+    .txtgray {
+        color: gray !important;
+        font-size: small !important;
+    }
+
+    .select2-container .select2-selection--single {
+        height: 34px !important;
+    }
+</style>
 @endsection
 
 
@@ -103,7 +122,7 @@
                                             {{-- <textarea name="desc" id="desc" cols="30" rows="10"
                                                 class="form-control @error('desc') is-invalid @enderror"
                                                 required>{{old('desc')}}</textarea> --}}
-                                            <textarea name="desc" id="desc" cols="50" rows="30"
+                                            <textarea name="desc" id="desc" cols="50" rows="200"
                                                 class="ckeditor form-control @error('desc') is-invalid @enderror">{{old('desc')}}</textarea>
                                             @error('desc')
                                             <div class="invalid-feedback">
@@ -116,7 +135,7 @@
                                             <select name="category" id="category"
                                                 class="form-control form-select select2 @error('category') is-invalid @enderror"
                                                 required>
-                                                <option value="" disabled selected>Choose one</option>
+                                                <option value="" disabled selected>Pilih Kategori</option>
                                                 @foreach ($categories as $category)
                                                 <option value="{{ $category->id }}">{{ $category->title }}</option>
                                                 @endforeach
@@ -128,9 +147,31 @@
                                             @enderror
                                         </div>
                                         <div class="form-group mb-3">
+                                            <label for="kabkota">Kabupaten / Kota</label>
+                                            <select name="kabkota" id="kabkota"
+                                                class="form-control form-select select2 @error('kabkota') is-invalid @enderror"
+                                                required>
+                                                <option value="" disabled selected>Pilih atau Skip</option>
+                                                @foreach ($kabkotas as $kabkota)
+                                                @if($kabkota->id_kabkota == 0)
+                                                <option selected value="{{ $kabkota->id_kabkota }}">{{ $kabkota->name }}
+                                                </option>
+                                                @else
+                                                <option value="{{ $kabkota->id_kabkota }}">{{ $kabkota->name }}
+                                                </option>
+                                                @endif
+                                                @endforeach
+                                            </select>
+                                            @error('kabkota')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group mb-3">
                                             <label for="tag">Tags</label>
                                             <select name="tags[]" id="tag"
-                                                class="form-control form-select select2 @error('tags') is-invalid @enderror"
+                                                class="form-control form-select select2 select2bs4 select2-tags @error('tags') is-invalid @enderror"
                                                 required multiple>
                                                 @foreach ($tags as $tag)
                                                 <option value="{{ $tag->id }}">{{ $tag->name }}</option>
@@ -247,6 +288,113 @@
 
 
 <script>
+    $(function() {
+         $('.select2-tags').select2({
+            theme: 'bootstrap-5',
+            dropdownParent: $(".search-form"),
+            // ajax: {
+            //     url: "/search/kategori",
+            //     dataType: 'json',
+            //     delay: 250,
+            //     data: function(params) {
+            //         return {
+            //             q: params.term, // search term
+            //             page: params.page
+            //         };
+            //     },
+            //     processResults: function(data, params) {
+            //         console.log('data kategori');
+            //         console.log(data);
+            //         return {
+            //             results: $.map(data, function(item) {
+            //                 return {
+            //                     text: item.name,
+            //                     id: item.id_data_kategori,
+            //                 }
+            //             })
+            //         };
+            //     },
+            //     delay: 250,
+            //     cache: true
+            // },
+            placeholder: 'Cari Tag',
+            // minimumInputLength: 5,
+            "language": {
+                "noResults": function(res, data) {
+                    // console.log(res, data);
+                    return "Tidak ditemukan <a class='btn btn-sm btn-danger add-new-tag'>Tambahkan</a>";
+                }
+            },
+            escapeMarkup: function(markup) {
+                // console.log('markup');
+                // console.log(markup);
+                return markup;
+            }
+        });
+
+        $(document).on('click', '.add-new-tag', function(e) {
+            console.log('add new tag clicked');
+            var tagName = $('.select2-search__field').val();
+            console.log('data');
+            console.log(tagName);
+            $('#id_data_kategori').select2('close');
+            $('#defForm').block({
+                message: `Loading...`
+            });
+
+            $.ajax({
+                type: 'PUT',
+                url: `/tag/add`,
+                data: {
+                    tag_name: tagName
+                },
+                dataType: 'json', // let's set the expected response format
+                success: function(data) {
+                    console.log(data);
+                    if (!data.success) {
+                        Swal.fire(
+                            'Error!', data.message, 'error'
+                        );
+                    } else {
+                        var dataTag = data.data;
+                        console.log('dataTag');
+                        console.log(dataTag);
+
+                        var newOption = new Option(dataTag.name, dataTag.id, true, true);
+                        $('.select2-tags').append(newOption).trigger('change');
+                        
+                        $('#defForm').unblock();
+                    }
+
+                },
+                error: function(err) {
+                    if (err.status ==
+                        422) { // when status code is 422, it's a validation issue
+                        console.log(err.responseJSON);
+                        // you can loop through the errors object and show it to the user
+                        console.warn(err.responseJSON.errors);
+                        // display errors on each form field
+                        $('.ajax-invalid').remove();
+                        $.each(err.responseJSON.errors, function(i, error) {
+                            var el = $(document).find('[name="' + i + '"]');
+                            el.after($('<span class="ajax-invalid" style="color: red;">' +
+                                error[0] + '</span>'));
+                        });
+                    } else if (err.status == 403) {
+                        Swal.fire(
+                            'Unauthorized!',
+                            'You are unauthorized to do the action',
+                            'warning'
+                        );
+
+                    }
+                }
+            });
+        });
+
+    });
+
+        
     ClassicEditor
             .create( document.querySelector( '.ckeditor' ),{
                 ckfinder: {

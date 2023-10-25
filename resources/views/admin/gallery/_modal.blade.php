@@ -49,6 +49,19 @@
                             </div>
 
                             <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Tipe Data</label>
+                                <div class="col-sm-10">
+                                    <select class="form-select" id="featured" name="featured"
+                                        aria-label="Default select example">
+                                        <option selected="">Pilihan
+                                        </option>
+                                        <option selected value="photo">Foto</option>
+                                        <option value="video">Video</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
                                 <label for="cover_image_url" class="col-sm-2 col-form-label">Gambar</label>
                                 <div class="col-sm-10">
                                     <input class="form-control" type="hidden" name="new-cover_image_url"
@@ -64,6 +77,13 @@
                                                 class="btn btn-secondary btn-sm">Unggah Ulang</button>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="inputText" class="col-sm-2 col-form-label">url</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="url" name="url">
                                 </div>
                             </div>
 

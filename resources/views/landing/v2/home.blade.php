@@ -114,17 +114,16 @@
                                     <div class="post_img">
                                         <a href="{{config('isec.base_url')}}/post/{{$post->slug}}">
                                             @if($post->cover)
-                                            <img src="{{$post->square_cover_image}}" alt="letest_post1" width="77">
+                                            <img src="{{$post->square_cover_image}}" alt="letest_post1" width="77"
+                                                style="border-radius: 5px;">
                                             @endif
                                         </a>
                                     </div>
                                     <div class="post_content">
                                         <h5><a href="{{config('isec.base_url')}}/post/{{$post->slug}}">{{\Illuminate\Support\Str::limit($post->title,
-                                                100, $end='...')}}</a>
+                                                70, $end='...')}}</a>
                                         </h5>
-                                        <p class="small m-0">{{ $post->created_at->format('d F Y') }} | <i
-                                                class="ion-eye"></i> {{$post->view_count}} Reads |
-                                            <i class="ion-android-contacts"></i> {{ $post->user->name }}
+                                        <p class="small m-0">{{ $post->tanggal }}
                                         </p>
                                     </div>
                                 </div>
@@ -153,7 +152,7 @@
         <div class="row">
             <div class="col-md-12 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
                 <div class="heading_s3 mb-md-3 text-center">
-                    <h2>Berita Kanwil Sumbar</h2>
+                    <h2><a href="{{ route('blog.list', 'category=utama') }}">Berita Utama Kanwil</a></h2>
                 </div>
             </div>
         </div>
@@ -171,32 +170,70 @@
                         <a href="#">
                             <img src="{{$post->cover_small}}" alt="blog_small_img1">
                         </a>
-                        <span class="post_date bg_blue text-light"> {{ $post->created_at->format('F d, Y') }}</span>
+                        <span class="post_date bg_blue text-light"> {{ Str::ucfirst($post->category->slug) }}</span>
                     </div>
                     <div class="blog_content bg-white">
                         <div class="blog_text">
                             <h6 class="blog_title"><a
                                     href="{{config('isec.base_url')}}/post/{{$post->slug}}">{{$post->title}}</a></h6>
                             <ul class="list_none blog_meta">
-                                <li>by <a href="#">{{ $post->user->username }}</a></li>
-                                <li><a href="#">{{$post->view_count}} Reads</a></li>
+                                <li><a href="#">{{$post->tanggal}}</a></li>
                             </ul>
-                            <p>{!!\Illuminate\Support\Str::limit($post->desc, 150, $end='...')!!}</p>
-                            <a href="{{config('isec.base_url')}}/post/{{$post->slug}}"
-                                class="text-capitalize">Selengkapnya <i
-                                    class="ti-angle-double-right align-middle"></i></a>
+
                         </div>
                     </div>
                 </div>
             </div>
             @endforeach
-
         </div>
     </div>
 </section>
 <!-- END SECTION BLOG -->
 
+<!-- START SECTION BLOG -->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
+                <div class="heading_s3 mb-md-3 text-center">
+                    <h2><a href="{{ route('blog.list', 'category=daerah') }}">Berita dari Daerah</a></h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="clearfix small_divider"></div>
+            </div>
+        </div>
+        <div class="row blog_wrap justify-content-center animation" data-animation="fadeInUp"
+            data-animation-delay="0.4s">
+            @foreach($daerah_posts as $key => $post)
+            <div class="col-lg-4 col-md-6 mb-md-4 mb-2 pb-2">
+                <div class="blog_post blog_style1">
+                    <div class="blog_img">
+                        <a href="#">
+                            <img src="{{$post->cover_small}}" alt="blog_small_img1">
+                        </a>
+                        <span class="post_date bg_blue text-light"> {{ ucwords(strtolower($post->kabkota->name))
+                            }}</span>
+                    </div>
+                    <div class="blog_content bg-white">
+                        <div class="blog_text">
+                            <h6 class="blog_title"><a
+                                    href="{{config('isec.base_url')}}/post/{{$post->slug}}">{{$post->title}}</a></h6>
+                            <ul class="list_none blog_meta">
+                                <li><a href="#">{{$post->tanggal}}</a></li>
+                            </ul>
 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+<!-- END SECTION BLOG -->
 
 @endsection
 

@@ -1,6 +1,6 @@
 @extends('layouts.landing.v2.master')
 
-@section('title', 'Web - Buat Permohonan')
+@section('title', 'Web - Galeri dan Foto')
 
 @section('_styles')
 
@@ -71,296 +71,83 @@
                     <div class="cleafix small_divider"></div>
                 </div>
             </div>
+
             <div class="row mb-3 mb-sm-5">
                 <div class="col-md-12 text-center">
                     <ul class="list_none portfolio_filter filter_tab6 animation animated fadeInUp"
                         data-animation="fadeInUp" data-animation-delay="0.4s"
                         style="animation-delay: 0.4s; opacity: 1;">
-                        <li><a href="#" class="" data-filter="*">all</a></li>
-                        <li><a href="#" data-filter=".brands" class="">Brands</a></li>
-                        <li><a href="#" data-filter=".design" class="">Design</a></li>
-                        <li><a href="#" data-filter=".web" class="">Web</a></li>
-                        <li><a href="#" data-filter=".adv" class="current">Advertising</a></li>
+                        <li><a href="#" class="current" data-filter="*">all</a></li>
+
+                        @foreach($filterTags as $key => $tag)
+                        <li><a href="#" data-filter="{{ '.' . $tag}}">{{$tag}}</a></li>
+                        @endforeach
+
+
+                        {{-- <li><a href="#" data-filter=".brands">Brands</a></li>
+                        <li><a href="#" data-filter=".design">Design</a></li>
+                        <li><a href="#" data-filter=".web">Web</a></li>
+                        <li><a href="#" data-filter=".adv">Advertising</a></li> --}}
                     </ul>
                 </div>
             </div>
+
             <div class="row">
                 <div class="col-md-12">
                     <ul class="portfolio_container gutter_small work_col3 portfolio_gallery portfolio_style3 animation animated fadeInUp"
                         data-animation="fadeInUp" data-animation-delay="0.4s"
-                        style="animation-delay: 0.4s; opacity: 1; position: relative; height: 660.906px;">
+                        style="animation-delay: 0.4s; opacity: 1; position: relative; height: 1079.86px;">
                         <li class="grid-sizer"></li>
-                        <!-- START PORTFOLIO ITEM -->
-                        <li class="portfolio-item design web"
-                            style="position: absolute; left: 0%; top: 0px; animation: auto ease 0s 1 normal none running none; display: none;">
-                            <div class="portfolio_item">
-                                <a href="#" class="image_link">
-                                    <img src="{{ asset('images/portfolio_item15.jpg') }}" alt="image">
-                                </a>
-                                <div class="portfolio_content">
-                                    <div class="link_container">
-                                        <a href="{{ asset('assets/images/portfolio_item15.jpg') }}"
-                                            class="image_popup"><i class="ion-image"></i></a>
-                                        <a href="#"><i class="ion-plus"></i></a>
-                                    </div>
-                                    <h5><a href="#">Website Design</a></h5>
-                                    <p>It's a long established fact that a reader will be readable content of a page.
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-                        <!-- END PORTFOLIO ITEM -->
-                        <!-- START PORTFOLIO ITEM -->
-                        <li class="portfolio-item brands web adv"
-                            style="position: absolute; left: 0%; top: 0px; animation: auto ease 0s 1 normal none running none;">
-                            <div class="portfolio_item">
-                                <a href="#" class="image_link">
-                                    <img src="{{ asset('images/portfolio_item12.jpg') }}" alt="image">
-                                </a>
-                                <div class="portfolio_content">
-                                    <div class="link_container">
-                                        <a href="http://www.youtube.com/watch?v=7e90gBu4pas" class="video_popup"><i
-                                                class="ion-ios-play"></i></a>
-                                        <a href="#"><i class="ion-plus"></i></a>
-                                    </div>
-                                    <h5><a href="#">Website Design</a></h5>
-                                    <p>There are many variations of available, but the majority have suffered alteration
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
-                        <!-- END PORTFOLIO ITEM -->
-                        <!-- START PORTFOLIO ITEM -->
-                        <li class="portfolio-item brands design"
-                            style="position: absolute; left: 33.3292%; top: 0px; animation: auto ease 0s 1 normal none running none; display: none;">
-                            <div class="portfolio_item">
-                                <a href="#" class="image_link">
-                                    <img src="{{ asset('images/portfolio_item_small1.jpg') }}" alt="image">
-                                </a>
-                                <div class="portfolio_content">
-                                    <div class="link_container">
-                                        <a href="{{ asset('assets/images/portfolio_item1.jpg') }}"
-                                            class="image_popup"><i class="ion-image"></i></a>
-                                        <a href="#"><i class="ion-plus"></i></a>
-                                    </div>
-                                    <h5><a href="#">Website Design</a></h5>
-                                    <p>making this the first true generator on the Internet. It uses a dictionary</p>
-                                </div>
-                            </div>
-                        </li>
-                        <!-- END PORTFOLIO ITEM -->
-                        <!-- START PORTFOLIO ITEM -->
-                        <li class="portfolio-item brands design web adv"
-                            style="position: absolute; left: 33.3292%; top: 0px; animation: auto ease 0s 1 normal none running none;">
-                            <div class="portfolio_item">
-                                <a href="#" class="image_link">
-                                    <img src="{{ asset('images/portfolio_item13.jpg') }}" alt="image">
-                                </a>
-                                <div class="portfolio_content">
-                                    <div class="link_container">
-                                        <a href="{{ asset('assets/images/portfolio_item13.jpg') }}"
-                                            class="image_popup"><i class="ion-image"></i></a>
-                                        <a href="#"><i class="ion-plus"></i></a>
-                                    </div>
-                                    <h5><a href="#">Website Design</a></h5>
-                                    <p>Nor again is there anyone who loves or pursues or desires to obtain pain of
-                                        itself</p>
-                                </div>
-                            </div>
-                        </li>
-                        <!-- END PORTFOLIO ITEM -->
-                        <!-- START PORTFOLIO ITEM -->
-                        <li class="portfolio-item brands design"
-                            style="position: absolute; left: 33.3292%; top: 254.969px; animation: auto ease 0s 1 normal none running none; display: none;">
-                            <div class="portfolio_item">
-                                <div class="portfolio_slider owl-carousel owl-theme dots_white owl-loaded owl-drag owl-hidden"
-                                    data-autoplay="true" data-loop="true" data-animate-in="fadeIn"
-                                    data-animate-out="fadeOut" data-autoplay-timeout="3000">
 
 
-                                    <div class="owl-stage-outer">
-                                        <div class="owl-stage"
-                                            style="transform: translate3d(-1080px, 0px, 0px); transition: all 0s ease 0s; width: 2160px;">
-                                            <div class="owl-item cloned" style="width: 360px;"><a href="#"
-                                                    class="image_link">
-                                                    <img src="{{ asset('images/portfolio_item_small3.jpg') }}"
-                                                        alt="image">
-                                                </a></div>
-                                            <div class="owl-item cloned" style="width: 360px;"><a href="#"
-                                                    class="image_link">
-                                                    <img src="{{ asset('images/portfolio_item_small23.jpg') }}"
-                                                        alt="image">
-                                                </a></div>
-                                            <div class="owl-item" style="width: 360px;"><a href="#" class="image_link">
-                                                    <img src="{{ asset('images/portfolio_item_small3.jpg') }}"
-                                                        alt="image">
-                                                </a></div>
-                                            <div class="owl-item active" style="width: 360px;"><a href="#"
-                                                    class="image_link">
-                                                    <img src="{{ asset('images/portfolio_item_small23.jpg') }}"
-                                                        alt="image">
-                                                </a></div>
-                                            <div class="owl-item cloned" style="width: 360px;"><a href="#"
-                                                    class="image_link">
-                                                    <img src="{{ asset('images/portfolio_item_small3.jpg') }}"
-                                                        alt="image">
-                                                </a></div>
-                                            <div class="owl-item cloned" style="width: 360px;"><a href="#"
-                                                    class="image_link">
-                                                    <img src="{{ asset('images/portfolio_item_small23.jpg') }}"
-                                                        alt="image">
-                                                </a></div>
-                                        </div>
+                        @foreach($galleries as $key => $gallery)
+
+                        {{-- <div class="col-lg-4 col-md-6 portfolio-item {{$gallery->filter_tag}}">
+                            <div class="portfolio-wrap">
+                                <img src="{{ $gallery->thumbnail_image }}" class="img-fluid" alt="{{ $gallery->alt }}">
+                                <div class="portfolio-info">
+                                    <h4>{{ $gallery->title }}</h4>
+                                    <p>{{ $gallery->filter_tag }}</p>
+                                    <div class="portfolio-links">
+                                        <a href="{{ $gallery->image_url }}" data-gallery="portfolioGallery"
+                                            class="portfolio-lightbox" title="{{ $gallery->title }}"><i
+                                                class="bx bx-plus"></i></a>
+                                        <a href="#" class="portfolio-details-lightbox" data-glightbox="type: external"
+                                            title="Portfolio Details"><i class="bx bx-link"></i></a>
                                     </div>
-                                    <div class="owl-nav disabled">
-                                        <div class="owl-prev"><i class="ion-ios-arrow-back"></i></div>
-                                        <div class="owl-next"><i class="ion-ios-arrow-forward"></i></div>
-                                    </div>
-                                    <div class="owl-dots">
-                                        <div class="owl-dot"><span></span></div>
-                                        <div class="owl-dot active"><span></span></div>
-                                    </div>
-                                </div>
-                                <div class="portfolio_content">
-                                    <div class="link_container">
-                                        <a href="{{ asset('assets/images/portfolio_item3.jpg') }}"
-                                            class="image_popup"><i class="ion-images"></i></a>
-                                        <a href="{{ asset('assets/images/portfolio_item23.jpg') }}"
-                                            class="image_popup d-none"></a>
-                                        <a href="#"><i class="ion-plus"></i></a>
-                                    </div>
-                                    <h5><a href="#">Website Design</a></h5>
-                                    <p>making this the first true generator on the Internet. It uses a dictionary</p>
                                 </div>
                             </div>
-                        </li>
-                        <!-- END PORTFOLIO ITEM -->
+                        </div> --}}
+
                         <!-- START PORTFOLIO ITEM -->
-                        <li class="portfolio-item brands adv"
-                            style="position: absolute; left: 66.6583%; top: 0px; animation: auto ease 0s 1 normal none running none;">
+                        <li class="portfolio-item {{$gallery->filter_tag}}">
                             <div class="portfolio_item">
                                 <a href="#" class="image_link">
-                                    <img src="{{ asset('images/portfolio_item14.jpg') }}" alt="image">
+                                    <img src="{{ $gallery->thumbnail_image }}" alt="{{ $gallery->alt }}">
                                 </a>
                                 <div class="portfolio_content">
                                     <div class="link_container">
-                                        <a href="http://www.youtube.com/watch?v=7e90gBu4pas" class="video_popup"><i
-                                                class="ion-ios-play"></i></a>
+                                        <a href="{{ $gallery->image_url }}" class="image_popup"><i
+                                                class="ion-image"></i></a>
                                         <a href="#"><i class="ion-plus"></i></a>
                                     </div>
-                                    <h5><a href="#">Website Design</a></h5>
-                                    <p>Nam libero tempore cum soluta nobis eligendi optio nihil impedit quo minus</p>
+                                    <h5><a href="#">{{ $gallery->title }}</a></h5>
+                                    <p>{{ $gallery->description }}</p>
                                 </div>
                             </div>
                         </li>
                         <!-- END PORTFOLIO ITEM -->
-                        <!-- START PORTFOLIO ITEM -->
-                        <li class="portfolio-item brands design"
-                            style="position: absolute; left: 0%; top: 284.953px; animation: auto ease 0s 1 normal none running none; display: none;">
-                            <div class="portfolio_item">
-                                <a href="#" class="image_link">
-                                    <img src="{{ asset('images/portfolio_item16.jpg') }}" alt="image">
-                                </a>
-                                <div class="portfolio_content">
-                                    <div class="link_container">
-                                        <a href="{{ asset('assets/images/portfolio_item16.jpg') }}"
-                                            class="image_popup"><i class="ion-image"></i></a>
-                                        <a href="#"><i class="ion-plus"></i></a>
-                                    </div>
-                                    <h5><a href="#">Website Design</a></h5>
-                                    <p>making this the first true generator on the Internet. It uses a dictionary</p>
-                                </div>
-                            </div>
-                        </li>
-                        <!-- END PORTFOLIO ITEM -->
-                        <!-- START PORTFOLIO ITEM -->
-                        <li class="portfolio-item brands design web adv"
-                            style="position: absolute; left: 0%; top: 330.953px; animation: auto ease 0s 1 normal none running none;">
-                            <div class="portfolio_item">
-                                <a href="#" class="image_link">
-                                    <img src="{{ asset('images/portfolio_item17.jpg') }}" alt="image">
-                                </a>
-                                <div class="portfolio_content">
-                                    <div class="link_container">
-                                        <a href="{{ asset('assets/images/portfolio_item17.jpg') }}"
-                                            class="image_popup"><i class="ion-image"></i></a>
-                                        <a href="#"><i class="ion-plus"></i></a>
-                                    </div>
-                                    <h5><a href="#">Website Design</a></h5>
-                                    <p>which is the same as saying through shrinking from toil and pain.</p>
-                                </div>
-                            </div>
-                        </li>
-                        <!-- END PORTFOLIO ITEM -->
-                        <!-- START PORTFOLIO ITEM -->
-                        <li class="portfolio-item brands web"
-                            style="position: absolute; left: 0%; top: 823.891px; animation: auto ease 0s 1 normal none running none; display: none;">
-                            <div class="portfolio_item">
-                                <div class="portfolio_slider owl-carousel owl-theme dots_white owl-loaded owl-drag owl-hidden"
-                                    data-autoplay="true" data-loop="true" data-animate-in="fadeIn"
-                                    data-animate-out="fadeOut" data-autoplay-timeout="3500">
 
 
-                                    <div class="owl-stage-outer">
-                                        <div class="owl-stage"
-                                            style="transform: translate3d(-720px, 0px, 0px); transition: all 0s ease 0s; width: 2160px;">
-                                            <div class="owl-item cloned" style="width: 360px;"><a href="#"
-                                                    class="image_link">
-                                                    <img src="{{ asset('images/portfolio_item_small7.jpg') }}"
-                                                        alt="image">
-                                                </a></div>
-                                            <div class="owl-item cloned" style="width: 360px;"><a href="#"
-                                                    class="image_link">
-                                                    <img src="{{ asset('images/portfolio_item_small24.jpg') }}"
-                                                        alt="image">
-                                                </a></div>
-                                            <div class="owl-item active" style="width: 360px;"><a href="#"
-                                                    class="image_link">
-                                                    <img src="{{ asset('images/portfolio_item_small7.jpg') }}"
-                                                        alt="image">
-                                                </a></div>
-                                            <div class="owl-item" style="width: 360px;"><a href="#" class="image_link">
-                                                    <img src="{{ asset('images/portfolio_item_small24.jpg') }}"
-                                                        alt="image">
-                                                </a></div>
-                                            <div class="owl-item cloned" style="width: 360px;"><a href="#"
-                                                    class="image_link">
-                                                    <img src="{{ asset('images/portfolio_item_small7.jpg') }}"
-                                                        alt="image">
-                                                </a></div>
-                                            <div class="owl-item cloned" style="width: 360px;"><a href="#"
-                                                    class="image_link">
-                                                    <img src="{{ asset('images/portfolio_item_small24.jpg') }}"
-                                                        alt="image">
-                                                </a></div>
-                                        </div>
-                                    </div>
-                                    <div class="owl-nav disabled">
-                                        <div class="owl-prev"><i class="ion-ios-arrow-back"></i></div>
-                                        <div class="owl-next"><i class="ion-ios-arrow-forward"></i></div>
-                                    </div>
-                                    <div class="owl-dots">
-                                        <div class="owl-dot active"><span></span></div>
-                                        <div class="owl-dot"><span></span></div>
-                                    </div>
-                                </div>
-                                <div class="portfolio_content">
-                                    <div class="link_container">
-                                        <a href="{{ asset('assets/images/portfolio_item7.jpg') }}"
-                                            class="image_popup"><i class="ion-images"></i></a>
-                                        <a href="{{ asset('assets/images/portfolio_item24.jpg') }}"
-                                            class="image_popup d-none"><i class="ion-image"></i></a>
-                                        <a href="#"><i class="ion-plus"></i></a>
-                                    </div>
-                                    <h5><a href="#">Website Design</a></h5>
-                                    <p>Temporibus autem quibusdam et aut officiis debitis aut rerum saepe eveniet</p>
-                                </div>
-                            </div>
-                        </li>
-                        <!-- END PORTFOLIO ITEM -->
+                        @endforeach
+
+
+
+
                     </ul>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -408,9 +195,9 @@
             }
         });
 
-        document.getElementById("upload_widget_opener").addEventListener("click", function() {
-            myWidget.open();
-        }, false);
+        // document.getElementById("upload_widget_opener").addEventListener("click", function() {
+        //     myWidget.open();
+        // }, false);
 
         $('#reload').click(function() {
             reloadCaptcha();

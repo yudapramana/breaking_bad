@@ -22,6 +22,10 @@ class CreateGalleriesTable extends Migration
             $table->string('alt', 50)->nullable();
             $table->string('title', 100)->nullable();
             $table->text('description')->nullable();
+            $table->text('url')->nullable();
+            $table->enum('type', ['photo', 'video'])->default('photo');
+
+
         });
     }
 

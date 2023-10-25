@@ -80,8 +80,16 @@ class SectController extends Controller
     }
 
     public function gallery() {
+
+        $galleries = \App\Models\Gallery::all();
+        $galleries = $galleries->shuffle();
+
+        $filterTags = $galleries->pluck('filter_tag')->unique();
+
         return view('landing.v2.gallery', [
             'title' => 'Galeri Kantor Wilayah Kementerian Agama Prov. Sumatera Barat',
+            'galleries' =>  $galleries,
+            'filterTags' =>  $filterTags,
         ]);
     }
 }

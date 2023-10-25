@@ -29,7 +29,7 @@ class CreatePostsTable extends Migration
             $table->longText('desc');
             $table->string('keywords');
             $table->text('meta_desc');
-            $table->enum('type', ['post', 'news', 'article', 'interview', 'opinion'])->default('post');
+            $table->unsignedInteger('id_kabkota')->default(0);
             $table->bigInteger('reads')->unsigned()->default(0)->index();
             $table->timestamps();
             $table->softDeletes();

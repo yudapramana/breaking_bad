@@ -21,10 +21,16 @@ class HomeController extends Controller
         $services = \App\Models\Services::where('featured', 'yes')->get();
         $carousels = \App\Models\Carousel::where('active', 'yes')->get();
 
-        $recent_posts = \App\Models\Post::where('type', 'news')->orderBy('created_at', 'DESC')->take(3)->get();
+        $recent_posts = \App\Models\Post::whereHas('category', function ($q) {
+            $q->where('slug', 'utama');
+        })->orderBy('created_at', 'DESC')->take(3)->get();
         $activities = \App\Models\Activity::orderBy('created_at', 'DESC')->take(6)->get();
 
         $totalpermohonanselesai = Permohonan::count();
+
+        $daerah_posts = \App\Models\Post::whereHas('category', function ($q) {
+            $q->where('slug', 'daerah');
+        })->orderBy('created_at', 'DESC')->take(10)->get();
 
         return view('landing.v2.home', [
             'title' => 'Web Utama Kantor Wilayah Kementerian Agama Provinsi Sumatera Barat',
@@ -35,7 +41,8 @@ class HomeController extends Controller
             'carousels' =>  $carousels,
             'recent_posts' => $recent_posts,
             'activities' => $activities,
-            'totalpermohonanselesai' => $totalpermohonanselesai
+            'totalpermohonanselesai' => $totalpermohonanselesai,
+            'daerah_posts' => $daerah_posts
         ]);
     }
 

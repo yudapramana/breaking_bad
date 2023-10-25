@@ -1,5 +1,5 @@
 @extends('layouts.landing.v2.master')
-@section('title', 'PPID Blog List')
+@section('title', Str::ucfirst(app('request')->input('category')) . ' Kanwil Kemenag Prov. Sumatera Barat')
 
 @section('_styles')
 
@@ -40,6 +40,30 @@
         font-weight: 600;
         letter-spacing: 1px;
     }
+
+    /* .post_img {
+        margin-right: 20px !important;
+    } */
+
+    .img-link {
+        display: block;
+        width: 100%;
+        height: 100%;
+        /* position: absolute; */
+        z-index: 1;
+        border-radius: 5px;
+    }
+
+    /* .page-title h1::after {
+        content: "";
+        background: #2C65E1;
+        height: 8px;
+        width: 100px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        border-radius: 5px;
+    } */
 </style>
 
 @endsection
@@ -48,21 +72,82 @@
 
 <hr class="pt-0 mt-0">
 
-<section class="p-0 m-0">
-    <div class="container">
+<section class="pt-0 pb-5 m-0">
+    <div class="container px-4">
+        <div class="row">
+            <div class="col-sm-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-sm-start">
+                        <li class="breadcrumb-item"><a href="/">Beranda</a></li>
+                        <li class="breadcrumb-item @if(app('request')->has('id_kabkota')) @else active @endif "
+                            aria-current="page">
+
+                            @if(app('request')->has('id_kabkota'))
+                            <a href="{{config('isec.base_url')}}/blog?category={{app('request')->input('category')}}">Berita
+                                {{
+                                app('request')->input('category') ?
+                                Str::ucfirst(app('request')->input('category')) : 'Semua
+                                Berita' }}
+                            </a>
+                            @else
+                            Berita {{
+                            app('request')->input('category') ?
+                            Str::ucfirst(app('request')->input('category')) : 'Semua
+                            Berita' }}
+                            @endif
+                        </li>
+
+                        @if(app('request')->has('id_kabkota'))
+                        <li class="breadcrumb-item active">{{ ucwords(strtolower($kabkotaname)) }}</li>
+
+                        @endif
+                    </ol>
+                </nav>
+                <div class="page-title">
+
+
+                    @if(app('request')->has('id_kabkota'))
+                    <h1 class="greenext" style="border-bottom: 2px solid #dae0e5 !important;">{{
+                        ucwords(strtolower($kabkotaname)) }}
+                    </h1>
+                    @else
+
+                    <h1 class="greenext" style="border-bottom: 2px solid #dae0e5 !important;">Berita {{
+                        app('request')->input('category') ?
+                        Str::ucfirst(app('request')->input('category')) : 'Semua
+                        Berita' }}
+                    </h1>
+
+                    @endif
+                </div>
+            </div>
+            <div class="col-sm-6">
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+{{-- <section class="p-0 m-0">
+    <div class="container px-5">
 
         <div class="row">
             <div class="col-sm-12 pt-5 pb-3 wow fadeInLeft animated">
-                <h4 class="greenext">{{ Str::ucfirst(app('request')->input('category')) }}</h4>
+                <h4 class="greenext">{{
+                    app('request')->input('category') ?
+                    Str::ucfirst(app('request')->input('category')) : 'Semua
+                    Berita' }}</h4>
             </div>
         </div>
     </div>
 
-</section>
+</section> --}}
 
 
 <section class="p-0 m-0">
-    <div class="container">
+    <div class="container px-5">
         <div class="row">
             <div class="col-lg-9">
 
@@ -70,7 +155,69 @@
 
                 <div class="row">
 
-                    @forelse($posts as $key => $post)
+                    <div class="sidebar">
+
+                        <div class="widget">
+                            {{-- <h5 class="widget_title">Berita Terkini</h5> --}}
+                            <ul class="recent_post border_bottom_dash list_none">
+
+                                @forelse($posts as $key => $post)
+                                <li>
+                                    <div class="row post_footer">
+                                        <div class="col-md-4">
+                                            <a href="{{config('isec.base_url')}}/post/{{$post->slug}}">
+                                                <img src="{{$post->rectangle_cover_image}}" alt="letest_post1"
+                                                    class="img-link">
+                                            </a>
+                                        </div>
+                                        <div class="post_content col-md-8">
+                                            <div class="entry-meta meta-0 font-small mb-10 pb-2">
+                                                @if($post->category->slug == 'daerah')
+                                                <a
+                                                    href="{{config('isec.base_url')}}/blog?category={{app('request')->input('category')}}&id_kabkota={{$post->id_kabkota}}">
+                                                    <span class="badge badge-primary">{{
+                                                        ucwords(strtolower($post->kabkota->name)) }}</span>
+                                                </a>
+                                                @else
+                                                <a
+                                                    href="{{config('isec.base_url')}}/blog?category={{app('request')->input('category')}}">
+                                                    <span
+                                                        class="badge badge-primary">{{Str::ucfirst($post->category->slug)
+                                                        }}</span>
+                                                </a>
+                                                @endif
+                                                {{-- <a href="/blog?category={{app('request')->input('category')}}">
+                                                    <span class="badge badge-primary">{{ $post->category->slug
+                                                        == 'daerah' ? $post->kabkota->name :
+                                                        Str::ucfirst($post->category->slug) }}</span>
+                                                </a> --}}
+                                            </div>
+                                            <h5 class="pb-2"><a
+                                                    href="{{config('isec.base_url')}}/post/{{$post->slug}}">{{\Illuminate\Support\Str::limit($post->title,
+                                                    100, $end='...')}}</a>
+                                            </h5>
+                                            {{-- <p class="small m-0">{{ $post->created_at->format('l, d F Y') }}
+                                                --}}
+                                            <p class="small m-0">{{ $post->tanggal }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </li>
+                                @empty
+                                <div class="row">
+                                    <div class="col">
+                                        <p>.:Belum ada data:.</p>
+                                    </div>
+                                </div>
+                                @endforelse
+
+                            </ul>
+                        </div>
+
+
+                    </div>
+
+                    {{-- @forelse($posts as $key => $post)
 
                     <div class="col-md-12 mb-md-4 mb-2 pb-2">
                         <div class="blog_post">
@@ -102,7 +249,7 @@
 
                     @empty
                     <p>No Posts Shown</p>
-                    @endforelse
+                    @endforelse --}}
 
 
                     {{-- <div class="col-md-12 mb-md-4 mb-2 pb-2">

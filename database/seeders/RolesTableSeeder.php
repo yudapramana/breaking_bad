@@ -17,57 +17,32 @@ class RolesTableSeeder extends Seeder
     public function run()
     {
         $super_administrator = Role::create(['name' => 'super_administrator']);
-        $owner = Role::create(['name' => 'owner']);
         $administrator = Role::create(['name' => 'administrator']);
-        $staff = Role::create(['name' => 'staff']);
+        $staff = Role::create(['name' => 'staff_administrator']);
 
         // Super Admin
-        $user = User::where('username', 'yudapramana')->first();
+        $user = User::where('username', '199407292022031002')->first();
         $user->assignRole('super_administrator');
 
-        // Owner
-        $user = User::where('username', 'kakankemenag')->first();
-        $user->assignRole('owner');
-
         // Administrator
-        $user = User::where('username', 'adminafnizon')->first();
+        $user = User::where('username', '198605082011011013')->first();
         $user->assignRole('administrator');
-        
-        $user = User::where('username', 'herusyafri')->first();
-        $user->assignRole('staff');
-        
-        $user = User::where('username', 'dewimartaliza')->first();
-        $user->assignRole('staff');
-        
-        $user = User::where('username', 'upikmike')->first();
-        $user->assignRole('staff');
-        
-        $user = User::where('username', 'afrison')->first();
-        $user->assignRole('staff');
-        
-        $user = User::where('username', 'sarifahaini')->first();
-        $user->assignRole('staff');
 
-        $user = User::where('username', 'usri')->first();
-        $user->assignRole('staff');
+        // Staff Administrator
+        $user = User::where('username', '197807302007011009')->first();
+        $user->assignRole('staff_administrator');
         
-        $user = User::where('username', 'meirizalidya')->first();
-        $user->assignRole('staff');
+        $user = User::where('username', '198007022005012012')->first();
+        $user->assignRole('staff_administrator');
         
-        $user = User::where('username', 'dedigustiawan')->first();
-        $user->assignRole('staff');
-
-        $user = User::where('username', 'azkajuanda')->first();
-        $user->assignRole('staff');
-
-        $user = User::where('username', 'afrinozayenti')->first();
-        $user->assignRole('staff');
-
-        $user = User::where('username', 'luthfialparaby')->first();
-        $user->assignRole('staff');
-
-        $user = User::where('username', 'mardiyana')->first();
-        $user->assignRole('staff');
+        $user = User::where('username', '198110082007012016')->first();
+        $user->assignRole('staff_administrator');
+        
+        $user = User::where('username', '198512082005012001')->first();
+        $user->assignRole('staff_administrator');
+        
+        $user = User::where('username', '198203092009011007')->first();
+        $user->assignRole('staff_administrator');
         
 
         // Permissions
@@ -107,15 +82,6 @@ class RolesTableSeeder extends Seeder
         ]);
 
         $administrator->givePermissionTo([
-            $permissionMenu1, $permissionMenu2, $permissionMenu3, $permissionMenu4, $permissionMenu5,
-            $permissionPage1_1,
-            $permissionPage2_1, $permissionPage2_3,
-            $permissionPage3_1, $permissionPage3_2, $permissionPage3_3, $permissionPage3_4,
-            $permissionPage4_1, $permissionPage4_2,
-            $permissionPage5_1, $permissionPage5_2, $permissionPage5_3
-        ]);
-
-        $owner->givePermissionTo([
             $permissionMenu1, $permissionMenu2, $permissionMenu3, $permissionMenu4, $permissionMenu5,
             $permissionPage1_1,
             $permissionPage2_1, $permissionPage2_3,
