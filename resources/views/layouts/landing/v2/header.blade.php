@@ -61,7 +61,7 @@
                 <button class="navbar-toggler float-none" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation"> <span class="ion-android-menu"></span> </button>
-                <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
                     <ul class="navbar-nav">
 
                         @foreach($landingmenuitems as $key => $menuitem)

@@ -372,8 +372,8 @@ class MenuItemsTableSeeder extends Seeder
                 'id' => 38,
                 'created_at' => '2023-09-13 21:06:49',
                 'updated_at' => '2023-09-13 22:03:13',
-                'title' => 'Galeri Foto & Video',
-                'name' => 'Media & Galeri',
+                'title' => 'Galeri',
+                'name' => 'Galeri',
                 'slug' => 'sect/gallery',
                 'type' => 'custom',
                 'target' => '_self',
@@ -396,7 +396,7 @@ class MenuItemsTableSeeder extends Seeder
                 'id' => 41,
                 'created_at' => '2023-09-13 21:19:20',
                 'updated_at' => '2023-09-15 10:53:47',
-                'title' => 'Pengaduan Masyarakat',
+                'title' => 'Aduan Masyarakat',
                 'name' => 'Aduan Masyarakat',
                 'slug' => '#',
                 'type' => 'custom',
@@ -549,18 +549,6 @@ class MenuItemsTableSeeder extends Seeder
             ),
             44 => 
             array (
-                'id' => 56,
-                'created_at' => '2023-09-13 21:38:23',
-                'updated_at' => '2023-09-15 10:51:48',
-                'title' => 'Data dan Informasi',
-                'name' => 'Data & Informasi',
-                'slug' => 'data-dan-informasi',
-                'type' => 'category',
-                'target' => '_self',
-                'menu_id' => 1,
-            ),
-            45 => 
-            array (
                 'id' => 57,
                 'created_at' => '2023-09-13 21:38:43',
                 'updated_at' => '2023-09-13 21:38:43',
@@ -571,7 +559,7 @@ class MenuItemsTableSeeder extends Seeder
                 'target' => '_self',
                 'menu_id' => 1,
             ),
-            46 => 
+            45 => 
             array (
                 'id' => 58,
                 'created_at' => '2023-09-13 21:38:59',
@@ -583,7 +571,7 @@ class MenuItemsTableSeeder extends Seeder
                 'target' => '_self',
                 'menu_id' => 1,
             ),
-            47 => 
+            46 => 
             array (
                 'id' => 59,
                 'created_at' => '2023-09-13 21:39:26',
@@ -595,7 +583,7 @@ class MenuItemsTableSeeder extends Seeder
                 'target' => '_self',
                 'menu_id' => 1,
             ),
-            48 => 
+            47 => 
             array (
                 'id' => 60,
                 'created_at' => '2023-09-13 21:39:47',
@@ -607,7 +595,7 @@ class MenuItemsTableSeeder extends Seeder
                 'target' => '_self',
                 'menu_id' => 1,
             ),
-            49 => 
+            48 => 
             array (
                 'id' => 61,
                 'created_at' => '2023-09-13 21:40:05',
@@ -619,7 +607,7 @@ class MenuItemsTableSeeder extends Seeder
                 'target' => '_self',
                 'menu_id' => 1,
             ),
-            50 => 
+            49 => 
             array (
                 'id' => 62,
                 'created_at' => '2023-09-13 21:54:22',
@@ -631,7 +619,7 @@ class MenuItemsTableSeeder extends Seeder
                 'target' => '_self',
                 'menu_id' => 1,
             ),
-            51 => 
+            50 => 
             array (
                 'id' => 64,
                 'created_at' => '2023-09-15 10:52:17',
@@ -643,7 +631,7 @@ class MenuItemsTableSeeder extends Seeder
                 'target' => '_blank',
                 'menu_id' => 1,
             ),
-            52 => 
+            51 => 
             array (
                 'id' => 65,
                 'created_at' => '2023-10-25 12:06:40',
@@ -655,7 +643,7 @@ class MenuItemsTableSeeder extends Seeder
                 'target' => '_self',
                 'menu_id' => 1,
             ),
-            53 => 
+            52 => 
             array (
                 'id' => 66,
                 'created_at' => '2023-10-25 12:07:03',
@@ -667,7 +655,7 @@ class MenuItemsTableSeeder extends Seeder
                 'target' => '_self',
                 'menu_id' => 1,
             ),
-            54 => 
+            53 => 
             array (
                 'id' => 67,
                 'created_at' => '2023-10-25 12:07:21',
@@ -679,7 +667,7 @@ class MenuItemsTableSeeder extends Seeder
                 'target' => '_self',
                 'menu_id' => 1,
             ),
-            55 => 
+            54 => 
             array (
                 'id' => 68,
                 'created_at' => '2023-10-25 12:07:33',
@@ -687,6 +675,78 @@ class MenuItemsTableSeeder extends Seeder
                 'title' => 'Internasional',
                 'name' => NULL,
                 'slug' => 'blog?category=internasional',
+                'type' => 'custom',
+                'target' => '_self',
+                'menu_id' => 1,
+            ),
+            55 => 
+            array (
+                'id' => 70,
+                'created_at' => '2023-10-26 13:15:58',
+                'updated_at' => '2023-10-26 13:15:58',
+                'title' => 'Informasi Publik',
+                'name' => NULL,
+                'slug' => '#',
+                'type' => 'custom',
+                'target' => '_self',
+                'menu_id' => 1,
+            ),
+            56 => 
+            array (
+                'id' => 71,
+                'created_at' => '2023-10-26 13:16:57',
+                'updated_at' => '2023-10-26 13:16:57',
+                'title' => 'Semua Informasi Publik',
+                'name' => NULL,
+                'slug' => 'info/semua_informasi_publik',
+                'type' => 'custom',
+                'target' => '_self',
+                'menu_id' => 1,
+            ),
+            57 => 
+            array (
+                'id' => 72,
+                'created_at' => '2023-10-26 13:17:31',
+                'updated_at' => '2023-10-26 13:17:31',
+                'title' => 'Informasi Serta Merta',
+                'name' => NULL,
+                'slug' => 'info/informasi_serta_merta',
+                'type' => 'custom',
+                'target' => '_self',
+                'menu_id' => 1,
+            ),
+            58 => 
+            array (
+                'id' => 73,
+                'created_at' => '2023-10-26 13:17:54',
+                'updated_at' => '2023-10-26 13:17:54',
+                'title' => 'Informasi Setiap Saat',
+                'name' => NULL,
+                'slug' => 'info/informasi_setiap_saat',
+                'type' => 'custom',
+                'target' => '_self',
+                'menu_id' => 1,
+            ),
+            59 => 
+            array (
+                'id' => 74,
+                'created_at' => '2023-10-26 13:18:36',
+                'updated_at' => '2023-10-26 13:18:36',
+                'title' => 'Informasi Berkala',
+                'name' => NULL,
+                'slug' => 'info/informasi_berkala',
+                'type' => 'custom',
+                'target' => '_self',
+                'menu_id' => 1,
+            ),
+            60 => 
+            array (
+                'id' => 75,
+                'created_at' => '2023-10-26 13:18:56',
+                'updated_at' => '2023-10-26 13:18:56',
+                'title' => 'Informasi Dikecualikan',
+                'name' => NULL,
+                'slug' => 'info/informasi_dikecualikan',
                 'type' => 'custom',
                 'target' => '_self',
                 'menu_id' => 1,

@@ -42,7 +42,62 @@
 
 @section('content')
 
-<hr class="pt-0 mt-0" style="border-bottom:1px solid rgba(0,0,0,0.2)">
+{{--
+<hr class="pt-0 mt-0" style="border-bottom:1px solid rgba(0,0,0,0.2)"> --}}
+
+
+<!-- START SECTION BANNER -->
+<section class="banner_section p-0 pb-2 mb-2">
+    <div id="carouselExampleControls" class="banner_content_wrap carousel slide slide_height_700" data-ride="carousel">
+        <div class="carousel-inner">
+
+            @foreach($carousels as $key => $carousel)
+
+            <div class="carousel-item @if($key == 0) active @endif background_bg overlay_bg2"
+                data-img-src="{{$carousel->smaller_image}}">
+                <div class="banner_slide_content">
+                    <div class="container">
+                        <!-- STRART CONTAINER -->
+
+                        <div class="row justify-content-end">
+                            <div class="col-lg-6 col-md-12 col-sm-12 text-right">
+                                <div class="banner_content2 text_white">
+                                    <h1 class="animation animated fadeInDown" data-animation="fadeInDown"
+                                        data-animation-delay="1s" style="animation-delay: 1s; opacity: 1;">
+                                        KANTOR WILAYAH KEMENTERIAN AGAMA PROVINSI SUMATERA BARAT
+                                    </h1>
+                                    {{-- <p class="animation my-4 animated fadeInUp" data-animation="fadeInUp"
+                                        data-animation-delay="1.5s" style="animation-delay: 1.5s; opacity: 1;">Ipsum
+                                        generators on the Internet tend to repeat predefined</p> --}}
+
+                                    <br>
+
+                                </div>
+
+                                {{-- <div class="banner_content2 text_white">
+                                    <p>
+                                        <br>
+                                    <h5 class="animation animated fadeInDown" data-animation="fadeInDown"
+                                        data-animation-delay="1s" style="animation-delay: 1s; opacity: 1;">{{
+                                        $carousel->title }}</h5>
+                                    </p>
+                                </div> --}}
+                            </div>
+                        </div>
+
+                    </div><!-- END CONTAINER-->
+                </div>
+            </div>
+
+            @endforeach
+
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev"><i
+                class="ion-chevron-left"></i></a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next"><i
+                class="ion-chevron-right"></i></a>
+    </div>
+</section>
 
 <!-- START SECTION ABOUT US -->
 <section class="overflow_hide">
