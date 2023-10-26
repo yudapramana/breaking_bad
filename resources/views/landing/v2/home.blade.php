@@ -60,8 +60,13 @@
                         <!-- STRART CONTAINER -->
 
                         <div class="row justify-content-end">
-                            <div class="col-lg-6 col-md-12 col-sm-12 text-right">
-                                <div class="banner_content2 text_white">
+                            <div class="col-lg-7 col-md-12 col-sm-12 text-right">
+                                <div class="banner_content2 text_white pb-5">
+                                    <img class="logo_default col-3 animation animated fadeInDown"
+                                        data-animation="fadeInDown" data-animation-delay="1s"
+                                        style="animation-delay: 1s; opacity: 1;"
+                                        src="{{ asset('assets/images/logo/logo-kemenag.png') }}" alt="logo" />
+                                    {{-- src="{{ asset('assets/images/kakanwilbarufinal.png') }}" alt="logo" /> --}}
                                     <h1 class="animation animated fadeInDown" data-animation="fadeInDown"
                                         data-animation-delay="1s" style="animation-delay: 1s; opacity: 1;">
                                         KANTOR WILAYAH KEMENTERIAN AGAMA PROVINSI SUMATERA BARAT
@@ -74,8 +79,9 @@
 
                                 </div>
 
-                                {{-- <div class="banner_content2 text_white">
+                                {{-- <div class="banner_content2 text_white pt-5">
                                     <p>
+                                        &nbsp;
                                         <br>
                                     <h5 class="animation animated fadeInDown" data-animation="fadeInDown"
                                         data-animation-delay="1s" style="animation-delay: 1s; opacity: 1;">{{
