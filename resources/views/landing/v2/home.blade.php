@@ -162,7 +162,8 @@
 
 
             </div>
-            <div class="col-lg-6 mt-lg-0 mt-4 pt-3 pt-lg-0" data-animation="fadeInRight" data-animation-delay="0.2s">
+            <div class="col-lg-6 mt-lg-0 mt-4 pt-3 pt-lg-0 animation" data-animation="fadeInRight"
+                data-animation-delay="0.2s">
                 <div class="sidebar">
 
                     <div class="widget">
