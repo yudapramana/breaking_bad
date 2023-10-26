@@ -23,7 +23,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 1,
                 'category_id' => 1,
-                'user_id' => 1,
+                'user_id' => 4,
                 'cover' => 'https://res.cloudinary.com/dezj1x6xp/image/upload/v1694591002/PandanViewMandeh/image_1920x_64ff364b73879_xzhppt.jpg',
                 'title' => 'Terbanyak se Indonesia, 46 Film Ikuti KFPI tingkat Sumatera Barat',
                 'slug' => 'terbanyak-se-indonesia-46-film-ikuti-kfpi-tingkat-sumbar',
@@ -40,7 +40,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 2,
                 'category_id' => 1,
-                'user_id' => 1,
+                'user_id' => 4,
                 'cover' => 'https://res.cloudinary.com/dezj1x6xp/image/upload/v1694595047/PandanViewMandeh/image_1920x_65002dc69c43f_h6hrbk.jpg',
                 'title' => 'Sepuluh Karya Terbaik Lolos Nominasi KFPI Tingkat Sumatera Barat',
                 'slug' => 'sepuluh-karya-terbaik-lolos-nominasi-kfpi-sumbar',
@@ -57,7 +57,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 3,
                 'category_id' => 3,
-                'user_id' => 1,
+                'user_id' => 4,
                 'cover' => 'https://res.cloudinary.com/dezj1x6xp/image/upload/v1694595498/PandanViewMandeh/image_1920x_64f9153db0b8e_rrlbxm.jpg',
                 'title' => 'Evaluasi Haji, Gus Men Minta Kaji Istithaah Kesehatan dan Masa Tinggal Jemaah',
                 'slug' => 'evaluasi-haji-gus-men-minta-kaji-istithaah-kesehatan-dan-masa-tinggal-jemaah',
@@ -74,7 +74,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 4,
                 'category_id' => 7,
-                'user_id' => 1,
+                'user_id' => 5,
                 'cover' => NULL,
                 'title' => 'Struktur Organisasi',
                 'slug' => 'struktur-organisasi',
@@ -91,7 +91,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 5,
                 'category_id' => 7,
-                'user_id' => 1,
+                'user_id' => 5,
                 'cover' => NULL,
                 'title' => 'Sejarah Kementerian Agama',
                 'slug' => 'sejarah-kementerian-agama',
@@ -108,7 +108,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 6,
                 'category_id' => 7,
-                'user_id' => 1,
+                'user_id' => 5,
                 'cover' => NULL,
                 'title' => 'Visi Misi Kementerian Agama',
                 'slug' => 'visi-misi-kementerian-agama',
@@ -125,7 +125,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 7,
                 'category_id' => 7,
-                'user_id' => 1,
+                'user_id' => 5,
                 'cover' => NULL,
                 'title' => 'Kedudukan, Tugas dan Fungsi Kementerian Agama Provinsi',
                 'slug' => 'kedudukan-tugas-dan-fungsi-kementerian-agama-provinsi',
@@ -142,7 +142,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 8,
                 'category_id' => 1,
-                'user_id' => 1,
+                'user_id' => 4,
                 'cover' => 'https://res.cloudinary.com/dezj1x6xp/image/upload/v1698226310/PandanViewMandeh/image_750x_6537ff2651d35_tkh2q1.jpg',
                 'title' => 'Mudzakarah Perhajian Indonesia 2023 Hasilkan 9 Rekomendasi, Istitha\'ah Jadi Syarat Pelunasan Biaya Haji',
                 'slug' => 'mudzakarah-perhajian-indonesia-2023-hasilkan-9-rekomendasi-istithaah-jadi-syarat-pelunasan-biaya-haji',
@@ -159,7 +159,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 9,
                 'category_id' => 1,
-                'user_id' => 1,
+                'user_id' => 4,
                 'cover' => 'https://res.cloudinary.com/dezj1x6xp/image/upload/v1698226400/PandanViewMandeh/image_1920x_6537d4d64c19c_is29ib.jpg',
                 'title' => 'Kabid Papkis H Naharudin Ikuti Kegiatan Finalisasi dan Revisi Pagu Alokasi Anggaran Ditjen Pendis Kemenag RI',
                 'slug' => 'kabid-papkis-h-naharudin-ikuti-kegiatan-finalisasi-dan-revisi-pagu-alokasi-anggaran-ditjen-pendis-kemenag-ri',
@@ -176,7 +176,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 10,
                 'category_id' => 2,
-                'user_id' => 1,
+                'user_id' => 4,
                 'cover' => 'https://res.cloudinary.com/dezj1x6xp/image/upload/v1698227734/PandanViewMandeh/image_1920x_651d332f8384d_jiyoq3.jpg',
                 'title' => 'MTsN 6 Padang Dikunjungi oleh Balai Bahasa Sumatera Barat',
                 'slug' => 'mtsn-6-padang-dikunjungi-oleh-balai-bahasa-sumatera-barat',
@@ -193,7 +193,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 11,
                 'category_id' => 2,
-                'user_id' => 1,
+                'user_id' => 4,
                 'cover' => 'https://res.cloudinary.com/dezj1x6xp/image/upload/v1698241612/PandanViewMandeh/image_750x_651e3c0c8f741_ynaipw.jpg',
                 'title' => 'Kabupaten Solok Tuan Rumah Pertandingan Persahatan Tiga Kemenag',
                 'slug' => 'kabupaten-solok-tuan-rumah-pertandingan-persahatan-tiga-kemenag',
@@ -210,7 +210,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 12,
                 'category_id' => 2,
-                'user_id' => 1,
+                'user_id' => 4,
                 'cover' => 'https://res.cloudinary.com/dezj1x6xp/image/upload/v1698241776/PandanViewMandeh/image_750x_651b6cb95357f_t3pshw.jpg',
                 'title' => 'Dua Siswi MAN 1 Agam Juarai Lomba Menulis Dan Lahirkan Dua Buku Bergengsi',
                 'slug' => 'dua-siswi-man-1-agam-juarai-lomba-menulis-dan-lahirkan-dua-buku-bergengsi',
@@ -227,7 +227,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 13,
                 'category_id' => 2,
-                'user_id' => 1,
+                'user_id' => 4,
                 'cover' => 'https://res.cloudinary.com/dezj1x6xp/image/upload/v1698241885/PandanViewMandeh/image_1920x_6468566346f0a_naxoav.jpg',
                 'title' => 'Tutup Raker Pessel, Helmi Tekankan Pentingnya Pedomani Sembilan Hasil Rakernas',
                 'slug' => 'tutup-raker-pessel-helmi-tekankan-pentingnya-pedomani-sembilan-hasil-rakernas',
@@ -244,7 +244,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 14,
                 'category_id' => 2,
-                'user_id' => 1,
+                'user_id' => 4,
                 'cover' => 'https://res.cloudinary.com/dezj1x6xp/image/upload/v1698243360/PandanViewMandeh/image_750x_6510ecc5bd17f_bknezk.jpg',
                 'title' => 'H Syamsul Arifin Ingatkan ASN Kemenag Sijunjung Selalu Jaga Disiplin',
                 'slug' => 'h-syamsul-arifin-ingatkan-asn-kemenag-sijunjung-selalu-jaga-disiplin',
@@ -261,7 +261,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 15,
                 'category_id' => 2,
-                'user_id' => 1,
+                'user_id' => 4,
                 'cover' => 'https://res.cloudinary.com/dezj1x6xp/image/upload/v1698243487/PandanViewMandeh/image_750x_651293b263711_xvahcx.jpg',
                 'title' => 'Lima Tips Mewujudkan Keluarga Bahagia Dan Langgeng',
                 'slug' => 'lima-tips-mewujudkan-keluarga-bahagia-dan-langgeng',
