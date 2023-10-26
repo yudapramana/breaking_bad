@@ -190,54 +190,54 @@ Route::group(['middleware' => ['web']], function () {
         ]);
     })->name('blog.list');
 
-    Route::get('/berita', function (Request $request) {
+    // Route::get('/berita', function (Request $request) {
 
-        if ($request->has('search')) {
-            $search = $request->input('search');
-            $posts = \App\Models\Post::whereHas('category', function ($q) {
-                $q->where('slug', 'utama');
-            })->where('title', 'LIKE', "%{$search}%")
-                ->orWhere('desc', 'LIKE', "%{$search}%")->orderBy('created_at', 'DESC')->paginate(4);
-        } elseif ($request->has('category')) {
-            $search = $request->input('category');
-            $posts = \App\Models\Post::whereHas('category', function ($q) {
-                $q->where('slug', 'utama');
-            })->whereHas('category', function ($q) use ($search) {
-                $q->where('slug', $search);
-            })->orderBy('created_at', 'DESC')->paginate(4);
-        } elseif ($request->has('tag')) {
-            $search = $request->input('tag');
-            $posts = \App\Models\Post::whereHas('category', function ($q) {
-                $q->where('slug', 'utama');
-            })->whereHas('tags', function ($q) use ($search) {
-                $q->where('slug', $search);
-            })->orderBy('created_at', 'DESC')->paginate(4);
-        } else {
-            $posts = \App\Models\Post::whereHas('category', function ($q) {
-                $q->where('slug', 'utama');
-            })->orderBy('created_at', 'DESC')->paginate(4);
-        }
+    //     if ($request->has('search')) {
+    //         $search = $request->input('search');
+    //         $posts = \App\Models\Post::whereHas('category', function ($q) {
+    //             $q->where('slug', 'utama');
+    //         })->where('title', 'LIKE', "%{$search}%")
+    //             ->orWhere('desc', 'LIKE', "%{$search}%")->orderBy('created_at', 'DESC')->paginate(4);
+    //     } elseif ($request->has('category')) {
+    //         $search = $request->input('category');
+    //         $posts = \App\Models\Post::whereHas('category', function ($q) {
+    //             $q->where('slug', 'utama');
+    //         })->whereHas('category', function ($q) use ($search) {
+    //             $q->where('slug', $search);
+    //         })->orderBy('created_at', 'DESC')->paginate(4);
+    //     } elseif ($request->has('tag')) {
+    //         $search = $request->input('tag');
+    //         $posts = \App\Models\Post::whereHas('category', function ($q) {
+    //             $q->where('slug', 'utama');
+    //         })->whereHas('tags', function ($q) use ($search) {
+    //             $q->where('slug', $search);
+    //         })->orderBy('created_at', 'DESC')->paginate(4);
+    //     } else {
+    //         $posts = \App\Models\Post::whereHas('category', function ($q) {
+    //             $q->where('slug', 'utama');
+    //         })->orderBy('created_at', 'DESC')->paginate(4);
+    //     }
 
-        $posts->appends(request()->input())->links();
+    //     $posts->appends(request()->input())->links();
 
 
-        $categories = \App\Models\Category::withCount('posts')->get();
-        $tags = \App\Models\Tag::all();
-        $recent_posts = \App\Models\Post::whereHas('category', function ($q) {
-            $q->where('slug', 'utama');
-        })->take(3)->get();
+    //     $categories = \App\Models\Category::withCount('posts')->get();
+    //     $tags = \App\Models\Tag::all();
+    //     $recent_posts = \App\Models\Post::whereHas('category', function ($q) {
+    //         $q->where('slug', 'utama');
+    //     })->take(3)->get();
 
-        return view('landing.v2.news', [
-            'title' => 'Berita Web Kemenag Kanwil Prov Sumbar',
-            'accountfb' => 'pandanviewmandeh',
-            'account' => 'pandanviewmandeh',
-            'channel' =>  '@pandanviewmandehofficial4919',
-            'categories' =>  $categories,
-            'posts' => $posts,
-            'recent_posts' => $recent_posts,
-            'tags' => $tags
-        ]);
-    });
+    //     return view('landing.v2.news', [
+    //         'title' => 'Berita Web Kemenag Kanwil Prov Sumbar',
+    //         'accountfb' => 'pandanviewmandeh',
+    //         'account' => 'pandanviewmandeh',
+    //         'channel' =>  '@pandanviewmandehofficial4919',
+    //         'categories' =>  $categories,
+    //         'posts' => $posts,
+    //         'recent_posts' => $recent_posts,
+    //         'tags' => $tags
+    //     ]);
+    // });
 
     Route::get('/aktifitas', function (Request $request) {
 
