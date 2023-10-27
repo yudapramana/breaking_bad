@@ -23,7 +23,7 @@ class UsersTableSeeder extends Seeder
         
         $data = [
             ['name' => 'Pramana Yuda', 'username' => '199407292022031002', 'email' => '199407292022031002@kemenag.go.id', 'password' => Hash::make('1000kali'), 'plain_password' => '1000kali', 'current_role_id' => 1, 'created_at' =>  \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now()],
-            ['name' => 'RHAMA EKA PUTRA', 'username' => '198605082011011013', 'email' => '198605082011011013@kemenag.go.id', 'password' => Hash::make('nasirandang123'), 'plain_password' => 'rhama123', 'current_role_id' => 2, 'created_at' =>  \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now()],
+            ['name' => 'RHAMA EKA PUTRA', 'username' => '198605082011011013', 'email' => '198605082011011013@kemenag.go.id', 'password' => Hash::make('rhama123'), 'plain_password' => 'rhama123', 'current_role_id' => 2, 'created_at' =>  \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now()],
 
             ['name' => 'ERI GUSNEDI', 'username' => '197807302007011009', 'email' => '197807302007011009@kemenag.go.id', 'password' => Hash::make('erigusnedi123'), 'plain_password' => 'erigusnedi123', 'current_role_id' => 3, 'created_at' =>  \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now()],
             ['name' => 'RISNA YANTI', 'username' => '198007022005012012', 'email' => '198007022005012012@kemenag.go.id', 'password' => Hash::make('risnayanti123'), 'plain_password' => 'risnayanti123', 'current_role_id' => 3, 'created_at' =>  \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now()],
