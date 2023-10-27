@@ -305,6 +305,8 @@
             $('#deskripsi').val(data.description);
             $('#alt').val(data.alt);
             $('#filter_tag').val(data.filter_tag);
+            $('#url').val(data.url);
+
 
             $('#nama').prop('disabled', false);
             $('#deskripsi').prop('disabled', false);

@@ -5,13 +5,13 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>PPID Kantor Wilayah Kementerian Agama Prov. Sumatera Barat</title>
+    <title>Admin Kantor Wilayah Kementerian Agama Prov. Sumatera Barat</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="{{ asset('niceadmin/img/favicon.png') }} " rel="icon">
-    <link href="{{ asset('niceadmin/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+    <link href="{{ asset('assets/images/logo/logo-kemenag.png') }} " rel="icon">
+    <link href="{{ asset('assets/images/logo/logo-kemenag.png') }}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -63,7 +63,7 @@
             /* The image used */
             /* background: url('/sailor/img/slide/pv-1.jpg') top center !important;
             background-image: url('/sailor/img/slide/pv-1.jpg') top center !important; */
-            background: url('https://res.cloudinary.com/dezj1x6xp/image/upload/v1688521190/fkemenag_ytkm5s.jpg') !important;
+            background: url('https://res.cloudinary.com/dezj1x6xp/image/upload/v1698299466/PandanViewMandeh/AF1QipPbUTeNjEbixXR5hd3ZD3tk1XME5u0PJbGLnUPI_s0_vv0w8g.jpg') !important;
             background-size: cover !important;
             /* Add the blur effect */
             filter: blur(3px);
@@ -102,7 +102,7 @@
 
                             <div class="d-flex justify-content-center py-4">
                                 <a href="index.html" class="logo d-flex align-items-center w-auto">
-                                    <img src="{{ asset('assets/images/logo/ppid_whited_cropped.png') }}" alt="">
+                                    <img src="{{ asset('assets/images/logo/kanwil_logo_whited.png') }}" alt="">
                                     {{-- <span
                                         class="d-none d-xs-none d-sm-none d-md-none d-lg-block d-xl-block text-white">Pandan
                                         View Mandeh Cottage Villa Resort</span> --}}

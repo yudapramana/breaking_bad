@@ -394,21 +394,27 @@
 
     });
 
+    // import { MediaEmbed } from '@ckeditor/ckeditor5-media-embed';
+    // plugins: [ MediaEmbed, /* ... */ ],
+    //     toolbar: [ 'mediaEmbed', /* ... */ ],
         
     ClassicEditor
-            .create( document.querySelector( '.ckeditor' ),{
-                ckfinder: {
-                    uploadUrl: '{{route('image.upload').'?_token='.csrf_token()}}',
-                },
-                image: {
-                    styles: [
-                        { className: 'post-image-styles' }
-                    ]
-                }
-            })
-            .catch( error => {
-                console.error( error );
-            } );
+    .create( document.querySelector( '.ckeditor' ),{
+        ckfinder: {
+            uploadUrl: '{{route('image.upload').'?_token='.csrf_token()}}',
+        },
+        image: {
+            styles: [
+                { className: 'post-image-styles' }
+            ]
+        },
+        mediaEmbed: {
+            previewsInData: true
+        }
+    })
+    .catch( error => {
+        console.error( error );
+    } );
 
             
     // $(document).ready(function() {

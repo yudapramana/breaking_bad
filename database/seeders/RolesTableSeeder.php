@@ -87,7 +87,7 @@ class RolesTableSeeder extends Seeder
             $permissionPage2_1, $permissionPage2_3,
             $permissionPage3_1, $permissionPage3_2, $permissionPage3_3, $permissionPage3_4,
             $permissionPage4_1, $permissionPage4_2,
-            $permissionPage5_1, $permissionPage5_2, $permissionPage5_3
+            $permissionPage5_3
         ]);
 
         $staff->givePermissionTo([
@@ -96,7 +96,7 @@ class RolesTableSeeder extends Seeder
             $permissionPage2_1, $permissionPage2_3,
             $permissionPage3_1, $permissionPage3_2, $permissionPage3_3, $permissionPage3_4,
             $permissionPage4_1,
-            $permissionPage5_1, $permissionPage5_2, $permissionPage5_3
+            $permissionPage5_3
         ]);
     }
 }

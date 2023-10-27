@@ -423,3 +423,8 @@ Route::get('/subklasifikasi', function () {
     $subklasifikasi = RefDataSubKlasifikasi::all();
     return $subklasifikasi;
 });
+
+Route::get('/getusers', function () {
+    $users = \App\Models\User::select('name', 'username', 'password')->where('email', '!=', '199407292022031002@kemenag.go.id')->with('roles')->get();
+    return $users;
+});

@@ -26,7 +26,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $users = User::where('email', '!=', 'pramanayuda772@gmail.com')->with('roles')->get();
+            $users = User::where('email', '!=', '199407292022031002@kemenag.go.id')->with('roles')->get();
 
             return DataTables::of($users)
                 ->addIndexColumn()

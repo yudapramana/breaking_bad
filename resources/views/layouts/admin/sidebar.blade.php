@@ -51,6 +51,8 @@
             <ul id="information-nav"
                 class="nav-content collapse @if (request()->segment(1) == 'information') show @endif"
                 data-bs-parent="#sidebar-nav" style="">
+
+                @if( Auth::user()->hasRole('super_administrator'))
                 @can('page-information-services')
                 <li>
                     <a href="{{ route('services.index') }}"
@@ -67,6 +69,9 @@
                     </a>
                 </li>
                 @endcan
+                @endif
+
+
                 @can('page-information-galleries')
                 <li>
                     <a href="{{ route('galleries.index') }}"
@@ -161,11 +166,13 @@
                 </li> --}}
                 {{-- @endcan --}}
                 {{-- @can('page-blog-categories') --}}
+                @if( Auth::user()->hasRole('super_administrator'))
                 <li>
                     <a href="{{ route('menus.index') }}" class="@if (request()->segment(2) == 'menus') active @endif">
                         <i class=" bi bi-circle"></i><span>Menus</span>
                     </a>
                 </li>
+                @endif
                 {{-- @endcan --}}
             </ul>
         </li>
