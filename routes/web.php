@@ -27,7 +27,7 @@ Route::get('permohonan', [App\Http\Controllers\PermohonanController::class, 'ind
 Route::post('permohonan/switch', [App\Http\Controllers\PermohonanController::class, 'switchStatus'])->name('permohonan.status.switch');
 
 
-Route::get('sect/gallery', [App\Http\Controllers\SectController::class, 'gallery'])->name('sect.gallery');
+Route::get('/gallery/t/{type?}', [App\Http\Controllers\SectController::class, 'gallery'])->name('sect.gallery');
 
 
 Route::get('sect/permohonan_informasi', [App\Http\Controllers\SectController::class, 'permohonan'])->name('sect.permohonan');
@@ -68,35 +68,36 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('/contact', function () {
         return view('landing.v2.contact', [
             'title' => 'Contact - Web Kemenag Kanwil Prov Sumbar',
-            'accountfb' => 'pandanviewmandeh',
-            'account' => 'pandanviewmandeh',
-            'channel' =>  '@pandanviewmandehofficial4919'
+            'accountfb' => 'Kanwil Kemenag Sumbar',
+            'account' => 'Kanwil Kemenag Sumbar',
+            'channel' =>  '@Kanwil Kemenag Sumbar'
         ]);
     });
 
-    Route::get('/gallery', function () {
+    // Route::get('/gallery/{type}', function ($type) {
 
-        $galleries = \App\Models\Gallery::all();
-        $galleries = $galleries->shuffle();
+    //     $galleries = \App\Models\Gallery::where('type', $type)->get();
+    //     // $galleries = $galleries->shuffle();
 
-        $filterTags = $galleries->pluck('filter_tag')->unique();
-        return view('landing.gallery', [
-            'title' => 'Gallery Web Kemenag Kanwil Prov Sumbar',
-            'accountfb' => 'pandanviewmandeh',
-            'account' => 'pandanviewmandeh',
-            'channel' =>  '@pandanviewmandehofficial4919',
-            'galleries' =>  $galleries,
-            'filterTags' =>  $filterTags,
-        ]);
-    });
+    //     $filterTags = $galleries->pluck('filter_tag')->unique();
+
+    //     return view('landing.gallery', [
+    //         'title' => 'Gallery Web Kemenag Kanwil Prov Sumbar',
+    //         'accountfb' => 'Kanwil Kemenag Sumbar',
+    //         'account' => 'Kanwil Kemenag Sumbar',
+    //         'channel' =>  '@Kanwil Kemenag Sumbar',
+    //         'galleries' =>  $galleries,
+    //         'filterTags' =>  $filterTags,
+    //     ]);
+    // });
 
     Route::get('/aboutus', function () {
 
         return view('landing.aboutus', [
             'title' => 'Web Kemenag Kanwil Prov Sumbar - About Us',
-            'accountfb' => 'pandanviewmandeh',
-            'account' => 'pandanviewmandeh',
-            'channel' =>  '@pandanviewmandehofficial4919'
+            'accountfb' => 'Kanwil Kemenag Sumbar',
+            'account' => 'Kanwil Kemenag Sumbar',
+            'channel' =>  '@Kanwil Kemenag Sumbar'
         ]);
     });
 

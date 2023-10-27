@@ -146,6 +146,25 @@
                                             @enderror
                                         </div>
                                         <div class="form-group mb-3">
+                                            <label for="kabkota">Kabupaten / Kota</label>
+                                            <select name="kabkota" id="kabkota"
+                                                class="form-control form-select select2 @error('kabkota') is-invalid @enderror"
+                                                required>
+                                                <option value="" disabled selected>Pilih atau Skip</option>
+                                                @foreach ($kabkotas as $kabkota)
+
+                                                <option @if($kabkota->id_kabkota == $post->id_kabkota) selected @endif
+                                                    value="{{ $kabkota->id_kabkota }}">{{ $kabkota->name }}
+                                                </option>
+                                                @endforeach
+                                            </select>
+                                            @error('kabkota')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group mb-3">
                                             <label for="tag">Tags</label>
                                             <select name="tags[]" id="tag"
                                                 class="form-control form-select select2 @error('tags') is-invalid @enderror"

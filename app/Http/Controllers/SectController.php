@@ -79,9 +79,11 @@ class SectController extends Controller
         }
     }
 
-    public function gallery() {
+    public function gallery($type = 'foto') {
 
-        $galleries = \App\Models\Gallery::all();
+        // return $type;
+
+        $galleries = \App\Models\Gallery::where('type', $type)->get();
         $galleries = $galleries->shuffle();
 
         $filterTags = $galleries->pluck('filter_tag')->unique();
@@ -90,6 +92,7 @@ class SectController extends Controller
             'title' => 'Galeri Kantor Wilayah Kementerian Agama Prov. Sumatera Barat',
             'galleries' =>  $galleries,
             'filterTags' =>  $filterTags,
+            'type' =>  $type,
         ]);
     }
 }

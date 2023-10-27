@@ -155,6 +155,22 @@ class PostTagTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
+            17 => 
+            array (
+                'id' => 18,
+                'post_id' => 16,
+                'tag_id' => 7,
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            18 => 
+            array (
+                'id' => 19,
+                'post_id' => 17,
+                'tag_id' => 7,
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
         ));
         
         

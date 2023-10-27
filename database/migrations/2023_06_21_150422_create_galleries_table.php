@@ -17,13 +17,16 @@ class CreateGalleriesTable extends Migration
             $table->id('id_gallery');
             $table->timestamps();
 
+            $table->unsignedInteger('user_id')->default(0);
+
             $table->text('image_url')->nullable();
             $table->string('filter_tag', 50)->nullable();
             $table->string('alt', 50)->nullable();
-            $table->string('title', 100)->nullable();
+            $table->string('title', 255)->nullable();
+            $table->string('slug')->nullable();
             $table->text('description')->nullable();
             $table->text('url')->nullable();
-            $table->enum('type', ['photo', 'video'])->default('photo');
+            $table->enum('type', ['foto', 'video'])->default('foto');
 
 
         });

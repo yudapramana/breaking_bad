@@ -763,6 +763,54 @@ class MenuItemsTableSeeder extends Seeder
                 'target' => '_self',
                 'menu_id' => 1,
             ),
+            62 => 
+            array (
+                'id' => 77,
+                'created_at' => '2023-10-26 23:23:43',
+                'updated_at' => '2023-10-26 23:23:43',
+                'title' => 'Kakanwil Sumbar dari Masa ke Masa',
+                'name' => NULL,
+                'slug' => 'post/kakanwil-sumbar-dari-masa-ke-masa',
+                'type' => 'post',
+                'target' => '_self',
+                'menu_id' => 1,
+            ),
+            63 => 
+            array (
+                'id' => 78,
+                'created_at' => '2023-10-26 23:25:08',
+                'updated_at' => '2023-10-26 23:25:08',
+                'title' => 'Tentang Sumatera Barat',
+                'name' => NULL,
+                'slug' => 'post/tentang-sumatera-barat',
+                'type' => 'post',
+                'target' => '_self',
+                'menu_id' => 1,
+            ),
+            64 => 
+            array (
+                'id' => 79,
+                'created_at' => '2023-10-27 08:31:47',
+                'updated_at' => '2023-10-27 08:31:47',
+                'title' => 'Foto Peristiwa',
+                'name' => NULL,
+                'slug' => 'gallery/t/foto',
+                'type' => 'custom',
+                'target' => '_self',
+                'menu_id' => 1,
+            ),
+            65 => 
+            array (
+                'id' => 80,
+                'created_at' => '2023-10-27 08:31:55',
+                'updated_at' => '2023-10-27 08:31:55',
+                'title' => 'Video',
+                'name' => NULL,
+                'slug' => 'gallery/t/video',
+                'type' => 'custom',
+                'target' => '_self',
+                'menu_id' => 1,
+            ),
         ));
         
         

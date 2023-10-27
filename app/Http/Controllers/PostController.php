@@ -145,11 +145,12 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         $categories = Category::all();
         $tags = Tag::all();
+        $kabkotas = Kabkota::all();
 
         $title = 'Posts';
         $br1 = 'Edit';
         $br2 = 'Posts';
-        return view('admin.posts.edit',compact('post','categories','tags','title','br1','br2'));
+        return view('admin.posts.edit',compact('post','categories','tags','title','br1','br2', 'kabkotas'));
     }
 
     /**

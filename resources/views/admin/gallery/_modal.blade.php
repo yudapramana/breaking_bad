@@ -51,11 +51,11 @@
                             <div class="row mb-3">
                                 <label class="col-sm-2 col-form-label">Tipe Data</label>
                                 <div class="col-sm-10">
-                                    <select class="form-select" id="featured" name="featured"
+                                    <select class="form-select" id="type" name="type"
                                         aria-label="Default select example">
                                         <option selected="">Pilihan
                                         </option>
-                                        <option selected value="photo">Foto</option>
+                                        <option selected value="foto">Foto</option>
                                         <option value="video">Video</option>
                                     </select>
                                 </div>
