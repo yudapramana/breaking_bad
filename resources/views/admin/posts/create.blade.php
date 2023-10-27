@@ -344,7 +344,7 @@
 
             $.ajax({
                 type: 'PUT',
-                url: `/tag/add`,
+                url: '{{route("tag.add")}}',
                 data: {
                     tag_name: tagName
                 },
