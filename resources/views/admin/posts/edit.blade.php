@@ -167,7 +167,7 @@
                                         <div class="form-group mb-3">
                                             <label for="tag">Tags</label>
                                             <select name="tags[]" id="tag"
-                                                class="form-control form-select select2 @error('tags') is-invalid @enderror"
+                                                class="form-control form-select select2 select2-tags @error('tags') is-invalid @enderror"
                                                 required multiple>
                                                 @foreach ($post->tags as $tag)
                                                 <option selected value="{{ $tag->id }}">{{ $tag->name }}</option>
@@ -285,6 +285,112 @@
 <script src="{{ asset('assets/js/classic_ckeditor.js') }}"></script>
 
 <script>
+    $(function() {
+         $('.select2-tags').select2({
+            theme: 'bootstrap-5',
+            dropdownParent: $(".search-form"),
+            // ajax: {
+            //     url: "/search/kategori",
+            //     dataType: 'json',
+            //     delay: 250,
+            //     data: function(params) {
+            //         return {
+            //             q: params.term, // search term
+            //             page: params.page
+            //         };
+            //     },
+            //     processResults: function(data, params) {
+            //         console.log('data kategori');
+            //         console.log(data);
+            //         return {
+            //             results: $.map(data, function(item) {
+            //                 return {
+            //                     text: item.name,
+            //                     id: item.id_data_kategori,
+            //                 }
+            //             })
+            //         };
+            //     },
+            //     delay: 250,
+            //     cache: true
+            // },
+            placeholder: 'Cari Tag',
+            // minimumInputLength: 5,
+            "language": {
+                "noResults": function(res, data) {
+                    // console.log(res, data);
+                    return "Tidak ditemukan <a class='btn btn-sm btn-danger add-new-tag'>Tambahkan</a>";
+                }
+            },
+            escapeMarkup: function(markup) {
+                // console.log('markup');
+                // console.log(markup);
+                return markup;
+            }
+        });
+
+        $(document).on('click', '.add-new-tag', function(e) {
+            console.log('add new tag clicked');
+            var tagName = $('.select2-search__field').val();
+            console.log('data');
+            console.log(tagName);
+            $('#id_data_kategori').select2('close');
+            $('#defForm').block({
+                message: `Loading...`
+            });
+
+            $.ajax({
+                type: 'PUT',
+                url: '{{route("tag.add")}}',
+                data: {
+                    tag_name: tagName
+                },
+                dataType: 'json', // let's set the expected response format
+                success: function(data) {
+                    console.log(data);
+                    if (!data.success) {
+                        Swal.fire(
+                            'Error!', data.message, 'error'
+                        );
+                    } else {
+                        var dataTag = data.data;
+                        console.log('dataTag');
+                        console.log(dataTag);
+
+                        var newOption = new Option(dataTag.name, dataTag.id, true, true);
+                        $('.select2-tags').append(newOption).trigger('change');
+                        
+                        $('#defForm').unblock();
+                    }
+
+                },
+                error: function(err) {
+                    if (err.status ==
+                        422) { // when status code is 422, it's a validation issue
+                        console.log(err.responseJSON);
+                        // you can loop through the errors object and show it to the user
+                        console.warn(err.responseJSON.errors);
+                        // display errors on each form field
+                        $('.ajax-invalid').remove();
+                        $.each(err.responseJSON.errors, function(i, error) {
+                            var el = $(document).find('[name="' + i + '"]');
+                            el.after($('<span class="ajax-invalid" style="color: red;">' +
+                                error[0] + '</span>'));
+                        });
+                    } else if (err.status == 403) {
+                        Swal.fire(
+                            'Unauthorized!',
+                            'You are unauthorized to do the action',
+                            'warning'
+                        );
+
+                    }
+                }
+            });
+        });
+
+    });
+    
     ClassicEditor
             .create( document.querySelector( '.ckeditor' ),{
                 ckfinder: {
