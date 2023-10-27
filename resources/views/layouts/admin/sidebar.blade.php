@@ -23,7 +23,7 @@
         @endcan --}}
         {{-- @endcan --}}
 
-        {{--
+
         <li class="nav-heading">Kelola Informasi</li>
         <li class="nav-item"> <a class="nav-link @if (request()->segment(1) == 'informasi') @else collapsed @endif"
                 href="{{ route('info.index') }}">
@@ -32,7 +32,8 @@
                 <span>Data & Informasi</span> </a>
         </li>
 
-        <li class="nav-item"> <a class="nav-link @if (request()->segment(1) == 'permohonan') @else collapsed @endif"
+        {{-- <li class="nav-item"> <a
+                class="nav-link @if (request()->segment(1) == 'permohonan') @else collapsed @endif"
                 href="{{ route('permohonan.index') }}">
                 <i class="bi bi-clipboard"></i>
 

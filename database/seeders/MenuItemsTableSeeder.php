@@ -811,6 +811,42 @@ class MenuItemsTableSeeder extends Seeder
                 'target' => '_self',
                 'menu_id' => 1,
             ),
+            66 => 
+            array (
+                'id' => 81,
+                'created_at' => '2023-10-27 11:19:01',
+                'updated_at' => '2023-10-27 11:19:01',
+                'title' => 'Unit Kerja',
+                'name' => NULL,
+                'slug' => '#',
+                'type' => 'custom',
+                'target' => '_self',
+                'menu_id' => 1,
+            ),
+            67 => 
+            array (
+                'id' => 82,
+                'created_at' => '2023-10-27 11:19:55',
+                'updated_at' => '2023-10-27 11:21:51',
+                'title' => 'Kabupaten Pesisir Selatan',
+                'name' => 'Kabupaten Pesisir Selatan',
+                'slug' => 'https://pesisirselatan.kemenag.go.id/',
+                'type' => 'custom',
+                'target' => '_blank',
+                'menu_id' => 1,
+            ),
+            68 => 
+            array (
+                'id' => 83,
+                'created_at' => '2023-10-27 11:23:32',
+                'updated_at' => '2023-10-27 11:24:08',
+                'title' => 'Kabupaten Tanah Datar',
+                'name' => 'Kabupaten Tanah Datar',
+                'slug' => 'http://tanahdatar.kemenag.go.id/',
+                'type' => 'custom',
+                'target' => '_blank',
+                'menu_id' => 1,
+            ),
         ));
         
         
