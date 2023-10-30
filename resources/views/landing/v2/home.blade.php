@@ -4,6 +4,19 @@
 
 @section('_styles')
 
+
+<style>
+    body {
+        font-family: "Open Sans", sans-serif;
+        background: #f6f9ff !important;
+        color: #444444;
+    }
+
+    .header_wrap {
+        background: #fff !important;
+    }
+</style>
+
 <style>
     .blog-box {
         background-color: #f9f9f9 !important;
@@ -251,19 +264,18 @@
                     <div>
                         <div class="post_footer">
                             <div class='image-wrapper'>
-                                <img src="{{ $recent_posts[0]->cover_small }}" class="img-fluid rounded" alt="#">
+                                <img src="{{ $featureds[0]->cover_small }}" class="img-fluid rounded" alt="#">
                                 <div class="bottom-text entry-meta meta-0 p-0 bottom-right-text">
-                                    @if($recent_posts[0]->category->slug == 'daerah')
+                                    @if($featureds[0]->category->slug == 'daerah')
                                     <a
-                                        href="{{config('isec.base_url')}}/blog?category={{$recent_posts[0]->category->slug}}&id_kabkota={{$recent_posts[0]->id_kabkota}}">
+                                        href="{{config('isec.base_url')}}/blog?category={{$featureds[0]->category->slug}}&id_kabkota={{$featureds[0]->id_kabkota}}">
                                         <span class="badge badge-primary">{{
-                                            ucwords(strtolower($recent_posts[0]->kabkota->name)) }}</span>
+                                            ucwords(strtolower($featureds[0]->kabkota->name)) }}</span>
                                     </a>
                                     @else
                                     <a
-                                        href="{{config('isec.base_url')}}/blog?category={{$recent_posts[0]->category->slug}}">
-                                        <span
-                                            class="badge badge-primary">{{Str::ucfirst($recent_posts[0]->category->slug)
+                                        href="{{config('isec.base_url')}}/blog?category={{$featureds[0]->category->slug}}">
+                                        <span class="badge badge-primary">{{Str::ucfirst($featureds[0]->category->slug)
                                             }}</span>
                                     </a>
                                     @endif
@@ -272,12 +284,12 @@
                             <div class="post_content">
 
                                 <h6 class="post-title font-weight-bold text-limit-3-row ">
-                                    <a href="{{config('isec.base_url')}}/post/{{$recent_posts[0]->slug}}">
-                                        {{ \Illuminate\Support\Str::limit($recent_posts[0]->title,86, $end='...') }}
+                                    <a href="{{config('isec.base_url')}}/post/{{$featureds[0]->slug}}">
+                                        {{ \Illuminate\Support\Str::limit($featureds[0]->title,86, $end='...') }}
                                     </a>
                                 </h6>
 
-                                <p class="font-small small m-0">{{$recent_posts[0]->tanggal}}
+                                <p class="font-small small m-0">{{$featureds[0]->tanggal}}
                                 </p>
                             </div>
                         </div>
@@ -288,19 +300,18 @@
                     <div>
                         <div class="post_footer">
                             <div class='image-wrapper'>
-                                <img src="{{ $recent_posts[1]->cover_small }}" class="img-fluid rounded" alt="#">
+                                <img src="{{ $featureds[1]->cover_small }}" class="img-fluid rounded" alt="#">
                                 <div class="bottom-text entry-meta meta-0 p-0 bottom-right-text">
-                                    @if($recent_posts[1]->category->slug == 'daerah')
+                                    @if($featureds[1]->category->slug == 'daerah')
                                     <a
-                                        href="{{config('isec.base_url')}}/blog?category={{$recent_posts[1]->category->slug}}&id_kabkota={{$recent_posts[1]->id_kabkota}}">
+                                        href="{{config('isec.base_url')}}/blog?category={{$featureds[1]->category->slug}}&id_kabkota={{$featureds[1]->id_kabkota}}">
                                         <span class="badge badge-primary">{{
-                                            ucwords(strtolower($recent_posts[1]->kabkota->name)) }}</span>
+                                            ucwords(strtolower($featureds[1]->kabkota->name)) }}</span>
                                     </a>
                                     @else
                                     <a
-                                        href="{{config('isec.base_url')}}/blog?category={{$recent_posts[1]->category->slug}}">
-                                        <span
-                                            class="badge badge-primary">{{Str::ucfirst($recent_posts[1]->category->slug)
+                                        href="{{config('isec.base_url')}}/blog?category={{$featureds[1]->category->slug}}">
+                                        <span class="badge badge-primary">{{Str::ucfirst($featureds[1]->category->slug)
                                             }}</span>
                                     </a>
                                     @endif
@@ -309,12 +320,12 @@
                             <div class="post_content">
 
                                 <h6 class="post-title font-weight-bold text-limit-3-row ">
-                                    <a href="{{config('isec.base_url')}}/post/{{$recent_posts[1]->slug}}">
-                                        {{ \Illuminate\Support\Str::limit($recent_posts[1]->title,86, $end='...') }}
+                                    <a href="{{config('isec.base_url')}}/post/{{$featureds[1]->slug}}">
+                                        {{ \Illuminate\Support\Str::limit($featureds[1]->title,86, $end='...') }}
                                     </a>
                                 </h6>
 
-                                <p class="font-small small m-0">{{$recent_posts[1]->tanggal}}
+                                <p class="font-small small m-0">{{$featureds[1]->tanggal}}
                                 </p>
                             </div>
                         </div>
@@ -326,19 +337,18 @@
                     <div>
                         <div class="post_footer">
                             <div class='image-wrapper'>
-                                <img src="{{ $recent_posts[2]->cover_small }}" class="img-fluid rounded" alt="#">
+                                <img src="{{ $featureds[2]->cover_small }}" class="img-fluid rounded" alt="#">
                                 <div class="bottom-text entry-meta meta-0 p-0 bottom-right-text">
-                                    @if($recent_posts[2]->category->slug == 'daerah')
+                                    @if($featureds[2]->category->slug == 'daerah')
                                     <a
-                                        href="{{config('isec.base_url')}}/blog?category={{$recent_posts[2]->category->slug}}&id_kabkota={{$recent_posts[2]->id_kabkota}}">
+                                        href="{{config('isec.base_url')}}/blog?category={{$featureds[2]->category->slug}}&id_kabkota={{$featureds[2]->id_kabkota}}">
                                         <span class="badge badge-primary">{{
-                                            ucwords(strtolower($recent_posts[2]->kabkota->name)) }}</span>
+                                            ucwords(strtolower($featureds[2]->kabkota->name)) }}</span>
                                     </a>
                                     @else
                                     <a
-                                        href="{{config('isec.base_url')}}/blog?category={{$recent_posts[2]->category->slug}}">
-                                        <span
-                                            class="badge badge-primary">{{Str::ucfirst($recent_posts[2]->category->slug)
+                                        href="{{config('isec.base_url')}}/blog?category={{$featureds[2]->category->slug}}">
+                                        <span class="badge badge-primary">{{Str::ucfirst($featureds[2]->category->slug)
                                             }}</span>
                                     </a>
                                     @endif
@@ -347,15 +357,15 @@
                             <div class="post_content">
 
                                 <h5 class="post-title font-weight-bold text-limit-3-row ">
-                                    <a href="{{config('isec.base_url')}}/post/{{$recent_posts[2]->slug}}">
-                                        {{ \Illuminate\Support\Str::limit($recent_posts[2]->title,86, $end='...') }}
+                                    <a href="{{config('isec.base_url')}}/post/{{$featureds[2]->slug}}">
+                                        {{ \Illuminate\Support\Str::limit($featureds[2]->title,86, $end='...') }}
                                     </a>
                                 </h5>
 
-                                <p class="font-small small m-0">{{$recent_posts[2]->tanggal}}</p>
+                                <p class="font-small small m-0">{{$featureds[2]->tanggal}}</p>
 
                                 <div style="font-size: smaller">{!!
-                                    \Illuminate\Support\Str::limit($recent_posts[2]->desc,255, $end='...') !!}
+                                    \Illuminate\Support\Str::limit($featureds[2]->desc,255, $end='...') !!}
                                 </div>
                             </div>
                         </div>
@@ -367,19 +377,18 @@
                     <div>
                         <div class="post_footer">
                             <div class='image-wrapper'>
-                                <img src="{{ $recent_posts[3]->cover_small }}" class="img-fluid rounded" alt="#">
+                                <img src="{{ $featureds[3]->cover_small }}" class="img-fluid rounded" alt="#">
                                 <div class="bottom-text entry-meta meta-0 p-0 bottom-right-text">
-                                    @if($recent_posts[3]->category->slug == 'daerah')
+                                    @if($featureds[3]->category->slug == 'daerah')
                                     <a
-                                        href="{{config('isec.base_url')}}/blog?category={{$recent_posts[3]->category->slug}}&id_kabkota={{$recent_posts[3]->id_kabkota}}">
+                                        href="{{config('isec.base_url')}}/blog?category={{$featureds[3]->category->slug}}&id_kabkota={{$featureds[3]->id_kabkota}}">
                                         <span class="badge badge-primary">{{
-                                            ucwords(strtolower($recent_posts[3]->kabkota->name)) }}</span>
+                                            ucwords(strtolower($featureds[3]->kabkota->name)) }}</span>
                                     </a>
                                     @else
                                     <a
-                                        href="{{config('isec.base_url')}}/blog?category={{$recent_posts[3]->category->slug}}">
-                                        <span
-                                            class="badge badge-primary">{{Str::ucfirst($recent_posts[3]->category->slug)
+                                        href="{{config('isec.base_url')}}/blog?category={{$featureds[3]->category->slug}}">
+                                        <span class="badge badge-primary">{{Str::ucfirst($featureds[3]->category->slug)
                                             }}</span>
                                     </a>
                                     @endif
@@ -388,12 +397,12 @@
                             <div class="post_content">
 
                                 <h6 class="post-title font-weight-bold text-limit-3-row ">
-                                    <a href="{{config('isec.base_url')}}/post/{{$recent_posts[3]->slug}}">
-                                        {{ \Illuminate\Support\Str::limit($recent_posts[3]->title,86, $end='...') }}
+                                    <a href="{{config('isec.base_url')}}/post/{{$featureds[3]->slug}}">
+                                        {{ \Illuminate\Support\Str::limit($featureds[3]->title,86, $end='...') }}
                                     </a>
                                 </h6>
 
-                                <p class="font-small small m-0">{{$recent_posts[3]->tanggal}}
+                                <p class="font-small small m-0">{{$featureds[3]->tanggal}}
                                 </p>
                             </div>
                         </div>
@@ -404,19 +413,18 @@
                     <div>
                         <div class="post_footer">
                             <div class='image-wrapper'>
-                                <img src="{{ $recent_posts[4]->cover_small }}" class="img-fluid rounded" alt="#">
+                                <img src="{{ $featureds[4]->cover_small }}" class="img-fluid rounded" alt="#">
                                 <div class="bottom-text entry-meta meta-0 p-0 bottom-right-text">
-                                    @if($recent_posts[4]->category->slug == 'daerah')
+                                    @if($featureds[4]->category->slug == 'daerah')
                                     <a
-                                        href="{{config('isec.base_url')}}/blog?category={{$recent_posts[4]->category->slug}}&id_kabkota={{$recent_posts[4]->id_kabkota}}">
+                                        href="{{config('isec.base_url')}}/blog?category={{$featureds[4]->category->slug}}&id_kabkota={{$featureds[4]->id_kabkota}}">
                                         <span class="badge badge-primary">{{
-                                            ucwords(strtolower($recent_posts[4]->kabkota->name)) }}</span>
+                                            ucwords(strtolower($featureds[4]->kabkota->name)) }}</span>
                                     </a>
                                     @else
                                     <a
-                                        href="{{config('isec.base_url')}}/blog?category={{$recent_posts[4]->category->slug}}">
-                                        <span
-                                            class="badge badge-primary">{{Str::ucfirst($recent_posts[4]->category->slug)
+                                        href="{{config('isec.base_url')}}/blog?category={{$featureds[4]->category->slug}}">
+                                        <span class="badge badge-primary">{{Str::ucfirst($featureds[4]->category->slug)
                                             }}</span>
                                     </a>
                                     @endif
@@ -425,12 +433,12 @@
                             <div class="post_content">
 
                                 <h6 class="post-title font-weight-bold text-limit-3-row ">
-                                    <a href="{{config('isec.base_url')}}/post/{{$recent_posts[4]->slug}}">
-                                        {{ \Illuminate\Support\Str::limit($recent_posts[4]->title,86, $end='...') }}
+                                    <a href="{{config('isec.base_url')}}/post/{{$featureds[4]->slug}}">
+                                        {{ \Illuminate\Support\Str::limit($featureds[4]->title,86, $end='...') }}
                                     </a>
                                 </h6>
 
-                                <p class="font-small small m-0">{{$recent_posts[4]->tanggal}}
+                                <p class="font-small small m-0">{{$featureds[4]->tanggal}}
                                 </p>
                             </div>
                         </div>
@@ -444,30 +452,30 @@
             <div class="mb-30 col-md-4 border-right-dashed">
                 <div class="post_footer">
                     <div class="post_img">
-                        <a href="{{config('isec.base_url')}}/post/{{$recent_posts[5]->slug}}">
-                            @if($recent_posts[5]->cover)
-                            <img src="{{$recent_posts[5]->square_cover_image}}" alt="letest_post1" width="90"
+                        <a href="{{config('isec.base_url')}}/post/{{$featureds[5]->slug}}">
+                            @if($featureds[5]->cover)
+                            <img src="{{$featureds[5]->square_cover_image}}" alt="letest_post1" width="90"
                                 style="border-radius: 5px;">
                             @endif
                         </a>
                     </div>
                     <div class="post_content" style="line-height: 1 !important">
-                        @if($recent_posts[5]->category->slug == 'daerah')
+                        @if($featureds[5]->category->slug == 'daerah')
                         <a
-                            href="{{config('isec.base_url')}}/blog?category={{$recent_posts[5]->category->slug}}&id_kabkota={{$recent_posts[5]->id_kabkota}}">
+                            href="{{config('isec.base_url')}}/blog?category={{$featureds[5]->category->slug}}&id_kabkota={{$featureds[5]->id_kabkota}}">
                             <span class="badge badge-primary">{{
-                                ucwords(strtolower($recent_posts[5]->kabkota->name)) }}</span>
+                                ucwords(strtolower($featureds[5]->kabkota->name)) }}</span>
                         </a>
                         @else
-                        <a href="{{config('isec.base_url')}}/blog?category={{$recent_posts[5]->category->slug}}">
-                            <span class="badge badge-primary">{{Str::ucfirst($recent_posts[5]->category->slug)
+                        <a href="{{config('isec.base_url')}}/blog?category={{$featureds[5]->category->slug}}">
+                            <span class="badge badge-primary">{{Str::ucfirst($featureds[5]->category->slug)
                                 }}</span>
                         </a>
                         @endif
-                        <h6><a href="{{config('isec.base_url')}}/post/{{$recent_posts[5]->slug}}">{{\Illuminate\Support\Str::limit($recent_posts[5]->title,
+                        <h6><a href="{{config('isec.base_url')}}/post/{{$featureds[5]->slug}}">{{\Illuminate\Support\Str::limit($featureds[5]->title,
                                 70, $end='...')}}</a>
                         </h6>
-                        <p class="small m-0">{{ $recent_posts[5]->tanggal }}
+                        <p class="small m-0">{{ $featureds[5]->tanggal }}
                         </p>
                     </div>
                 </div>
@@ -475,30 +483,30 @@
             <div class="mb-30 col-md-4 border-right-dashed">
                 <div class="post_footer">
                     <div class="post_img">
-                        <a href="{{config('isec.base_url')}}/post/{{$recent_posts[6]->slug}}">
-                            @if($recent_posts[6]->cover)
-                            <img src="{{$recent_posts[6]->square_cover_image}}" alt="letest_post1" width="90"
+                        <a href="{{config('isec.base_url')}}/post/{{$featureds[6]->slug}}">
+                            @if($featureds[6]->cover)
+                            <img src="{{$featureds[6]->square_cover_image}}" alt="letest_post1" width="90"
                                 style="border-radius: 5px;">
                             @endif
                         </a>
                     </div>
                     <div class="post_content" style="line-height: 1 !important">
-                        @if($recent_posts[6]->category->slug == 'daerah')
+                        @if($featureds[6]->category->slug == 'daerah')
                         <a
-                            href="{{config('isec.base_url')}}/blog?category={{$recent_posts[6]->category->slug}}&id_kabkota={{$recent_posts[6]->id_kabkota}}">
+                            href="{{config('isec.base_url')}}/blog?category={{$featureds[6]->category->slug}}&id_kabkota={{$featureds[6]->id_kabkota}}">
                             <span class="badge badge-primary">{{
-                                ucwords(strtolower($recent_posts[6]->kabkota->name)) }}</span>
+                                ucwords(strtolower($featureds[6]->kabkota->name)) }}</span>
                         </a>
                         @else
-                        <a href="{{config('isec.base_url')}}/blog?category={{$recent_posts[6]->category->slug}}">
-                            <span class="badge badge-primary">{{Str::ucfirst($recent_posts[6]->category->slug)
+                        <a href="{{config('isec.base_url')}}/blog?category={{$featureds[6]->category->slug}}">
+                            <span class="badge badge-primary">{{Str::ucfirst($featureds[6]->category->slug)
                                 }}</span>
                         </a>
                         @endif
-                        <h6><a href="{{config('isec.base_url')}}/post/{{$recent_posts[6]->slug}}">{{\Illuminate\Support\Str::limit($recent_posts[6]->title,
+                        <h6><a href="{{config('isec.base_url')}}/post/{{$featureds[6]->slug}}">{{\Illuminate\Support\Str::limit($featureds[6]->title,
                                 70, $end='...')}}</a>
                         </h6>
-                        <p class="small m-0">{{ $recent_posts[6]->tanggal }}
+                        <p class="small m-0">{{ $featureds[6]->tanggal }}
                         </p>
                     </div>
                 </div>
@@ -506,30 +514,30 @@
             <div class="mb-30 col-md-4">
                 <div class="post_footer">
                     <div class="post_img">
-                        <a href="{{config('isec.base_url')}}/post/{{$recent_posts[7]->slug}}">
-                            @if($recent_posts[7]->cover)
-                            <img src="{{$recent_posts[7]->square_cover_image}}" alt="letest_post1" width="90"
+                        <a href="{{config('isec.base_url')}}/post/{{$featureds[7]->slug}}">
+                            @if($featureds[7]->cover)
+                            <img src="{{$featureds[7]->square_cover_image}}" alt="letest_post1" width="90"
                                 style="border-radius: 5px;">
                             @endif
                         </a>
                     </div>
                     <div class="post_content" style="line-height: 1 !important">
-                        @if($recent_posts[7]->category->slug == 'daerah')
+                        @if($featureds[7]->category->slug == 'daerah')
                         <a
-                            href="{{config('isec.base_url')}}/blog?category={{$recent_posts[7]->category->slug}}&id_kabkota={{$recent_posts[7]->id_kabkota}}">
+                            href="{{config('isec.base_url')}}/blog?category={{$featureds[7]->category->slug}}&id_kabkota={{$featureds[7]->id_kabkota}}">
                             <span class="badge badge-primary">{{
-                                ucwords(strtolower($recent_posts[7]->kabkota->name)) }}</span>
+                                ucwords(strtolower($featureds[7]->kabkota->name)) }}</span>
                         </a>
                         @else
-                        <a href="{{config('isec.base_url')}}/blog?category={{$recent_posts[7]->category->slug}}">
-                            <span class="badge badge-primary">{{Str::ucfirst($recent_posts[7]->category->slug)
+                        <a href="{{config('isec.base_url')}}/blog?category={{$featureds[7]->category->slug}}">
+                            <span class="badge badge-primary">{{Str::ucfirst($featureds[7]->category->slug)
                                 }}</span>
                         </a>
                         @endif
-                        <h6><a href="{{config('isec.base_url')}}/post/{{$recent_posts[7]->slug}}">{{\Illuminate\Support\Str::limit($recent_posts[7]->title,
+                        <h6><a href="{{config('isec.base_url')}}/post/{{$featureds[7]->slug}}">{{\Illuminate\Support\Str::limit($featureds[7]->title,
                                 70, $end='...')}}</a>
                         </h6>
-                        <p class="small m-0">{{ $recent_posts[7]->tanggal }}
+                        <p class="small m-0">{{ $featureds[7]->tanggal }}
                         </p>
                     </div>
                 </div>
@@ -604,7 +612,7 @@
                             <h5 class="heading_s2">Berita Terkini</h5>
                             <ul class="recent_post border_bottom_dash list_none">
 
-                                @foreach($recent_posts_cut as $key => $post)
+                                @foreach($recent_posts as $key => $post)
                                 <li>
                                     <div class="post_footer">
                                         <div class="post_img">
@@ -673,7 +681,7 @@
         </div>
         <div class="row blog_wrap justify-content-center animation" data-animation="fadeInUp"
             data-animation-delay="0.4s">
-            @foreach($recent_posts as $key => $post)
+            @foreach($main_posts as $key => $post)
             <div class="col-lg-4 col-md-6 mb-md-4 mb-2 pb-2">
                 <div class="blog_post blog_style1">
                     <div class="blog_img">

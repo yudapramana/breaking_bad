@@ -21,12 +21,14 @@ class HomeController extends Controller
         $services = \App\Models\Services::where('featured', 'yes')->get();
         $carousels = \App\Models\Carousel::where('active', 'yes')->get();
 
-        $recent_posts = \App\Models\Post::whereHas('category', function ($q) {
-            $q->where('slug', '!=', 'artikel');
-        })->orderBy('created_at', 'DESC')->take(9)->get();
-        $recent_posts = $recent_posts->shuffle();
+        $featureds = \App\Models\Post::where('is_featured', 1)->orderBy('created_at', 'DESC')->take(8)->get();
 
-        $recent_posts_cut = $recent_posts->slice(0, 3);
+        $main_posts = \App\Models\Post::whereHas('category', function ($q) {
+            $q->where('slug', 'utama');
+        })->orderBy('created_at', 'DESC')->take(6)->get();
+        $main_posts = $main_posts->shuffle();
+
+        $recent_posts =  \App\Models\Post::orderBy('created_at', 'DESC')->take(3)->get();
         
         $activities = \App\Models\Activity::orderBy('created_at', 'DESC')->take(6)->get();
 
@@ -47,7 +49,8 @@ class HomeController extends Controller
             'activities' => $activities,
             'totalpermohonanselesai' => $totalpermohonanselesai,
             'daerah_posts' => $daerah_posts,
-            'recent_posts_cut' => $recent_posts_cut,
+            'featureds' => $featureds,
+            'main_posts' => $main_posts,
         ]);
     }
 

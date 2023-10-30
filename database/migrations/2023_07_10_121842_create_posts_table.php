@@ -33,6 +33,14 @@ class CreatePostsTable extends Migration
             $table->bigInteger('reads')->unsigned()->default(0)->index();
             $table->timestamps();
             $table->softDeletes();
+
+            $table->tinyInteger('is_slider')->unsigned()->default(0);
+            $table->tinyInteger('is_featured')->unsigned()->default(0);
+            $table->tinyInteger('is_recommended')->unsigned()->default(0);
+            $table->tinyInteger('is_breaking')->unsigned()->default(0);
+            $table->tinyInteger('published')->unsigned()->default(0);
+
+
         });
     }
 

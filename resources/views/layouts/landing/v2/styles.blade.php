@@ -33,15 +33,3 @@
 <!-- Demo Medical Style CSS -->
 <link rel="stylesheet" href="{{ asset('demo-assets/css/demo-medical.css') }}">
 <link rel="stylesheet" id="layoutstyle" href="{{ asset('landing/color/theme-green.css') }}">
-
-<style>
-    body {
-        font-family: "Open Sans", sans-serif;
-        background: #f6f9ff !important;
-        color: #444444;
-    }
-
-    .header_wrap {
-        background: #fff !important;
-    }
-</style>
