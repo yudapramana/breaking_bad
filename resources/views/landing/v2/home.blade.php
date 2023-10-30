@@ -47,11 +47,11 @@
     }
 
 
-    .carousel-item img {
+    /* .carousel-item img {
         width: 100%;
         height: 100% !important;
         object-fit: cover;
-    }
+    } */
 
     .heading_s1,
     .heading_s2 {
@@ -85,15 +85,15 @@
 
             @foreach($carousels as $key => $carousel)
 
-            <div class="carousel-item @if($key == 0) active @endif background_bg overlay_bg2"
+            <div class="carousel-item image-wrapper @if($key == 0) active @endif background_bg overlay_bg2"
                 data-img-src="{{$carousel->smaller_image}}">
-                {{-- <div class="banner_slide_content">
-                    <div class="container">
+                <div class="banner_slide_content">
+                    <div class="container ">
 
-                        <div class="row justify-content-end">
-                            <div class="col-lg-7 col-md-12 col-sm-12 text-right">
-                                <div class="banner_content2 text_white pb-5">
-                                    <img class="logo_default col-3 animation animated fadeInDown"
+                        {{-- <div class="row justify-content-end">
+                            <div class="col-lg-3 col-md-12 col-sm-12 text-right">
+                                <div class="banner_content2 text_white pb-5"> --}}
+                                    {{-- <img class="logo_default col-3 animation animated fadeInDown"
                                         data-animation="fadeInDown" data-animation-delay="1s"
                                         style="animation-delay: 1s; opacity: 1;"
                                         src="{{ asset('assets/images/logo/logo-kemenag.png') }}" alt="logo" />
@@ -103,37 +103,41 @@
                                     </h1>
 
 
-                                    <br>
+                                    <br> --}}
 
+
+
+                                    {{--
                                 </div>
 
 
                             </div>
-                        </div>
+                        </div> --}}
 
                     </div>
-                </div> --}}
+                </div>
+                <img class="top-text logo_default animation animated fadeInDown" data-animation="fadeInDown"
+                    data-animation-delay="1s" style="animation-delay: 1s; opacity: 1; right:0;"
+                    src="{{ asset('assets/images/logo/logo_car_white.png') }}" width="230" alt="logo" />
             </div>
 
-            <div class="banner_content2 text_white p-3">
+            {{-- <div class="banner_content2 text_white p-3">
 
                 <div class="row justify-content-end text-right">
                     <div class="col-3">
                         <img class="logo_default animation animated fadeInDown" data-animation="fadeInDown"
                             data-animation-delay="1s" style="animation-delay: 1s; opacity: 1; right:0;"
                             src="{{ asset('assets/images/logo/logo_car_white.png') }}" alt="logo" />
-                        {{-- <p class="animation animated fadeInDown" data-animation="fadeInDown"
-                            data-animation-delay="1s" style="animation-delay: 1s; opacity: 1; font-size:xx-small;">
-                            KANTOR WILAYAH KEMENTERIAN AGAMA PROVINSI SUMATERA BARAT
-                        </p> --}}
+
                     </div>
                 </div>
 
 
 
-                <br>
+                <br> --}}
 
-            </div>
+                {{--
+            </div> --}}
 
             @endforeach
 
@@ -239,9 +243,19 @@
             position: absolute;
             display: inline-block;
             padding: 5px 5px;
-            background: #eee;
+            /* background: #eee; */
             color: #000;
             z-index: 2;
+        }
+
+        .image-wrapper .top-text {
+            top: 30px;
+            right: 30px !important;
+        }
+
+        .image-wrapper .bottom-right-text {
+            bottom: 10px;
+            right: 10px;
         }
 
         .image-wrapper .bottom-text {
