@@ -268,7 +268,7 @@
 
 
     $(document).ready(function() {
-        table.ajax.url('{{ route("posts.index") }}').load();
+        table.ajax.url('{{ route("posts.index", ["category" => $category] ) }}').load();
         console.log('mana neeee');
 
         table.buttons().container()

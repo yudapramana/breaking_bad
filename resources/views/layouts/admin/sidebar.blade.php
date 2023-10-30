@@ -133,9 +133,39 @@
             <a class="nav-link @if (request()->segment(1) == 'blog') @else collapsed @endif" data-bs-target="#blog-nav"
                 data-bs-toggle="collapse" href="#"
                 aria-expanded="@if (request()->segment(1) == 'blog') true @else false @endif">
-                <i class="bi bi-file-earmark-post"></i><span>Blog</span><i class="bi bi-chevron-down ms-auto"></i>
+                <i class="bi bi-file-earmark-post"></i><span>Berita</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="blog-nav" class="nav-content collapse @if (request()->segment(1) == 'blog') show @endif"
+                data-bs-parent="#sidebar-nav" style="">
+                @can('page-blog-posts')
+                <li>
+                    <a href="{{ route('posts.index') }}"
+                        class="{{    request()->segment(2) == 'posts' ?  (isset($category)  ? ($category == 'utama' ? 'active' : '') : '-'     )   : '-'  }}">
+                        <i class=" bi bi-circle"></i><span>Utama</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{{ route('posts.index', ['category' => 'daerah']) }}"
+                        class="{{    request()->segment(2) == 'posts' ?  (isset($category)  ? ($category == 'daerah' ? 'active' : '') : '-'     )   : '-'  }}">
+                        <i class=" bi bi-circle"></i><span>Daerah</span>
+                    </a>
+                </li>
+                @endcan
+            </ul>
+        </li>
+        @endcan
+
+
+
+        {{-- Setting --}}
+        <li class="nav-item">
+            <a class="nav-link @if (request()->segment(1) == 'setting') @else collapsed @endif"
+                data-bs-target="#setting-nav" data-bs-toggle="collapse" href="#"
+                aria-expanded="@if (request()->segment(1) == 'setting') true @else false @endif">
+                <i class="bi bi-gear"></i><span>Settings</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="setting-nav" class="nav-content collapse @if (request()->segment(1) == 'setting') show @endif"
                 data-bs-parent="#sidebar-nav" style="">
                 @can('page-blog-categories')
                 <li>
@@ -152,21 +182,7 @@
                     </a>
                 </li>
                 @endcan
-                @can('page-blog-posts')
-                <li>
-                    <a href="{{ route('posts.index') }}" class="@if (request()->segment(2) == 'posts') active @endif">
-                        <i class=" bi bi-circle"></i><span>Posts</span>
-                    </a>
-                </li>
-                @endcan
-                {{-- @can('page-blog-news') --}}
-                {{-- <li>
-                    <a href="{{ route('news.index') }}" class="@if (request()->segment(2) == 'news') active @endif">
-                        <i class=" bi bi-circle"></i><span>News</span>
-                    </a>
-                </li> --}}
-                {{-- @endcan --}}
-                {{-- @can('page-blog-categories') --}}
+
                 @if( Auth::user()->hasRole('super_administrator'))
                 <li>
                     <a href="{{ route('menus.index') }}" class="@if (request()->segment(2) == 'menus') active @endif">
@@ -174,15 +190,19 @@
                     </a>
                 </li>
                 @endif
-                {{-- @endcan --}}
             </ul>
         </li>
-        @endcan
 
 
 
-
-
+        {{-- @can('page-blog-news') --}}
+        {{-- <li>
+            <a href="{{ route('news.index') }}" class="@if (request()->segment(2) == 'news') active @endif">
+                <i class=" bi bi-circle"></i><span>News</span>
+            </a>
+        </li> --}}
+        {{-- @endcan --}}
+        {{-- @can('page-blog-categories') --}}
 
 
 

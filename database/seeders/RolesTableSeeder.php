@@ -18,7 +18,9 @@ class RolesTableSeeder extends Seeder
     {
         $super_administrator = Role::create(['name' => 'super_administrator']);
         $administrator = Role::create(['name' => 'administrator']);
-        $staff = Role::create(['name' => 'staff_administrator']);
+        $staff = Role::create(['name' => 'kontributor_utama']);
+        $staff = Role::create(['name' => 'kontributor_daerah']);
+
 
         // Super Admin
         $user = User::where('username', '199407292022031002')->first();
@@ -30,19 +32,22 @@ class RolesTableSeeder extends Seeder
 
         // Staff Administrator
         $user = User::where('username', '197807302007011009')->first();
-        $user->assignRole('staff_administrator');
+        $user->assignRole('kontributor_utama');
         
         $user = User::where('username', '198007022005012012')->first();
-        $user->assignRole('staff_administrator');
+        $user->assignRole('kontributor_utama');
         
         $user = User::where('username', '198110082007012016')->first();
-        $user->assignRole('staff_administrator');
+        $user->assignRole('kontributor_utama');
         
         $user = User::where('username', '198512082005012001')->first();
-        $user->assignRole('staff_administrator');
+        $user->assignRole('kontributor_utama');
         
         $user = User::where('username', '198203092009011007')->first();
-        $user->assignRole('staff_administrator');
+        $user->assignRole('kontributor_utama');
+
+        $user = User::where('username', '197610182009011004')->first();
+        $user->assignRole('kontributor_daerah');
         
 
         // Permissions

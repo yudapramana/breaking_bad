@@ -221,7 +221,7 @@
                 <button type="button" class="btn btn-sm btn-secondary btn-menu-select">Select</button>
                 or
                 @endif
-                <a href="{{url('blog/menus?id=new')}}">Create a new menu</a>.
+                <a href="{{url('setting/menus?id=new')}}">Create a new menu</a>.
             </div>
 
             <div class="row" id="main-row">
@@ -1165,7 +1165,7 @@
         var selected = $('#menuid').find(":selected").val();
         // alert(selected);
         var base_url = window.location.origin;
-        window.location.href = base_url + "/blog/menus?id=" + selected;
+        window.location.href = base_url + "/setting/menus?id=" + selected;
 
     });
 

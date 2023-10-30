@@ -38,6 +38,9 @@ class User extends Authenticatable
         'plain_password',
     ];
 
+    protected $with = ['kabkota'];
+
+
     /**
      * The attributes that should be cast.
      *
@@ -55,4 +58,23 @@ class User extends Authenticatable
     public function getNamePhoneAttribute() {
         return $this->attributes['name'] . '_'.  $this->attributes['no_hp'];
     }
+
+    public function kabkota()
+    {
+        return $this->belongsTo(Kabkota::class, 'id_kabkota');
+    }
+
+    protected $appends = ['age', 'name_phone'];
+
+    public function getAgeAttribute(){
+        $rawBD = strlen($this->attributes['username']) == 18 ? substr($this->attributes['username'], 0, 8) : null;
+        if($rawBD) {
+            $birthDate = substr($rawBD, 0, 4) . '-' . substr($rawBD, 4, 2) . '-' . substr($rawBD, 6, 2) . ' 00:00:00';
+            $interval = date_diff(date_create(), date_create($birthDate));
+            return $interval->format("%Y Tahun, %M Bulan, %d Hari");
+        }
+        return 'undetected';
+    }
+
+   
 }

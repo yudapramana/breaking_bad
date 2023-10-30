@@ -22,8 +22,12 @@ class HomeController extends Controller
         $carousels = \App\Models\Carousel::where('active', 'yes')->get();
 
         $recent_posts = \App\Models\Post::whereHas('category', function ($q) {
-            $q->where('slug', 'utama');
-        })->orderBy('created_at', 'DESC')->take(3)->get();
+            $q->where('slug', '!=', 'artikel');
+        })->orderBy('created_at', 'DESC')->take(9)->get();
+        $recent_posts = $recent_posts->shuffle();
+
+        $recent_posts_cut = $recent_posts->slice(0, 3);
+        
         $activities = \App\Models\Activity::orderBy('created_at', 'DESC')->take(6)->get();
 
         $totalpermohonanselesai = Permohonan::count();
@@ -42,7 +46,8 @@ class HomeController extends Controller
             'recent_posts' => $recent_posts,
             'activities' => $activities,
             'totalpermohonanselesai' => $totalpermohonanselesai,
-            'daerah_posts' => $daerah_posts
+            'daerah_posts' => $daerah_posts,
+            'recent_posts_cut' => $recent_posts_cut,
         ]);
     }
 

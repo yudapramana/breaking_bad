@@ -5,8 +5,11 @@
 <!-- Latest Bootstrap min CSS -->
 <link rel="stylesheet" href="{{ asset('landing/bootstrap/css/bootstrap.min') }}.css">
 <!-- Google Font -->
-<link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+<link
+    href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i"
+    rel="stylesheet">
 <!-- Icon Font -->
 <link href="{{ asset('landing/css/ico-moon.css') }}" rel="stylesheet">
 <!-- Icon Font CSS -->
@@ -30,3 +33,15 @@
 <!-- Demo Medical Style CSS -->
 <link rel="stylesheet" href="{{ asset('demo-assets/css/demo-medical.css') }}">
 <link rel="stylesheet" id="layoutstyle" href="{{ asset('landing/color/theme-green.css') }}">
+
+<style>
+    body {
+        font-family: "Open Sans", sans-serif;
+        background: #f6f9ff !important;
+        color: #444444;
+    }
+
+    .header_wrap {
+        background: #fff !important;
+    }
+</style>

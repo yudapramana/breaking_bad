@@ -32,7 +32,39 @@
         letter-spacing: 1px;
     }
 
+    .badge-sm {
+        margin: 0;
+        font-size: 10px !important;
+        line-height: 1 !important;
+    }
 
+    .carousel-item {
+        height: 500px !important;
+    }
+
+    .carousel-item-other {
+        height: 350px !important;
+    }
+
+
+    .carousel-item img {
+        width: 100%;
+        height: 100% !important;
+        object-fit: cover;
+    }
+
+    .heading_s1,
+    .heading_s2 {
+        margin-bottom: 15px !important;
+        padding-bottom: 10px !important;
+        position: relative;
+    }
+
+    *,
+    ::after,
+    ::before {
+        box-sizing: border-box;
+    }
 
     section {
         padding: 30px 0;
@@ -55,9 +87,8 @@
 
             <div class="carousel-item @if($key == 0) active @endif background_bg overlay_bg2"
                 data-img-src="{{$carousel->smaller_image}}">
-                <div class="banner_slide_content">
+                {{-- <div class="banner_slide_content">
                     <div class="container">
-                        <!-- STRART CONTAINER -->
 
                         <div class="row justify-content-end">
                             <div class="col-lg-7 col-md-12 col-sm-12 text-right">
@@ -66,33 +97,42 @@
                                         data-animation="fadeInDown" data-animation-delay="1s"
                                         style="animation-delay: 1s; opacity: 1;"
                                         src="{{ asset('assets/images/logo/logo-kemenag.png') }}" alt="logo" />
-                                    {{-- src="{{ asset('assets/images/kakanwilbarufinal.png') }}" alt="logo" /> --}}
                                     <h1 class="animation animated fadeInDown" data-animation="fadeInDown"
                                         data-animation-delay="1s" style="animation-delay: 1s; opacity: 1;">
                                         KANTOR WILAYAH KEMENTERIAN AGAMA PROVINSI SUMATERA BARAT
                                     </h1>
-                                    {{-- <p class="animation my-4 animated fadeInUp" data-animation="fadeInUp"
-                                        data-animation-delay="1.5s" style="animation-delay: 1.5s; opacity: 1;">Ipsum
-                                        generators on the Internet tend to repeat predefined</p> --}}
+
 
                                     <br>
 
                                 </div>
 
-                                {{-- <div class="banner_content2 text_white pt-5">
-                                    <p>
-                                        &nbsp;
-                                        <br>
-                                    <h5 class="animation animated fadeInDown" data-animation="fadeInDown"
-                                        data-animation-delay="1s" style="animation-delay: 1s; opacity: 1;">{{
-                                        $carousel->title }}</h5>
-                                    </p>
-                                </div> --}}
+
                             </div>
                         </div>
 
-                    </div><!-- END CONTAINER-->
+                    </div>
+                </div> --}}
+            </div>
+
+            <div class="banner_content2 text_white p-3">
+
+                <div class="row justify-content-end text-right">
+                    <div class="col-3">
+                        <img class="logo_default animation animated fadeInDown" data-animation="fadeInDown"
+                            data-animation-delay="1s" style="animation-delay: 1s; opacity: 1; right:0;"
+                            src="{{ asset('assets/images/logo/logo_car_white.png') }}" alt="logo" />
+                        {{-- <p class="animation animated fadeInDown" data-animation="fadeInDown"
+                            data-animation-delay="1s" style="animation-delay: 1s; opacity: 1; font-size:xx-small;">
+                            KANTOR WILAYAH KEMENTERIAN AGAMA PROVINSI SUMATERA BARAT
+                        </p> --}}
+                    </div>
                 </div>
+
+
+
+                <br>
+
             </div>
 
             @endforeach
@@ -106,7 +146,357 @@
 </section>
 
 <!-- START SECTION ABOUT US -->
-<section class="overflow_hide">
+<section class="overflow_hide p-0 m-0">
+
+    <style>
+        .l-hub-wrapper {
+            /* background-color: #fff; */
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
+        .c-hub-title {
+            overflow: visible;
+        }
+
+        .c-hub-title {
+            overflow: hidden;
+            position: relative;
+            text-align: center;
+        }
+
+        .c-hub-title.no-description .c-hub-title__inner {
+            padding: 16px;
+        }
+
+        .c-hub-title__inner {
+            width: auto;
+        }
+
+        .c-hub-title__inner {
+            background-color: #F1F5F8;
+            color: currentColor;
+            display: inline-block;
+            padding: 32px 26px 16px;
+            position: relative;
+        }
+
+        .c-hub-title h2 {
+            /* font-family: "Fugaz One"; */
+            color: var(#687385);
+            font-weight: bolder;
+            /* letter-spacing: .02em; */
+            line-height: 1.2;
+            font-size: 2.2em;
+            display: inline-block;
+            margin: 0;
+            vertical-align: middle;
+            /* font-style: italic; */
+
+        }
+
+        .c-hub-title.no-description:before {
+            border-left: 5px solid #2C65E1;
+            border-right: 5px solid #2C65E1;
+            border-top: 4px solid #2C65E1;
+            border-radius: 10px 10px 0px 0px;
+            content: " ";
+            height: 50px;
+            left: -1px;
+            position: absolute;
+            right: -1px;
+            top: 50%;
+            pointer-events: none;
+        }
+    </style>
+    <div class="l-hub-wrapper l-wrapper d-sm-none d-md-block animation" data-animation="fadeInDown"
+        data-animation-delay="0.2s">
+        <div class="c-hub-title no-description">
+            <span class="c-hub-title__inner">
+                <h2 class="">Berita Pilihan</h2>
+            </span>
+        </div>
+    </div>
+
+    <style>
+        .entry-meta {
+            line-height: 1;
+            color: #666;
+        }
+
+        .font-small {
+            font-size: 12px;
+        }
+
+        .image-wrapper {
+            position: relative;
+            margin-bottom: 5px;
+        }
+
+        .image-wrapper .bottom-text,
+        .image-wrapper .bottom-right-text,
+        .image-wrapper .top-text {
+            position: absolute;
+            display: inline-block;
+            padding: 5px 5px;
+            background: #eee;
+            color: #000;
+            z-index: 2;
+        }
+
+        .image-wrapper .bottom-text {
+            background: transparent;
+            bottom: 10px;
+            left: 10px;
+        }
+
+        .border-dashed {
+            border-bottom: 1.7px dashed #cfd8e0 !important;
+            padding-bottom: 12px;
+            margin-bottom: 12px;
+        }
+
+        .border-right-dashed {
+            border-right: 1.25px dashed #cfd8e0 !important;
+        }
+
+        .mb-30 {
+            margin-bottom: 30px !important;
+        }
+
+        .mt-30 {
+            margin-top: 30px !important;
+        }
+    </style>
+    <div class="container">
+        <article>
+            <div class="row list-style-2">
+                <div class="col-md-3">
+                    {{-- #1 --}}
+
+                    <div>
+                        <div class="post_footer">
+                            <div class='image-wrapper'>
+                                <img src="{{ $recent_posts[0]->cover_small }}" class="img-fluid rounded" alt="#">
+                                <div class="bottom-text entry-meta meta-0 p-0 bottom-right-text">
+                                    <a href="http://sumbarkemenag.v4/blog?category=daerah&amp;id_kabkota=1303">
+                                        <span class="badge badge-primary">{{ ($recent_posts[0]->category->slug ==
+                                            'daerah') ? ucwords(strtolower($recent_posts[0]->kabkota->name)) :
+                                            ucwords($recent_posts[0]->category->slug)}}</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="post_content">
+
+                                <h6 class="post-title font-weight-bold text-limit-3-row ">
+                                    <a href="{{config('isec.base_url')}}/post/{{$recent_posts[0]->slug}}">
+                                        {{ \Illuminate\Support\Str::limit($recent_posts[0]->title,86, $end='...') }}
+                                    </a>
+                                </h6>
+
+                                <p class="font-small small m-0">{{$recent_posts[0]->tanggal}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- #1 --}}
+                    <div class="border-dashed pt-20"></div>
+                    {{-- #2 --}}
+                    <div>
+                        <div class="post_footer">
+                            <div class='image-wrapper'>
+                                <img src="{{ $recent_posts[1]->cover_small }}" class="img-fluid rounded" alt="#">
+                                <div class="bottom-text entry-meta meta-0 p-0 bottom-right-text">
+                                    <a href="http://sumbarkemenag.v4/blog?category=daerah&amp;id_kabkota=1303">
+                                        <span class="badge badge-primary">{{ ($recent_posts[1]->category->slug ==
+                                            'daerah') ? ucwords(strtolower($recent_posts[1]->kabkota->name)) :
+                                            ucwords($recent_posts[1]->category->slug)}}</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="post_content">
+
+                                <h6 class="post-title font-weight-bold text-limit-3-row ">
+                                    <a href="{{config('isec.base_url')}}/post/{{$recent_posts[1]->slug}}">
+                                        {{ \Illuminate\Support\Str::limit($recent_posts[1]->title,86, $end='...') }}
+                                    </a>
+                                </h6>
+
+                                <p class="font-small small m-0">{{$recent_posts[1]->tanggal}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- #2 --}}
+                </div>
+                <div class="col-md-6">
+                    {{-- #3 --}}
+                    <div>
+                        <div class="post_footer">
+                            <div class='image-wrapper'>
+                                <img src="{{ $recent_posts[2]->cover_small }}" class="img-fluid rounded" alt="#">
+                                <div class="bottom-text entry-meta meta-0 p-0 bottom-right-text">
+                                    <a href="http://sumbarkemenag.v4/blog?category=daerah&amp;id_kabkota=1303">
+                                        <span class="badge badge-primary">{{ ($recent_posts[2]->category->slug ==
+                                            'daerah') ? ucwords(strtolower($recent_posts[2]->kabkota->name)) :
+                                            ucwords($recent_posts[2]->category->slug)}}</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="post_content">
+
+                                <h5 class="post-title font-weight-bold text-limit-3-row ">
+                                    <a href="{{config('isec.base_url')}}/post/{{$recent_posts[2]->slug}}">
+                                        {{ \Illuminate\Support\Str::limit($recent_posts[2]->title,86, $end='...') }}
+                                    </a>
+                                </h5>
+
+                                <p class="font-small small m-0">{{$recent_posts[2]->tanggal}}</p>
+
+                                <div style="font-size: smaller">{!!
+                                    \Illuminate\Support\Str::limit($recent_posts[2]->desc,255, $end='...') !!}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- #3 --}}
+                </div>
+                <div class="col-md-3">
+                    {{-- #4 --}}
+                    <div>
+                        <div class="post_footer">
+                            <div class='image-wrapper'>
+                                <img src="{{ $recent_posts[3]->cover_small }}" class="img-fluid rounded" alt="#">
+                                <div class="bottom-text entry-meta meta-0 p-0 bottom-right-text">
+                                    <a href="http://sumbarkemenag.v4/blog?category=daerah&amp;id_kabkota=1303">
+                                        <span class="badge badge-primary">{{ ($recent_posts[3]->category->slug ==
+                                            'daerah') ? ucwords(strtolower($recent_posts[3]->kabkota->name)) :
+                                            ucwords($recent_posts[3]->category->slug)}}</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="post_content">
+
+                                <h6 class="post-title font-weight-bold text-limit-3-row ">
+                                    <a href="{{config('isec.base_url')}}/post/{{$recent_posts[3]->slug}}">
+                                        {{ \Illuminate\Support\Str::limit($recent_posts[3]->title,86, $end='...') }}
+                                    </a>
+                                </h6>
+
+                                <p class="font-small small m-0">{{$recent_posts[3]->tanggal}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- #4 --}}
+                    <div class="border-dashed pt-20"></div>
+                    {{-- #5 --}}
+                    <div>
+                        <div class="post_footer">
+                            <div class='image-wrapper'>
+                                <img src="{{ $recent_posts[4]->cover_small }}" class="img-fluid rounded" alt="#">
+                                <div class="bottom-text entry-meta meta-0 p-0 bottom-right-text">
+                                    <a href="http://sumbarkemenag.v4/blog?category=daerah&amp;id_kabkota=1303">
+                                        <span class="badge badge-primary">{{ ($recent_posts[4]->category->slug ==
+                                            'daerah') ? ucwords(strtolower($recent_posts[4]->kabkota->name)) :
+                                            ucwords($recent_posts[4]->category->slug)}}</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="post_content">
+
+                                <h6 class="post-title font-weight-bold text-limit-3-row ">
+                                    <a href="{{config('isec.base_url')}}/post/{{$recent_posts[4]->slug}}">
+                                        {{ \Illuminate\Support\Str::limit($recent_posts[4]->title,86, $end='...') }}
+                                    </a>
+                                </h6>
+
+                                <p class="font-small small m-0">{{$recent_posts[4]->tanggal}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- #5 --}}
+                </div>
+            </div>
+        </article>
+        <div class="border-dashed"></div>
+        <div class="row mt-30">
+            <div class="mb-30 col-md-4 border-right-dashed">
+                <div class="post_footer">
+                    <div class="post_img">
+                        <a href="{{config('isec.base_url')}}/post/{{$recent_posts[5]->slug}}">
+                            @if($recent_posts[5]->cover)
+                            <img src="{{$recent_posts[5]->square_cover_image}}" alt="letest_post1" width="90"
+                                style="border-radius: 5px;">
+                            @endif
+                        </a>
+                    </div>
+                    <div class="post_content" style="line-height: 1 !important">
+                        <a href="{{config('isec.base_url')}}/blog?category={{$recent_posts[5]->category->slug}}">
+                            <span class="badge badge-primary badge-sm">{{
+                                ucwords(strtolower($recent_posts[5]->category->title)) }}</span>
+                        </a>
+                        <h6><a href="{{config('isec.base_url')}}/post/{{$recent_posts[5]->slug}}">{{\Illuminate\Support\Str::limit($recent_posts[5]->title,
+                                70, $end='...')}}</a>
+                        </h6>
+                        <p class="small m-0">{{ $recent_posts[5]->tanggal }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-30 col-md-4 border-right-dashed">
+                <div class="post_footer">
+                    <div class="post_img">
+                        <a href="{{config('isec.base_url')}}/post/{{$recent_posts[6]->slug}}">
+                            @if($recent_posts[6]->cover)
+                            <img src="{{$recent_posts[6]->square_cover_image}}" alt="letest_post1" width="90"
+                                style="border-radius: 5px;">
+                            @endif
+                        </a>
+                    </div>
+                    <div class="post_content" style="line-height: 1 !important">
+                        <a href="{{config('isec.base_url')}}/blog?category={{$recent_posts[6]->category->slug}}">
+                            <span class="badge badge-primary badge-sm">{{
+                                ucwords(strtolower($recent_posts[6]->category->title)) }}</span>
+                        </a>
+                        <h6><a href="{{config('isec.base_url')}}/post/{{$recent_posts[6]->slug}}">{{\Illuminate\Support\Str::limit($recent_posts[6]->title,
+                                70, $end='...')}}</a>
+                        </h6>
+                        <p class="small m-0">{{ $recent_posts[6]->tanggal }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-30 col-md-4">
+                <div class="post_footer">
+                    <div class="post_img">
+                        <a href="{{config('isec.base_url')}}/post/{{$recent_posts[7]->slug}}">
+                            @if($recent_posts[7]->cover)
+                            <img src="{{$recent_posts[7]->square_cover_image}}" alt="letest_post1" width="90"
+                                style="border-radius: 5px;">
+                            @endif
+                        </a>
+                    </div>
+                    <div class="post_content" style="line-height: 1 !important">
+                        <a href="{{config('isec.base_url')}}/blog?category={{$recent_posts[7]->category->slug}}">
+                            <span class="badge badge-primary badge-sm">{{
+                                ucwords(strtolower($recent_posts[7]->category->title)) }}</span>
+                        </a>
+                        <h6><a href="{{config('isec.base_url')}}/post/{{$recent_posts[7]->slug}}">{{\Illuminate\Support\Str::limit($recent_posts[7]->title,
+                                70, $end='...')}}</a>
+                        </h6>
+                        <p class="small m-0">{{ $recent_posts[7]->tanggal }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="overflow_hide p-0 m-0 pt-5 pb-5 bg-white">
     <div class="container">
         <div class="row">
             {{-- <div class="col-md-6 col-sm-12 animation" data-animation="fadeInLeft" data-animation-delay="0.1s">
@@ -123,79 +513,86 @@
                             <li data-target="#carouselExampleCaptions" data-slide-to="{{$key}}"
                                 class="@if($key == 1) active @endif"></li>
                             @endforeach
-                            {{-- <li data-target="#carouselExampleCaptions" data-slide-to="1" class=""></li>
-                            <li data-target="#carouselExampleCaptions" data-slide-to="2" class=""></li> --}}
+
                         </ol>
                         <div class="carousel-inner">
                             @foreach($recent_posts as $key => $act)
 
-                            <div class="carousel-item  @if($key == 0) active @endif">
+                            <div class="carousel-item carousel-item-other @if($key == 0) active @endif">
                                 <img src="{{$act->cover}}" class="d-block w-100" alt="...">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <small style="color:#ffffff;">{{ \Carbon\Carbon::parse($act->created_at)->format('d
-                                        F Y')
-                                        }}</small><br>
-                                    <a style="color:#ffffff;"
-                                        href="{{config('isec.base_url')}}/post/{{$act->slug}}">{{\Illuminate\Support\Str::limit($act->title,
-                                        100,
-                                        $end='...')}}&nbsp;</a>
+                                <div class="carousel-caption">
+                                    {{-- <div class="carousel-caption d-none d-md-block"> --}}
 
+                                        <small style="color:#ffffff;">{{
+                                            \Carbon\Carbon::parse($act->created_at)->format('d
+                                            F Y')
+                                            }}</small><br>
+                                        <a style="color:#ffffff;"
+                                            href="{{config('isec.base_url')}}/post/{{$act->slug}}">{{\Illuminate\Support\Str::limit($act->title,
+                                            100,
+                                            $end='...')}}&nbsp;</a>
+
+                                    </div>
                                 </div>
+                                @endforeach
+
+
                             </div>
-                            @endforeach
-
-
+                            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button"
+                                data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button"
+                                data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
                         </div>
-                        <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button"
-                            data-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="carousel-control-next" href="#carouselExampleCaptions" role="button"
-                            data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
                     </div>
+
+
                 </div>
+                <div class="col-lg-6 mt-lg-0 mt-4 pt-3 pt-lg-0 animation" data-animation="fadeInRight"
+                    data-animation-delay="0.2s">
+                    <div class="sidebar">
 
+                        <div class="widget">
+                            <h5 class="heading_s2">Berita Terkini</h5>
+                            <ul class="recent_post border_bottom_dash list_none">
 
-
-            </div>
-            <div class="col-lg-6 mt-lg-0 mt-4 pt-3 pt-lg-0 animation" data-animation="fadeInRight"
-                data-animation-delay="0.2s">
-                <div class="sidebar">
-
-                    <div class="widget">
-                        <h5 class="widget_title">Berita Terkini</h5>
-                        <ul class="recent_post border_bottom_dash list_none">
-
-                            @foreach($recent_posts as $key => $post)
-                            <li>
-                                <div class="post_footer">
-                                    <div class="post_img">
-                                        <a href="{{config('isec.base_url')}}/post/{{$post->slug}}">
-                                            @if($post->cover)
-                                            <img src="{{$post->square_cover_image}}" alt="letest_post1" width="77"
-                                                style="border-radius: 5px;">
-                                            @endif
-                                        </a>
+                                @foreach($recent_posts_cut as $key => $post)
+                                <li>
+                                    <div class="post_footer">
+                                        <div class="post_img">
+                                            <a href="{{config('isec.base_url')}}/post/{{$post->slug}}">
+                                                @if($post->cover)
+                                                <img src="{{$post->square_cover_image}}" alt="letest_post1" width="77"
+                                                    style="border-radius: 5px;">
+                                                @endif
+                                            </a>
+                                        </div>
+                                        <div class="post_content" style="line-height: 1 !important">
+                                            <a
+                                                href="{{config('isec.base_url')}}/blog?category={{$post->category->slug}}">
+                                                <span class="badge badge-primary badge-sm">{{
+                                                    ucwords(strtolower($post->category->title)) }}</span>
+                                            </a>
+                                            <h6><a href="{{config('isec.base_url')}}/post/{{$post->slug}}">{{\Illuminate\Support\Str::limit($post->title,
+                                                    70, $end='...')}}</a>
+                                            </h6>
+                                            <p class="small m-0">{{ $post->tanggal }}
+                                            </p>
+                                        </div>
                                     </div>
-                                    <div class="post_content">
-                                        <h5><a href="{{config('isec.base_url')}}/post/{{$post->slug}}">{{\Illuminate\Support\Str::limit($post->title,
-                                                70, $end='...')}}</a>
-                                        </h5>
-                                        <p class="small m-0">{{ $post->tanggal }}
-                                        </p>
-                                    </div>
-                                </div>
-                            </li>
-                            @endforeach
+                                </li>
+                                @endforeach
 
-                        </ul>
+                            </ul>
+                        </div>
+
+
                     </div>
-
-
                 </div>
             </div>
         </div>
@@ -210,10 +607,10 @@
 
 <!-- START SECTION BLOG -->
 <section>
-    <div class="container">
+    <div class="container pt-3">
         <div class="row">
             <div class="col-md-12 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
-                <div class="heading_s3 mb-md-3 text-center">
+                <div class="heading_s1 mb-md-3 text-center">
                     <h2><a href="{{ route('blog.list', 'category=utama') }}">Berita Utama Kanwil</a></h2>
                 </div>
             </div>
@@ -237,7 +634,8 @@
                     <div class="blog_content bg-white">
                         <div class="blog_text">
                             <h6 class="blog_title"><a
-                                    href="{{config('isec.base_url')}}/post/{{$post->slug}}">{{$post->title}}</a></h6>
+                                    href="{{config('isec.base_url')}}/post/{{$post->slug}}">{{$post->title}}</a>
+                            </h6>
                             <ul class="list_none blog_meta">
                                 <li><a href="#">{{$post->tanggal}}</a></li>
                             </ul>
@@ -257,8 +655,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
-                <div class="heading_s3 mb-md-3 text-center">
-                    <h2><a href="{{ route('blog.list', 'category=daerah') }}">Berita dari Daerah</a></h2>
+                <div class="heading_s1 mb-md-3 text-center">
+                    <h2><a href="{{ route('blog.list', 'category=daerah') }}">Berita Daerah</a></h2>
                 </div>
             </div>
         </div>
@@ -282,7 +680,8 @@
                     <div class="blog_content bg-white">
                         <div class="blog_text">
                             <h6 class="blog_title"><a
-                                    href="{{config('isec.base_url')}}/post/{{$post->slug}}">{{$post->title}}</a></h6>
+                                    href="{{config('isec.base_url')}}/post/{{$post->slug}}">{{$post->title}}</a>
+                            </h6>
                             <ul class="list_none blog_meta">
                                 <li><a href="#">{{$post->tanggal}}</a></li>
                             </ul>

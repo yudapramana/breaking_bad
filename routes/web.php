@@ -342,14 +342,13 @@ Route::delete('/data/roles/{id}/destroy', [\App\Http\Controllers\Admin\RoleContr
 
 
 
-Route::resource('/blog/categories', App\Http\Controllers\CategoryController::class);
-Route::resource('/blog/tags', App\Http\Controllers\TagController::class);
+Route::resource('/setting/categories', App\Http\Controllers\CategoryController::class);
+Route::resource('/setting/tags', App\Http\Controllers\TagController::class);
 // Manage Posts
 Route::get('/blog/posts/trash', [App\Http\Controllers\PostController::class, 'trash'])->name('posts.trash');
 Route::post('/blog/posts/trash/{id}/restore', [App\Http\Controllers\PostController::class, 'restore'])->name('posts.restore');
-Route::delete('blog/posts/{id}/delete-permanent', [App\Http\Controllers\PostController::class, 'deletePermanent'])->name('posts.deletePermanent');
+Route::delete('blog/posts/delete-permanent/{id}', [App\Http\Controllers\PostController::class, 'deletePermanent'])->name('posts.deletePermanent');
 Route::delete('/blog/posts/destroy/{id}', [\App\Http\Controllers\PostController::class, 'destroy'])->name('posts.delete');
-
 
 Route::resource('/blog/posts', App\Http\Controllers\PostController::class);
 Route::post('ckeditor/upload', 'CKEditorController@upload')->name('ckeditor.image-upload');
@@ -357,11 +356,11 @@ Route::post('ckeditor/upload', 'CKEditorController@upload')->name('ckeditor.imag
 
 Route::get('/blog/news/trash', [App\Http\Controllers\NewsController::class, 'trash'])->name('news.trash');
 Route::post('/blog/news/trash/{id}/restore', [App\Http\Controllers\NewsController::class, 'restore'])->name('news.restore');
-Route::delete('blog/news/{id}/delete-permanent', [App\Http\Controllers\NewsController::class, 'deletePermanent'])->name('news.deletePermanent');
+Route::delete('blog/news/delete-permanent/{id}', [App\Http\Controllers\NewsController::class, 'deletePermanent'])->name('news.deletePermanent');
 Route::resource('/blog/news', App\Http\Controllers\NewsController::class);
 
 
-Route::get('/blog/menus/{id?}',  [\App\Http\Controllers\Admin\MenuController::class, 'index'])->name('menus.index');
+Route::get('/setting/menus/{id?}',  [\App\Http\Controllers\Admin\MenuController::class, 'index'])->name('menus.index');
 Route::post('create-menu',  [\App\Http\Controllers\Admin\MenuController::class, 'store']);
 Route::get('add-categories-to-menu',  [\App\Http\Controllers\Admin\MenuController::class, 'addCategory']);
 Route::post('save-menu',  [\App\Http\Controllers\Admin\MenuController::class, 'saveMenu']);

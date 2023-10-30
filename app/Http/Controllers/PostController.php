@@ -18,7 +18,16 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-        $posts = Post::orderBy('created_at', 'DESC')->get();
+        $category = null;
+        if ($request->has('category')) {
+            $category = $request->input('category');
+        } else {
+            $category = 'utama';
+        }
+
+        $posts = Post::whereHas('category', function ($q) use( $category ) {
+            $q->where('slug', $category);
+        })->orderBy('created_at', 'DESC')->get();
 
 
         if ($request->ajax()) {
@@ -57,6 +66,7 @@ class PostController extends Controller
                 'title'  => 'Posts',
                 'br1'  => 'Manage',
                 'br2'  => 'Posts',
+                'category'  => $category,
             ],
 
         );

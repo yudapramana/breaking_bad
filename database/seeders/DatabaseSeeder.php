@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         DB::statement('SET FOREIGN_KEY_CHECKS=0');
-
+        $this->call(KotaTableSeeder::class);
         $this->call(UsersTableSeeder::class);
         $this->call(ServicesTableSeeder::class);
         $this->call(RolesTableSeeder::class);
@@ -40,7 +40,6 @@ class DatabaseSeeder extends Seeder
         $this->call(RefDataInstansiTableSeeder::class);
         $this->call(RefDataKategoriTableSeeder::class);
         $this->call(RefDataClassificationSeeder::class);
-        $this->call(KotaTableSeeder::class);
         // $this->call(ActivitiesTableSeeder::class);
         // $this->call(DaftarPermohonanTableSeeder::class);
         // $this->call(DataFileRawDBSeeder::class);
