@@ -47,11 +47,11 @@
     }
 
 
-    /* .carousel-item img {
+    .iniaja img {
         width: 100%;
         height: 100% !important;
         object-fit: cover;
-    } */
+    }
 
     .heading_s1,
     .heading_s2 {
@@ -90,30 +90,6 @@
                 <div class="banner_slide_content">
                     <div class="container ">
 
-                        {{-- <div class="row justify-content-end">
-                            <div class="col-lg-3 col-md-12 col-sm-12 text-right">
-                                <div class="banner_content2 text_white pb-5"> --}}
-                                    {{-- <img class="logo_default col-3 animation animated fadeInDown"
-                                        data-animation="fadeInDown" data-animation-delay="1s"
-                                        style="animation-delay: 1s; opacity: 1;"
-                                        src="{{ asset('assets/images/logo/logo-kemenag.png') }}" alt="logo" />
-                                    <h1 class="animation animated fadeInDown" data-animation="fadeInDown"
-                                        data-animation-delay="1s" style="animation-delay: 1s; opacity: 1;">
-                                        KANTOR WILAYAH KEMENTERIAN AGAMA PROVINSI SUMATERA BARAT
-                                    </h1>
-
-
-                                    <br> --}}
-
-
-
-                                    {{--
-                                </div>
-
-
-                            </div>
-                        </div> --}}
-
                     </div>
                 </div>
                 <img class="top-text logo_default animation animated fadeInDown" data-animation="fadeInDown"
@@ -121,23 +97,7 @@
                     src="{{ asset('assets/images/logo/logo_car_white.png') }}" width="230" alt="logo" />
             </div>
 
-            {{-- <div class="banner_content2 text_white p-3">
 
-                <div class="row justify-content-end text-right">
-                    <div class="col-3">
-                        <img class="logo_default animation animated fadeInDown" data-animation="fadeInDown"
-                            data-animation-delay="1s" style="animation-delay: 1s; opacity: 1; right:0;"
-                            src="{{ asset('assets/images/logo/logo_car_white.png') }}" alt="logo" />
-
-                    </div>
-                </div>
-
-
-
-                <br> --}}
-
-                {{--
-            </div> --}}
 
             @endforeach
 
@@ -293,11 +253,20 @@
                             <div class='image-wrapper'>
                                 <img src="{{ $recent_posts[0]->cover_small }}" class="img-fluid rounded" alt="#">
                                 <div class="bottom-text entry-meta meta-0 p-0 bottom-right-text">
-                                    <a href="http://sumbarkemenag.v4/blog?category=daerah&amp;id_kabkota=1303">
-                                        <span class="badge badge-primary">{{ ($recent_posts[0]->category->slug ==
-                                            'daerah') ? ucwords(strtolower($recent_posts[0]->kabkota->name)) :
-                                            ucwords($recent_posts[0]->category->slug)}}</span>
+                                    @if($recent_posts[0]->category->slug == 'daerah')
+                                    <a
+                                        href="{{config('isec.base_url')}}/blog?category={{$recent_posts[0]->category->slug}}&id_kabkota={{$recent_posts[0]->id_kabkota}}">
+                                        <span class="badge badge-primary">{{
+                                            ucwords(strtolower($recent_posts[0]->kabkota->name)) }}</span>
                                     </a>
+                                    @else
+                                    <a
+                                        href="{{config('isec.base_url')}}/blog?category={{$recent_posts[0]->category->slug}}">
+                                        <span
+                                            class="badge badge-primary">{{Str::ucfirst($recent_posts[0]->category->slug)
+                                            }}</span>
+                                    </a>
+                                    @endif
                                 </div>
                             </div>
                             <div class="post_content">
@@ -321,11 +290,20 @@
                             <div class='image-wrapper'>
                                 <img src="{{ $recent_posts[1]->cover_small }}" class="img-fluid rounded" alt="#">
                                 <div class="bottom-text entry-meta meta-0 p-0 bottom-right-text">
-                                    <a href="http://sumbarkemenag.v4/blog?category=daerah&amp;id_kabkota=1303">
-                                        <span class="badge badge-primary">{{ ($recent_posts[1]->category->slug ==
-                                            'daerah') ? ucwords(strtolower($recent_posts[1]->kabkota->name)) :
-                                            ucwords($recent_posts[1]->category->slug)}}</span>
+                                    @if($recent_posts[1]->category->slug == 'daerah')
+                                    <a
+                                        href="{{config('isec.base_url')}}/blog?category={{$recent_posts[1]->category->slug}}&id_kabkota={{$recent_posts[1]->id_kabkota}}">
+                                        <span class="badge badge-primary">{{
+                                            ucwords(strtolower($recent_posts[1]->kabkota->name)) }}</span>
                                     </a>
+                                    @else
+                                    <a
+                                        href="{{config('isec.base_url')}}/blog?category={{$recent_posts[1]->category->slug}}">
+                                        <span
+                                            class="badge badge-primary">{{Str::ucfirst($recent_posts[1]->category->slug)
+                                            }}</span>
+                                    </a>
+                                    @endif
                                 </div>
                             </div>
                             <div class="post_content">
@@ -350,11 +328,20 @@
                             <div class='image-wrapper'>
                                 <img src="{{ $recent_posts[2]->cover_small }}" class="img-fluid rounded" alt="#">
                                 <div class="bottom-text entry-meta meta-0 p-0 bottom-right-text">
-                                    <a href="http://sumbarkemenag.v4/blog?category=daerah&amp;id_kabkota=1303">
-                                        <span class="badge badge-primary">{{ ($recent_posts[2]->category->slug ==
-                                            'daerah') ? ucwords(strtolower($recent_posts[2]->kabkota->name)) :
-                                            ucwords($recent_posts[2]->category->slug)}}</span>
+                                    @if($recent_posts[2]->category->slug == 'daerah')
+                                    <a
+                                        href="{{config('isec.base_url')}}/blog?category={{$recent_posts[2]->category->slug}}&id_kabkota={{$recent_posts[2]->id_kabkota}}">
+                                        <span class="badge badge-primary">{{
+                                            ucwords(strtolower($recent_posts[2]->kabkota->name)) }}</span>
                                     </a>
+                                    @else
+                                    <a
+                                        href="{{config('isec.base_url')}}/blog?category={{$recent_posts[2]->category->slug}}">
+                                        <span
+                                            class="badge badge-primary">{{Str::ucfirst($recent_posts[2]->category->slug)
+                                            }}</span>
+                                    </a>
+                                    @endif
                                 </div>
                             </div>
                             <div class="post_content">
@@ -382,11 +369,20 @@
                             <div class='image-wrapper'>
                                 <img src="{{ $recent_posts[3]->cover_small }}" class="img-fluid rounded" alt="#">
                                 <div class="bottom-text entry-meta meta-0 p-0 bottom-right-text">
-                                    <a href="http://sumbarkemenag.v4/blog?category=daerah&amp;id_kabkota=1303">
-                                        <span class="badge badge-primary">{{ ($recent_posts[3]->category->slug ==
-                                            'daerah') ? ucwords(strtolower($recent_posts[3]->kabkota->name)) :
-                                            ucwords($recent_posts[3]->category->slug)}}</span>
+                                    @if($recent_posts[3]->category->slug == 'daerah')
+                                    <a
+                                        href="{{config('isec.base_url')}}/blog?category={{$recent_posts[3]->category->slug}}&id_kabkota={{$recent_posts[3]->id_kabkota}}">
+                                        <span class="badge badge-primary">{{
+                                            ucwords(strtolower($recent_posts[3]->kabkota->name)) }}</span>
                                     </a>
+                                    @else
+                                    <a
+                                        href="{{config('isec.base_url')}}/blog?category={{$recent_posts[3]->category->slug}}">
+                                        <span
+                                            class="badge badge-primary">{{Str::ucfirst($recent_posts[3]->category->slug)
+                                            }}</span>
+                                    </a>
+                                    @endif
                                 </div>
                             </div>
                             <div class="post_content">
@@ -410,11 +406,20 @@
                             <div class='image-wrapper'>
                                 <img src="{{ $recent_posts[4]->cover_small }}" class="img-fluid rounded" alt="#">
                                 <div class="bottom-text entry-meta meta-0 p-0 bottom-right-text">
-                                    <a href="http://sumbarkemenag.v4/blog?category=daerah&amp;id_kabkota=1303">
-                                        <span class="badge badge-primary">{{ ($recent_posts[4]->category->slug ==
-                                            'daerah') ? ucwords(strtolower($recent_posts[4]->kabkota->name)) :
-                                            ucwords($recent_posts[4]->category->slug)}}</span>
+                                    @if($recent_posts[4]->category->slug == 'daerah')
+                                    <a
+                                        href="{{config('isec.base_url')}}/blog?category={{$recent_posts[4]->category->slug}}&id_kabkota={{$recent_posts[4]->id_kabkota}}">
+                                        <span class="badge badge-primary">{{
+                                            ucwords(strtolower($recent_posts[4]->kabkota->name)) }}</span>
                                     </a>
+                                    @else
+                                    <a
+                                        href="{{config('isec.base_url')}}/blog?category={{$recent_posts[4]->category->slug}}">
+                                        <span
+                                            class="badge badge-primary">{{Str::ucfirst($recent_posts[4]->category->slug)
+                                            }}</span>
+                                    </a>
+                                    @endif
                                 </div>
                             </div>
                             <div class="post_content">
@@ -447,10 +452,18 @@
                         </a>
                     </div>
                     <div class="post_content" style="line-height: 1 !important">
-                        <a href="{{config('isec.base_url')}}/blog?category={{$recent_posts[5]->category->slug}}">
-                            <span class="badge badge-primary badge-sm">{{
-                                ucwords(strtolower($recent_posts[5]->category->title)) }}</span>
+                        @if($recent_posts[5]->category->slug == 'daerah')
+                        <a
+                            href="{{config('isec.base_url')}}/blog?category={{$recent_posts[5]->category->slug}}&id_kabkota={{$recent_posts[5]->id_kabkota}}">
+                            <span class="badge badge-primary">{{
+                                ucwords(strtolower($recent_posts[5]->kabkota->name)) }}</span>
                         </a>
+                        @else
+                        <a href="{{config('isec.base_url')}}/blog?category={{$recent_posts[5]->category->slug}}">
+                            <span class="badge badge-primary">{{Str::ucfirst($recent_posts[5]->category->slug)
+                                }}</span>
+                        </a>
+                        @endif
                         <h6><a href="{{config('isec.base_url')}}/post/{{$recent_posts[5]->slug}}">{{\Illuminate\Support\Str::limit($recent_posts[5]->title,
                                 70, $end='...')}}</a>
                         </h6>
@@ -470,10 +483,18 @@
                         </a>
                     </div>
                     <div class="post_content" style="line-height: 1 !important">
-                        <a href="{{config('isec.base_url')}}/blog?category={{$recent_posts[6]->category->slug}}">
-                            <span class="badge badge-primary badge-sm">{{
-                                ucwords(strtolower($recent_posts[6]->category->title)) }}</span>
+                        @if($recent_posts[6]->category->slug == 'daerah')
+                        <a
+                            href="{{config('isec.base_url')}}/blog?category={{$recent_posts[6]->category->slug}}&id_kabkota={{$recent_posts[6]->id_kabkota}}">
+                            <span class="badge badge-primary">{{
+                                ucwords(strtolower($recent_posts[6]->kabkota->name)) }}</span>
                         </a>
+                        @else
+                        <a href="{{config('isec.base_url')}}/blog?category={{$recent_posts[6]->category->slug}}">
+                            <span class="badge badge-primary">{{Str::ucfirst($recent_posts[6]->category->slug)
+                                }}</span>
+                        </a>
+                        @endif
                         <h6><a href="{{config('isec.base_url')}}/post/{{$recent_posts[6]->slug}}">{{\Illuminate\Support\Str::limit($recent_posts[6]->title,
                                 70, $end='...')}}</a>
                         </h6>
@@ -493,10 +514,18 @@
                         </a>
                     </div>
                     <div class="post_content" style="line-height: 1 !important">
-                        <a href="{{config('isec.base_url')}}/blog?category={{$recent_posts[7]->category->slug}}">
-                            <span class="badge badge-primary badge-sm">{{
-                                ucwords(strtolower($recent_posts[7]->category->title)) }}</span>
+                        @if($recent_posts[7]->category->slug == 'daerah')
+                        <a
+                            href="{{config('isec.base_url')}}/blog?category={{$recent_posts[7]->category->slug}}&id_kabkota={{$recent_posts[7]->id_kabkota}}">
+                            <span class="badge badge-primary">{{
+                                ucwords(strtolower($recent_posts[7]->kabkota->name)) }}</span>
                         </a>
+                        @else
+                        <a href="{{config('isec.base_url')}}/blog?category={{$recent_posts[7]->category->slug}}">
+                            <span class="badge badge-primary">{{Str::ucfirst($recent_posts[7]->category->slug)
+                                }}</span>
+                        </a>
+                        @endif
                         <h6><a href="{{config('isec.base_url')}}/post/{{$recent_posts[7]->slug}}">{{\Illuminate\Support\Str::limit($recent_posts[7]->title,
                                 70, $end='...')}}</a>
                         </h6>
@@ -532,7 +561,7 @@
                         <div class="carousel-inner">
                             @foreach($recent_posts as $key => $act)
 
-                            <div class="carousel-item carousel-item-other @if($key == 0) active @endif">
+                            <div class="carousel-item carousel-item-other iniaja @if($key == 0) active @endif">
                                 <img src="{{$act->cover}}" class="d-block w-100" alt="...">
                                 <div class="carousel-caption">
                                     {{-- <div class="carousel-caption d-none d-md-block"> --}}
@@ -587,11 +616,19 @@
                                             </a>
                                         </div>
                                         <div class="post_content" style="line-height: 1 !important">
+                                            @if($post->category->slug == 'daerah')
+                                            <a
+                                                href="{{config('isec.base_url')}}/blog?category={{$post->category->slug}}&id_kabkota={{$post->id_kabkota}}">
+                                                <span class="badge badge-primary">{{
+                                                    ucwords(strtolower($post->kabkota->name)) }}</span>
+                                            </a>
+                                            @else
                                             <a
                                                 href="{{config('isec.base_url')}}/blog?category={{$post->category->slug}}">
-                                                <span class="badge badge-primary badge-sm">{{
-                                                    ucwords(strtolower($post->category->title)) }}</span>
+                                                <span class="badge badge-primary">{{Str::ucfirst($post->category->slug)
+                                                    }}</span>
                                             </a>
+                                            @endif
                                             <h6><a href="{{config('isec.base_url')}}/post/{{$post->slug}}">{{\Illuminate\Support\Str::limit($post->title,
                                                     70, $end='...')}}</a>
                                             </h6>
