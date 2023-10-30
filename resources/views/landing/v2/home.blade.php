@@ -151,7 +151,7 @@
         }
 
         .c-hub-title__inner {
-            background-color: #F1F5F8;
+            background-color: #f6f9ff;
             color: currentColor;
             display: inline-block;
             padding: 32px 26px 16px;
@@ -285,7 +285,7 @@
 
                                 <h6 class="post-title font-weight-bold text-limit-3-row ">
                                     <a href="{{config('isec.base_url')}}/post/{{$featureds[0]->slug}}">
-                                        {{ \Illuminate\Support\Str::limit($featureds[0]->title,86, $end='...') }}
+                                        {{ \Illuminate\Support\Str::limit($featureds[0]->title,93, $end='...') }}
                                     </a>
                                 </h6>
 
@@ -321,7 +321,7 @@
 
                                 <h6 class="post-title font-weight-bold text-limit-3-row ">
                                     <a href="{{config('isec.base_url')}}/post/{{$featureds[1]->slug}}">
-                                        {{ \Illuminate\Support\Str::limit($featureds[1]->title,86, $end='...') }}
+                                        {{ \Illuminate\Support\Str::limit($featureds[1]->title,93, $end='...') }}
                                     </a>
                                 </h6>
 
@@ -358,7 +358,7 @@
 
                                 <h5 class="post-title font-weight-bold text-limit-3-row ">
                                     <a href="{{config('isec.base_url')}}/post/{{$featureds[2]->slug}}">
-                                        {{ \Illuminate\Support\Str::limit($featureds[2]->title,86, $end='...') }}
+                                        {{ \Illuminate\Support\Str::limit($featureds[2]->title,93, $end='...') }}
                                     </a>
                                 </h5>
 
@@ -398,7 +398,7 @@
 
                                 <h6 class="post-title font-weight-bold text-limit-3-row ">
                                     <a href="{{config('isec.base_url')}}/post/{{$featureds[3]->slug}}">
-                                        {{ \Illuminate\Support\Str::limit($featureds[3]->title,86, $end='...') }}
+                                        {{ \Illuminate\Support\Str::limit($featureds[3]->title,93, $end='...') }}
                                     </a>
                                 </h6>
 
@@ -434,7 +434,7 @@
 
                                 <h6 class="post-title font-weight-bold text-limit-3-row ">
                                     <a href="{{config('isec.base_url')}}/post/{{$featureds[4]->slug}}">
-                                        {{ \Illuminate\Support\Str::limit($featureds[4]->title,86, $end='...') }}
+                                        {{ \Illuminate\Support\Str::limit($featureds[4]->title,93, $end='...') }}
                                     </a>
                                 </h6>
 
@@ -473,7 +473,7 @@
                         </a>
                         @endif
                         <h6><a href="{{config('isec.base_url')}}/post/{{$featureds[5]->slug}}">{{\Illuminate\Support\Str::limit($featureds[5]->title,
-                                70, $end='...')}}</a>
+                                83, $end='...')}}</a>
                         </h6>
                         <p class="small m-0">{{ $featureds[5]->tanggal }}
                         </p>
@@ -504,7 +504,7 @@
                         </a>
                         @endif
                         <h6><a href="{{config('isec.base_url')}}/post/{{$featureds[6]->slug}}">{{\Illuminate\Support\Str::limit($featureds[6]->title,
-                                70, $end='...')}}</a>
+                                83, $end='...')}}</a>
                         </h6>
                         <p class="small m-0">{{ $featureds[6]->tanggal }}
                         </p>
@@ -535,7 +535,7 @@
                         </a>
                         @endif
                         <h6><a href="{{config('isec.base_url')}}/post/{{$featureds[7]->slug}}">{{\Illuminate\Support\Str::limit($featureds[7]->title,
-                                70, $end='...')}}</a>
+                                83, $end='...')}}</a>
                         </h6>
                         <p class="small m-0">{{ $featureds[7]->tanggal }}
                         </p>
