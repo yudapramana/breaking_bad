@@ -282,7 +282,7 @@
             margin-top: 30px !important;
         }
     </style>
-    <div class="container">
+    <div class="container animation" data-animation="fadeInDown" data-animation-delay="0.2s">
         <article>
             <div class="row list-style-2">
                 <div class="col-md-3">
