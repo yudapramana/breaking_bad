@@ -140,12 +140,31 @@
                 @can('page-blog-posts')
 
                 @foreach ($bootCategories as $cat)
+
+                @if( Auth::user()->hasRole('super_administrator') || Auth::user()->hasRole('administrator') ||
+                Auth::user()->hasRole('kontributor_utama'))
+
                 <li>
                     <a href="{{ route('posts.index', ['category' => $cat->slug]) }}"
                         class="{{    request()->segment(2) == 'posts' ?  (isset($category)  ? ($category == $cat->slug ? 'active' : '') : '-'     )   : '-'  }}">
                         <i class=" bi bi-circle"></i><span>{{$cat->title}}</span>
                     </a>
                 </li>
+
+                @endif
+
+                @if(Auth::user()->hasRole('kontributor_daerah') && ( $cat->slug == 'artikel' || $cat->slug =='daerah'))
+
+                <li>
+                    <a href="{{ route('posts.index', ['category' => $cat->slug]) }}"
+                        class="{{    request()->segment(2) == 'posts' ?  (isset($category)  ? ($category == $cat->slug ? 'active' : '') : '-'     )   : '-'  }}">
+                        <i class=" bi bi-circle"></i><span>{{$cat->title}}</span>
+                    </a>
+                </li>
+
+                @endif
+
+
                 @endforeach
 
 

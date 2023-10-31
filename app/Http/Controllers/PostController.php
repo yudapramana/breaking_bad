@@ -7,6 +7,7 @@ use App\Models\{Category, Kabkota, Post, Tag};
 use Auth;
 use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\DB;
 
 
 class PostController extends Controller
@@ -24,10 +25,21 @@ class PostController extends Controller
         } else {
             $category = 'utama';
         }
+    
+        $user = Auth::user();
+        $pQuery = Post::query();;
+        
 
-        $posts = Post::whereHas('category', function ($q) use( $category ) {
+        if($user->hasRole('kontributor_daerah')){
+            $id_kabkota =$user->id_kabkota;
+            $pQuery = $pQuery->where('id_kabkota', $id_kabkota);
+        }
+
+        $pQuery = $pQuery->whereHas('category', function ($q) use( $category ) {
             $q->where('slug', $category);
-        })->orderBy('created_at', 'DESC')->get();
+        });
+        $pQuery = $pQuery->orderBy('created_at','desc');
+        $posts = $pQuery->get();
 
 
         if ($request->ajax()) {
@@ -36,7 +48,7 @@ class PostController extends Controller
             return DataTables::of($posts)
                 ->addIndexColumn()
                 ->addColumn('title_can', function ($post) {
-                    $text = '<span style="font-weight:bolder;">' . $post->title . ' &nbsp; <span class="text-muted" style="font-size:x-small">'.$post->created_at->format('d-m-Y').'</span><br>
+                    $text = '<span style="font-weight:bolder;">' . $post->title . ' &nbsp; <br> <span class="text-muted" style="font-size:x-small">'.$post->created_at->format('d-m-Y').'</span><br>
                             <span class="text-muted preserveLines" style="font-size:smaller">Slug: ' . $post->slug . ' </span><br>
                             <span class="text-muted preserveLines" style="font-size:xx-small">Keywords: ' . $post->keywords . ' </span><br>
                             <span class="text-muted preserveLines" style="font-size:xx-small">Meta:' . $post->meta_desc . ' </span>';
@@ -78,15 +90,19 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
+
+        $category = $request->has('category') ? $request->input('category') : null;
+        $categoryRow = Category::where('slug', $category)->firstOrFail();
+        $categoryID = $category ? $categoryRow->id : null;
         $categories = Category::all();
         $tags       = Tag::all();
         $kabkotas = Kabkota::all();
         $title = 'Posts';
         $br1 = 'Create';
         $br2 = 'Posts';
-        return view('admin.posts.create', compact('categories','tags','title','br1','br2', 'kabkotas'));
+        return view('admin.posts.create', compact('categories','tags','title','br1','br2', 'kabkotas','category', 'categoryID'));
     }
 
     /**

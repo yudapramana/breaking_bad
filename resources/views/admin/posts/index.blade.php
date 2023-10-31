@@ -217,7 +217,7 @@
                     , 'id': 'addBtn'
                     , 'class': 'btn btn-primary'
                     , 'href': "{{ route('posts.create') }}"
-                    , 'onclick': "window.location.href='{{ route('posts.create') }}';"
+                    , 'onclick': "window.location.href='{{ route('posts.create', [ 'category' => $category ]) }}';"
                 }
                 , action: function(e, dt, node, config) {
                     // alert('Button activated');

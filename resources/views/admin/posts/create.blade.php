@@ -130,6 +130,16 @@
                                             </div>
                                             @enderror
                                         </div>
+
+                                        @if(app('request')->has('category'))
+                                        <div class="form-group mb-3">
+                                            <label for="category">Category</label>
+                                            <input class="form-control" type="text" value="{{ ucwords($category) }}"
+                                                disabled>
+                                            <input type="hidden" name="category" id="category"
+                                                value="{{ $categoryID }}">
+                                        </div>
+                                        @else
                                         <div class="form-group mb-3">
                                             <label for="category">Category</label>
                                             <select name="category" id="category"
@@ -146,6 +156,9 @@
                                             </div>
                                             @enderror
                                         </div>
+                                        @endif
+
+
                                         <div class="form-group mb-3">
                                             <label for="kabkota">Kabupaten / Kota</label>
                                             <select name="kabkota" id="kabkota"
