@@ -28,7 +28,9 @@ class HomeController extends Controller
         })->orderBy('created_at', 'DESC')->take(6)->get();
         $main_posts = $main_posts->shuffle();
 
-        $recent_posts =  \App\Models\Post::orderBy('created_at', 'DESC')->take(3)->get();
+        $recent_posts =  \App\Models\Post::whereHas('category', function ($q) {
+            $q->where('slug', '!=' , 'artikel');
+        })->orderBy('created_at', 'DESC')->take(3)->get();
         
         $activities = \App\Models\Activity::orderBy('created_at', 'DESC')->take(6)->get();
 
