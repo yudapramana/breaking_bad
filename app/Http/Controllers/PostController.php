@@ -63,9 +63,9 @@ class PostController extends Controller
         return view(
             'admin.posts.index',
             [
-                'title'  => 'Posts',
-                'br1'  => 'Manage',
-                'br2'  => 'Posts',
+                'title'  => 'Berita',
+                'br1'  => 'Berita',
+                'br2'  => ucwords($category),
                 'category'  => $category,
             ],
 

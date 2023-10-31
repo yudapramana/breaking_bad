@@ -57,11 +57,15 @@ class AppServiceProvider extends ServiceProvider
                 $landingmenuitems = $landingmenuitems[0];
             }
 
+            $bootCategories = \App\Models\Category::select('slug', 'title')->get();
+
             // dd($landingmenuitems);
             $view->with('landingmenuitems', $landingmenuitems);
 
 
             $view->with('selectedServices', $selectedServices);
+            $view->with('bootCategories', $bootCategories);
+
             $view->with('locale', $locale);
             $view->with('titleLocale', 'title_' .$locale);
         });

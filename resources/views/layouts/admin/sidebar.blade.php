@@ -138,8 +138,19 @@
             <ul id="blog-nav" class="nav-content collapse @if (request()->segment(1) == 'blog') show @endif"
                 data-bs-parent="#sidebar-nav" style="">
                 @can('page-blog-posts')
+
+                @foreach ($bootCategories as $cat)
                 <li>
-                    <a href="{{ route('posts.index') }}"
+                    <a href="{{ route('posts.index', ['category' => $cat->slug]) }}"
+                        class="{{    request()->segment(2) == 'posts' ?  (isset($category)  ? ($category == $cat->slug ? 'active' : '') : '-'     )   : '-'  }}">
+                        <i class=" bi bi-circle"></i><span>{{$cat->title}}</span>
+                    </a>
+                </li>
+                @endforeach
+
+
+                {{-- <li>
+                    <a href="{{ route('posts.index', ['category' => 'utama']) }}"
                         class="{{    request()->segment(2) == 'posts' ?  (isset($category)  ? ($category == 'utama' ? 'active' : '') : '-'     )   : '-'  }}">
                         <i class=" bi bi-circle"></i><span>Utama</span>
                     </a>
@@ -150,7 +161,10 @@
                         class="{{    request()->segment(2) == 'posts' ?  (isset($category)  ? ($category == 'daerah' ? 'active' : '') : '-'     )   : '-'  }}">
                         <i class=" bi bi-circle"></i><span>Daerah</span>
                     </a>
-                </li>
+                </li> --}}
+
+
+
                 @endcan
             </ul>
         </li>

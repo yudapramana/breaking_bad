@@ -254,7 +254,7 @@
                         </div>
                         <div class="card pb-2 mb-2">
                             <div class="card-header">
-                                <a href="#posts-list" data-bs-toggle="collapse" data-parent="#menu-items">Posts <span
+                                <a href="#posts-list" data-bs-toggle="collapse" data-parent="#menu-items">Articles <span
                                         class="caret pull-right"></span></a>
                             </div>
                             <div class="card-body collapse" id="posts-list">

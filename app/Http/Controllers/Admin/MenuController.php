@@ -62,12 +62,16 @@ class MenuController extends Controller
             }
         }
 
+        $posts = \App\Models\Post::whereHas('category', function ($q){
+            $q->where('slug', 'artikel');
+        })->orderBy('created_at', 'DESC')->get();
+
         // return $menuitems;
         $categories = \App\Models\Category::all();
         // return $categories;
         return view('admin.menu.index', [
             'categories' => \App\Models\Category::all(),
-            'posts' => \App\Models\Post::all(),
+            'posts' => $posts,
             'menus' => \App\Models\Menu::all(),
             'title' => $title,
             'br1'  => 'Manage',

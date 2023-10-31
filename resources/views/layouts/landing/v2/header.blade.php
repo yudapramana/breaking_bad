@@ -27,6 +27,12 @@
         display: flex;
         padding-left: 0 !important;
     }
+
+    .dropdown-menu {
+        max-height: 70vh;
+        /* overflow: scroll; */
+        overflow-y: auto
+    }
 </style>
 <header class="header_wrap dark_skin hover_menu_style3">
     {{-- <div class="top-header bg_blue border-0 light_skin">
