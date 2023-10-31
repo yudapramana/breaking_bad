@@ -216,9 +216,10 @@
                 </li>
                 @endcan
 
-                @if( Auth::user()->hasRole('super_administrator'))
+                @if( Auth::user()->hasRole('super_administrator') || Auth::user()->hasRole('administrator'))
                 <li>
-                    <a href="{{ route('menus.index') }}" class="@if (request()->segment(2) == 'menus') active @endif">
+                    <a href="{{ route('menus.index', ['id' => '1']) }}"
+                        class="@if (request()->segment(2) == 'menus') active @endif">
                         <i class=" bi bi-circle"></i><span>Menus</span>
                     </a>
                 </li>

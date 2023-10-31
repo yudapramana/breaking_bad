@@ -62,7 +62,7 @@ class MenuController extends Controller
             }
         }
 
-        $posts = \App\Models\Post::whereHas('category', function ($q){
+        $posts = \App\Models\Post::whereHas('category', function ($q) {
             $q->where('slug', 'artikel');
         })->orderBy('created_at', 'DESC')->get();
 
@@ -184,10 +184,18 @@ class MenuController extends Controller
         $ids = $request->ids;
         $menu = \App\Models\Menu::findOrFail($menuid);
 
+        // Check if http exist or not
+        $slug = $request->url;
+        if(strpos($slug, "http") !== false) {
+            // $slug = 'https://' . $slug;
+        } else {
+            $slug = 'https://' . $slug;
+        }
+
         if ($menu->content == '') {
             $data['title'] = $request->link;
-            $data['slug'] = $request->url;
-            $data['target'] = '_self';
+            $data['slug'] = $slug;
+            $data['target'] = $request->target;
             $data['type'] = 'custom';
             $data['menu_id'] = $menuid;
             \App\Models\MenuItem::create($data);
@@ -195,8 +203,8 @@ class MenuController extends Controller
             $menudata = json_decode($menu->content, true);
 
             $data['title'] = $request->link;
-            $data['slug'] = $request->url;
-            $data['target'] = '_self';
+            $data['slug'] = $slug;
+            $data['target'] = $request->target;
             $data['type'] = 'custom';
             $data['menu_id'] = $menuid;
             \App\Models\MenuItem::create($data);
@@ -234,11 +242,29 @@ class MenuController extends Controller
 
     public function updateItem(Request $request, $id, $k1, $k2 = '', $k3 = '')
     {
+        // Find Menu Item by ID and Update data in Table menu_items
         $menuitem = \App\Models\MenuItem::findOrFail($request->id);
+        if ($menuitem->type == 'custom') {
+            $toUpdate = [
+                'name' => $request->name,
+                'target' => $request->target,
+                'slug' => $request->slug
+            ];
+        } else {
+            $toUpdate = [
+                'name' => $request->name,
+            ];
+        }
+        $menuitem->update($toUpdate);
+        $menuitem->fresh();
+
+        // Find Menu by menuitem->menu_id
         $menu = \App\Models\Menu::where('id', $menuitem->menu_id)->first();
 
+        // Convert Data JSON 
         $data = json_decode($menu->content, true);
 
+        // Update data by key
         if ($k3 != '' && $k2 != '') {
             $data[0][$k1]['children'][0][$k2]['children'][0][$k3]['title'] = $request->name;
             if ($menuitem->type == 'custom') {
@@ -270,8 +296,8 @@ class MenuController extends Controller
             $menu->update(['content' => $newdata]);
         }
 
-        $data = $request->all();
-        $menuitem->update($data);
+        // $data = $request->all();
+        // $menuitem->update($data);
         return redirect()->back();
     }
 

@@ -283,15 +283,34 @@
                             <div class="card-body collapse" id="custom-links">
                                 <div class="panel-body py-3">
                                     <div class="item-list-body-no">
-                                        <div class="form-group">
-                                            <label>URL</label>
+                                        <div class="form-group mb-2">
+                                            <label class="form-label small">URL</label>
                                             <input type="url" id="url" class="form-control form-control-sm input-sm"
                                                 placeholder="https://">
                                         </div>
-                                        <div class="form-group">
-                                            <label>Link Text</label>
+                                        <div class="form-group mb-2">
+                                            <label class="form-label small">Link Text</label>
                                             <input type="text" id="linktext"
                                                 class="form-control form-control-sm input-sm" placeholder="">
+                                        </div>
+                                        <div class="form-group mb-2">
+                                            <label class="form-label small">Target Type</label>
+                                            <div class="form-check">
+                                                <input class="form-check-input small" type="radio" name="href_target"
+                                                    value="_blank" checked>
+                                                <label class="form-check-label small" for="target">
+                                                    Open in a new tab
+                                                </label>
+                                            </div>
+                                            @if(Auth::user()->hasRole('super_administrator'))
+                                            <div class="form-check">
+                                                <input class="form-check-input small" type="radio" name="href_target"
+                                                    value="_self">
+                                                <label class="form-check-label small" for="target">
+                                                    Open in same frame
+                                                </label>
+                                            </div>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="item-list-footer">
@@ -1145,11 +1164,12 @@
         var menuid = "{!! $selectedMenu ? $selectedMenu->id : '' !!}";
         var url = $('#url').val();
         var link = $('#linktext').val();
+        var hreftarget = $('input[name="href_target"]:checked').val();
 
         if(url.length > 0 && link.length > 0) {
             $.ajax({
                 type: "get"
-                , data: {menuid:menuid,url:url,link:link}
+                , data: {menuid:menuid,url:url,link:link,target:hreftarget}
                 , url: "{{url('add-custom-link')}}"
                 , success: function() {
                     location.reload();

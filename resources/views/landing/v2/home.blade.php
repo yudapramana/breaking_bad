@@ -364,8 +364,11 @@
 
                                 <p class="font-small small m-0">{{$featureds[2]->tanggal}}</p>
 
-                                <div style="font-size: smaller">{!!
+                                <div class="mb-0 pb-0" style="font-size: smaller">
+                                    <pre class="mb-0 pb-0" style="white-space: pre-wrap;">
+                                {!!
                                     \Illuminate\Support\Str::limit($featureds[2]->desc,255, $end='...') !!}
+                                    </pre>
                                 </div>
                             </div>
                         </div>
