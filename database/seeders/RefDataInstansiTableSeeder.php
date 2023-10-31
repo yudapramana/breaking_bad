@@ -15,16 +15,21 @@ class RefDataInstansiTableSeeder extends Seeder
     public function run()
     {
         DB::table('ref_data_instansi')->insert([
-            ['name' => 'Bagian Tata Usaha - Sekretariat Jenderal'],
-            ['name' => 'Bagian Tata Usaha - Seksi Kepegawaian'],
-            ['name' => 'Bagian Tata Usaha - Seksi Keuangan'],
-            ['name' => 'Seksi Pendidikan Madrasah'],
-            ['name' => 'Seksi Diniyah dan Pondok Pesantren'],
-            ['name' => 'Seksi Pendidikan Agama Islam'],
-            ['name' => 'Seksi Penyelenggara Haji dan Umrah'],
-            ['name' => 'Seksi Bimbingan Masyarakat Islam'],
-            ['name' => 'Seksi Penyelenggara Zakat dan Wakaf'],
-            ['name' => 'Umum']
+            ['name' => 'Bagian Tata Usaha - Subbagian Perencanaan, Data, dan Informasi'],
+            ['name' => 'Bagian Tata Usaha - Subbagian Keuangan dan Barang Milik Negara'],
+            ['name' => 'Bagian Tata Usaha - Subbagian Kepegawaian dan Hukum'],
+            ['name' => 'Bagian Tata Usaha - Subbagian Organisasi, Tata Laksana, dan Kerukunan Umat Beragama'],
+            ['name' => 'Bagian Tata Usaha - Subbagian Umum dan Hubungan Masyarakat'],
+            ['name' => 'Bidang Pendidikan Madrasah'],
+            ['name' => 'Bidang Diniyah dan Pondok Pesantren'],
+            ['name' => 'Bidang Pendidikan Agama Islam'],
+            ['name' => 'Bidang Penyelenggara Haji dan Umrah'],
+            ['name' => 'Bidang Urusan Agama Islam'],
+            ['name' => 'Bidang Penerangan Agama Islam, dan Pemberdayaan Zakat dan Wakaf'],
+            ['name' => 'Pembimbing Masyarakat Kristen'],
+            ['name' => 'Pembimbing Masyarakat Katolik'],
+            ['name' => 'Pembimbing Masyarakat Hindu'],
+            ['name' => 'Pembimbing Masyarakat Buddha']
         ]);
     }
 }
