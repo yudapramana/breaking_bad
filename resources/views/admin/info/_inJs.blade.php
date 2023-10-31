@@ -53,7 +53,7 @@
                     }
                 }
                 , revert: {
-                    url: '{{ route("file.upload", 1) }}'
+                    url: '{{ route("file.destroy", 1) }}'
                     , method: 'DELETE'
                     , headers: {
                         'X-CSRF-TOKEN': '{{ csrf_token() }}'
