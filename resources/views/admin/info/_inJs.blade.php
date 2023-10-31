@@ -47,13 +47,13 @@
         FilePond.setOptions({
             server: {
                 process: {
-                    url: '/upload-file/upload'
+                    url: '{{ route("file.upload") }}'
                     , headers: {
                         'X-CSRF-TOKEN': '{{ csrf_token() }}'
                     }
                 }
                 , revert: {
-                    url: '/upload-file/destroy/1'
+                    url: '{{ route("file.upload", 1) }}'
                     , method: 'DELETE'
                     , headers: {
                         'X-CSRF-TOKEN': '{{ csrf_token() }}'
@@ -187,7 +187,7 @@
 
             $.ajax({
                 type: 'PUT',
-                url: `/kategori/add`,
+                url: `{{route('kategori.add')}}`,
                 data: {
                     kategori_name: kategoriName
                 },
@@ -248,7 +248,7 @@
 
             $.ajax({
                 type: 'PUT',
-                url: `/instansi/add`,
+                url: `{{route('instansi.add')}}`,
                 data: {
                     instansi_name: instansiName
                 },
