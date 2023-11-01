@@ -33,6 +33,7 @@
                         <li><a href="https://kemenag.go.id/">Kemenag RI</a></li>
                         <li><a href="https://ppid.kemenag.go.id/">PPID Kemenag RI</a></li>
                         <li><a href="https://pusaka.kemenag.go.id/">Pusaka Kemenag RI</a></li>
+                        <li><a href="{{config('isec.base_url')}}/controlcenter/login">Login</a></li>
 
 
                     </ul>

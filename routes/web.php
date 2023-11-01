@@ -303,7 +303,13 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/messages/store', [\App\Http\Controllers\Visitor\MessageController::class, 'store'])->name('messages.store');;
 });
 
-Auth::routes();
+// Auth::routes();
+Auth::routes(['login' => false]);
+
+Route::prefix('controlcenter')->group(function () {
+    Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login.index');
+    Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');
+});
 
 Route::get('/home', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin.home');
 
