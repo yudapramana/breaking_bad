@@ -4,6 +4,8 @@ use App\Models\RefDataSubKlasifikasi;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -70,24 +72,26 @@ Route::get('/db_old/migrate/posts', function (Request $request) {
             $image_url_raw = 'https://sumbar.kemenag.go.id/v2/' . $post->image_big;
             $image_url = Cloudinary::upload($image_url_raw)->getSecurePath();
 
-
-            $newPost                    = new \App\Models\Post();
-            $newPost->created_at        = $post->created_at;
-            $newPost->cover             = $image_url;
-            $newPost->title             = $post->title;
-            $newPost->slug              = \Str::slug($post->title);
-            $newPost->user_id           = $convertuserid;
-            $newPost->category_id       = 1;
-            $newPost->desc              = $post->content;
-            $newPost->keywords          = $post->keywords;
-            $newPost->meta_desc         = $post->title;
-            $newPost->id_kabkota        = $post->daerah;
-            $newPost->is_featured       = 1;
-            $newPost->is_slider         = 0;
-            $newPost->is_recommended    = 0;
-            $newPost->is_breaking       = 0;
-            $newPost->old_id            = $post->id;
-            $newPost->save();
+            $fPost = \App\Models\Post::where('title', $post->title)->first();
+            if (!$fPost) {
+                $newPost                    = new \App\Models\Post();
+                $newPost->created_at        = $post->created_at;
+                $newPost->cover             = $image_url;
+                $newPost->title             = $post->title;
+                $newPost->slug              = Str::slug($post->title);
+                $newPost->user_id           = $convertuserid;
+                $newPost->category_id       = Str::contains(strtolower($post->content), ['jakarta']) ? 3 : 1;
+                $newPost->desc              = $post->content;
+                $newPost->keywords          = $post->keywords;
+                $newPost->meta_desc         = $post->title;
+                $newPost->id_kabkota        = $post->daerah;
+                $newPost->is_featured       = 1;
+                $newPost->is_slider         = 0;
+                $newPost->is_recommended    = 0;
+                $newPost->is_breaking       = 0;
+                $newPost->old_id            = $post->id;
+                $newPost->save();
+            }
         }
         return 'done';
     } else {
