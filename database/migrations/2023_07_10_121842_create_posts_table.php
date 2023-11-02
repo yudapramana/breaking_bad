@@ -39,6 +39,7 @@ class CreatePostsTable extends Migration
             $table->tinyInteger('is_recommended')->unsigned()->default(0);
             $table->tinyInteger('is_breaking')->unsigned()->default(0);
             $table->tinyInteger('published')->unsigned()->default(0);
+            $table->unsignedInteger('old_id')->default(0);
 
 
         });

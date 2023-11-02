@@ -23,6 +23,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 1,
                 'category_id' => 1,
+                'old_id' => 0,
                 'user_id' => 4,
                 'cover' => 'https://res.cloudinary.com/dezj1x6xp/image/upload/v1694591002/PandanViewMandeh/image_1920x_64ff364b73879_xzhppt.jpg',
                 'title' => 'Terbanyak se Indonesia, 46 Film Ikuti KFPI tingkat Sumatera Barat',
@@ -45,6 +46,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 2,
                 'category_id' => 1,
+                'old_id' => 0,
                 'user_id' => 4,
                 'cover' => 'https://res.cloudinary.com/dezj1x6xp/image/upload/v1694595047/PandanViewMandeh/image_1920x_65002dc69c43f_h6hrbk.jpg',
                 'title' => 'Sepuluh Karya Terbaik Lolos Nominasi KFPI Tingkat Sumatera Barat',
@@ -67,6 +69,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 3,
                 'category_id' => 3,
+                'old_id' => 0,
                 'user_id' => 4,
                 'cover' => 'https://res.cloudinary.com/dezj1x6xp/image/upload/v1694595498/PandanViewMandeh/image_1920x_64f9153db0b8e_rrlbxm.jpg',
                 'title' => 'Evaluasi Haji, Gus Men Minta Kaji Istithaah Kesehatan dan Masa Tinggal Jemaah',
@@ -89,6 +92,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 4,
                 'category_id' => 7,
+                'old_id' => 0,
                 'user_id' => 4,
                 'cover' => NULL,
                 'title' => 'Struktur Organisasi',
@@ -111,6 +115,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 5,
                 'category_id' => 7,
+                'old_id' => 0,
                 'user_id' => 4,
                 'cover' => NULL,
                 'title' => 'Sejarah Kementerian Agama',
@@ -133,6 +138,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 6,
                 'category_id' => 7,
+                'old_id' => 0,
                 'user_id' => 4,
                 'cover' => NULL,
                 'title' => 'Visi Misi Kementerian Agama',
@@ -155,6 +161,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 7,
                 'category_id' => 7,
+                'old_id' => 0,
                 'user_id' => 4,
                 'cover' => NULL,
                 'title' => 'Kedudukan, Tugas dan Fungsi Kementerian Agama Provinsi',
@@ -177,6 +184,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 8,
                 'category_id' => 1,
+                'old_id' => 0,
                 'user_id' => 4,
                 'cover' => 'https://res.cloudinary.com/dezj1x6xp/image/upload/v1698226310/PandanViewMandeh/image_750x_6537ff2651d35_tkh2q1.jpg',
                 'title' => 'Mudzakarah Perhajian Indonesia 2023 Hasilkan 9 Rekomendasi, Istitha\'ah Jadi Syarat Pelunasan Biaya Haji',
@@ -199,6 +207,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 9,
                 'category_id' => 1,
+                'old_id' => 0,
                 'user_id' => 4,
                 'cover' => 'https://res.cloudinary.com/dezj1x6xp/image/upload/v1698226400/PandanViewMandeh/image_1920x_6537d4d64c19c_is29ib.jpg',
                 'title' => 'Kabid Papkis H Naharudin Ikuti Kegiatan Finalisasi dan Revisi Pagu Alokasi Anggaran Ditjen Pendis Kemenag RI',
@@ -221,6 +230,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 10,
                 'category_id' => 2,
+                'old_id' => 0,
                 'user_id' => 4,
                 'cover' => 'https://res.cloudinary.com/dezj1x6xp/image/upload/v1698227734/PandanViewMandeh/image_1920x_651d332f8384d_jiyoq3.jpg',
                 'title' => 'MTsN 6 Padang Dikunjungi oleh Balai Bahasa Sumatera Barat',
@@ -243,6 +253,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 11,
                 'category_id' => 2,
+                'old_id' => 0,
                 'user_id' => 4,
                 'cover' => 'https://res.cloudinary.com/dezj1x6xp/image/upload/v1698241612/PandanViewMandeh/image_750x_651e3c0c8f741_ynaipw.jpg',
                 'title' => 'Kabupaten Solok Tuan Rumah Pertandingan Persahatan Tiga Kemenag',
@@ -265,6 +276,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 12,
                 'category_id' => 2,
+                'old_id' => 0,
                 'user_id' => 4,
                 'cover' => 'https://res.cloudinary.com/dezj1x6xp/image/upload/v1698241776/PandanViewMandeh/image_750x_651b6cb95357f_t3pshw.jpg',
                 'title' => 'Dua Siswi MAN 1 Agam Juarai Lomba Menulis Dan Lahirkan Dua Buku Bergengsi',
@@ -287,6 +299,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 13,
                 'category_id' => 2,
+                'old_id' => 0,
                 'user_id' => 4,
                 'cover' => 'https://res.cloudinary.com/dezj1x6xp/image/upload/v1698241885/PandanViewMandeh/image_1920x_6468566346f0a_naxoav.jpg',
                 'title' => 'Tutup Raker Pessel, Helmi Tekankan Pentingnya Pedomani Sembilan Hasil Rakernas',
@@ -309,6 +322,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 14,
                 'category_id' => 2,
+                'old_id' => 0,
                 'user_id' => 4,
                 'cover' => 'https://res.cloudinary.com/dezj1x6xp/image/upload/v1698243360/PandanViewMandeh/image_750x_6510ecc5bd17f_bknezk.jpg',
                 'title' => 'H Syamsul Arifin Ingatkan ASN Kemenag Sijunjung Selalu Jaga Disiplin',
@@ -331,6 +345,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 15,
                 'category_id' => 2,
+                'old_id' => 0,
                 'user_id' => 4,
                 'cover' => 'https://res.cloudinary.com/dezj1x6xp/image/upload/v1698243487/PandanViewMandeh/image_750x_651293b263711_xvahcx.jpg',
                 'title' => 'Lima Tips Mewujudkan Keluarga Bahagia Dan Langgeng',
@@ -353,6 +368,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 16,
                 'category_id' => 7,
+                'old_id' => 0,
                 'user_id' => 4,
                 'cover' => NULL,
                 'title' => 'Kakanwil Sumbar dari Masa ke Masa',
@@ -375,6 +391,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 17,
                 'category_id' => 7,
+                'old_id' => 0,
                 'user_id' => 4,
                 'cover' => NULL,
                 'title' => 'Tentang Sumatera Barat',
@@ -397,6 +414,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 18,
                 'category_id' => 1,
+                'old_id' => 0,
                 'user_id' => 4,
                 'cover' => 'https://res.cloudinary.com/dezj1x6xp/image/upload/v1698705042/PandanViewMandeh/image_750x_653a04f212ac8_ohiv96.jpg',
                 'title' => 'Jabat Kakanwil Kemenag Sumbar, Ini Profil Singkat Putra Kampar, Mahyudin',
@@ -419,6 +437,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 19,
                 'category_id' => 1,
+                'old_id' => 0,
                 'user_id' => 4,
                 'cover' => 'https://res.cloudinary.com/dezj1x6xp/image/upload/v1698705148/PandanViewMandeh/image_750x_653dd318c387f_cfi1ys.jpg',
                 'title' => 'Tempuh 14 Jam Perjalanan, Kafilah STQH Sumbar Tiba di Kota Jambi',
@@ -441,6 +460,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 20,
                 'category_id' => 3,
+                'old_id' => 0,
                 'user_id' => 4,
                 'cover' => 'https://res.cloudinary.com/dezj1x6xp/image/upload/v1698705206/PandanViewMandeh/image_750x_64f741f945c1c_y3c76s.jpg',
                 'title' => 'Gus Yaqut Kembali Nahkodai Federasi Wing Chun Indonesia',
@@ -463,6 +483,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 21,
                 'category_id' => 1,
+                'old_id' => 0,
                 'user_id' => 4,
                 'cover' => 'https://res.cloudinary.com/dezj1x6xp/image/upload/v1698705472/PandanViewMandeh/image_750x_64f9978bcbc63_h4lybq.jpg',
                 'title' => 'Dua Siswa Perguruan Islam Ar Risalah Padang Raih Medali pada KSM Nasional',
@@ -485,6 +506,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 22,
                 'category_id' => 1,
+                'old_id' => 0,
                 'user_id' => 4,
                 'cover' => 'https://res.cloudinary.com/dezj1x6xp/image/upload/v1698705544/PandanViewMandeh/image_750x_64ff1f0476ec8_y18hi6.jpg',
                 'title' => 'Kemenag Umumkan 10.300 Hasil Optimalisasi Pengisian Kebutuhan PPPK',
@@ -507,6 +529,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 23,
                 'category_id' => 1,
+                'old_id' => 0,
                 'user_id' => 4,
                 'cover' => 'https://res.cloudinary.com/dezj1x6xp/image/upload/v1698705636/PandanViewMandeh/image_750x_65092d9529b24_mxnmd4.jpg',
                 'title' => 'Promosi, Tiga Pejabat Eselon III Kemenag Sumbar Dilantik',
@@ -529,6 +552,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 24,
                 'category_id' => 1,
+                'old_id' => 0,
                 'user_id' => 4,
                 'cover' => 'https://res.cloudinary.com/dezj1x6xp/image/upload/v1698705743/PandanViewMandeh/image_750x_650934d38f126_j5lybc.jpg',
                 'title' => 'Lantik Tiga Kakan Kemenag, Helmi: Jabatan Kesempatan untuk Menebar Kebaikan bagi Bangsa dan Agama',
@@ -551,6 +575,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 25,
                 'category_id' => 3,
+                'old_id' => 0,
                 'user_id' => 4,
                 'cover' => 'https://res.cloudinary.com/dezj1x6xp/image/upload/v1698705804/PandanViewMandeh/image_750x_650959c4d65de_wbqbyw.jpg',
                 'title' => 'Siswa Madrasah Bermain MB Junior bersama Iriana Jokowi dan OASE KIM',
@@ -573,6 +598,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 26,
                 'category_id' => 1,
+                'old_id' => 0,
                 'user_id' => 4,
                 'cover' => 'https://res.cloudinary.com/dezj1x6xp/image/upload/v1698705859/PandanViewMandeh/image_750x_651f56b3886bb_zschn8.jpg',
                 'title' => 'Wujudkan Program Prioritas, Direktur Urais Paparkan Lima Target Revitalisasi KUA',
@@ -595,6 +621,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 27,
                 'category_id' => 1,
+                'old_id' => 0,
                 'user_id' => 4,
                 'cover' => 'https://res.cloudinary.com/dezj1x6xp/image/upload/v1698705952/PandanViewMandeh/image_750x_653b99bcf0625_hnskx4.jpg',
                 'title' => '127 ASN Ikuti Asesmen, Mahyudin:  Kemenag Sumbar Miliki Andil Tingkatkan Kinerja ASN',
@@ -617,6 +644,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 28,
                 'category_id' => 1,
+                'old_id' => 0,
                 'user_id' => 4,
                 'cover' => 'https://res.cloudinary.com/dezj1x6xp/image/upload/v1698706317/PandanViewMandeh/image_750x_653d34160d6ff_jwxxim.jpg',
                 'title' => 'Bertolak Menuju Jambi, Kabiro Kesra Ajak Kafilah Sumbar Disiplin dan Tetap Berlatih',
@@ -639,6 +667,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 29,
                 'category_id' => 1,
+                'old_id' => 0,
                 'user_id' => 4,
                 'cover' => 'https://res.cloudinary.com/dezj1x6xp/image/upload/v1698706415/PandanViewMandeh/image_750x_653b5a95720e3_lw7vl0.jpg',
                 'title' => 'Gubernur Mahyeldi Minta Kontingen STQH Nasional XXVII Ikhlas dan Disiplin demi Hasil Terbaik',
@@ -661,6 +690,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 30,
                 'category_id' => 1,
+                'old_id' => 0,
                 'user_id' => 4,
                 'cover' => 'https://res.cloudinary.com/dezj1x6xp/image/upload/v1698706576/PandanViewMandeh/image_750x_653aea2433912_x2kdkw.jpg',
                 'title' => 'Antisipasi Konflik, Kemenag Sumbar Lakukan Identifikasi Dini Aliran Paham Keagamaan',
@@ -683,6 +713,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 31,
                 'category_id' => 7,
+                'old_id' => 0,
                 'user_id' => 1,
                 'cover' => NULL,
                 'title' => 'Kabupaten Pasaman Barat',
@@ -705,6 +736,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 32,
                 'category_id' => 7,
+                'old_id' => 0,
                 'user_id' => 1,
                 'cover' => NULL,
                 'title' => 'Kabupaten Dharmasraya',
@@ -727,6 +759,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 33,
                 'category_id' => 7,
+                'old_id' => 0,
                 'user_id' => 1,
                 'cover' => NULL,
                 'title' => 'Kabupaten Kepulauan Mentawai',
@@ -749,6 +782,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 34,
                 'category_id' => 7,
+                'old_id' => 0,
                 'user_id' => 1,
                 'cover' => NULL,
                 'title' => 'Kabupaten Lima Puluh Kota',
@@ -771,6 +805,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 35,
                 'category_id' => 7,
+                'old_id' => 0,
                 'user_id' => 1,
                 'cover' => NULL,
                 'title' => 'Kabupaten Padang Pariaman',
@@ -793,6 +828,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 36,
                 'category_id' => 7,
+                'old_id' => 0,
                 'user_id' => 1,
                 'cover' => NULL,
                 'title' => 'Kabupaten Pasaman',
@@ -815,6 +851,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 37,
                 'category_id' => 7,
+                'old_id' => 0,
                 'user_id' => 1,
                 'cover' => NULL,
                 'title' => 'Kabupaten Sijunjung',
@@ -837,6 +874,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 38,
                 'category_id' => 7,
+                'old_id' => 0,
                 'user_id' => 1,
                 'cover' => NULL,
                 'title' => 'Kota Solok',
@@ -859,6 +897,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 39,
                 'category_id' => 7,
+                'old_id' => 0,
                 'user_id' => 1,
                 'cover' => NULL,
                 'title' => 'Kabupaten Solok Selatan',
@@ -881,6 +920,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 40,
                 'category_id' => 7,
+                'old_id' => 0,
                 'user_id' => 1,
                 'cover' => NULL,
                 'title' => 'Kabupaten Tanah Datar',
@@ -903,6 +943,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 41,
                 'category_id' => 7,
+                'old_id' => 0,
                 'user_id' => 1,
                 'cover' => NULL,
                 'title' => 'Kota Bukittinggi',
@@ -925,6 +966,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 42,
                 'category_id' => 7,
+                'old_id' => 0,
                 'user_id' => 1,
                 'cover' => NULL,
                 'title' => 'Kota Padang',
@@ -947,6 +989,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 43,
                 'category_id' => 7,
+                'old_id' => 0,
                 'user_id' => 1,
                 'cover' => NULL,
                 'title' => 'Kota Padang Panjang',
@@ -969,6 +1012,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 44,
                 'category_id' => 7,
+                'old_id' => 0,
                 'user_id' => 1,
                 'cover' => NULL,
                 'title' => 'Kota Pariaman',
@@ -991,6 +1035,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 45,
                 'category_id' => 7,
+                'old_id' => 0,
                 'user_id' => 1,
                 'cover' => NULL,
                 'title' => 'Kota Payakumbuh',
@@ -1013,6 +1058,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 46,
                 'category_id' => 7,
+                'old_id' => 0,
                 'user_id' => 1,
                 'cover' => NULL,
                 'title' => 'Kota Sawahlunto',
@@ -1035,6 +1081,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 47,
                 'category_id' => 7,
+                'old_id' => 0,
                 'user_id' => 1,
                 'cover' => NULL,
                 'title' => 'Kabupaten Agam',
@@ -1057,6 +1104,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 48,
                 'category_id' => 7,
+                'old_id' => 0,
                 'user_id' => 1,
                 'cover' => NULL,
                 'title' => 'Kabupaten Pesisir Selatan',
@@ -1079,6 +1127,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 49,
                 'category_id' => 7,
+                'old_id' => 0,
                 'user_id' => 1,
                 'cover' => NULL,
                 'title' => 'Kabupaten Solok',
@@ -1101,6 +1150,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 50,
                 'category_id' => 3,
+                'old_id' => 0,
                 'user_id' => 4,
                 'cover' => 'https://res.cloudinary.com/dezj1x6xp/image/upload/v1698768992/PandanViewMandeh/image_750x_6540257dd943a_dmapqj.jpg',
                 'title' => 'Buka STQH XXVII Nasional, Wapres Minta Generasi Muda Dekat dengan Al-Qur\'an',
@@ -1123,6 +1173,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 51,
                 'category_id' => 1,
+                'old_id' => 0,
                 'user_id' => 4,
                 'cover' => 'https://res.cloudinary.com/dezj1x6xp/image/upload/v1698769026/PandanViewMandeh/image_750x_65402ac279657_jbfjld.jpg',
                 'title' => 'Kunjungi Kafilah, Wagub Sumbar Minta Peserta Jaga Kesehatan, Jangan Minum Selain Air Putih',
@@ -1145,6 +1196,7 @@ class PostsTableSeeder extends Seeder
             array (
                 'id' => 52,
                 'category_id' => 1,
+                'old_id' => 73492,
                 'user_id' => 4,
                 'cover' => 'https://res.cloudinary.com/dezj1x6xp/image/upload/v1698769111/PandanViewMandeh/image_750x_6540451e864dc_ndze43.jpg',
                 'title' => 'Motivasi Kafilah Sumbar, Mahyudin: Tunjukkan Kemampuan Maksimal Insya Allah Juara',

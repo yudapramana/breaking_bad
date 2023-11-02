@@ -16,6 +16,85 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::get('/cd_upload_test', function (Request $request) {
+    $url = 'https://sumbar.kemenag.go.id/v2/uploads/images/image_600x460_65426b3f5b50c.jpg';
+    $uploadedFileUrl = Cloudinary::upload($url)->getSecurePath();
+    return $uploadedFileUrl;
+});
+Route::get('/db_old/migrate/posts', function (Request $request) {
+
+    $newpostoldid = \App\Models\Post::orderBy('id', 'desc')->first()->old_id;
+
+    $posts = \App\Models\OldPost::where('id', '>', $newpostoldid)->get();
+
+    if (Count($posts) > 0) {
+        foreach ($posts as $post) {
+            $convertuserid = $post->user_id;
+
+            switch ($convertuserid) {
+                case 1:
+                    // adminrina
+                    $convertuserid = 7;
+                    break;
+
+                case 13:
+                    // adminrina
+                    $convertuserid = 4;
+                    break;
+
+                case 49:
+                    // adminfitradewi
+                    $convertuserid = 4;
+                    break;
+
+                case 296:
+                    // adminrhama
+                    $convertuserid = 2;
+                    break;
+
+                case 480:
+                    // admineri
+                    $convertuserid = 3;
+                    break;
+
+                case 562:
+                    // adminvethriarahmi
+                    $convertuserid = 5;
+                    break;
+
+                default:
+                    # code...
+                    break;
+            }
+
+            $image_url_raw = 'https://sumbar.kemenag.go.id/v2/' . $post->image_big;
+            $image_url = Cloudinary::upload($image_url_raw)->getSecurePath();
+
+
+            $newPost                    = new \App\Models\Post();
+            $newPost->created_at        = $post->created_at;
+            $newPost->cover             = $image_url;
+            $newPost->title             = $post->title;
+            $newPost->slug              = \Str::slug($post->title);
+            $newPost->user_id           = $convertuserid;
+            $newPost->category_id       = 1;
+            $newPost->desc              = $post->content;
+            $newPost->keywords          = $post->keywords;
+            $newPost->meta_desc         = $post->title;
+            $newPost->id_kabkota        = $post->daerah;
+            $newPost->is_featured       = 1;
+            $newPost->is_slider         = 0;
+            $newPost->is_recommended    = 0;
+            $newPost->is_breaking       = 0;
+            $newPost->old_id            = $post->id;
+            $newPost->save();
+        }
+        return 'done';
+    } else {
+        return 'data has been updated';
+    }
+});
+
 Route::get('/users/all', function (Request $request) {
 
     //    $users = \App\Models\User::select('name', 'username', 'plain_password')->get();
@@ -147,19 +226,18 @@ Route::group(['middleware' => ['web']], function () {
         } elseif ($request->has('category')) {
             $search = $request->input('category');
 
-            if($request->has('id_kabkota')) {
+            if ($request->has('id_kabkota')) {
                 $kabkotaname = \App\Models\Kabkota::find($request->input('id_kabkota'))->name;
                 $posts = \App\Models\Post::whereHas('category', function ($q) use ($search) {
                     $q->where('slug', $search);
                 })
-                ->where('id_kabkota', $request->input('id_kabkota'))
-                ->orderBy('created_at', 'DESC')->paginate(8);
+                    ->where('id_kabkota', $request->input('id_kabkota'))
+                    ->orderBy('created_at', 'DESC')->paginate(8);
             } else {
                 $posts = \App\Models\Post::whereHas('category', function ($q) use ($search) {
                     $q->where('slug', $search);
                 })->orderBy('created_at', 'DESC')->paginate(8);
             }
-            
         } elseif ($request->has('tag')) {
             $search = $request->input('tag');
             $posts = \App\Models\Post::whereHas('tags', function ($q) use ($search) {

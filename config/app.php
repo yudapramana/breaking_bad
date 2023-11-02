@@ -182,6 +182,7 @@ return [
         // OwenIt\Auditing\AuditingServiceProvider::class,
 
         // Mews\Captcha\CaptchaServiceProvider::class,
+        CloudinaryLabs\CloudinaryLaravel\CloudinaryServiceProvider::class,
     ],
 
     /*
@@ -238,6 +239,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Visitor' => Shetabit\Visitor\Facade\Visitor::class,
         'Captcha' => Mews\Captcha\Facades\Captcha::class,
+        'Cloudinary' => CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary::class,
 
 
     ],
