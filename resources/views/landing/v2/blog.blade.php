@@ -86,14 +86,13 @@
                             <a href="{{config('isec.base_url')}}/blog?category={{app('request')->input('category')}}">Berita
                                 {{
                                 app('request')->input('category') ?
-                                Str::ucfirst(app('request')->input('category')) : 'Semua
-                                Berita' }}
+                                Str::ucfirst(app('request')->input('category')) : 'Semua Berita' }}
                             </a>
                             @else
                             Berita {{
                             app('request')->input('category') ?
-                            Str::ucfirst(app('request')->input('category')) : 'Semua
-                            Berita' }}
+                            Str::ucfirst(app('request')->input('category')) : ( app('request')->input('author') ?
+                            'oleh '. ucwords(strtolower(app('request')->input('author'))) :'Semua Berita') }}
                             @endif
                         </li>
 
@@ -114,8 +113,8 @@
 
                     <h1 class="greenext" style="border-bottom: 2px solid #dae0e5 !important;">Berita {{
                         app('request')->input('category') ?
-                        Str::ucfirst(app('request')->input('category')) : 'Semua
-                        Berita' }}
+                        Str::ucfirst(app('request')->input('category')) : ( app('request')->input('author') ?
+                        'oleh '. ucwords(strtolower(app('request')->input('author'))) :'Semua Berita') }}
                     </h1>
 
                     @endif

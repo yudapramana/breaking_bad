@@ -67,7 +67,8 @@
                                 <li><a href="#"><i class="ion-calendar"></i> {{ $post->created_at->format('d F Y')
                                         }}</a></li>
                                 <li><a href="#"><i class="ion-eye"></i> {{$post->view_count}} Reads</a></li>
-                                <li><a href="#"><i class="ion-android-contacts"></i> {{ $post->user->name }}</a>
+                                <li><a href="{{config('isec.base_url')}}/blog?author={{$post->user->name}}"><i
+                                            class="ion-android-contacts"></i> {{ $post->user->name }}</a>
                                 </li>
                             </ul>
 

@@ -247,6 +247,11 @@ Route::group(['middleware' => ['web']], function () {
             $posts = \App\Models\Post::whereHas('tags', function ($q) use ($search) {
                 $q->where('slug', $search);
             })->orderBy('created_at', 'DESC')->paginate(8);
+        } elseif ($request->has('author')) {
+            $search = $request->input('author');
+            $posts = \App\Models\Post::whereHas('user', function ($q) use ($search) {
+                $q->where('name', $search);
+            })->orderBy('created_at', 'DESC')->paginate(8);
         } else {
             $posts = \App\Models\Post::orderBy('created_at', 'DESC')->paginate(8);
         }
