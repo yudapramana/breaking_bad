@@ -350,6 +350,17 @@ Route::group(['middleware' => ['web']], function () {
         ]);
     });
 
+    Route::get('cookie/{slug}', function (Request $request, $slug) {
+        $cookie_name = (\Str::replace('.', '', ($request->ip())) . '-' . $slug);
+
+        $cookie_value = \Cookie::get($cookie_name);
+        if ($cookie_value === null) {
+            $cookie = cookie($cookie_name, '1', 60); //set the cookie
+        }
+
+        return $cookie;
+    });
+
     Route::get('post/{slug}', function (Request $request, $slug) {
         $post = \App\Models\Post::where('slug', $slug)->first();
 
