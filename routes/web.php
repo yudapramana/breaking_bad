@@ -359,6 +359,8 @@ Route::group(['middleware' => ['web']], function () {
         if ($cookie == '') { //check if cookie is set
             $cookie = cookie($cookie_name, '1', 60); //set the cookie
             $post->incrementReadCount(); //count the view
+        } else {
+            $post->incrementReadCount(); //count the view
         }
 
         if ($post->showPost()) { // this will test if the user viwed the post or not
