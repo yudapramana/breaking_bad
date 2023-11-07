@@ -197,7 +197,8 @@
                                             </h5>
                                             {{-- <p class="small m-0">{{ $post->created_at->format('l, d F Y') }}
                                                 --}}
-                                            <p class="small m-0">{{ $post->tanggal }}
+                                            <p class="small m-0">{{ $post->tanggal }} | {{ $post->reads }}
+                                                reads
                                             </p>
                                         </div>
                                     </div>
