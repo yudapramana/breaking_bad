@@ -289,7 +289,8 @@
                                     </a>
                                 </h6>
 
-                                <p class="font-small small m-0">{{$featureds[0]->tanggal}}
+                                <p class="font-small small m-0">{{$featureds[0]->tanggal}} | {{ $featureds[0]->reads }}
+                                    reads
                                 </p>
                             </div>
                         </div>
@@ -325,7 +326,8 @@
                                     </a>
                                 </h6>
 
-                                <p class="font-small small m-0">{{$featureds[1]->tanggal}}
+                                <p class="font-small small m-0">{{$featureds[1]->tanggal}} | {{ $featureds[1]->reads }}
+                                    reads
                                 </p>
                             </div>
                         </div>
@@ -362,7 +364,8 @@
                                     </a>
                                 </h5>
 
-                                <p class="font-small small m-0">{{$featureds[2]->tanggal}}</p>
+                                <p class="font-small small m-0">{{$featureds[2]->tanggal}} | {{ $featureds[2]->reads }}
+                                    reads</p>
 
                                 <div class="mb-0 pb-0" style="font-size: smaller">
                                     <pre class="mb-0 pb-0" style="white-space: pre-wrap;">
@@ -405,7 +408,8 @@
                                     </a>
                                 </h6>
 
-                                <p class="font-small small m-0">{{$featureds[3]->tanggal}}
+                                <p class="font-small small m-0">{{$featureds[3]->tanggal}} | {{ $featureds[3]->reads }}
+                                    reads
                                 </p>
                             </div>
                         </div>
@@ -441,7 +445,8 @@
                                     </a>
                                 </h6>
 
-                                <p class="font-small small m-0">{{$featureds[4]->tanggal}}
+                                <p class="font-small small m-0">{{$featureds[4]->tanggal}} | {{ $featureds[4]->reads }}
+                                    reads
                                 </p>
                             </div>
                         </div>
@@ -478,7 +483,7 @@
                         <h6><a href="{{config('isec.base_url')}}/post/{{$featureds[5]->slug}}">{{\Illuminate\Support\Str::limit($featureds[5]->title,
                                 83, $end='...')}}</a>
                         </h6>
-                        <p class="small m-0">{{ $featureds[5]->tanggal }}
+                        <p class="small m-0">{{ $featureds[5]->tanggal }} | {{ $featureds[5]->reads }} reads
                         </p>
                     </div>
                 </div>
@@ -509,7 +514,7 @@
                         <h6><a href="{{config('isec.base_url')}}/post/{{$featureds[6]->slug}}">{{\Illuminate\Support\Str::limit($featureds[6]->title,
                                 83, $end='...')}}</a>
                         </h6>
-                        <p class="small m-0">{{ $featureds[6]->tanggal }}
+                        <p class="small m-0">{{ $featureds[6]->tanggal }} | {{ $featureds[6]->reads }} reads
                         </p>
                     </div>
                 </div>
@@ -540,7 +545,7 @@
                         <h6><a href="{{config('isec.base_url')}}/post/{{$featureds[7]->slug}}">{{\Illuminate\Support\Str::limit($featureds[7]->title,
                                 83, $end='...')}}</a>
                         </h6>
-                        <p class="small m-0">{{ $featureds[7]->tanggal }}
+                        <p class="small m-0">{{ $featureds[7]->tanggal }} | {{ $featureds[7]->reads }} reads
                         </p>
                     </div>
                 </div>
@@ -643,7 +648,7 @@
                                             <h6><a href="{{config('isec.base_url')}}/post/{{$post->slug}}">{{\Illuminate\Support\Str::limit($post->title,
                                                     70, $end='...')}}</a>
                                             </h6>
-                                            <p class="small m-0">{{ $post->tanggal }}
+                                            <p class="small m-0">{{ $post->tanggal }} | {{ $post->reads }} reads
                                             </p>
                                         </div>
                                     </div>
