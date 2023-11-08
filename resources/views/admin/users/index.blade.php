@@ -15,6 +15,10 @@
         max-width: 120px;
     }
 
+    #preview_cover {
+        max-width: 120px !important;
+    }
+
     .profile-edit {
         max-width: 120px;
     }
@@ -142,6 +146,52 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+
+    // Cover
+    var coverWidget = cloudinary.createUploadWidget({
+        cloudName: 'dezj1x6xp'
+        , uploadPreset: 'pandanviewmandeh'
+        , theme: 'minimal'
+        , multiple: false
+        , max_file_size: 10048576
+        , background: "white"
+        , quality: 20
+    }, (error, result) => {
+        if (!error && result && result.event === "success") {
+            console.log('Info Arsip Masuk: ', result.info);
+            var linklogo = result.info.secure_url;
+            $('#new-profile_photo').val(linklogo);
+
+            $('#cover_image_url_btn').hide();
+
+            $('.show-cover-box').show();
+            $('#preview-cover').attr("src", linklogo);
+
+        }
+    });
+
+    document.getElementById("cover_image_url_btn").addEventListener("click", function() {
+        coverWidget.open();
+    }, false);
+
+    $('input[name="roles[]"]:checkbox').change(function() {
+
+        var id = $(this).val(); // this gives me null
+        var checked = $(this).is(':checked');
+        if (id == 'kontributor_daerah') {
+            if(checked) {
+                $('.box-daerah').show();
+            } else {
+                $('.box-daerah').hide();
+            }
+        } else {
+            $('.box-daerah').hide();
+        }
+        // do stuff here. It will fire on any checkbox change
+
+    }); 
+
+
     var table = $('#example').DataTable({
         orderable: false
         , sort: false
@@ -246,6 +296,9 @@
 
 
         $(document).on("click", "#addBtn", function() {
+            $('#preview-cover').attr("src", "https://res.cloudinary.com/dezj1x6xp/image/upload/v1699422732/PandanViewMandeh/1000_F_589932782_vQAEAZhHnq1QCGu5ikwrYaQD0Mmurm0N_oiz03p.jpg");
+
+            $('.box-daerah').hide();
             $('.edit-state').hide();
             $('#id_user').val('');
             $('#fForm')[0].reset();
@@ -271,6 +324,30 @@
             console.log('data.profile_picture')
             console.log(data.profile_photo)
             $('#profile_photo_src').attr("src", data.profile_photo);
+
+            if(data.first_role == 'kontributor_daerah') {
+                $('.box-daerah').show();
+            } else {
+                $('.box-daerah').hide();
+            }
+            $('#kabkota').val(data.id_kabkota);
+
+
+            $(document).on('click', '#retry-cover-btn', function(e) {
+                $('#cover_image_url_btn').show();
+                $('.show-cover-box').hide();
+            });
+
+            $('#new-profile_photo').val(data.profile_photo ? data.profile_photo : "https://res.cloudinary.com/dezj1x6xp/image/upload/v1699422732/PandanViewMandeh/1000_F_589932782_vQAEAZhHnq1QCGu5ikwrYaQD0Mmurm0N_oiz03p.jpg");
+            $('#cover_image_url_btn').hide();
+            $('.show-cover-box').show();
+            $('#preview-cover').attr("src", data.profile_photo ? data.profile_photo : "https://res.cloudinary.com/dezj1x6xp/image/upload/v1699422732/PandanViewMandeh/1000_F_589932782_vQAEAZhHnq1QCGu5ikwrYaQD0Mmurm0N_oiz03p.jpg");
+
+            // $('#new-content_image_url').val(data.content_image_url);
+            // $('#content_image_url_btn').hide();
+            // $('.show-content-box').show();
+            // $('#preview-content').attr("src", data.content_image_url);
+            //
 
             $('#name').val(data.name);
             $('#username').val(data.username);

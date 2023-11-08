@@ -35,12 +35,16 @@ class UserController extends Controller
                     $btn = '';
                     if ($user->hasRole('super_administrator') || $user->hasRole('administrator')) {
                         $btn .= '<button id="editBtn" type="button" class="btn btn-sm btn-warning btn-xs" data-bs-toggle="modal" data-bs-target="#fModal" data-bs-title="Edit Data Pengguna" data-title="Edit Data Pengguna"><i class="bi bi-pencil-square"></i></button>&nbsp;';
-                        $btn .= '<button id="destroyBtn" type="button" class="btn btn-sm btn-danger btn-xs" data-bs-user_id="'. $user->id  .'" data-user_id="'.  $user->id  .'"><i class="bi bi-trash-fill"></i></button>';
+                        $btn .= '<button id="destroyBtn" type="button" class="btn btn-sm btn-danger btn-xs" data-bs-user_id="' . $user->id  . '" data-user_id="' .  $user->id  . '"><i class="bi bi-trash-fill"></i></button>';
                     } else {
                         $btn = '[-]';
                     }
                     return $btn;
                 })
+                ->addColumn('first_role', function ($user) {
+                    $roles = $user->getRoleNames();
+                    return $roles->last();
+                })    
                 ->addColumn('roles_detail', function ($user) {
                     $roles = $user->getRoleNames();
                     $btn = '<ul class="ul-ba">';
@@ -54,7 +58,7 @@ class UserController extends Controller
                     $profilePhoto = $user->profile_photo;
                     if ($profilePhoto) {
                         $html = '<div class="profile-edit">
-                                    <img class="profile-edit" id="profile_photo_jst" src="'.$profilePhoto.'" alt="None">
+                                    <img class="profile-edit" id="profile_photo_jst" src="' . $profilePhoto . '" alt="None">
                                 </div>';
                     } else {
                         $html = '-';
@@ -66,7 +70,7 @@ class UserController extends Controller
                 ->addColumn('contact', function ($user) {
                     $noHP = $user->no_hp ? $user->no_hp : '<span class="text-danger" style="font-size:smaller!important;">Belum Set No HP</span>';
                     $html = '<span>' . $noHP .  '</span><br>';
-                    $html .='<span class="text-muted" style="font-size:smaller!important;">'.$user->email.  '</span>';
+                    $html .= '<span class="text-muted" style="font-size:smaller!important;">' . $user->email .  '</span>';
 
                     if (Hash::check($user->username, $user->password)) {
                         $html .= '<br><span class="text-danger" style="font-size:smaller!important;">Belum Ganti Password</span>';
@@ -82,28 +86,30 @@ class UserController extends Controller
                     return '<span class="badge ' . $indicator . '">' . strtoupper($user->status) . '</span>';
                 })
                 ->addcolumn('name_username', function ($user) {
-                    $html = $user->name .'<br>';
-                    $html .= '<span class="text-muted" style="font-size:smaller!important;">'.$user->username.  '</span> <br>';
+                    $html = $user->name . '<br>';
+                    $html .= '<span class="text-muted" style="font-size:smaller!important;">' . $user->username .  '</span> <br>';
                     // $html .= '<span class="text-muted" style="font-size:smaller!important;">'.$user->age.  '</span> <br>';
-                    $html .= '<span class="text-muted" style="font-size:smaller!important;">Daerah: '.$user->kabkota->name.  '</span>';
+                    $html .= '<span class="text-muted" style="font-size:smaller!important;">Daerah: ' . $user->kabkota->name .  '</span>';
                     return $html;
                 })
                 ->editColumn('last_login_at', function ($user) {
                     $html = $user->last_login_at ? $user->last_login_at : '<span class="text-danger" style="font-size:smaller!important;">Belum Login</span> ';
-                    $html .= '<br><span class="text-muted" style="font-size:smaller!important;">'.$user->last_login_ip.  '</span>';
+                    $html .= '<br><span class="text-muted" style="font-size:smaller!important;">' . $user->last_login_ip .  '</span>';
                     return $html;
                 })
                 ->rawColumns(['action', 'roles_detail', 'block_html', 'status_html', 'foto', 'contact', 'name_username', 'last_login_at'])
                 ->make(true);
         }
 
+        $kabkotas = \App\Models\Kabkota::all();
 
         $all_roles = \Spatie\Permission\Models\Role::where('name', '!=', 'super_administrator')->get()->pluck('name');
         return view('admin.users.index', [
             'title'  => 'Daftar Pengguna',
             'br1'  => 'Kelola',
             'br2'  => 'Data Pengguna',
-            'all_roles' => $all_roles
+            'all_roles' => $all_roles,
+            'kabkotas' => $kabkotas,
         ]);
     }
 
@@ -128,8 +134,12 @@ class UserController extends Controller
                 $user = new User();
                 $user->name = $data['name'];
                 $user->username = $data['username'];
+                if (isset($data['new-profile_photo'])) {
+                    $user->profile_photo = $data['new-profile_photo'];
+                }
                 $user->email = $data['email'];
                 $user->no_hp = $data['no_hp'];
+                $user->id_kabkota = $data['kabkota'];
                 $user->password = Hash::make($data['password']);
                 $user->save();
             } else {
@@ -138,10 +148,14 @@ class UserController extends Controller
                 unset($data['id_user']);
                 $user->name = $data['name'];
                 $user->username = $data['username'];
+                if (isset($data['new-profile_photo'])) {
+                    $user->profile_photo = $data['new-profile_photo'];
+                }
                 $user->email = $data['email'];
                 $user->no_hp = $data['no_hp'];
                 $user->block = $data['block'];
                 $user->status = $data['status'];
+                $user->id_kabkota = $data['kabkota'];
                 if ($data['password'] != '') {
                     $data['password'] = Hash::make($data['password']);
                     $user->password = $data['password'];
@@ -211,4 +225,3 @@ class UserController extends Controller
         //
     }
 }
-
