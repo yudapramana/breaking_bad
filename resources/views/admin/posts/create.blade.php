@@ -161,6 +161,14 @@
 
                                         <div class="form-group mb-3">
                                             <label for="kabkota">Kabupaten / Kota</label>
+
+                                            @if( Auth::user()->hasRole('kontributor_daerah'))
+                                            <input type="hidden" name="kabkota" id="kabkota"
+                                                value="{{ Auth::user()->kabkota->id_kabkota }}">
+                                            <input class="form-control" type="text" name="kabkota_text"
+                                                id="kabkota_text" value="{{ Auth::user()->kabkota->name }}" disabled
+                                                readonly>
+                                            @else
                                             <select name="kabkota" id="kabkota"
                                                 class="form-control form-select select2 @error('kabkota') is-invalid @enderror"
                                                 required>
@@ -175,6 +183,8 @@
                                                 @endif
                                                 @endforeach
                                             </select>
+                                            @endif
+
                                             @error('kabkota')
                                             <div class="invalid-feedback">
                                                 {{ $message }}

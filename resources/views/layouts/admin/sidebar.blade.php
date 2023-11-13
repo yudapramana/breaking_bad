@@ -23,6 +23,7 @@
         @endcan --}}
         {{-- @endcan --}}
 
+        @if( Auth::user()->hasRole('super_administrator') || Auth::user()->hasRole('administrator'))
 
         <li class="nav-heading">Kelola Informasi</li>
         <li class="nav-item"> <a class="nav-link @if (request()->segment(1) == 'informasi') @else collapsed @endif"
@@ -31,6 +32,7 @@
 
                 <span>Data & Informasi</span> </a>
         </li>
+        @endif
 
         {{-- <li class="nav-item"> <a
                 class="nav-link @if (request()->segment(1) == 'permohonan') @else collapsed @endif"
@@ -42,7 +44,9 @@
 
         <li class="nav-heading">Kelola Web</li>
 
-        @can('menu-information')
+        {{-- @can('menu-information') --}}
+        @if( Auth::user()->hasRole('super_administrator') || Auth::user()->hasRole('administrator') ||
+        Auth::user()->hasRole('kontributor_utama'))
         <li class="nav-item">
             <a class="nav-link @if (request()->segment(1) == 'information') @else collapsed @endif"
                 data-bs-target="#information-nav" data-bs-toggle="collapse" href="#"
@@ -53,47 +57,43 @@
                 class="nav-content collapse @if (request()->segment(1) == 'information') show @endif"
                 data-bs-parent="#sidebar-nav" style="">
 
-                @if( Auth::user()->hasRole('super_administrator'))
-                @can('page-information-services')
+                @if( Auth::user()->hasRole('super_administrator') || Auth::user()->hasRole('administrator') ||
+                Auth::user()->hasRole('kontributor_utama'))
                 <li>
                     <a href="{{ route('services.index') }}"
                         class="@if (request()->segment(2) == 'services') active @endif">
                         <i class=" bi bi-circle"></i><span>Services</span>
                     </a>
                 </li>
-                @endcan
-                @can('page-information-products')
                 <li>
                     <a href="{{ route('activities.index') }}"
                         class="@if (request()->segment(2) == 'activities') active @endif">
                         <i class=" bi bi-circle"></i><span>Activities</span>
                     </a>
                 </li>
-                @endcan
-                @endif
 
 
-                @can('page-information-galleries')
                 <li>
                     <a href="{{ route('galleries.index') }}"
                         class="@if (request()->segment(2) == 'galleries') active @endif">
                         <i class=" bi bi-circle"></i><span>Galleries</span>
                     </a>
                 </li>
-                @endcan
-                @can('page-information-carousels')
                 <li>
                     <a href="{{ route('carousels.index') }}"
                         class="@if (request()->segment(2) == 'carousels') active @endif">
                         <i class=" bi bi-circle"></i><span>Carousels</span>
                     </a>
                 </li>
-                @endcan
+                @endif
+
             </ul>
         </li>
-        @endcan
+        @endif
+        {{-- @endcan --}}
 
-        @can('menu-data')
+        {{-- @can('menu-data') --}}
+        @if( Auth::user()->hasRole('super_administrator') || Auth::user()->hasRole('administrator'))
         <li class="nav-item">
             <a class="nav-link @if (request()->segment(1) == 'data') @else collapsed @endif" data-bs-target="#data-nav"
                 data-bs-toggle="collapse" href="#"
@@ -126,9 +126,10 @@
                 @endcan
             </ul>
         </li>
-        @endcan
+        @endif
+        {{-- @endcan --}}
 
-        @can('menu-blog')
+        {{-- @can('menu-blog') --}}
         <li class="nav-item">
             <a class="nav-link @if (request()->segment(1) == 'blog') @else collapsed @endif" data-bs-target="#blog-nav"
                 data-bs-toggle="collapse" href="#"
@@ -137,7 +138,6 @@
             </a>
             <ul id="blog-nav" class="nav-content collapse @if (request()->segment(1) == 'blog') show @endif"
                 data-bs-parent="#sidebar-nav" style="">
-                @can('page-blog-posts')
 
                 @foreach ($bootCategories as $cat)
 
@@ -184,14 +184,15 @@
 
 
 
-                @endcan
             </ul>
         </li>
-        @endcan
+        {{-- @endcan --}}
 
 
 
         {{-- Setting --}}
+        @if( Auth::user()->hasRole('super_administrator') || Auth::user()->hasRole('administrator'))
+
         <li class="nav-item">
             <a class="nav-link @if (request()->segment(1) == 'setting') @else collapsed @endif"
                 data-bs-target="#setting-nav" data-bs-toggle="collapse" href="#"
@@ -226,7 +227,7 @@
                 @endif
             </ul>
         </li>
-
+        @endif
 
 
         {{-- @can('page-blog-news') --}}

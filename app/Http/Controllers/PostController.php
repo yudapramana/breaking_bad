@@ -25,20 +25,20 @@ class PostController extends Controller
         } else {
             $category = 'utama';
         }
-    
+
         $user = Auth::user();
         $pQuery = Post::query();;
-        
 
-        if($user->hasRole('kontributor_daerah')){
-            $id_kabkota =$user->id_kabkota;
+
+        if ($user->hasRole('kontributor_daerah')) {
+            $id_kabkota = $user->id_kabkota;
             $pQuery = $pQuery->where('id_kabkota', $id_kabkota);
         }
 
-        $pQuery = $pQuery->whereHas('category', function ($q) use( $category ) {
+        $pQuery = $pQuery->whereHas('category', function ($q) use ($category) {
             $q->where('slug', $category);
         });
-        $pQuery = $pQuery->orderBy('created_at','desc');
+        $pQuery = $pQuery->orderBy('created_at', 'desc');
         $posts = $pQuery->get();
 
 
@@ -48,7 +48,7 @@ class PostController extends Controller
             return DataTables::of($posts)
                 ->addIndexColumn()
                 ->addColumn('title_can', function ($post) {
-                    $text = '<span style="font-weight:bolder;">' . $post->title . ' &nbsp; <br> <span class="text-muted" style="font-size:x-small">'.$post->created_at->format('d-m-Y').'</span><br>
+                    $text = '<span style="font-weight:bolder;">' . $post->title . ' &nbsp; <br> <span class="text-muted" style="font-size:x-small">' . $post->created_at->format('d-m-Y') . '</span><br>
                             <span class="text-muted preserveLines" style="font-size:smaller">Slug: ' . $post->slug . ' </span><br>
                             <span class="text-muted preserveLines" style="font-size:xx-small">Keywords: ' . $post->keywords . ' </span><br>
                             <span class="text-muted preserveLines" style="font-size:xx-small">Meta:' . $post->meta_desc . ' </span>';
@@ -64,7 +64,7 @@ class PostController extends Controller
                 })
                 ->addColumn('desc_beautify', function ($post) {
                     $html = '';
-                    $html .=  \Illuminate\Support\Str::limit($post->desc, 200, $end='...');
+                    $html .=  \Illuminate\Support\Str::limit($post->desc, 200, $end = '...');
                     $html .= '<br>';
                     $html .= '<span class="text-muted preserveLines" style="font-size:smaller">View Count: ' . $post->view_count . ' Reads</span>';
                     return $html;
@@ -82,7 +82,6 @@ class PostController extends Controller
             ],
 
         );
-
     }
 
     /**
@@ -102,7 +101,7 @@ class PostController extends Controller
         $title = 'Posts';
         $br1 = 'Create';
         $br2 = 'Posts';
-        return view('admin.posts.create', compact('categories','tags','title','br1','br2', 'kabkotas','category', 'categoryID'));
+        return view('admin.posts.create', compact('categories', 'tags', 'title', 'br1', 'br2', 'kabkotas', 'category', 'categoryID'));
     }
 
     /**
@@ -113,7 +112,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-
+        $user = Auth::user();
         $data = $request->input();
 
 
@@ -121,15 +120,15 @@ class PostController extends Controller
             "title"     => "required|unique:posts,title",
             "desc"      => "required",
             "category"  => "required",
-            "tags"      => "array|required",  
+            "tags"      => "array|required",
             "keywords"  => "required",
             "meta_desc" => "required",
         ]);
 
         if ($validator->fails()) {
             return redirect()->back()
-                        ->withErrors($validator)
-                        ->withInput();
+                ->withErrors($validator)
+                ->withInput();
         }
 
         $post               = new Post();
@@ -146,7 +145,9 @@ class PostController extends Controller
 
         $post->tags()->attach($request->tags);
 
-        return redirect()->route('posts.index')->with('success', 'Data added successfully'); 
+        $categorySlug = \App\Models\Category::find($request->category)->slug;
+
+        return redirect()->route('posts.index', ['category' => $categorySlug])->with('success', 'Data added successfully');
     }
 
     /**
@@ -176,7 +177,7 @@ class PostController extends Controller
         $title = 'Posts';
         $br1 = 'Edit';
         $br2 = 'Posts';
-        return view('admin.posts.edit',compact('post','categories','tags','title','br1','br2', 'kabkotas'));
+        return view('admin.posts.edit', compact('post', 'categories', 'tags', 'title', 'br1', 'br2', 'kabkotas'));
     }
 
     /**
@@ -189,18 +190,18 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            "title"     => "required|unique:posts,title,".$id,
+            "title"     => "required|unique:posts,title," . $id,
             "desc"      => "required",
             "category"  => "required",
-            "tags"      => "array|required",  
+            "tags"      => "array|required",
             "keywords"  => "required",
             "meta_desc" => "required",
         ]);
 
         if ($validator->fails()) {
             return redirect()->back()
-                        ->withErrors($validator)
-                        ->withInput();
+                ->withErrors($validator)
+                ->withInput();
         }
 
 
@@ -244,43 +245,45 @@ class PostController extends Controller
             ->json(['success' => $success, 'message' => $message]);
     }
 
-    public function trash(){
+    public function trash()
+    {
         $posts = Post::onlyTrashed()->get();
 
         return view('admin.posts.trash', compact('posts'));
     }
 
-    public function restore($id) {
+    public function restore($id)
+    {
         $post = Post::withTrashed()->findOrFail($id);
 
         if ($post->trashed()) {
             $post->restore();
-            return redirect()->back()->with('success','Data successfully restored');
-        }else {
-            return redirect()->back()->with('error','Data is not in trash');
+            return redirect()->back()->with('success', 'Data successfully restored');
+        } else {
+            return redirect()->back()->with('error', 'Data is not in trash');
         }
     }
 
-    public function deletePermanent($id){
-        
+    public function deletePermanent($id)
+    {
+
         $post = Post::withTrashed()->findOrFail($id);
 
         if (!$post->trashed()) {
-        
-            return redirect()->back()->with('error','Data is not in trash');
-        
-        }else {
-        
-            $post->tags()->detach();
-            
 
-            if($post->cover && file_exists(storage_path('app/public/' . $post->cover))){
-                \Storage::delete('public/'. $post->cover);
+            return redirect()->back()->with('error', 'Data is not in trash');
+        } else {
+
+            $post->tags()->detach();
+
+
+            if ($post->cover && file_exists(storage_path('app/public/' . $post->cover))) {
+                \Storage::delete('public/' . $post->cover);
             }
 
-        $post->forceDelete();
+            $post->forceDelete();
 
-        return redirect()->back()->with('success', 'Data deleted successfully');
+            return redirect()->back()->with('success', 'Data deleted successfully');
         }
     }
 }
