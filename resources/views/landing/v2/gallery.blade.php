@@ -317,8 +317,8 @@
         }
 
         $('.video_popup').click(function(e) {
-            var not_secure_url = $('.mfp-iframe').attr('src');
-            alert(not_secure_url);
+            var not_secure_url = $(this).attr('href');
+            alert(not_secure_url)
 
         });
 
