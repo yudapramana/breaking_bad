@@ -318,7 +318,9 @@
 
         $('.video_popup').click(function(e) {
             var not_secure_url = $(this).attr('href');
-            alert(not_secure_url)
+
+            not_secure_url = not_secure_url.replace("watch?v=", "embed/");
+            alert(not_secure_url);
 
         });
 
