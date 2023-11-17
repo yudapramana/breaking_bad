@@ -316,6 +316,12 @@
             });
         }
 
+        $('.video_popup').click(function(e) {
+            var not_secure_url = $('.mfp-iframe').attr('src');
+            alert(not_secure_url);
+
+        });
+
         $('#savePermohonanBtn').click(function(e) {
 
             var formData = $('#permohonanForm').serializeArray();
