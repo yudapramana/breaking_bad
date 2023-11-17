@@ -320,6 +320,7 @@
             var not_secure_url = $(this).attr('href');
 
             not_secure_url = not_secure_url.replace("watch?v=", "embed/");
+            not_secure_url = not_secure_url + '?autoplay=1'
             alert(not_secure_url);
 
         });
