@@ -321,9 +321,21 @@
 
             not_secure_url = not_secure_url.replace("watch?v=", "embed/");
             not_secure_url = not_secure_url + '?autoplay=1'
-            alert(not_secure_url);
+            
+            setTimeout(function() {
+                loadIframe('mfp-iframe', not_secure_url)
+            }, 2000);
 
         });
+
+        function loadIframe(iframeName, url) {
+            var $iframe = $('.' + iframeName);
+            if ($iframe.length) {
+                $iframe.attr('src',url);
+                return false;
+            }
+            return true;
+        }
 
         $('#savePermohonanBtn').click(function(e) {
 
