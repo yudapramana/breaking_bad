@@ -4,11 +4,11 @@
     }
 
     .mr-20 {
-        margin-right: 20px !important;
+        margin-right: 10px !important;
     }
 
     .ml-20 {
-        margin-left: 20px !important;
+        margin-left: 10px !important;
     }
 
     .vertical-divider {
@@ -17,7 +17,7 @@
     }
 
     .vertical-divider {
-        width: 1px;
+        width: 0px;
         height: 20px;
         background-color: #9b9b9b;
     }
@@ -71,6 +71,25 @@
                 <div class="col-md-9 col-4">
 
                     <ul class="list_none header_info justify-content-end">
+
+                        <li class="d-none d-md-block">
+                            <a href="https://kemenag.go.id/pusaka">
+                                <img src="{{ asset('assets/images/logo/Logo ASN Pilih Netral.png') }}"
+                                    alt="Download Pusaka Super App" height="50">
+                            </a>
+                        </li>
+                        <li>
+                            <span class="vertical-divider mr-20 ml-20 d-none d-md-inline"></span>
+                        </li>
+                        <li class="d-none d-md-block">
+                            <a href="https://kemenag.go.id/pusaka">
+                                <img src="{{ asset('assets/images/logo/Logo_BerAKHLAK.png') }}"
+                                    alt="Download Pusaka Super App" height="30">
+                            </a>
+                        </li>
+                        <li>
+                            <span class="vertical-divider mr-20 ml-20 d-none d-md-inline"></span>
+                        </li>
                         <li class="d-none d-md-block">
                             <a href="https://kemenag.go.id/pusaka">
                                 <img src="{{ asset('assets/images/logo/pusaka_icon.png') }}"
