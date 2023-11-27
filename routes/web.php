@@ -23,6 +23,12 @@ Route::get('/cd_upload_test', function (Request $request) {
     $uploadedFileUrl = Cloudinary::upload($url)->getSecurePath();
     return $uploadedFileUrl;
 });
+
+Route::get('/time_now', function (Request $request) {
+    $timenow = \Carbon\Carbon::now();
+    return $timenow;
+});
+
 Route::get('/db_old/migrate/posts', function (Request $request) {
 
     $newpostoldid = \App\Models\Post::orderBy('id', 'desc')->first()->old_id;
