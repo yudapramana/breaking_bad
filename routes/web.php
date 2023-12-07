@@ -57,6 +57,8 @@ Route::get('/db_old/migrate/posts', function (Request $request) {
 
     $newpostoldid = \App\Models\Post::orderBy('id', 'desc')->first()->old_id;
 
+    return $newpostoldid;
+
     $posts = \App\Models\OldPost::where('id', '>', $newpostoldid)->get();
 
     if (Count($posts) > 0) {
