@@ -4,7 +4,7 @@
                 class="d-none d-lg-block">Jendela Hati</span> </a> <i class="bi bi-list toggle-sidebar-btn"></i></div>
     --}}
     <div class="d-flex align-items-center justify-content-between">
-        <a href="/" class="logo d-flex align-items-center"> <img
+        <a href="/berita" class="logo d-flex align-items-center"> <img
                 src="{{ asset('assets/images/logo/kanwil_logo2.png') }}" alt=""> <span class="d-none d-lg-block"></span>
         </a>
         <i class="bi bi-list toggle-sidebar-btn"></i>
