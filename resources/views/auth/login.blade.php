@@ -167,13 +167,11 @@
                                             </div>
                                         </div>
                                         <div class="col-12">
+                                            <button class="btn btn-primary w-100" type="submit">Login</button>
+
                                             {{-- <button class="btn btn-primary w-100 g-recaptcha"
                                                 data-sitekey="6LcY-ygpAAAAABk2e3yuVjO3JZD8XOqDlIX-ydHe"
-                                                data-callback="onSubmit" type="submit">Login</button> --}}
-
-                                            <button class="btn btn-primary w-100 g-recaptcha"
-                                                data-sitekey="6LcY-ygpAAAAABk2e3yuVjO3JZD8XOqDlIX-ydHe"
-                                                data-callback='onSubmit' data-action='submit'>Submit</button>
+                                                data-callback='onSubmit' data-action='submit'>Submit</button> --}}
                                         </div>
                                         <div class="col-12">
                                             <p class="small mb-0">Lupa password Akun? Hubungi Administrator</p>
