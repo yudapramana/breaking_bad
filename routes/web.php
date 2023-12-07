@@ -487,7 +487,7 @@ Route::delete('blog/posts/delete-permanent/{id}', [App\Http\Controllers\PostCont
 Route::delete('/blog/posts/destroy/{id}', [\App\Http\Controllers\PostController::class, 'destroy'])->name('posts.delete');
 
 Route::resource('/blog/posts', App\Http\Controllers\PostController::class);
-Route::post('ckeditor/upload', 'CKEditorController@upload')->name('ckeditor.image-upload');
+// Route::post('ckeditor/upload', 'CKEditorController@upload')->name('ckeditor.image-upload');
 
 
 Route::get('/blog/news/trash', [App\Http\Controllers\NewsController::class, 'trash'])->name('news.trash');
