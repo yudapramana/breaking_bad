@@ -55,11 +55,12 @@ Route::get('/time_now', function (Request $request) {
 
 Route::get('/db_old/migrate/posts', function (Request $request) {
 
-    $newpostoldid = \App\Models\Post::orderBy('id', 'desc')->first()->old_id;
+    $newpostoldid = \App\Models\Post::where('old_id', '!=', 0)->orderBy('id', 'desc')->first()->old_id;
 
     return $newpostoldid;
 
     $posts = \App\Models\OldPost::where('id', '>', $newpostoldid)->get();
+
 
     if (Count($posts) > 0) {
         foreach ($posts as $post) {
