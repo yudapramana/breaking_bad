@@ -33,3 +33,8 @@
 <!-- Demo Medical Style CSS -->
 <link rel="stylesheet" href="{{ asset('demo-assets/css/demo-medical.css') }}">
 <link rel="stylesheet" id="layoutstyle" href="{{ asset('landing/color/theme-green.css') }}">
+{{-- Recaptcha --}}
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+{{-- Google Recaptcha --}}
+{{-- <div class="g-recaptcha mt-4" data-sitekey={{config('services.recaptcha.key')}}></div> --}}

@@ -17,7 +17,7 @@
                         </li>
                         <li>
                             <span class="ti-email"></span>
-                            <a href="mailto:pessel@kemenag.go.id">sumbar@kemenag.go.id</a>
+                            <a href="mailto:kanwilsumbar@kemenag.go.id">kanwilsumbar@kemenag.go.id</a>
                         </li>
                         <li>
                             <span class="ti-mobile"></span>

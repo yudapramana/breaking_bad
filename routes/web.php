@@ -18,6 +18,30 @@ use Illuminate\Support\Str;
 |
 */
 
+
+Route::post('/poststatus/switch', function (Request $request) {
+
+    $data = $request->input();
+    $message = '';
+    $success = false;
+
+
+    try {
+        if (isset($request->switch_status)) {
+            $post = \App\Models\Post::find($data['id_post']);
+            $post->status = $request->string_status;
+            $post->save();
+            $success = true;
+        }
+    } catch (\Exception $e) {
+        $message = $e->getMessage();
+    }
+
+    return response()
+        ->json(['success' => $success, 'message' => $message]);
+})->name('post.status.switch');
+
+
 Route::get('/cd_upload_test', function (Request $request) {
     $url = 'https://sumbar.kemenag.go.id/v2/uploads/images/image_600x460_65426b3f5b50c.jpg';
     $uploadedFileUrl = Cloudinary::upload($url)->getSecurePath();
@@ -75,10 +99,10 @@ Route::get('/db_old/migrate/posts', function (Request $request) {
                     break;
             }
 
-            if($post->image_big != null) {
+            if ($post->image_big != null) {
                 $image_url_raw = 'https://sumbar.kemenag.go.id/v2/' . $post->image_big;
                 $image_url = Cloudinary::upload($image_url_raw)->getSecurePath();
-    
+
                 $fPost = \App\Models\Post::where('title', $post->title)->first();
                 if (!$fPost) {
                     $newPost                    = new \App\Models\Post();
@@ -100,7 +124,6 @@ Route::get('/db_old/migrate/posts', function (Request $request) {
                     $newPost->save();
                 }
             }
-            
         }
         return 'done';
     } else {
@@ -234,35 +257,35 @@ Route::group(['middleware' => ['web']], function () {
         $kabkotaname = '';
         if ($request->has('search')) {
             $search = $request->input('search');
-            $posts = \App\Models\Post::where('title', 'LIKE', "%{$search}%")
+            $posts = \App\Models\Post::where('status', 'published')->where('title', 'LIKE', "%{$search}%")
                 ->orWhere('desc', 'LIKE', "%{$search}%")->orderBy('created_at', 'DESC')->paginate(4);
         } elseif ($request->has('category')) {
             $search = $request->input('category');
 
             if ($request->has('id_kabkota')) {
                 $kabkotaname = \App\Models\Kabkota::find($request->input('id_kabkota'))->name;
-                $posts = \App\Models\Post::whereHas('category', function ($q) use ($search) {
+                $posts = \App\Models\Post::where('status', 'published')->whereHas('category', function ($q) use ($search) {
                     $q->where('slug', $search);
                 })
                     ->where('id_kabkota', $request->input('id_kabkota'))
                     ->orderBy('created_at', 'DESC')->paginate(8);
             } else {
-                $posts = \App\Models\Post::whereHas('category', function ($q) use ($search) {
+                $posts = \App\Models\Post::where('status', 'published')->whereHas('category', function ($q) use ($search) {
                     $q->where('slug', $search);
                 })->orderBy('created_at', 'DESC')->paginate(8);
             }
         } elseif ($request->has('tag')) {
             $search = $request->input('tag');
-            $posts = \App\Models\Post::whereHas('tags', function ($q) use ($search) {
+            $posts = \App\Models\Post::where('status', 'published')->whereHas('tags', function ($q) use ($search) {
                 $q->where('slug', $search);
             })->orderBy('created_at', 'DESC')->paginate(8);
         } elseif ($request->has('author')) {
             $search = $request->input('author');
-            $posts = \App\Models\Post::whereHas('user', function ($q) use ($search) {
+            $posts = \App\Models\Post::where('status', 'published')->whereHas('user', function ($q) use ($search) {
                 $q->where('name', $search);
             })->orderBy('created_at', 'DESC')->paginate(8);
         } else {
-            $posts = \App\Models\Post::orderBy('created_at', 'DESC')->paginate(8);
+            $posts = \App\Models\Post::where('status', 'published')->orderBy('created_at', 'DESC')->paginate(8);
         }
 
         $posts->appends(request()->input())->links();
@@ -270,7 +293,7 @@ Route::group(['middleware' => ['web']], function () {
 
         $categories = \App\Models\Category::withCount('posts')->get();
         $tags = \App\Models\Tag::all();
-        $recent_posts = \App\Models\Post::whereHas('category', function ($q) {
+        $recent_posts = \App\Models\Post::where('status', 'published')->whereHas('category', function ($q) {
             $q->where('slug', 'utama');
         })->take(3)->get();
 
@@ -368,7 +391,6 @@ Route::group(['middleware' => ['web']], function () {
         }
 
         return $cookie;
-
     });
 
     Route::get('post/{slug}', function (Request $request, $slug) {
@@ -380,7 +402,7 @@ Route::group(['middleware' => ['web']], function () {
         if ($cookie == '') { //check if cookie is set
             $cookie = cookie($cookie_name, '1', 60); //set the cookie
             $post->incrementReadCount(); //count the view
-        } 
+        }
 
         if ($post->showPost()) { // this will test if the user viwed the post or not
             // return $post;

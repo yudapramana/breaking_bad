@@ -30,7 +30,13 @@
 
     <!-- Template Main CSS File -->
     <link href="{{ asset('niceadmin/css/style.css') }} " rel="stylesheet">
+    <script src="https://www.google.com/recaptcha/api.js"></script>
 
+    <script>
+        function onSubmit(token) {
+            document.getElementById("login-form").submit();
+        }
+    </script>
     <!-- =======================================================
   * Template Name: NiceAdmin - v2.3.1
   * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
@@ -122,7 +128,7 @@
                                         <p class="text-center small">Masukkan username dan Password untuk login</p>
                                     </div>
 
-                                    <form class="row g-3 needs-validation" novalidate method="POST"
+                                    <form id="login-form" class="row g-3 needs-validation" novalidate method="POST"
                                         action="{{ route('login') }}">
                                         @csrf
                                         <div class="col-12">
@@ -161,7 +167,13 @@
                                             </div>
                                         </div>
                                         <div class="col-12">
-                                            <button class="btn btn-primary w-100" type="submit">Login</button>
+                                            {{-- <button class="btn btn-primary w-100 g-recaptcha"
+                                                data-sitekey="6LcY-ygpAAAAABk2e3yuVjO3JZD8XOqDlIX-ydHe"
+                                                data-callback="onSubmit" type="submit">Login</button> --}}
+
+                                            <button class="btn btn-primary w-100 g-recaptcha"
+                                                data-sitekey="6LcY-ygpAAAAABk2e3yuVjO3JZD8XOqDlIX-ydHe"
+                                                data-callback='onSubmit' data-action='submit'>Submit</button>
                                         </div>
                                         <div class="col-12">
                                             <p class="small mb-0">Lupa password Akun? Hubungi Administrator</p>

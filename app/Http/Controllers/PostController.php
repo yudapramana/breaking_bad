@@ -62,6 +62,30 @@ class PostController extends Controller
                     $btn .= '<button id="destroyBtn" type="button" class="btn btn-sm btn-danger btn-xs" data-bs-id_item="' . $post->id  . '" data-id_item="' .  $post->id  . '"><i class="bi bi-trash-fill"></i></button>';
                     return $btn;
                 })
+                ->addColumn('datastatus', function ($item) use($user) {
+                    $statusArr = ['published', 'draft', 'archived'];
+                    $colorArr = ['success', 'warning', 'danger'];
+                    $nowColor = null;
+                    $statusNow = $item->status;
+                    if (($key = array_search($statusNow, $statusArr)) !== false) {
+                        unset($statusArr[$key]);
+                        $nowColor = $colorArr[$key];
+                    }
+    
+                    if( $user->hasRole('super_administrator') || $user->hasRole('administrator') || $user->hasRole('kontributor_utama')) {
+                        $btn = '<span class="badge bg-'.$nowColor.' dropdown-toggle" id="btnGroupDrop1" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-original-title="" title="">'.$statusNow.'</span>';
+                        $btn .= '<div class="dropdown-menu" aria-labelledby="btnGroupDrop1">';
+
+                        foreach ($statusArr as $stat) {
+                            $btn .= '<button id="switchBtn" class="dropdown-item" tabindex="0" aria-controls="defTbl" title="" data-bs-original-title="Switch Status" type="button" data-status="'.$stat.'"><span>ubah menjadi '.$stat.'</span></button>';
+                        }
+
+                        $btn .=    '</div>';
+                    } else {
+                        $btn = '<span class="badge bg-'.$nowColor.' " id="btnGroupDrop1" type="button" data-bs-original-title="" title="">'.$statusNow.'</span>';
+                    }
+                    return $btn;
+                })
                 ->addColumn('desc_beautify', function ($post) {
                     $html = '';
                     $html .=  \Illuminate\Support\Str::limit($post->desc, 200, $end = '...');
@@ -69,7 +93,7 @@ class PostController extends Controller
                     $html .= '<span class="text-muted preserveLines" style="font-size:smaller">View Count: ' . $post->view_count . ' Reads</span>';
                     return $html;
                 })
-                ->rawColumns(['action', 'desc_beautify', 'title_can'])
+                ->rawColumns(['action', 'desc_beautify', 'title_can', 'datastatus'])
                 ->make(true);
         }
         return view(
@@ -141,6 +165,12 @@ class PostController extends Controller
         $post->keywords     = $request->keywords;
         $post->meta_desc    = $request->meta_desc;
         $post->id_kabkota    = $request->kabkota;
+
+        if ($user->hasRole('kontributor_daerah')) {
+            $post->status = 'draft';
+        }
+
+
         $post->save();
 
         $post->tags()->attach($request->tags);

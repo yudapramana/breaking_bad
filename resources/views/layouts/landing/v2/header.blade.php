@@ -84,7 +84,7 @@
                         <li class="d-none d-md-block">
                             <a href="https://kemenag.go.id/pusaka">
                                 <img src="{{ asset('assets/images/logo/Logo_BerAKHLAK.png') }}"
-                                    alt="Download Pusaka Super App" height="30">
+                                    alt="Download Pusaka Super App" height="40">
                             </a>
                         </li>
                         <li>

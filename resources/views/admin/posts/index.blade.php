@@ -56,6 +56,7 @@
                                     <th scope="col">Title</th>
                                     <th scope="col">Desc</th>
                                     <th scope="col">Category</th>
+                                    <th scope="col">Status</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
@@ -126,7 +127,8 @@
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
-
+<!-- Sweet Alert -->
+<script src="{{asset('assets/js/sweetalert2/dist/sweetalert2.all.min.js')}}"></script>
 
 <script>
     const swalWithBootstrapButtons = Swal.mixin({
@@ -258,6 +260,10 @@
             , name: 'category.title'
             , className: 'text-center'
         }, {
+            data: 'datastatus'
+            , name: 'datastatus'
+            , className: 'text-center'
+        }, {
             data: 'action'
             , name: 'action'
             , className: 'text-center'
@@ -266,6 +272,79 @@
 
     // align-middle
 
+        // On Switch
+        $(document).on('click', '#switchBtn', function(e) {
+            var data = table.row($(this).parents('tr')).data();
+            console.log(data);
+            swalWithBootstrapButtons.fire({
+                title: 'Apakah anda yakin akan mengubah status menjadi ' + $(this).data('status') + '?'
+                , text: "Status yang sudah diubah akan tercatat!"
+                , icon: 'warning'
+                , showCancelButton: true
+                , confirmButtonText: 'Ya, Ubah!'
+                , cancelButtonText: 'Tidak, batalkan!'
+                , reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    var formdata = $("#defForm").serialize() + "&switch_status=true&id_post=" + data.id + "&string_status=" + $(this).data('status');
+                    console.log(formdata);
+
+                    $.ajax({
+                        type: 'POST'
+                        , url: "{{ route('post.status.switch') }}"
+                        , data: formdata, // here $(this) refers to the ajax object not form
+                        dataType: 'json', // let's set the expected response format
+                        success: function(data) {
+                            console.log(data);
+                            if (data.success) {
+                                $('#defModal').modal('hide');
+                                table.ajax.reload(null, false);
+                                Swal.fire(
+                                    'Great!', 'The data has been updated!'
+                                    , 'success'
+                                );
+                            } else {
+                                Swal.fire(
+                                    'Error!', data.message, 'error'
+                                );
+                            }
+                        }
+                        , error: function(err) {
+                            if (err.status ==
+                                422
+                            ) { // when status code is 422, it's a validation issue
+                                console.log(err.responseJSON);
+                                // you can loop through the errors object and show it to the user
+                                console.warn(err.responseJSON.errors);
+                                // display errors on each form field
+                                $('.ajax-invalid').remove();
+                                $.each(err.responseJSON.errors, function(i
+                                    , error) {
+                                    var el = $(document).find('[name="' +
+                                        i + '"]');
+                                    el.after($('<span class="ajax-invalid" style="color: red;">' +
+                                        error[0] + '</span>'));
+                                });
+                            } else if (err.status == 403) {
+                                Swal.fire(
+                                    'Unauthorized!'
+                                    , 'You are unauthorized to do the action'
+                                    , 'warning'
+                                );
+                            }
+                        }
+                    });
+                } else if (
+                    /* Read more about handling dismissals below */
+                    result.dismiss === Swal.DismissReason.cancel
+                ) {
+                    swalWithBootstrapButtons.fire(
+                        'Cancelled', 'The {{$title}} data is safe :)', 'error'
+                    )
+                }
+            });
+        });
 
     $(document).ready(function() {
         table.ajax.url('{{ route("posts.index", ["category" => $category] ) }}').load();
@@ -404,6 +483,8 @@
 
 
     });
+
+
 
     $(document).on('click', '#retry-cover-btn', function(e) {
         $('#cover_image_url_btn').show();

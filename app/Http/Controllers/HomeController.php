@@ -21,14 +21,14 @@ class HomeController extends Controller
         $services = \App\Models\Services::where('featured', 'yes')->get();
         $carousels = \App\Models\Carousel::where('active', 'yes')->get();
 
-        $featureds = \App\Models\Post::where('is_featured', 1)->orderBy('created_at', 'DESC')->take(8)->get();
+        $featureds = \App\Models\Post::where('status', 'published')->where('is_featured', 1)->orderBy('created_at', 'DESC')->take(8)->get();
 
-        $main_posts = \App\Models\Post::whereHas('category', function ($q) {
+        $main_posts = \App\Models\Post::where('status', 'published')->whereHas('category', function ($q) {
             $q->where('slug', 'utama');
         })->orderBy('created_at', 'DESC')->take(6)->get();
         $main_posts = $main_posts->shuffle();
 
-        $recent_posts =  \App\Models\Post::whereHas('category', function ($q) {
+        $recent_posts =  \App\Models\Post::where('status', 'published')->whereHas('category', function ($q) {
             $q->where('slug', '!=' , 'artikel');
         })->orderBy('created_at', 'DESC')->take(3)->get();
         
@@ -36,7 +36,7 @@ class HomeController extends Controller
 
         $totalpermohonanselesai = Permohonan::count();
 
-        $daerah_posts = \App\Models\Post::whereHas('category', function ($q) {
+        $daerah_posts = \App\Models\Post::where('status', 'published')->whereHas('category', function ($q) {
             $q->where('slug', 'daerah');
         })->orderBy('created_at', 'DESC')->take(10)->get();
 
