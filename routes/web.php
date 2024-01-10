@@ -57,7 +57,7 @@ Route::get('/db_old/fetch', function (Request $request) {
 
     $counter = 0;
 
-    $oldidmin = 69467;
+    $oldidmin = 72738;
     $oldidmax = DB::table('posts')->where('old_id', '!=', 0)->min('old_id');
 
     // return $oldidmin . '______' . $oldidmax;
