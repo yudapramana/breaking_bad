@@ -62,8 +62,8 @@ Route::get('/db_old/fetch', function (Request $request) {
         // Your Eloquent query executed by using get()
         
         dd(\DB::getQueryLog()); // Show results of log
-        
-    return $posts;
+
+    // return $posts;
 });
 
 Route::get('/db_old/migrate/posts', function (Request $request) {
