@@ -55,16 +55,16 @@ Route::get('/time_now', function (Request $request) {
 
 Route::get('/db_old/fetch', function (Request $request) {
 
-    DB::enableQueryLog();
+    // DB::enableQueryLog();
 
     $posts = \App\Models\OldPost::where('daerah', '!=', '0')
         ->orderBy('created_at', 'DESC')->take(5)->get();
 
-    $query = DB::getQueryLog();
+    // $query = DB::getQueryLog();
 
-    dd($query);
+    // dd($query);
 
-    // return $posts;
+    return $posts;
 });
 
 Route::get('/db_old/migrate/posts', function (Request $request) {
