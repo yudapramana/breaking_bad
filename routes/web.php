@@ -57,11 +57,7 @@ Route::get('/db_old/fetch', function (Request $request) {
     $posts = \App\Models\OldPost::where('daerah', '!=', '0')
         ->orderBy('created_at', 'DESC')->take(5)->get();
 
-        \DB::enableQueryLog(); // Enable query log
-
-        // Your Eloquent query executed by using get()
-        
-        dd(\DB::getQueryLog()); // Show results of log
+    return $posts->toSql();
 
     // return $posts;
 });
