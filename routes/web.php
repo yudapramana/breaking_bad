@@ -55,15 +55,17 @@ Route::get('/time_now', function (Request $request) {
 
 Route::get('/db_old/fetch', function (Request $request) {
 
-    // $posts = \App\Models\OldPost::whereNotIn('daerah', [0, 9999])
-    //     ->orderBy('created_at', 'DESC')->take(5)->get();
-
-    // return $posts;
-
-
-    $posts = DB::connection('mysql_old')->table('posts')->whereYear('created_at', 2023)->take(5)->get();
-    return $posts;
+    $counter = 0;
+    $posts = DB::connection('mysql_old')->table('posts')->whereNotIn('daerah', [0, 9999])->whereYear('created_at', 2023)->orderBy('id')
+    ->take(5)->get();
     
+    return $posts;
+    // ->chunk(100, function ($posts) use($counter) {
+    //         foreach ($posts as $post) {
+
+    //         }
+    //     });
+
     // ->chunk(100, function ($users) {
     //     foreach ($users as $user) {
     //         //
@@ -74,7 +76,8 @@ Route::get('/db_old/fetch', function (Request $request) {
 
 Route::get('/db_old/migrate/posts', function (Request $request) {
 
-    $newpostoldid = \App\Models\Post::where('old_id', '!=', 0)->orderBy('id', 'desc')->first()->old_id;
+    // $newpostoldid = \App\Models\Post::where('old_id', '!=', 0)->orderBy('id', 'desc')->first()->old_id;
+    $newpostoldid = DB::table('posts')->max('old_id');
 
     $posts = \App\Models\OldPost::where('id', '>', $newpostoldid)->get();
 
