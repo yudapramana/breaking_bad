@@ -161,6 +161,7 @@ Route::get('/db_old/fetch', function (Request $request) {
         }
 
         $arrData[$key]['category_id'] = $category_id;
+        $arrData[$key]['subcategory_id'] = $post->subcategory_id;
         $arrData[$key]['user_id'] = $user_id;
         $arrData[$key]['daerah_id'] = $daerah_id;
 
