@@ -70,6 +70,8 @@ Route::get('/db_old/fetch', function (Request $request) {
     //     ->whereBetween('id', [$oldidmin, $oldidmax])->get();
     $posts = \App\Models\OldPost::whereBetween('id', [$oldidmin, $oldidmax])->orderBy('id', 'DESC')->get();
 
+    return $posts;
+
     foreach ($posts as $post) {
 
         $user_id = null;
