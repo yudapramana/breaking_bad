@@ -170,11 +170,15 @@ Route::get('/db_old/fetch', function (Request $request) {
                         $newPost->is_breaking       = 0;
                         $newPost->old_id            = $post->id;
                         $newPost->save();
+
+                        $counter++;
                     }
                 }
 
             }
         });
+
+    return $counter;
 });
 
 Route::get('/db_old/migrate/posts', function (Request $request) {
