@@ -60,7 +60,7 @@ Route::get('/db_old/fetch', function (Request $request) {
     $oldidmin = 69467;
     $oldidmax = DB::table('posts')->where('old_id','!=',0)->min('old_id');
 
-    return $oldidmin . '______' . $oldidmax;
+    // return $oldidmin . '______' . $oldidmax;
 
 
     // $posts = DB::connection('mysql_old')->table('posts')->whereYear('created_at', 2023)->orderBy('id')->get();
