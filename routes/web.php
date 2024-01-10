@@ -146,8 +146,8 @@ Route::get('/db_old/fetch', function (Request $request) {
                         # code...
                         break;
                 }
-
-                if ($post->image_big != null) {
+                
+                if ($post->image_big != null && $user_id != null && $daerah_id != null) {
                     $image_url_raw = 'https://sumbar.kemenag.go.id/v2/' . $post->image_big;
                     $image_url = Cloudinary::upload($image_url_raw)->getSecurePath();
     
