@@ -54,10 +54,15 @@ Route::get('/time_now', function (Request $request) {
 });
 
 Route::get('/db_old/fetch', function (Request $request) {
+
+    DB::enableQueryLog();
+
     $posts = \App\Models\OldPost::where('daerah', '!=', '0')
         ->orderBy('created_at', 'DESC')->take(5)->get();
 
-    return $posts->toSql();
+    $query = DB::getQueryLog();
+
+    dd($query);
 
     // return $posts;
 });
