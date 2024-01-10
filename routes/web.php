@@ -57,17 +57,18 @@ Route::get('/db_old/fetch', function (Request $request) {
 
     $counter = 0;
 
+    $oldidmin = 69467;
     $oldidmax = DB::table('posts')->min('old_id');
-    
 
-    $posts = DB::connection('mysql_old')->table('posts')->whereYear('created_at', 2023)->orderBy('id')->get();
+
+    // $posts = DB::connection('mysql_old')->table('posts')->whereYear('created_at', 2023)->orderBy('id')->get();
+
+
+    $posts = DB::connection('mysql_old')->table('posts')->whereYear('created_at', 2023)
+        ->whereBetween('id', [$oldidmin, $oldidmax])->get();
 
     return $posts;
 
-    $posts = DB::connection('mysql_old')->table('posts')->whereYear('created_at', 2023)
-                ->whereBetween('id', [0, $oldidmax])->get();
-
-    
 
     foreach ($posts as $post) {
 
