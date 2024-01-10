@@ -51,10 +51,10 @@ class UsersTableSeeder extends Seeder
                 'current_role_id' => 3, 'created_at' =>  \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now(), 'id_kabkota' => 1302
             ],
             [
-                'name' => 'Adm Solok',
-                'username' => 'adm.solok',
-                'email' => 'adm.solok@kemenag.go.id',
-                'password' => Hash::make('adm.solok'), 'plain_password' => 'adm.solok',
+                'name' => 'Adm Kabupaten Solok',
+                'username' => 'adm.kabsolok',
+                'email' => 'adm.kabsolok@kemenag.go.id',
+                'password' => Hash::make('adm.kabsolok'), 'plain_password' => 'adm.kabsolok',
                 'current_role_id' => 3, 'created_at' =>  \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now(), 'id_kabkota' => 1303
             ],
             [
@@ -128,10 +128,10 @@ class UsersTableSeeder extends Seeder
                 'current_role_id' => 3, 'created_at' =>  \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now(), 'id_kabkota' => 1371
             ],
             [
-                'name' => 'Adm Solok',
-                'username' => 'adm.solok',
-                'email' => 'adm.solok@kemenag.go.id',
-                'password' => Hash::make('adm.solok'), 'plain_password' => 'adm.solok',
+                'name' => 'Adm Kota Solok',
+                'username' => 'adm.kotasolok',
+                'email' => 'adm.kotasolok@kemenag.go.id',
+                'password' => Hash::make('adm.kotasolok'), 'plain_password' => 'adm.kotasolok',
                 'current_role_id' => 3, 'created_at' =>  \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now(), 'id_kabkota' => 1372
             ],
             [
