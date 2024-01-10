@@ -178,7 +178,7 @@ Route::get('/db_old/fetch', function (Request $request) {
                         $newPost->title             = $post->title;
                         $newPost->slug              = Str::slug($post->title);
                         $newPost->user_id           = $user_id;
-                        $newPost->category_id       = Str::contains(strtolower($post->content), ['jakarta']) ? 3 : 1;
+                        $newPost->category_id       = 2;
                         $newPost->desc              = $post->content;
                         $newPost->keywords          = $post->keywords;
                         $newPost->meta_desc         = $post->title;
