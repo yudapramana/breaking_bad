@@ -55,8 +55,9 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
-    public function getNamePhoneAttribute() {
-        return $this->attributes['name'] . '_'.  $this->attributes['no_hp'];
+    public function getNamePhoneAttribute()
+    {
+        return $this->attributes['name'] . '_' .  $this->attributes['no_hp'];
     }
 
     public function kabkota()
@@ -66,15 +67,19 @@ class User extends Authenticatable
 
     protected $appends = ['age', 'name_phone'];
 
-    public function getAgeAttribute(){
-        $rawBD = strlen($this->attributes['username']) == 18 ? substr($this->attributes['username'], 0, 8) : null;
-        if($rawBD) {
-            $birthDate = substr($rawBD, 0, 4) . '-' . substr($rawBD, 4, 2) . '-' . substr($rawBD, 6, 2) . ' 00:00:00';
-            $interval = date_diff(date_create(), date_create($birthDate));
-            return $interval->format("%Y Tahun, %M Bulan, %d Hari");
-        }
-        return 'undetected';
-    }
+    public function getAgeAttribute()
+    {
 
-   
+        if (substr($this->attributes['username'], 0, 4) != 'adm.') {
+            $rawBD = strlen($this->attributes['username']) == 18 ? substr($this->attributes['username'], 0, 8) : null;
+            if ($rawBD) {
+                $birthDate = substr($rawBD, 0, 4) . '-' . substr($rawBD, 4, 2) . '-' . substr($rawBD, 6, 2) . ' 00:00:00';
+                $interval = date_diff(date_create(), date_create($birthDate));
+                return $interval->format("%Y Tahun, %M Bulan, %d Hari");
+            }
+            return 'undetected';
+        } else {
+            return 'undetected';
+        }
+    }
 }
