@@ -70,8 +70,9 @@ Route::get('/db_old/fetch', function (Request $request) {
     //     ->whereBetween('id', [$oldidmin, $oldidmax])->get();
     $posts = \App\Models\OldPost::whereBetween('id', [$oldidmin, $oldidmax])->orderBy('id', 'DESC')->take(100)->get();
 
+    $arrData = [];
 
-    foreach ($posts as $post) {
+    foreach ($posts as $key => $post) {
 
         $user_id = null;
         $daerah_id = null;
@@ -159,35 +160,41 @@ Route::get('/db_old/fetch', function (Request $request) {
                 break;
         }
 
-        if ($post->image_big != null && $user_id != null && $daerah_id != null) {
-            $image_url_raw = 'https://sumbar.kemenag.go.id/v2/' . $post->image_big;
-            $image_url = Cloudinary::upload($image_url_raw)->getSecurePath();
+        $arrData[$key]['user_id'] = $user_id;
+        $arrData[$key]['daerah_id'] = $daerah_id;
 
-            $fPost = \App\Models\Post::where('old_id', $post->id)->first();
-            if (!$fPost) {
-                $newPost                    = new \App\Models\Post();
-                $newPost->created_at        = $post->created_at;
-                $newPost->cover             = $image_url;
-                $newPost->title             = $post->title;
-                $newPost->slug              = Str::slug($post->title);
-                $newPost->user_id           = $user_id;
-                $newPost->category_id       = Str::contains(strtolower($post->content), ['jakarta']) ? 3 : 1;
-                $newPost->desc              = $post->content;
-                $newPost->keywords          = $post->keywords;
-                $newPost->meta_desc         = $post->title;
-                $newPost->id_kabkota        = $daerah_id;
-                $newPost->is_featured       = 1;
-                $newPost->is_slider         = 0;
-                $newPost->is_recommended    = 0;
-                $newPost->is_breaking       = 0;
-                $newPost->old_id            = $post->id;
-                $newPost->save();
 
-                $counter++;
-            }
-        }
+
+        
+        // if ($post->image_big != null && $user_id != null && $daerah_id != null) {
+        //     $image_url_raw = 'https://sumbar.kemenag.go.id/v2/' . $post->image_big;
+        //     $image_url = Cloudinary::upload($image_url_raw)->getSecurePath();
+
+        //     $fPost = \App\Models\Post::where('old_id', $post->id)->first();
+        //     if (!$fPost) {
+        //         $newPost                    = new \App\Models\Post();
+        //         $newPost->created_at        = $post->created_at;
+        //         $newPost->cover             = $image_url;
+        //         $newPost->title             = $post->title;
+        //         $newPost->slug              = Str::slug($post->title);
+        //         $newPost->user_id           = $user_id;
+        //         $newPost->category_id       = Str::contains(strtolower($post->content), ['jakarta']) ? 3 : 1;
+        //         $newPost->desc              = $post->content;
+        //         $newPost->keywords          = $post->keywords;
+        //         $newPost->meta_desc         = $post->title;
+        //         $newPost->id_kabkota        = $daerah_id;
+        //         $newPost->is_featured       = 1;
+        //         $newPost->is_slider         = 0;
+        //         $newPost->is_recommended    = 0;
+        //         $newPost->is_breaking       = 0;
+        //         $newPost->old_id            = $post->id;
+        //         $newPost->save();
+
+        //         $counter++;
+        //     }
+        // }
     }
-
+    return $arrData;
     return $counter;
 });
 
