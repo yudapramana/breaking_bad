@@ -48,13 +48,13 @@ class RolesTableSeeder extends Seeder
 
         // Kontributor Daerah
         #1
-        $user = \App\Models\User::where('username', 'adm.kepulauanmentawai')->first();
-        $user->assignRole('kontributor_daerah');
-        #2
-        $user = \App\Models\User::where('username', 'adm.pesisirselatan')->first();
-        $user->assignRole('kontributor_daerah');
+        // $user = \App\Models\User::where('username', 'adm.kepulauanmentawai')->first();
+        // $user->assignRole('kontributor_daerah');
+        // #2
+        // $user = \App\Models\User::where('username', 'adm.pesisirselatan')->first();
+        // $user->assignRole('kontributor_daerah');
         #3
-        $user = \App\Models\User::where('username', 'adm.solok')->first();
+        $user = \App\Models\User::where('username', 'adm.kabsolok')->first();
         $user->assignRole('kontributor_daerah');
         #4
         $user = \App\Models\User::where('username', 'adm.sijunjung')->first();
@@ -87,7 +87,7 @@ class RolesTableSeeder extends Seeder
         $user = \App\Models\User::where('username', 'adm.padang')->first();
         $user->assignRole('kontributor_daerah');
         #14
-        $user = \App\Models\User::where('username', 'adm.solok')->first();
+        $user = \App\Models\User::where('username', 'adm.kotasolok')->first();
         $user->assignRole('kontributor_daerah');
         #15
         $user = \App\Models\User::where('username', 'adm.sawahlunto')->first();
