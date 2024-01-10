@@ -78,59 +78,59 @@ Route::get('/db_old/fetch', function (Request $request) {
         $daerah_id = null;
         $category_id = $post->category_id;
         switch ($category_id) {
-            case '15':
+            case 15:
                 $user_id = 8;
                 $daerah_id = 1301;
                 break;
-            case '16':
+            case 16:
                 $user_id = 9;
                 $daerah_id = 1302;
                 break;
-            case '17':
+            case 17:
                 $user_id = 10;
                 $daerah_id = 1303;
                 break;
-            case '18':
+            case 18:
                 $user_id = 11;
                 $daerah_id = 1304;
                 break;
-            case '19':
+            case 19:
                 $user_id = 12;
                 $daerah_id = 1305;
                 break;
-            case '20':
+            case 20:
                 $user_id = 13;
                 $daerah_id = 1306;
                 break;
-            case '21':
+            case 21:
                 $user_id = 14;
                 $daerah_id = 1307;
                 break;
-            case '22':
+            case 22:
                 $user_id = 15;
                 $daerah_id = 1308;
                 break;
-            case '23':
+            case 23:
                 $user_id = 16;
                 $daerah_id = 1309;
                 break;
-            case '24':
+            case 24:
                 $user_id = 17;
                 $daerah_id = 1310;
                 break;
-            case '25':
+            case 25:
                 $user_id = 18;
                 $daerah_id = 1311;
                 break;
-            case '26':
+            case 26:
                 $user_id = 19;
                 $daerah_id = 1312;
                 break;
-            case '14':
+            case 14:
                 $user_id = 20;
                 $daerah_id = 1371;
                 break;
-            case '27':
+            case 27:
                 $user_id = 21;
                 $daerah_id = 1372;
                 break;
