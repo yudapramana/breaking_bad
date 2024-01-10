@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use DB;
 
 
 /*
@@ -55,16 +56,21 @@ Route::get('/time_now', function (Request $request) {
 
 Route::get('/db_old/fetch', function (Request $request) {
 
-    // DB::enableQueryLog();
+    // $posts = \App\Models\OldPost::whereNotIn('daerah', [0, 9999])
+    //     ->orderBy('created_at', 'DESC')->take(5)->get();
 
-    $posts = \App\Models\OldPost::where('daerah', '!=', '0')
-        ->orderBy('created_at', 'DESC')->take(5)->get();
+    // return $posts;
 
-    // $query = DB::getQueryLog();
 
-    // dd($query);
-
+    $posts = DB::connection('mysql_old')->table('posts')->whereYear('created_at', 2023)->take(5)->get();
     return $posts;
+    
+    // ->chunk(100, function ($users) {
+    //     foreach ($users as $user) {
+    //         //
+    //     }
+    // });
+
 });
 
 Route::get('/db_old/migrate/posts', function (Request $request) {
