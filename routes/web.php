@@ -68,7 +68,7 @@ Route::get('/db_old/fetch', function (Request $request) {
 
     // $posts = DB::connection('mysql_old')->table('posts')->whereYear('created_at', 2023)
     //     ->whereBetween('id', [$oldidmin, $oldidmax])->get();
-    $posts = \App\Models\OldPost::whereBetween('id', [$oldidmin, $oldidmax])->orderBy('id', 'DESC')->get();
+    $posts = \App\Models\OldPost::whereBetween('id', [$oldidmin, $oldidmax])->orderBy('id', 'DESC')->take(100)->get();
 
     return $posts;
 
