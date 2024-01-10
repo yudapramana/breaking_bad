@@ -55,8 +55,8 @@ Route::get('/time_now', function (Request $request) {
 
 Route::get('/db_old/fetch', function (Request $request) {
     $posts = \App\Models\OldPost::where('daerah', '!=', '0')
-                ->whereYear('created_at', '2023')
-                ->orderBy('created_at')->take(5)->get();
+        ->whereYear('created_at', '2023')
+        ->orderBy('created_at')->take(5)->get();
     return $posts;
 });
 
@@ -107,8 +107,7 @@ Route::get('/db_old/migrate/posts', function (Request $request) {
                     break;
             }
 
-            if($convertuserid == $post->user_id) {
-
+            if ($convertuserid == $post->user_id) {
             }
 
             if ($post->image_big != null) {
