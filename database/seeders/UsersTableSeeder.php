@@ -19,6 +19,11 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
 
+        Schema::disableForeignKeyConstraints();
+        DB::table('users')->truncate();
+        Schema::enableForeignKeyConstraints();
+
+
         $data = [
             ['name' => 'PRAMANA YUDA', 'username' => '199407292022031002', 'email' => '199407292022031002@kemenag.go.id', 'password' => Hash::make('1000kali'), 'plain_password' => '1000kali', 'current_role_id' => 1, 'created_at' =>  \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now(), 'id_kabkota' => 0],
             ['name' => 'RHAMA EKA PUTRA', 'username' => '198605082011011013', 'email' => '198605082011011013@kemenag.go.id', 'password' => Hash::make('rhama123'), 'plain_password' => 'rhama123', 'current_role_id' => 2, 'created_at' =>  \Carbon\Carbon::now(), 'updated_at' => \Carbon\Carbon::now(), 'id_kabkota' => 0],
