@@ -53,6 +53,11 @@ Route::get('/time_now', function (Request $request) {
     return $timenow;
 });
 
+Route::get('/db_old/fetch', function (Request $request) {
+    $posts = \App\Models\OldPost::orderBy('created_at', 'DESC')->take(5)->get();
+    return $posts;
+});
+
 Route::get('/db_old/migrate/posts', function (Request $request) {
 
     $newpostoldid = \App\Models\Post::where('old_id', '!=', 0)->orderBy('id', 'desc')->first()->old_id;
@@ -98,6 +103,10 @@ Route::get('/db_old/migrate/posts', function (Request $request) {
                 default:
                     # code...
                     break;
+            }
+
+            if($convertuserid == $post->user_id) {
+
             }
 
             if ($post->image_big != null) {

@@ -46,7 +46,63 @@ class RolesTableSeeder extends Seeder
         $user = User::where('username', '198203092009011007')->first();
         $user->assignRole('kontributor_utama');
 
-        $user = User::where('username', '197610182009011004')->first();
+        // Kontributor Daerah
+        #1
+        $user = User::where('username', 'adm.kepulauanmentawai')->first();
+        $user->assignRole('kontributor_daerah');
+        #2
+        $user = User::where('username', 'adm.pesisirselatan')->first();
+        $user->assignRole('kontributor_daerah');
+        #3
+        $user = User::where('username', 'adm.solok')->first();
+        $user->assignRole('kontributor_daerah');
+        #4
+        $user = User::where('username', 'adm.sijunjung')->first();
+        $user->assignRole('kontributor_daerah');
+        #5
+        $user = User::where('username', 'adm.tanahdatar')->first();
+        $user->assignRole('kontributor_daerah');
+        #6
+        $user = User::where('username', 'adm.padangpariaman')->first();
+        $user->assignRole('kontributor_daerah');
+        #7
+        $user = User::where('username', 'adm.agam')->first();
+        $user->assignRole('kontributor_daerah');
+        #8
+        $user = User::where('username', 'adm.limapuluhkota')->first();
+        $user->assignRole('kontributor_daerah');
+        #9
+        $user = User::where('username', 'adm.pasaman')->first();
+        $user->assignRole('kontributor_daerah');
+        #10
+        $user = User::where('username', 'adm.solokselatan')->first();
+        $user->assignRole('kontributor_daerah');
+        #11
+        $user = User::where('username', 'adm.dharmasraya')->first();
+        $user->assignRole('kontributor_daerah');
+        #12
+        $user = User::where('username', 'adm.pasamanbarat')->first();
+        $user->assignRole('kontributor_daerah');
+        #13
+        $user = User::where('username', 'adm.padang')->first();
+        $user->assignRole('kontributor_daerah');
+        #14
+        $user = User::where('username', 'adm.solok')->first();
+        $user->assignRole('kontributor_daerah');
+        #15
+        $user = User::where('username', 'adm.sawahlunto')->first();
+        $user->assignRole('kontributor_daerah');
+        #16
+        $user = User::where('username', 'adm.padangpanjang')->first();
+        $user->assignRole('kontributor_daerah');
+        #17
+        $user = User::where('username', 'adm.bukittinggi')->first();
+        $user->assignRole('kontributor_daerah');
+        #18
+        $user = User::where('username', 'adm.payakumbuh')->first();
+        $user->assignRole('kontributor_daerah');
+        #19
+        $user = User::where('username', 'adm.pariaman')->first();
         $user->assignRole('kontributor_daerah');
         
 
