@@ -61,7 +61,7 @@ Route::get('/db_old/fetch', function (Request $request) {
         ->chunk(100, function ($posts) use ($counter) {
             foreach ($posts as $post) {
 
-                $user_id = null;
+                $user_id = null;    
                 $daerah_id = null;
                 $category_id = $post->category_id;
                 switch ($category_id) {
@@ -151,7 +151,7 @@ Route::get('/db_old/fetch', function (Request $request) {
                     $image_url_raw = 'https://sumbar.kemenag.go.id/v2/' . $post->image_big;
                     $image_url = Cloudinary::upload($image_url_raw)->getSecurePath();
     
-                    $fPost = \App\Models\Post::where('title', $post->title)->first();
+                    $fPost = \App\Models\Post::where('old_id', $post->id)->first();
                     if (!$fPost) {
                         $newPost                    = new \App\Models\Post();
                         $newPost->created_at        = $post->created_at;
