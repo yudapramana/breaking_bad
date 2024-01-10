@@ -54,7 +54,9 @@ Route::get('/time_now', function (Request $request) {
 });
 
 Route::get('/db_old/fetch', function (Request $request) {
-    $posts = \App\Models\OldPost::where('daerah', '!=', '0')->orderBy('created_at', 'DESC')->take(5)->get();
+    $posts = \App\Models\OldPost::where('daerah', '!=', '0')
+                ->whereYear('created_at', '2023')->whereMonth('created_at', '01')
+                ->orderBy('created_at')->take(5)->get();
     return $posts;
 });
 
