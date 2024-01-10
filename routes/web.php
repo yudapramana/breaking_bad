@@ -56,7 +56,7 @@ Route::get('/time_now', function (Request $request) {
 Route::get('/db_old/fetch', function (Request $request) {
 
     $counter = 0;
-    $posts = DB::connection('mysql_old')->table('posts')->where('daerah', '!=', 0)->whereYear('created_at', 2023)->orderBy('id')
+    $posts = DB::connection('mysql_old')->table('posts')->where('daerah', '!=', '0')->whereYear('created_at', 2023)->orderBy('id')
     ->take(5)->get();
     
     return $posts;
