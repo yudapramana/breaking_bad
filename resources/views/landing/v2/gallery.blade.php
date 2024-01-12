@@ -263,6 +263,7 @@
                     <div class="heading_s3 text-center animation animated fadeInUp" data-animation="fadeInUp"
                         data-animation-delay="0.2s" style="animation-delay: 0.2s; opacity: 1;">
                         <h2 class="greenext">E-Book</h2>
+                        <h5 class="greenext">Karya Buku Digital</h5>
                     </div>
                     {{-- <p class="text-center animation animated fadeInUp" data-animation="fadeInUp"
                         data-animation-delay="0.3s" style="animation-delay: 0.3s; opacity: 1;">Lorem ipsum dolor sit
