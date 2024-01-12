@@ -278,7 +278,7 @@ Route::get('/db_old/migrate/posts', function (Request $request) {
         }
         return 'Miration has been done. click <a href="/berita">here</a> to go to Home Page';
     } else {
-        return 'data has been updated';
+        return 'data has been updated. click <a href="/berita">here</a> to go to Home Page';
     }
 });
 
