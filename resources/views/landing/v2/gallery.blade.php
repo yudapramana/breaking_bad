@@ -334,7 +334,7 @@
                                     <div class="link_container">
                                         <a href="{{ $gallery->image_url }}" class="image_popup"><i
                                                 class="ion-image"></i></a>
-                                        <a href="#"><i class="ion-plus"></i></a>
+                                        <a href="{{ $gallery->url }}"><i class="ion-plus"></i></a>
                                     </div>
                                     <h5><a href="#">{{ $gallery->title }}</a></h5>
                                     <p>{{ $gallery->description }}</p>
