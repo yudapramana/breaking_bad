@@ -60,7 +60,7 @@ class GalleryController extends Controller
                             break;
 
                         case 'ebook':
-                            $bgtobe = 'bg-light';
+                            $bgtobe = 'bg-secondary';
                             break;
                         default:
                             # code...
