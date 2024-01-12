@@ -48,9 +48,27 @@ class GalleryController extends Controller
                     return $html;
                 })
                 ->addColumn('name-description', function ($gallery) {
-                    $bgtobe = ($gallery->type == 'foto') ? 'bg-success' : 'bg-warning';
+                    $bgtobe = 'bg-warning';
+
+                    switch ($gallery->type) {
+                        case 'foto':
+                            $bgtobe = 'bg-success';
+                            break;
+
+                        case 'video':
+                            $bgtobe = 'bg-warning';
+                            break;
+
+                        case 'ebook':
+                            $bgtobe = 'bg-light';
+                            break;
+                        default:
+                            # code...
+                            break;
+                    }
+
                     $text = '<span style="font-size:larger; font-weight:bolder;">' . $gallery->title . '
-                    </span>&nbsp;&nbsp; <span class="badge '. $bgtobe  .'"><i>' . $gallery->type . '</i></span>
+                    </span>&nbsp;&nbsp; <span class="badge ' . $bgtobe  . '"><i>' . $gallery->type . '</i></span>
                     </span>&nbsp;&nbsp; <span class="badge bg-info"><i>' . $gallery->filter_tag . '</i></span><br>
                             <span class="text-muted preserveLines" style="font-size:smaller">' . $gallery->description . ' </span>';
                     return $text;
