@@ -254,6 +254,108 @@
     </section>
     @endif
 
+
+    @if($type == 'ebook')
+    <section class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 col-md-9">
+                    <div class="heading_s3 text-center animation animated fadeInUp" data-animation="fadeInUp"
+                        data-animation-delay="0.2s" style="animation-delay: 0.2s; opacity: 1;">
+                        <h2 class="greenext">E-Book</h2>
+                    </div>
+                    {{-- <p class="text-center animation animated fadeInUp" data-animation="fadeInUp"
+                        data-animation-delay="0.3s" style="animation-delay: 0.3s; opacity: 1;">Lorem ipsum dolor sit
+                        amet, consectetur adipiscing elit. Phasellus blandit massa enim. Nullam id varius nunc id varius
+                        nunc.</p> --}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="cleafix small_divider"></div>
+                </div>
+            </div>
+
+            <div class="row mb-3 mb-sm-5">
+                <div class="col-md-12 text-center">
+                    <ul class="list_none portfolio_filter filter_tab6 animation animated fadeInUp"
+                        data-animation="fadeInUp" data-animation-delay="0.4s"
+                        style="animation-delay: 0.4s; opacity: 1;">
+                        <li><a href="#" class="current" data-filter="*">all</a></li>
+
+                        @foreach($filterTags as $key => $tag)
+                        <li><a href="#" data-filter="{{ '.' . $tag}}">{{$tag}}</a></li>
+                        @endforeach
+
+
+                        {{-- <li><a href="#" data-filter=".brands">Brands</a></li>
+                        <li><a href="#" data-filter=".design">Design</a></li>
+                        <li><a href="#" data-filter=".web">Web</a></li>
+                        <li><a href="#" data-filter=".adv">Advertising</a></li> --}}
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="portfolio_container gutter_small work_col3 portfolio_gallery portfolio_style3 animation animated fadeInUp"
+                        data-animation="fadeInUp" data-animation-delay="0.4s"
+                        style="animation-delay: 0.4s; opacity: 1; position: relative; height: 1079.86px;">
+                        <li class="grid-sizer"></li>
+
+
+                        @foreach($galleries as $key => $gallery)
+
+                        {{-- <div class="col-lg-4 col-md-6 portfolio-item {{$gallery->filter_tag}}">
+                            <div class="portfolio-wrap">
+                                <img src="{{ $gallery->thumbnail_image }}" class="img-fluid" alt="{{ $gallery->alt }}">
+                                <div class="portfolio-info">
+                                    <h4>{{ $gallery->title }}</h4>
+                                    <p>{{ $gallery->filter_tag }}</p>
+                                    <div class="portfolio-links">
+                                        <a href="{{ $gallery->image_url }}" data-gallery="portfolioGallery"
+                                            class="portfolio-lightbox" title="{{ $gallery->title }}"><i
+                                                class="bx bx-plus"></i></a>
+                                        <a href="#" class="portfolio-details-lightbox" data-glightbox="type: external"
+                                            title="Portfolio Details"><i class="bx bx-link"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> --}}
+
+                        <!-- START PORTFOLIO ITEM -->
+                        <li class="portfolio-item {{$gallery->filter_tag}}">
+                            <div class="portfolio_item">
+                                <a href="#" class="image_link">
+                                    <img src="{{ $gallery->thumbnail_image }}" alt="{{ $gallery->alt }}">
+                                </a>
+                                <div class="portfolio_content">
+                                    <div class="link_container">
+                                        <a href="{{ $gallery->image_url }}" class="image_popup"><i
+                                                class="ion-image"></i></a>
+                                        <a href="#"><i class="ion-plus"></i></a>
+                                    </div>
+                                    <h5><a href="#">{{ $gallery->title }}</a></h5>
+                                    <p>{{ $gallery->description }}</p>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- END PORTFOLIO ITEM -->
+
+
+                        @endforeach
+
+
+
+
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    @endif
+
 </div>
 <!-- END SECTION CONTACT -->
 

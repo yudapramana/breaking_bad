@@ -57,6 +57,8 @@
                                         </option>
                                         <option selected value="foto">Foto</option>
                                         <option value="video">Video</option>
+                                        <option value="ebook">E-book</option>
+
                                     </select>
                                 </div>
                             </div>

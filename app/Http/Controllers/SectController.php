@@ -89,7 +89,7 @@ class SectController extends Controller
         $filterTags = $galleries->pluck('filter_tag')->unique();
 
         return view('landing.v2.gallery', [
-            'title' => 'Galeri Kantor Wilayah Kementerian Agama Prov. Sumatera Barat',
+            'title' => 'Galeri ' . ucfirst($type) . 'Kantor Wilayah Kementerian Agama Prov. Sumatera Barat',
             'galleries' =>  $galleries,
             'filterTags' =>  $filterTags,
             'type' =>  $type,

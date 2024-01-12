@@ -26,7 +26,7 @@ class CreateGalleriesTable extends Migration
             $table->string('slug')->nullable();
             $table->text('description')->nullable();
             $table->text('url')->nullable();
-            $table->enum('type', ['foto', 'video'])->default('foto');
+            $table->enum('type', ['foto', 'video', 'ebook'])->default('foto');
 
 
         });
