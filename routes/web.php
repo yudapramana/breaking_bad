@@ -54,9 +54,87 @@ Route::get('/time_now', function (Request $request) {
 });
 
 Route::get('/db_old/get/posts', function (Request $request) {
+    $counter = 0;
+    $posts = DB::connection('mysql_old')->table('posts')->where(DB::raw('YEAR(created_at)'), '=', '2023')
+        ->chunk(200, function ($posts) use (&$counter) {
 
-    $posts = DB::connection('mysql_old')->table('posts')->where( DB::raw('YEAR(created_at)'), '=', '2023' )->get();
-    return $posts;
+            foreach ($posts as $post) {
+                $realuserid = $post->user_id;
+                $convertuserid = null;
+
+                switch ($realuserid) {
+                    case 1:
+                        // adminrina
+                        $convertuserid = 7;
+                        break;
+
+                    case 13:
+                        // adminrina
+                        $convertuserid = 4;
+                        break;
+
+                    case 49:
+                        // adminfitradewi
+                        $convertuserid = 4;
+                        break;
+
+                    case 296:
+                        // adminrhama
+                        $convertuserid = 2;
+                        break;
+
+                    case 480:
+                        // admineri
+                        $convertuserid = 3;
+                        break;
+
+                    case 562:
+                        // adminvethriarahmi
+                        $convertuserid = 5;
+                        break;
+
+                    default:
+                        # code...
+                        break;
+                }
+
+                if ($convertuserid) {
+                    if ($post->image_big != null) {
+
+                        $fPost = \App\Models\Post::where('old_id', $post->id)->first();
+
+                        if (!$fPost) {
+
+                            $image_url_raw = 'https://sumbar.kemenag.go.id/v2/' . $post->image_big;
+                            $image_url = Cloudinary::upload($image_url_raw)->getSecurePath();
+
+
+                            $newPost                    = new \App\Models\Post();
+                            $newPost->created_at        = $post->created_at;
+                            $newPost->cover             = $image_url;
+                            $newPost->title             = $post->title;
+                            $newPost->slug              = Str::slug($post->title);
+                            $newPost->user_id           = $convertuserid;
+                            $newPost->category_id       = Str::contains(strtolower($post->content), ['jakarta']) ? 3 : 1;
+                            $newPost->desc              = $post->content;
+                            $newPost->keywords          = $post->keywords;
+                            $newPost->meta_desc         = $post->title;
+                            $newPost->id_kabkota        = ($post->daerah == 9999);
+                            $newPost->is_featured       = 1;
+                            $newPost->is_slider         = 0;
+                            $newPost->is_recommended    = 0;
+                            $newPost->is_breaking       = 0;
+                            $newPost->old_id            = $post->id;
+                            $newPost->save();
+
+                            $counter++;
+                        }
+                    }
+                }
+            }
+        });
+
+    return 'Done dengan jumlah import: ' . $counter;
 });
 
 Route::get('/db_old/fetch', function (Request $request) {
