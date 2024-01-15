@@ -105,29 +105,34 @@ Route::get('/db_old/get/posts', function (Request $request) {
 
                         if (!$fPost) {
 
-                            $image_url_raw = 'https://sumbar.kemenag.go.id/v2/' . $post->image_big;
-                            $image_url = Cloudinary::upload($image_url_raw)->getSecurePath();
+                            $countChars = count_chars($post->title);
 
-
-                            $newPost                    = new \App\Models\Post();
-                            $newPost->created_at        = $post->created_at;
-                            $newPost->cover             = $image_url;
-                            $newPost->title             = $post->title;
-                            $newPost->slug              = Str::slug($post->title);
-                            $newPost->user_id           = $convertuserid;
-                            $newPost->category_id       = Str::contains(strtolower($post->content), ['jakarta']) ? 3 : 1;
-                            $newPost->desc              = $post->content;
-                            $newPost->keywords          = $post->keywords;
-                            $newPost->meta_desc         = $post->title;
-                            $newPost->id_kabkota        = ($post->daerah == 9999);
-                            $newPost->is_featured       = 1;
-                            $newPost->is_slider         = 0;
-                            $newPost->is_recommended    = 0;
-                            $newPost->is_breaking       = 0;
-                            $newPost->old_id            = $post->id;
-                            $newPost->save();
-
-                            $counter++;
+                            if($countChars <= 190) {
+                                $image_url_raw = 'https://sumbar.kemenag.go.id/v2/' . $post->image_big;
+                                $image_url = Cloudinary::upload($image_url_raw)->getSecurePath();
+    
+    
+                                $newPost                    = new \App\Models\Post();
+                                $newPost->created_at        = $post->created_at;
+                                $newPost->cover             = $image_url;
+                                $newPost->title             = $post->title;
+                                $newPost->slug              = Str::slug($post->title);
+                                $newPost->user_id           = $convertuserid;
+                                $newPost->category_id       = Str::contains(strtolower($post->content), ['jakarta']) ? 3 : 1;
+                                $newPost->desc              = $post->content;
+                                $newPost->keywords          = $post->keywords;
+                                $newPost->meta_desc         = $post->title;
+                                $newPost->id_kabkota        = ($post->daerah == 9999);
+                                $newPost->is_featured       = 1;
+                                $newPost->is_slider         = 0;
+                                $newPost->is_recommended    = 0;
+                                $newPost->is_breaking       = 0;
+                                $newPost->old_id            = $post->id;
+                                $newPost->save();
+    
+                                $counter++;
+                            }
+                           
                         }
                     }
                 }
