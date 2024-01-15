@@ -55,7 +55,7 @@ Route::get('/time_now', function (Request $request) {
 
 Route::get('/db_old/get/posts', function (Request $request) {
     $counter = 0;
-    $posts = DB::connection('mysql_old')->table('posts')->where(DB::raw('YEAR(created_at)'), '=', '2023')
+    $posts = DB::connection('mysql_old')->table('posts')->where(DB::raw('YEAR(created_at)'), '=', '2023')->orderBy('id', 'DESC')
         ->chunk(200, function ($posts) use (&$counter) {
 
             foreach ($posts as $post) {
