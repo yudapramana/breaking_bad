@@ -53,6 +53,12 @@ Route::get('/time_now', function (Request $request) {
     return $timenow;
 });
 
+Route::get('/db_old/get/posts', function (Request $request) {
+
+    $posts = DB::connection('mysql_old')->table('posts')->where( DB::raw('YEAR(created_at)'), '=', '2023' )->get();
+    return $posts;
+});
+
 Route::get('/db_old/fetch', function (Request $request) {
 
     $counter = 0;
