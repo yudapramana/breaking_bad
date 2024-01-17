@@ -706,7 +706,7 @@
                         @endif
                         <h6 style="height: 54px !important;"><a
                                 href="{{config('isec.base_url')}}/post/{{$post->slug}}">{{\Illuminate\Support\Str::limit($post->title,
-                                83, $end='...')}}</a>
+                                55, $end='...')}}</a>
                         </h6>
                         <p class="small m-0">{{ $post->tanggal }} | {{ $post->reads }} reads
                         </p>
