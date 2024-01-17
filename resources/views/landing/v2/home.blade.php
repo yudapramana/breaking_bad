@@ -668,12 +668,66 @@
 <!-- END SECTION ABOUT US -->
 
 
+<section>
+
+
+    <div class="container pt-3 animation" data-animation="fadeInDown" data-animation-delay="0.2s">
+        <div class="widget">
+            <h3 class="heading_s2">Berita Daerah</h3>
+        </div>
+        <div class="row list-style-2">
+
+            @foreach ($daerah_posts_chunk as $daerah_posts)
+            <div class="col-md-4">
+
+
+                @foreach ($daerah_posts as $post)
+                <div class="post_footer">
+                    <div class="post_img">
+                        <a href="{{config('isec.base_url')}}/post/{{$post->slug}}">
+                            @if($post->cover)
+                            <img src="{{$post->square_cover_image}}" alt="letest_post1" width="90"
+                                style="border-radius: 5px;">
+                            @endif
+                        </a>
+                    </div>
+                    <div class="post_content" style="line-height: 1 !important">
+                        @if($post->category->slug == 'daerah')
+                        <a
+                            href="{{config('isec.base_url')}}/blog?category={{$post->category->slug}}&id_kabkota={{$post->id_kabkota}}">
+                            <span class="badge badge-primary" style="font-size:x-small !important;">{{
+                                ucwords(strtolower($post->kabkota->name)) }}</span>
+                        </a>
+                        @else
+                        <a href="{{config('isec.base_url')}}/blog?category={{$post->category->slug}}">
+                            <span class="badge badge-primary">{{Str::ucfirst($post->category->slug)
+                                }}</span>
+                        </a>
+                        @endif
+                        <h6 style="height: 54px !important;"><a
+                                href="{{config('isec.base_url')}}/post/{{$post->slug}}">{{\Illuminate\Support\Str::limit($post->title,
+                                83, $end='...')}}</a>
+                        </h6>
+                        <p class="small m-0">{{ $post->tanggal }} | {{ $post->reads }} reads
+                        </p>
+                    </div>
+                </div>
+                <div class="border-dashed pt-20"></div>
+                @endforeach
+
+            </div>
+            @endforeach
+
+
+        </div>
+    </div>
+</section>
 
 
 
 
 <!-- START SECTION BLOG -->
-<section>
+{{-- <section>
     <div class="container pt-3">
         <div class="row">
             <div class="col-md-12 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
@@ -714,11 +768,11 @@
             @endforeach
         </div>
     </div>
-</section>
+</section> --}}
 <!-- END SECTION BLOG -->
 
 <!-- START SECTION BLOG -->
-<section>
+{{-- <section>
     <div class="container">
         <div class="row">
             <div class="col-md-12 animation" data-animation="fadeInUp" data-animation-delay="0.2s">
@@ -760,7 +814,7 @@
             @endforeach
         </div>
     </div>
-</section>
+</section> --}}
 <!-- END SECTION BLOG -->
 
 @endsection

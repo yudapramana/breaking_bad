@@ -38,7 +38,9 @@ class HomeController extends Controller
 
         $daerah_posts = \App\Models\Post::where('status', 'published')->whereHas('category', function ($q) {
             $q->where('slug', 'daerah');
-        })->orderBy('created_at', 'DESC')->take(10)->get();
+        })->orderBy('created_at', 'DESC')->take(12)->get();
+
+        $daerah_posts_chunk = $daerah_posts->chunk(4);
 
         return view('landing.v2.home', [
             'title' => 'Web Utama Kantor Wilayah Kementerian Agama Provinsi Sumatera Barat',
@@ -51,6 +53,7 @@ class HomeController extends Controller
             'activities' => $activities,
             'totalpermohonanselesai' => $totalpermohonanselesai,
             'daerah_posts' => $daerah_posts,
+            'daerah_posts_chunk' => $daerah_posts_chunk,
             'featureds' => $featureds,
             'main_posts' => $main_posts,
         ]);
