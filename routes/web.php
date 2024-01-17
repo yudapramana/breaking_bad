@@ -371,6 +371,91 @@ Route::get('/db_old/migrate/posts', function (Request $request) {
     }
 });
 
+Route::get('/db_old/migrate/test', function (Request $request) {
+
+    $newpostoldid = \App\Models\Post::where('old_id', '!=', 0)->orderBy('id', 'desc')->first()->old_id;
+    // $newpostoldid = DB::table('posts')->max('old_id');
+
+    return $newpostoldid;
+
+    $posts = \App\Models\OldPost::where('id', '>', $newpostoldid)->get();
+
+
+    if (Count($posts) > 0) {
+        foreach ($posts as $post) {
+            $convertuserid = $post->user_id;
+
+            switch ($convertuserid) {
+                case 1:
+                    // adminrina
+                    $convertuserid = 7;
+                    break;
+
+                case 13:
+                    // adminrina
+                    $convertuserid = 4;
+                    break;
+
+                case 49:
+                    // adminfitradewi
+                    $convertuserid = 4;
+                    break;
+
+                case 296:
+                    // adminrhama
+                    $convertuserid = 2;
+                    break;
+
+                case 480:
+                    // admineri
+                    $convertuserid = 3;
+                    break;
+
+                case 562:
+                    // adminvethriarahmi
+                    $convertuserid = 5;
+                    break;
+
+                default:
+                    # code...
+                    break;
+            }
+
+            if ($convertuserid == $post->user_id) {
+            }
+
+            if ($post->image_big != null) {
+                $image_url_raw = 'https://sumbar.kemenag.go.id/v2/' . $post->image_big;
+                $image_url = Cloudinary::upload($image_url_raw)->getSecurePath();
+
+                $fPost = \App\Models\Post::where('title', $post->title)->first();
+                if (!$fPost) {
+                    $newPost                    = new \App\Models\Post();
+                    $newPost->created_at        = $post->created_at;
+                    $newPost->cover             = $image_url;
+                    $newPost->title             = $post->title;
+                    $newPost->slug              = Str::slug($post->title);
+                    $newPost->user_id           = $convertuserid;
+                    $newPost->category_id       = Str::contains(strtolower($post->content), ['jakarta']) ? 3 : 1;
+                    $newPost->desc              = $post->content;
+                    $newPost->keywords          = $post->keywords;
+                    $newPost->meta_desc         = $post->title;
+                    $newPost->id_kabkota        = $post->daerah;
+                    $newPost->is_featured       = 1;
+                    $newPost->is_slider         = 0;
+                    $newPost->is_recommended    = 0;
+                    $newPost->is_breaking       = 0;
+                    $newPost->old_id            = $post->id;
+                    $newPost->save();
+                }
+            }
+        }
+        return 'Miration has been done. click <a href="/berita">here</a> to go to Home Page';
+    } else {
+        return 'data has been updated. click <a href="/berita">here</a> to go to Home Page';
+    }
+});
+
 Route::get('/users/all', function (Request $request) {
 
     //    $users = \App\Models\User::select('name', 'username', 'plain_password')->get();
