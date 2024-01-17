@@ -376,10 +376,10 @@ Route::get('/db_old/migrate/test', function (Request $request) {
     $newpostoldid = \App\Models\Post::where('old_id', '!=', 0)->orderBy('id', 'desc')->first()->old_id;
     // $newpostoldid = DB::table('posts')->max('old_id');
 
-    return $newpostoldid;
+    // return $newpostoldid;
 
     $posts = \App\Models\OldPost::where('id', '>', $newpostoldid)->get();
-
+    return $posts;
 
     if (Count($posts) > 0) {
         foreach ($posts as $post) {
