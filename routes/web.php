@@ -290,8 +290,8 @@ Route::get('/db_old/fetch', function (Request $request) {
 
 Route::get('/db_old/migrate/posts', function (Request $request) {
 
-    // $newpostoldid = \App\Models\Post::where('old_id', '!=', 0)->orderBy('id', 'desc')->first()->old_id;
-    $newpostoldid = DB::table('posts')->max('old_id');
+    $newpostoldid = \App\Models\Post::where('old_id', '!=', 0)->orderBy('id', 'desc')->first()->old_id;
+    // $newpostoldid = DB::table('posts')->max('old_id');
 
     $posts = \App\Models\OldPost::where('id', '>', $newpostoldid)->get();
 
