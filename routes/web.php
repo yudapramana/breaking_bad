@@ -107,11 +107,11 @@ Route::get('/db_old/get/posts', function (Request $request) {
 
                             $countChars = count_chars($post->title);
 
-                            if($countChars <= 190) {
+                            if ($countChars <= 190) {
                                 $image_url_raw = 'https://sumbar.kemenag.go.id/v2/' . $post->image_big;
                                 $image_url = Cloudinary::upload($image_url_raw)->getSecurePath();
-    
-    
+
+
                                 $newPost                    = new \App\Models\Post();
                                 $newPost->created_at        = $post->created_at;
                                 $newPost->cover             = $image_url;
@@ -129,10 +129,9 @@ Route::get('/db_old/get/posts', function (Request $request) {
                                 $newPost->is_breaking       = 0;
                                 $newPost->old_id            = $post->id;
                                 $newPost->save();
-    
+
                                 $counter++;
                             }
-                           
                         }
                     }
                 }
@@ -721,35 +720,40 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('post/{slug}', function (Request $request, $slug) {
         $post = \App\Models\Post::where('slug', $slug)->first();
 
-        $cookie_name = (\Str::replace('.', '', ($request->ip())) . '-' . $post->id);
+        if ($post->status == 'published') {
 
-        $cookie = \Cookie::get($cookie_name);
-        if ($cookie == '') { //check if cookie is set
-            $cookie = cookie($cookie_name, '1', 60); //set the cookie
-            $post->incrementReadCount(); //count the view
-        }
+            $cookie_name = (\Str::replace('.', '', ($request->ip())) . '-' . $post->id);
 
-        if ($post->showPost()) { // this will test if the user viwed the post or not
-            // return $post;
+            $cookie = \Cookie::get($cookie_name);
+            if ($cookie == '') { //check if cookie is set
+                $cookie = cookie($cookie_name, '1', 60); //set the cookie
+                $post->incrementReadCount(); //count the view
+            }
+
+            if ($post->showPost()) { // this will test if the user viwed the post or not
+                // return $post;
+            } else {
+                \App\Models\PostView::createViewLog($post);
+            }
+
+            $categories = \App\Models\Category::withCount('posts')->get();
+            $tags = \App\Models\Tag::all();
+            $recent_posts = \App\Models\Post::whereHas('category', function ($q) {
+                $q->where('slug', 'utama');
+            })->take(3)->get();
+            return view('landing.v2.post', [
+                'accountfb' => 'pandanviewmandeh',
+                'account' => 'pandanviewmandeh',
+                'channel' =>  '@pandanviewmandehofficial4919',
+                'categories' =>  $categories,
+                'recent_posts' => $recent_posts,
+                'tags' => $tags,
+                'post' => $post
+            ])->withCookie($cookie); //store the cookie;
+
         } else {
-            \App\Models\PostView::createViewLog($post);
+            return redirect()->route('landing.index');
         }
-
-        $categories = \App\Models\Category::withCount('posts')->get();
-        $tags = \App\Models\Tag::all();
-        $recent_posts = \App\Models\Post::whereHas('category', function ($q) {
-            $q->where('slug', 'utama');
-        })->take(3)->get();
-        return view('landing.v2.post', [
-            'accountfb' => 'pandanviewmandeh',
-            'account' => 'pandanviewmandeh',
-            'channel' =>  '@pandanviewmandehofficial4919',
-            'categories' =>  $categories,
-            'recent_posts' => $recent_posts,
-            'tags' => $tags,
-            'post' => $post
-        ])->withCookie($cookie); //store the cookie;
-
     });
 
     Route::get('/lang/home', [App\Http\Controllers\LangController::class, 'index']);
