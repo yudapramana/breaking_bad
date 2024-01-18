@@ -758,70 +758,70 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('/messages/store', [\App\Http\Controllers\Visitor\MessageController::class, 'store'])->name('messages.store');;
 });
 
-// Auth::routes();
-Auth::routes(['login' => false]);
+Auth::routes();
+// Auth::routes(['login' => true]);
 
 Route::prefix('controlcenter')->group(function () {
     Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login.index');
     Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');
 });
 
-Route::get('/home', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin.home');
+Route::get('/admin/home', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin.home');
 
-Route::get('/information/services', [\App\Http\Controllers\Admin\ServicesController::class, 'index'])->name('services.index');
-Route::post('/information/services/store', [\App\Http\Controllers\Admin\ServicesController::class, 'store'])->name('services.store');
+Route::get('/admin/information/services', [\App\Http\Controllers\Admin\ServicesController::class, 'index'])->name('services.index');
+Route::post('/admin/information/services/store', [\App\Http\Controllers\Admin\ServicesController::class, 'store'])->name('services.store');
 
-Route::get('/information/products', [\App\Http\Controllers\Admin\ProductController::class, 'index'])->name('products.index');
-Route::post('/information/products/store', [\App\Http\Controllers\Admin\ProductController::class, 'store']);
+Route::get('/admin/information/products', [\App\Http\Controllers\Admin\ProductController::class, 'index'])->name('products.index');
+Route::post('/admin/information/products/store', [\App\Http\Controllers\Admin\ProductController::class, 'store']);
 
-Route::get('/information/activities', [\App\Http\Controllers\Admin\ActivityController::class, 'index'])->name('activities.index');
-Route::post('/information/activities/store', [\App\Http\Controllers\Admin\ActivityController::class, 'store'])->name('activities.store');
-Route::delete('/information/destroy/{id}', [\App\Http\Controllers\Admin\ActivityController::class, 'destroy'])->name('activities.destroy');
-
-
-Route::get('/information/galleries', [\App\Http\Controllers\Admin\GalleryController::class, 'index'])->name('galleries.index');
-Route::post('/information/galleries/store', [\App\Http\Controllers\Admin\GalleryController::class, 'store'])->name('galleries.store');
-
-Route::get('/information/carousels', [\App\Http\Controllers\Admin\CarouselController::class, 'index'])->name('carousels.index');
-Route::post('/information/carousels/store', [\App\Http\Controllers\Admin\CarouselController::class, 'store'])->name('carousels.store');
-
-Route::get('/information/testimonies', [\App\Http\Controllers\Admin\TestimonyController::class, 'index'])->name('testimonies.index');
-Route::post('/information/testimonies/store', [\App\Http\Controllers\Admin\TestimonyController::class, 'store']);
+Route::get('/admin/information/activities', [\App\Http\Controllers\Admin\ActivityController::class, 'index'])->name('activities.index');
+Route::post('/admin/information/activities/store', [\App\Http\Controllers\Admin\ActivityController::class, 'store'])->name('activities.store');
+Route::delete('/admin/information/destroy/{id}', [\App\Http\Controllers\Admin\ActivityController::class, 'destroy'])->name('activities.destroy');
 
 
+Route::get('/admin/information/galleries', [\App\Http\Controllers\Admin\GalleryController::class, 'index'])->name('galleries.index');
+Route::post('/admin/information/galleries/store', [\App\Http\Controllers\Admin\GalleryController::class, 'store'])->name('galleries.store');
 
+Route::get('/admin/information/carousels', [\App\Http\Controllers\Admin\CarouselController::class, 'index'])->name('carousels.index');
+Route::post('/admin/information/carousels/store', [\App\Http\Controllers\Admin\CarouselController::class, 'store'])->name('carousels.store');
 
-Route::get('/data/messages', [\App\Http\Controllers\Admin\MessageController::class, 'index'])->name('messages.index');
-
-Route::get('/data/users', [\App\Http\Controllers\Admin\UserController::class, 'index'])->name('users.index');
-Route::post('/data/users/store', [\App\Http\Controllers\Admin\UserController::class, 'store'])->name('users.store');
-Route::delete('/data/users/{id}/destroy', [\App\Http\Controllers\Admin\UserController::class, 'destroy'])->name('users.destroy');
-
-Route::get('/data/roles', [\App\Http\Controllers\Admin\RoleController::class, 'index'])->name('roles.index');
-Route::post('/data/roles/store', [\App\Http\Controllers\Admin\RoleController::class, 'store'])->name('roles.store');
-Route::delete('/data/roles/{id}/destroy', [\App\Http\Controllers\Admin\RoleController::class, 'destroy'])->name('roles.destroy');
+Route::get('/admin/information/testimonies', [\App\Http\Controllers\Admin\TestimonyController::class, 'index'])->name('testimonies.index');
+Route::post('/admin/information/testimonies/store', [\App\Http\Controllers\Admin\TestimonyController::class, 'store']);
 
 
 
-Route::resource('/setting/categories', App\Http\Controllers\CategoryController::class);
-Route::resource('/setting/tags', App\Http\Controllers\TagController::class);
+
+Route::get('/admin/data/messages', [\App\Http\Controllers\Admin\MessageController::class, 'index'])->name('messages.index');
+
+Route::get('/admin/data/users', [\App\Http\Controllers\Admin\UserController::class, 'index'])->name('users.index');
+Route::post('/admin/data/users/store', [\App\Http\Controllers\Admin\UserController::class, 'store'])->name('users.store');
+Route::delete('/admin/data/users/{id}/destroy', [\App\Http\Controllers\Admin\UserController::class, 'destroy'])->name('users.destroy');
+
+Route::get('/admin/data/roles', [\App\Http\Controllers\Admin\RoleController::class, 'index'])->name('roles.index');
+Route::post('/admin/data/roles/store', [\App\Http\Controllers\Admin\RoleController::class, 'store'])->name('roles.store');
+Route::delete('/admin/data/roles/{id}/destroy', [\App\Http\Controllers\Admin\RoleController::class, 'destroy'])->name('roles.destroy');
+
+
+
+Route::resource('/admin/setting/categories', App\Http\Controllers\CategoryController::class);
+Route::resource('/admin/setting/tags', App\Http\Controllers\TagController::class);
 // Manage Posts
-Route::get('/blog/posts/trash', [App\Http\Controllers\PostController::class, 'trash'])->name('posts.trash');
-Route::post('/blog/posts/trash/{id}/restore', [App\Http\Controllers\PostController::class, 'restore'])->name('posts.restore');
+Route::get('/admin/blog/posts/trash', [App\Http\Controllers\PostController::class, 'trash'])->name('posts.trash');
+Route::post('/admin/blog/posts/trash/{id}/restore', [App\Http\Controllers\PostController::class, 'restore'])->name('posts.restore');
 Route::delete('blog/posts/delete-permanent/{id}', [App\Http\Controllers\PostController::class, 'deletePermanent'])->name('posts.deletePermanent');
-Route::delete('/blog/posts/destroy/{id}', [\App\Http\Controllers\PostController::class, 'destroy'])->name('posts.delete');
+Route::delete('/admin/blog/posts/destroy/{id}', [\App\Http\Controllers\PostController::class, 'destroy'])->name('posts.delete');
 
-Route::resource('/blog/posts', App\Http\Controllers\PostController::class);
+Route::resource('/admin/blog/posts', App\Http\Controllers\PostController::class);
 Route::post('ckeditor/upload', 'CKEditorController@upload')->name('ckeditor.image-upload');
 
 
-Route::get('/blog/news/trash', [App\Http\Controllers\NewsController::class, 'trash'])->name('news.trash');
-Route::post('/blog/news/trash/{id}/restore', [App\Http\Controllers\NewsController::class, 'restore'])->name('news.restore');
+Route::get('/admin/blog/news/trash', [App\Http\Controllers\NewsController::class, 'trash'])->name('news.trash');
+Route::post('/admin/blog/news/trash/{id}/restore', [App\Http\Controllers\NewsController::class, 'restore'])->name('news.restore');
 Route::delete('blog/news/delete-permanent/{id}', [App\Http\Controllers\NewsController::class, 'deletePermanent'])->name('news.deletePermanent');
-Route::resource('/blog/news', App\Http\Controllers\NewsController::class);
+Route::resource('/admin/blog/news', App\Http\Controllers\NewsController::class);
 
 
-Route::get('/setting/menus/{id?}',  [\App\Http\Controllers\Admin\MenuController::class, 'index'])->name('menus.index');
+Route::get('/admin/setting/menus/{id?}',  [\App\Http\Controllers\Admin\MenuController::class, 'index'])->name('menus.index');
 Route::post('create-menu',  [\App\Http\Controllers\Admin\MenuController::class, 'store']);
 Route::get('add-categories-to-menu',  [\App\Http\Controllers\Admin\MenuController::class, 'addCategory']);
 Route::post('save-menu',  [\App\Http\Controllers\Admin\MenuController::class, 'saveMenu']);
@@ -834,15 +834,15 @@ Route::get('delete-menuitem/{id}/{k1}/{k2?}/{k3?}',  [\App\Http\Controllers\Admi
 
 // Route::resource('reservations', App\Http\Controllers\Admin\ReservationController::class);
 
-Route::get('/reservations/{yearMonth?}', [\App\Http\Controllers\Admin\ReservationController::class, 'index'])->name('reservations.index');
-Route::post('/reservations/store', [\App\Http\Controllers\Admin\ReservationController::class, 'store'])->name('reservations.store');
-Route::delete('/reservations/destroy/{id_reservation}', [\App\Http\Controllers\Admin\ReservationController::class, 'destroy'])->name('reservations.destroy');
+Route::get('/admin/reservations/{yearMonth?}', [\App\Http\Controllers\Admin\ReservationController::class, 'index'])->name('reservations.index');
+Route::post('/admin/reservations/store', [\App\Http\Controllers\Admin\ReservationController::class, 'store'])->name('reservations.store');
+Route::delete('/admin/reservations/destroy/{id_reservation}', [\App\Http\Controllers\Admin\ReservationController::class, 'destroy'])->name('reservations.destroy');
 
-Route::get('/deleted-reservations/{yearMonth?}', [\App\Http\Controllers\Admin\ReservationController::class, 'deleted'])->name('reservations.deleted');
-Route::delete('/reservations/restore/{id_reservation}', [\App\Http\Controllers\Admin\ReservationController::class, 'restore'])->name('reservations.restore');
+Route::get('/admin/deleted-reservations/{yearMonth?}', [\App\Http\Controllers\Admin\ReservationController::class, 'deleted'])->name('reservations.deleted');
+Route::delete('/admin/reservations/restore/{id_reservation}', [\App\Http\Controllers\Admin\ReservationController::class, 'restore'])->name('reservations.restore');
 
 
-Route::get('/reservation/audits/{id_reservation}', function ($id_reservation) {
+Route::get('/admin/reservation/audits/{id_reservation}', function ($id_reservation) {
     $res = \App\Models\Reservation::where('id_reservation', $id_reservation)->withTrashed()->first();
     $all = $res->audits()->with('user')->get();
     return $all;
@@ -850,17 +850,20 @@ Route::get('/reservation/audits/{id_reservation}', function ($id_reservation) {
 
 
 
-Route::get('/audits', [\App\Http\Controllers\Admin\AuditController::class, 'index'])->name('audits.index');
-Route::get('/audits/fetch/{id_reservation}', [\App\Http\Controllers\Admin\AuditController::class, 'fetch'])->name('audits.fetch');
+Route::get('/admin/audits', [\App\Http\Controllers\Admin\AuditController::class, 'index'])->name('audits.index');
+Route::get('/admin/audits/fetch/{id_reservation}', [\App\Http\Controllers\Admin\AuditController::class, 'fetch'])->name('audits.fetch');
 
 
-Route::get('/informasi', [\App\Http\Controllers\Admin\InfoController::class, 'index'])->name('info.index');
-Route::post('/informasi/store', [\App\Http\Controllers\Admin\InfoController::class, 'store'])->name('info.store');
-Route::delete('/informasi/delete/{id}', [\App\Http\Controllers\Admin\InfoController::class, 'destroy'])->name('info.destroy');
+Route::get('/admin/informasi', [\App\Http\Controllers\Admin\InfoController::class, 'index'])->name('info.index');
+Route::post('/admin/informasi/store', [\App\Http\Controllers\Admin\InfoController::class, 'store'])->name('info.store');
+Route::delete('/admin/informasi/delete/{id}', [\App\Http\Controllers\Admin\InfoController::class, 'destroy'])->name('info.destroy');
 
 
-Route::post('/upload-file/upload', [\App\Http\Controllers\UploadFileController::class, 'upload'])->name('file.upload');
-Route::delete('/upload-file/destroy/{id}', [\App\Http\Controllers\UploadFileController::class, 'destroy'])->name('file.destroy');
+Route::post('/admin/upload-file/upload', [\App\Http\Controllers\UploadFileController::class, 'upload'])->name('file.upload');
+Route::delete('/admin/upload-file/destroy/{id}', [\App\Http\Controllers\UploadFileController::class, 'destroy'])->name('file.destroy');
+
+
+Auth::routes();
 
 Route::get('/search/{param}', [\App\Http\Controllers\SearchController::class, 'search'])->name('search.param');
 

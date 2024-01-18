@@ -12,6 +12,18 @@ use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -47,22 +59,76 @@ class PostController extends Controller
 
             return DataTables::of($posts)
                 ->addIndexColumn()
+                // ->addColumn('title_can', function ($post) {
+                //     $text = '<span style="font-weight:bolder;">' . $post->title . ' &nbsp; <br> <span class="text-muted" style="font-size:x-small">' . $post->created_at->format('d-m-Y') . '</span><br>
+                //             <span class="text-muted preserveLines" style="font-size:smaller">Slug: ' . $post->slug . ' </span><br>
+                //             <span class="text-muted preserveLines" style="font-size:xx-small">Keywords: ' . $post->keywords . ' </span><br>
+                //             <span class="text-muted preserveLines" style="font-size:xx-small">Meta:' . $post->meta_desc . ' </span>';
+                //     return $text;
+                // })
+                ->addColumn('image_url_can', function ($post) {
+                    $img = $post->cover_small;
+                    if ($img) {
+                        $html = '<div class="profile-edit">
+                                    <img class="profile-edit" id="profile_photo_jst" src="' . $img . '" alt="None">
+                                </div>';
+                    } else {
+                        $html = '-';
+                    }
+                    return $html;
+                })
                 ->addColumn('title_can', function ($post) {
-                    $text = '<span style="font-weight:bolder;">' . $post->title . ' &nbsp; <br> <span class="text-muted" style="font-size:x-small">' . $post->created_at->format('d-m-Y') . '</span><br>
-                            <span class="text-muted preserveLines" style="font-size:smaller">Slug: ' . $post->slug . ' </span><br>
-                            <span class="text-muted preserveLines" style="font-size:xx-small">Keywords: ' . $post->keywords . ' </span><br>
-                            <span class="text-muted preserveLines" style="font-size:xx-small">Meta:' . $post->meta_desc . ' </span>';
+                    $editor = $post->editor ? $post->editor : '-';
+                    $photographer = $post->photographer ? $post->photographer : '-';
+
+                    $text = '<span style="font-weight:bolder;">' . $post->title . '</span> <br>
+                            <span class="text-muted preserveLines" style="font-size:xx-small">Editor: ' . $editor  . ' </span>&nbsp
+                              <span class="text-muted preserveLines" style="font-size:xx-small">Fotografer: ' . $photographer . ' </span>';
                     return $text;
                 })
-                ->addColumn('action', function ($post) {
+                ->addColumn('highlights', function ($post) {
+                    $text = '';
+
+                    if ($post->is_featured == 1) {
+                        $text .= '<span class="badge bg-primary" style="font-size:x-small">featured</a></span>&nbsp;';
+                    }
+                    if ($post->is_slider == 1) {
+                        $text .= '<span class="badge bg-primary" style="font-size:x-small">slider</a></span>&nbsp;';
+                    }
+                    if ($post->is_recommended == 1) {
+                        $text .= '<span class="badge bg-primary" style="font-size:x-small">recommended</a></span>&nbsp;';
+                    }
+                    if ($post->is_breaking == 1) {
+                        $text .= '<span class="badge bg-primary" style="font-size:x-small">breaking</a></span>&nbsp;';
+                    }
+                    return $text;
+                })
+                ->addColumn('date_add', function ($post) {
+                    $text = '<span class="text-muted" style="font-size:x-small">' . $post->created_at->format('d-m-Y h:i:s') . '</span>';
+                    return $text;
+                })
+                ->addColumn('author', function ($post) {
+                    $text = '<span class="text-muted" style="font-size:x-small"><a style="color:gray; font-weight:bold" target="_blank" href=' .  route('blog.list', 'author=' . $post->user->name)  . '>' . $post->user->username . '</a></span>';
+                    return $text;
+                })
+
+                ->addColumn('category_title', function ($post) {
+                    $text = '<span class="badge bg-secondary" style="font-size:x-small"><a style="color:white;" target="_blank" href=' .  route('blog.list', 'category=' . $post->category->title)  . '>' . $post->category->title . '</a></span>';
+                    return $text;
+                })
+                ->addColumn('action', function ($post) use ($user) {
                     $btn = '';
 
                     $btn .= '<a href="' . route('posts.edit', $post->id) . '" class="btn btn-sm btn-warning btn-xs"><i class="bi bi-pencil-square"></i></a>&nbsp;';
                     // $btn .= '<button id="editBtn" type="button" class="btn btn-sm btn-warning btn-xs" data-bs-toggle="modal" data-bs-target="#tambahGroup" data-bs-title="Edit Data" data-title="Edit Data Pengguna"><i class="bi bi-pencil-square"></i></button>&nbsp;';
+                    
+                    if ($user->hasRole('super_administrator') || $user->hasRole('administrator') || $user->hasRole('kontributor_utama')) {
                     $btn .= '<button id="destroyBtn" type="button" class="btn btn-sm btn-danger btn-xs" data-bs-id_item="' . $post->id  . '" data-id_item="' .  $post->id  . '"><i class="bi bi-trash-fill"></i></button>';
+                    }
+                    
                     return $btn;
                 })
-                ->addColumn('datastatus', function ($item) use($user) {
+                ->addColumn('datastatus', function ($item) use ($user) {
                     $statusArr = ['published', 'draft', 'archived'];
                     $colorArr = ['success', 'warning', 'danger'];
                     $nowColor = null;
@@ -71,18 +137,18 @@ class PostController extends Controller
                         unset($statusArr[$key]);
                         $nowColor = $colorArr[$key];
                     }
-    
-                    if( $user->hasRole('super_administrator') || $user->hasRole('administrator') || $user->hasRole('kontributor_utama')) {
-                        $btn = '<span class="badge bg-'.$nowColor.' dropdown-toggle" id="btnGroupDrop1" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-original-title="" title="">'.$statusNow.'</span>';
+
+                    if ($user->hasRole('super_administrator') || $user->hasRole('administrator') || $user->hasRole('kontributor_utama')) {
+                        $btn = '<span class="badge bg-' . $nowColor . ' dropdown-toggle" id="btnGroupDrop1" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-original-title="" title="">' . $statusNow . '</span>';
                         $btn .= '<div class="dropdown-menu" aria-labelledby="btnGroupDrop1">';
 
                         foreach ($statusArr as $stat) {
-                            $btn .= '<button id="switchBtn" class="dropdown-item" tabindex="0" aria-controls="defTbl" title="" data-bs-original-title="Switch Status" type="button" data-status="'.$stat.'"><span>ubah menjadi '.$stat.'</span></button>';
+                            $btn .= '<button id="switchBtn" class="dropdown-item" tabindex="0" aria-controls="defTbl" title="" data-bs-original-title="Switch Status" type="button" data-status="' . $stat . '"><span>ubah menjadi ' . $stat . '</span></button>';
                         }
 
                         $btn .=    '</div>';
                     } else {
-                        $btn = '<span class="badge bg-'.$nowColor.' " id="btnGroupDrop1" type="button" data-bs-original-title="" title="">'.$statusNow.'</span>';
+                        $btn = '<span class="badge bg-' . $nowColor . ' " id="btnGroupDrop1" type="button" data-bs-original-title="" title="">' . $statusNow . '</span>';
                     }
                     return $btn;
                 })
@@ -93,7 +159,7 @@ class PostController extends Controller
                     $html .= '<span class="text-muted preserveLines" style="font-size:smaller">View Count: ' . $post->view_count . ' Reads</span>';
                     return $html;
                 })
-                ->rawColumns(['action', 'desc_beautify', 'title_can', 'datastatus'])
+                ->rawColumns(['highlights', 'category_title', 'action', 'desc_beautify', 'title_can', 'datastatus', 'date_add', 'author', 'image_url_can'])
                 ->make(true);
         }
         return view(
@@ -164,7 +230,14 @@ class PostController extends Controller
         $post->desc         = $request->desc;
         $post->keywords     = $request->keywords;
         $post->meta_desc    = $request->meta_desc;
-        $post->id_kabkota    = $request->kabkota;
+        $post->id_kabkota   = $request->kabkota;
+        $post->editor    = $request->editor;
+        $post->photographer   = $request->photographer;
+
+        $post->is_breaking      = $request->is_breaking == 'on' ? 1 : 0;
+        $post->is_recommended   = $request->is_recommended == 'on' ? 1 : 0;
+        $post->is_featured      = $request->is_featured == 'on' ? 1 : 0;
+        $post->is_slider        = $request->is_slider == 'on' ? 1 : 0;
 
         if ($user->hasRole('kontributor_daerah')) {
             $post->status = 'draft';
@@ -219,6 +292,8 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        // return $request->all();
         $validator = Validator::make($request->all(), [
             "title"     => "required|unique:posts,title," . $id,
             "desc"      => "required",
@@ -244,11 +319,22 @@ class PostController extends Controller
         $post->keywords     = $request->keywords;
         $post->meta_desc    = $request->meta_desc;
         $post->id_kabkota    = $request->kabkota;
+        $post->is_breaking      = $request->is_breaking == 'on' ? 1 : 0;
+        $post->is_recommended   = $request->is_recommended == 'on' ? 1 : 0;
+        $post->is_featured      = $request->is_featured == 'on' ? 1 : 0;
+        $post->is_slider        = $request->is_slider == 'on' ? 1 : 0;
+        $post->editor    = $request->editor;
+        $post->photographer   = $request->photographer;
         $post->save();
 
         $post->tags()->sync($request->tags);
 
-        return redirect()->route('posts.index')->with('success', 'Data updated successfully');
+        $categorySlug = \App\Models\Category::find($request->category)->slug;
+
+        return redirect()->route('posts.index', ['category' => $categorySlug])->with('success', 'Data added successfully');
+    
+
+        // return redirect()->route('posts.index')->with('success', 'Data updated successfully');
     }
 
     /**

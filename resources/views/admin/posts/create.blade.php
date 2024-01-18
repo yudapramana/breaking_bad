@@ -25,6 +25,10 @@
     .select2-container .select2-selection--single {
         height: 34px !important;
     }
+
+    label.title {
+        font-weight: bolder;
+    }
 </style>
 @endsection
 
@@ -65,7 +69,7 @@
                                     <form action="{{route('posts.store')}}" method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <div class="form-group mb-3">
-                                            <label for="cover">Cover</label>
+                                            <label class="title" for="cover">Cover</label>
 
                                             <div class="col-sm-10">
                                                 <input class="form-control" type="hidden" name="cover" id="cover">
@@ -89,7 +93,7 @@
                                         </div>
 
                                         {{-- <div class="form-group mb-3">
-                                            <label for="is_news">Apakah Berita</label>
+                                            <label class="title" for="is_news">Apakah Berita</label>
                                             <select name="is_news" id="is_news"
                                                 class="form-control form-select select2 @error('is_news') is-invalid @enderror"
                                                 required>
@@ -106,8 +110,55 @@
                                         </div> --}}
 
 
+                                        <div class="form-group mb-3 row">
+                                            <label class="title" for="highlights">Highlights</label>
+
+                                            <div class="col-sm-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="is_featured"
+                                                        name="is_featured" {{ old('is_featured') ? 'checked' : '' }}>
+                                                    <label class="form-check-label" for="is_featured">
+                                                        Featured
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="is_recommended"
+                                                        name="is_recommended" {{ old('is_recommended') ? 'checked' : ''
+                                                        }}>
+                                                    <label class="form-check-label" for="is_recommended">
+                                                        Recommended
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="is_breaking"
+                                                        name="is_breaking" {{ old('is_breaking') ? 'checked' : '' }}>
+                                                    <label class="form-check-label" for="is_breaking">
+                                                        Breaking News
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="is_slider"
+                                                        name="is_slider" {{ old('is_slider') ? 'checked' : '' }}>
+                                                    <label class="form-check-label" for="is_slider">
+                                                        Slider
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
                                         <div class="form-group mb-3">
-                                            <label for="title">Title</label>
+                                            <label class="title" for="title">Title</label>
+
                                             <input type="text" name="title"
                                                 class="form-control @error('title') is-invalid @enderror"
                                                 value="{{old('title')}}" required>
@@ -118,12 +169,12 @@
                                             @enderror
                                         </div>
                                         <div class="form-group mb-3">
-                                            <label for="desc">Description</label>
+                                            <label class="title" for="desc">Description</label>
                                             {{-- <textarea name="desc" id="desc" cols="30" rows="10"
                                                 class="form-control @error('desc') is-invalid @enderror"
                                                 required>{{old('desc')}}</textarea> --}}
                                             <textarea name="desc" id="desc" cols="50" rows="200"
-                                                class="ckeditor form-control @error('desc') is-invalid @enderror">{{old('desc')}}</textarea>
+                                                class="form-control @error('desc') is-invalid @enderror">{{htmlspecialchars(old('desc'))}}</textarea>
                                             @error('desc')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -133,7 +184,7 @@
 
                                         @if(app('request')->has('category'))
                                         <div class="form-group mb-3">
-                                            <label for="category">Category</label>
+                                            <label class="title" for="category">Category</label>
                                             <input class="form-control" type="text" value="{{ ucwords($category) }}"
                                                 disabled>
                                             <input type="hidden" name="category" id="category"
@@ -141,7 +192,7 @@
                                         </div>
                                         @else
                                         <div class="form-group mb-3">
-                                            <label for="category">Category</label>
+                                            <label class="title" for="category">Category</label>
                                             <select name="category" id="category"
                                                 class="form-control form-select select2 @error('category') is-invalid @enderror"
                                                 required>
@@ -160,7 +211,7 @@
 
 
                                         <div class="form-group mb-3">
-                                            <label for="kabkota">Kabupaten / Kota</label>
+                                            <label class="title" for="kabkota">Kabupaten / Kota</label>
 
                                             @if( Auth::user()->hasRole('kontributor_daerah'))
                                             <input type="hidden" name="kabkota" id="kabkota"
@@ -192,7 +243,7 @@
                                             @enderror
                                         </div>
                                         <div class="form-group mb-3">
-                                            <label for="tag">Tags</label>
+                                            <label class="title" for="tag">Tags</label>
                                             <select name="tags[]" id="tag"
                                                 class="form-control form-select select2 select2bs4 select2-tags @error('tags') is-invalid @enderror"
                                                 required multiple>
@@ -207,7 +258,7 @@
                                             @enderror
                                         </div>
                                         <div class="form-group mb-3">
-                                            <label for="keywords">Keywords</label>
+                                            <label class="title" for="keywords">Keywords</label>
                                             <input type="text" name="keywords"
                                                 class="form-control @error('keywords') is-invalid @enderror"
                                                 value="{{old('keywords')}}" required>
@@ -218,7 +269,7 @@
                                             @enderror
                                         </div>
                                         <div class="form-group mb-3">
-                                            <label for="meta_desc">Meta Desc</label>
+                                            <label class="title" for="meta_desc">Meta Desc</label>
                                             {{-- <input type="text" name="meta_desc"
                                                 class="form-control @error('meta_desc') is-invalid @enderror"
                                                 value="{{old('meta_desc')}}" required> --}}
@@ -226,6 +277,37 @@
                                                 rows="5" @error('meta_desc') is-invalid @enderror
                                                 value="{{old('meta_desc')}}" required>{{old('meta_desc')}}</textarea>
                                         </div>
+
+
+                                        <div class="form-group mb-3 row">
+
+                                            <div class="col-md-6">
+                                                <label class="title" for="editor">Editor</label>
+                                                <input type="text" name="editor"
+                                                    class="form-control @error('editor') is-invalid @enderror"
+                                                    value="{{old('editor')}}" placeholder="Nama Editor">
+                                                @error('editor')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                                @enderror
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <label class="title" for="photographer">Fotografer</label>
+                                                <input type="text" name="photographer"
+                                                    class="form-control @error('photographer') is-invalid @enderror"
+                                                    value="{{old('photographer')}}" placeholder="Nama Fotografer">
+                                                @error('photographer')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                                @enderror
+                                            </div>
+
+                                        </div>
+
+
                                         @error('meta_desc')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -307,8 +389,24 @@
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
-<script src="{{ asset('assets/js/classic_ckeditor.js') }}"></script>
+{{-- <script src="{{ asset('assets/js/classic_ckeditor.js') }}"></script> --}}
 
+
+<script src="{{asset('ckeditorrtu/ckeditor.js')}}"></script>
+<script>
+    var konten = document.getElementById("desc");
+     CKEDITOR.replace(konten,{
+     language:'en-gb'
+   });
+   CKEDITOR.config.allowedContent = true;
+   CKEDITOR.editorConfig = function( config ) {
+	// Define changes to default configuration here. For example:
+	// config.language = 'fr';
+	// config.uiColor = '#AADC6E';
+	config.extraPlugins = "lineutils,widget,codesnippet";
+    config.height = 500;
+};
+</script>
 
 <script>
     $(function() {
@@ -421,23 +519,23 @@
     // plugins: [ MediaEmbed, /* ... */ ],
     //     toolbar: [ 'mediaEmbed', /* ... */ ],
         
-    ClassicEditor
-    .create( document.querySelector( '.ckeditor' ),{
-        ckfinder: {
-            uploadUrl: '{{route('image.upload').'?_token='.csrf_token()}}',
-        },
-        image: {
-            styles: [
-                { className: 'post-image-styles' }
-            ]
-        },
-        mediaEmbed: {
-            previewsInData: true
-        }
-    })
-    .catch( error => {
-        console.error( error );
-    } );
+    // ClassicEditor
+    // .create( document.querySelector( '.ckeditor' ),{
+    //     ckfinder: {
+    //         uploadUrl: '{{route('image.upload').'?_token='.csrf_token()}}',
+    //     },
+    //     image: {
+    //         styles: [
+    //             { className: 'post-image-styles' }
+    //         ]
+    //     },
+    //     mediaEmbed: {
+    //         previewsInData: true
+    //     }
+    // })
+    // .catch( error => {
+    //     console.error( error );
+    // } );
 
             
     // $(document).ready(function() {

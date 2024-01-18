@@ -95,6 +95,53 @@
                                             @enderror
                                         </div> --}}
 
+                                        <div class="form-group mb-3 row">
+                                            <label class="title" for="highlights">Highlights</label>
+
+                                            <div class="col-sm-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="is_featured"
+                                                        name="is_featured" {{ $post->is_featured ? 'checked' : '' }} >
+                                                    <label class="form-check-label" for="is_featured">
+                                                        Featured
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="is_recommended"
+                                                        name="is_recommended" {{ $post->is_recommended ? 'checked' : ''
+                                                    }}>
+                                                    <label class="form-check-label" for="is_recommended">
+                                                        Recommended
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="is_breaking"
+                                                        name="is_breaking" {{ $post->is_breaking ? 'checked' : ''
+                                                    }}>
+                                                    <label class="form-check-label" for="is_breaking">
+                                                        Breaking News
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="is_slider"
+                                                        name="is_slider" {{ $post->is_slider ? 'checked' : ''
+                                                    }}>
+                                                    <label class="form-check-label" for="is_slider">
+                                                        Slider
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         <div class="form-group mb-3">
                                             <label for="title">Title</label>
                                             <input type="text" name="title"
@@ -121,7 +168,7 @@
                                             <label for="desc">Description</label>
                                             <textarea name="desc" id="desc" cols="50" rows="30"
                                                 class="ckeditor form-control @error('desc') is-invalid @enderror"
-                                                required>{{old('desc') ? old('desc') : $post->desc}}</textarea>
+                                                required>{{old('desc') ? old('desc') : $post->desc }}</textarea>
                                             @error('desc')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -211,6 +258,38 @@
                                             </div>
                                             @enderror
                                         </div>
+
+                                        <div class="form-group mb-3 row">
+
+                                            <div class="col-md-6">
+                                                <label class="title" for="editor">Editor</label>
+                                                <input type="text" name="editor"
+                                                    class="form-control @error('editor') is-invalid @enderror"
+                                                    value="{{old('editor') ? old('editor') : $post->editor}}"
+                                                    placeholder="Nama Editor">
+                                                @error('editor')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                                @enderror
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <label class="title" for="photographer">Fotografer</label>
+                                                <input type="text" name="photographer"
+                                                    class="form-control @error('photographer') is-invalid @enderror"
+                                                    value="{{old('photographer') ? old('photographer') : $post->photographer}}"
+                                                    placeholder="Nama Fotografer">
+                                                @error('photographer')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                                @enderror
+                                            </div>
+
+                                        </div>
+
+
                                         <button type="submit" class="btn btn-primary">Submit</button>
 
                                     </form>
@@ -282,7 +361,24 @@
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
-<script src="{{ asset('assets/js/classic_ckeditor.js') }}"></script>
+{{-- <script src="{{ asset('assets/js/classic_ckeditor.js') }}"></script> --}}
+
+<script src="{{asset('ckeditorrtu/ckeditor.js')}}"></script>
+<script>
+    var konten = document.getElementById("desc");
+     CKEDITOR.replace(konten,{
+     language:'en-gb'
+   });
+   CKEDITOR.config.allowedContent = true;
+   CKEDITOR.editorConfig = function( config ) {
+	// Define changes to default configuration here. For example:
+	// config.language = 'fr';
+	// config.uiColor = '#AADC6E';
+	config.extraPlugins = "lineutils,widget,codesnippet";
+    config.height = 500;
+
+};
+</script>
 
 <script>
     $(function() {
@@ -391,20 +487,20 @@
 
     });
     
-    ClassicEditor
-            .create( document.querySelector( '.ckeditor' ),{
-                ckfinder: {
-                    uploadUrl: '{{route('image.upload').'?_token='.csrf_token()}}',
-                },
-                image: {
-                    styles: [
-                        { className: 'post-image-styles' }
-                    ]
-                }
-            })
-            .catch( error => {
-                console.error( error );
-            } );
+    // ClassicEditor
+    //         .create( document.querySelector( '.ckeditor' ),{
+    //             ckfinder: {
+    //                 uploadUrl: '{{route('image.upload').'?_token='.csrf_token()}}',
+    //             },
+    //             image: {
+    //                 styles: [
+    //                     { className: 'post-image-styles' }
+    //                 ]
+    //             }
+    //         })
+    //         .catch( error => {
+    //             console.error( error );
+    //         } );
     // $(document).ready(function() {
     //     $('.ckeditor').ckeditor();
     // });

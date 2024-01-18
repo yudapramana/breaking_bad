@@ -1,3 +1,23 @@
+<style>
+    body {
+        -moz-transform: scale(0.8, 0.8);
+        zoom: 0.8;
+        zoom: 80%;
+    }
+
+    .modal.fade.show .modal-dialog {
+        transform: scale(0.9);
+        -moz-transform: scale(0.9, 0.9);
+        zoom: 0.9;
+        zoom: 90%;
+    }
+
+    .modal-backdrop {
+        width: 100% !important;
+        height: 100% !important;
+    }
+</style>
+
 <link href="https://fonts.gstatic.com" rel="preconnect">
 <link
     href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"

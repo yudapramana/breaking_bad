@@ -42,22 +42,44 @@
         </nav>
     </div>
     <section class="section">
+
+
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">{{$title}} List</h5>
 
+                        @if(Auth::user()->hasRole('kontributor_daerah'))
+                        <div class="alert alert-warning  alert-dismissible fade show" role="alert">
+                            <h4 class="alert-heading m-0 p-0">Penting!</h4>
+                            <p class="m-0 p-0">Status <span class="badge bg-warning " id="btnGroupDrop1" type="button"
+                                    data-bs-original-title="" title="">draft</span> berita akan berubah menjadi <span
+                                    class="badge bg-success " id="btnGroupDrop1" type="button" data-bs-original-title=""
+                                    title="">published</span>
+                                jika Kontributor
+                                Utama telah
+                                melakukan verval berita yang telah diinput.
+                            </p>
+                            {{--
+                            <hr>
+                            <p class="mb-0">Temporibus quis et qui aspernatur laboriosam sit eveniet qui sunt.</p> --}}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        @endif
                         <table class='table table-bordered display' id="example"
                             style="width:100%; font-size:11pt!important;">
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Title</th>
-                                    <th scope="col">Desc</th>
-                                    <th scope="col">Category</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Action</th>
+                                    <th scope="col">date_add</th>
+                                    <th scope="col">cover</th>
+                                    <th scope="col">title</th>
+                                    <th scope="col">author</th>
+                                    <th scope="col">category</th>
+                                    <th scope="col">highlights</th>
+                                    <th scope="col">status</th>
+                                    <th scope="col">action</th>
                                 </tr>
                             </thead>
                         </table>
@@ -191,19 +213,24 @@
 
 
     var table = $('#example').DataTable({
+        ajax: '{{ route("posts.index", ["category" => $category] ) }}',
+        processing: true,
+        serverSide: true,
         orderable: false
         , sort: false
         , order: false
-        , lengthChange: false
-        , responsive: false
+        , lengthChange: true
+        , responsive: true
         , scrollX: true
-        , autoWidth: false
+        , autoWidth: true
         , lengthMenu: [
             [10, 25, 50, -1]
             , ['10 rows', '25 rows', '50 rows', 'Show all']
         ]
-        , iDisplayLength: 50
-        , buttons: [
+        , iDisplayLength: 10
+        , 
+        dom: 'Bfrtip',
+        buttons: [
             'pageLength', {
                 text: '<i class="fa fa-plus-circle"></i> Tambah'
                 , attr: {
@@ -249,17 +276,27 @@
             , name: 'DT_RowIndex'
             , className: 'text-center'
         }, {
+            data: 'date_add'
+            , name: 'date_add'
+        },  {
+            data: 'image_url_can'
+            , name: 'image_url_can'
+        },{
             data: 'title_can'
             , name: 'title_can'
-        , }, {
-            data: 'desc_beautify'
-            , name: 'desc_beautify'
+        }, {
+            data: 'author'
+            , name: 'author'
             , className: 'preserveLines'
         }, {
-            data: 'category.title'
-            , name: 'category.title'
+            data: 'category_title'
+            , name: 'category_title'
             , className: 'text-center'
         }, {
+            data: 'highlights'
+            , name: 'highlights'
+            , className: 'text-center'
+        },{
             data: 'datastatus'
             , name: 'datastatus'
             , className: 'text-center'

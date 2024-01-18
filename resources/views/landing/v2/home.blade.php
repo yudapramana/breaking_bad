@@ -370,7 +370,7 @@
                                 <div class="mb-0 pb-0" style="font-size: smaller">
                                     <pre class="mb-0 pb-0" style="white-space: pre-wrap;">
                                 {!!
-                                    \Illuminate\Support\Str::limit($featureds[2]->desc,255, $end='...') !!}
+                                    \Illuminate\Support\Str::limit($featureds[2]->desc,150, $end='...') !!}
                                     </pre>
                                 </div>
                             </div>
@@ -706,9 +706,10 @@
                         @endif
                         <h6 style="height: 54px !important;"><a
                                 href="{{config('isec.base_url')}}/post/{{$post->slug}}">{{\Illuminate\Support\Str::limit($post->title,
-                                55, $end='...')}}</a>
+                                57, $end='...')}}</a>
                         </h6>
-                        <p class="small m-0">{{ $post->tanggal }} | {{ $post->reads }} reads
+                        <p class="small m-0" style="font-size:x-small !important;">{{ $post->tanggal }} | {{
+                            $post->reads }} reads
                         </p>
                     </div>
                 </div>

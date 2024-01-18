@@ -58,9 +58,9 @@
             max-width: 100% !important;
         }
 
-        img {
+        /* img {
             max-width: 100% !important;
-        }
+        } */
     </style>
 
 </head>
