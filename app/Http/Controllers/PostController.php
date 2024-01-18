@@ -81,7 +81,7 @@ class PostController extends Controller
                     $editor = $post->editor ? $post->editor : '-';
                     $photographer = $post->photographer ? $post->photographer : '-';
 
-                    $text = '<span style="font-weight:bolder;">' . $post->title . '</span> <br>
+                    $text = '<span style="font-weight:bolder;"><a class="text-black" target="_blank" href="' . config('isec.base_url') .'/post/' . $post->slug.' ">' . $post->title . '</a></span> <br>
                             <span class="text-muted preserveLines" style="font-size:xx-small">Editor: ' . $editor  . ' </span>&nbsp
                               <span class="text-muted preserveLines" style="font-size:xx-small">Fotografer: ' . $photographer . ' </span>';
                     return $text;
