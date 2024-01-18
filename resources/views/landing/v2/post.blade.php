@@ -77,6 +77,23 @@
                                 {!!$post->desc!!}
                             </div>
 
+                            <div>
+                                <hr class="mt-10 mb-10">
+                                <div class="container row justify-content-between ml-0 p-0">
+                                    <div class="col-sm-6 p-0">
+                                        <span>Editor:</span>
+                                        <span class="font-weight-900" style="color:black"><a
+                                                href="/author/moh-khoeron">{{$post->editor ? $post->editor :
+                                                '-'}}</a></span>
+                                    </div>
+                                    <div class="col-sm-6 p-0">
+                                        <span>Fotografer:</span>
+                                        <span class="font-weight-900" style="color:black"><a href="/author/istimewa">{{
+                                                $post->photographer ? $post->photographer : '-' }}</a></span>
+                                    </div>
+                                </div>
+                                <hr class="mt-10 mb-10">
+                            </div>
 
                             <div class="py-4 blog_post_footer">
                                 <div class="row justify-content-between align-items-center">
