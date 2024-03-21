@@ -210,7 +210,7 @@ class PostController extends Controller
             "title"     => "required|unique:posts,title",
             "desc"      => "required",
             "category"  => "required",
-            "tags"      => "array|required",
+            // "tags"      => "array|required",
             "keywords"  => "required",
             "meta_desc" => "required",
         ]);
@@ -246,7 +246,7 @@ class PostController extends Controller
 
         $post->save();
 
-        $post->tags()->attach($request->tags);
+        // $post->tags()->attach($request->tags);
 
         $categorySlug = \App\Models\Category::find($request->category)->slug;
 

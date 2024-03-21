@@ -242,7 +242,7 @@
                                             </div>
                                             @enderror
                                         </div>
-                                        <div class="form-group mb-3">
+                                        {{-- <div class="form-group mb-3">
                                             <label class="title" for="tag">Tags</label>
                                             <select name="tags[]" id="tag"
                                                 class="form-control form-select select2 select2bs4 select2-tags @error('tags') is-invalid @enderror"
@@ -256,7 +256,7 @@
                                                 {{ $message }}
                                             </div>
                                             @enderror
-                                        </div>
+                                        </div> --}}
                                         <div class="form-group mb-3">
                                             <label class="title" for="keywords">Keywords</label>
                                             <input type="text" name="keywords"
