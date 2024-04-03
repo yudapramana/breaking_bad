@@ -110,7 +110,7 @@
                                             <div class="form-group mb-3 row">
                                                 <label class="title" for="highlights">Highlights</label>
 
-                                                @if (!Auth::user()->hasRole('kontributor_daerah') || app('request')->category == 'Daerah')
+                                                @if (!Auth::user()->hasRole('kontributor_daerah'))
                                                     <div class="col-sm-3">
                                                         <div class="form-check">
                                                             <input class="form-check-input" type="checkbox" id="is_featured" name="is_featured" {{ old('is_featured') ? 'checked' : '' }}>
