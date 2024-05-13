@@ -30,8 +30,13 @@ Route::post('/poststatus/switch', function (Request $request) {
         if (isset($request->switch_status)) {
             $post = \App\Models\Post::find($data['id_post']);
             $post->status = $request->string_status;
+            if($request->string_status == 'published') {
+                $post->editor = Auth::user()->name;
+            }
             $post->save();
             $success = true;
+
+            
         }
     } catch (\Exception $e) {
         $message = $e->getMessage();
