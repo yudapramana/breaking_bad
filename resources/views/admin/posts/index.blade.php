@@ -36,7 +36,7 @@
             <h1>{{ $title }}</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">{{ $br1 }} TEST</a></li>
+                    <li class="breadcrumb-item"><a href="#">{{ $br1 }}</a></li>
                     <li class="breadcrumb-item active">{{ $br2 }}</li>
                 </ol>
             </nav>
