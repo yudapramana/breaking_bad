@@ -228,18 +228,15 @@
 
                                             <div class="form-group mb-3 row">
 
-                                                {{-- <div class="col-md-6">
-                                                <label class="title" for="editor">Editor</label>
-                                                <input type="text" name="editor"
-                                                    class="form-control @error('editor') is-invalid @enderror"
-                                                    value="{{old('editor') ? old('editor') : $post->editor}}"
-                                                    placeholder="Nama Editor">
-                                                @error('editor')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
+                                                <div class="col-md-6">
+                                                    <label class="title" for="editor">Editor</label>
+                                                    <input type="text" name="editor" class="form-control @error('editor') is-invalid @enderror" value="{{ old('editor') ? old('editor') : $post->editor }}" placeholder="Nama Editor">
+                                                    @error('editor')
+                                                        <div class="invalid-feedback">
+                                                            {{ $message }}
+                                                        </div>
+                                                    @enderror
                                                 </div>
-                                                @enderror
-                                            </div> --}}
 
                                                 <div class="col-md-6">
                                                     <label class="title" for="photographer">Fotografer</label>

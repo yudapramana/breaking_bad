@@ -259,7 +259,7 @@
 
                                             <div class="form-group mb-3 row">
 
-                                                {{-- <div class="col-md-6">
+                                                <div class="col-md-6">
                                                     <label class="title" for="editor">Editor</label>
                                                     <input type="text" name="editor" class="form-control @error('editor') is-invalid @enderror" value="{{ old('editor') }}" placeholder="Nama Editor">
                                                     @error('editor')
@@ -267,7 +267,7 @@
                                                             {{ $message }}
                                                         </div>
                                                     @enderror
-                                                </div> --}}
+                                                </div>
 
                                                 <div class="col-md-6">
                                                     <label class="title" for="photographer">Fotografer</label>
