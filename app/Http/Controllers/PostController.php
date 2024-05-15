@@ -139,7 +139,7 @@ class PostController extends Controller
                     }
 
                     // if ($user->hasRole('super_administrator') || $user->hasRole('administrator') || $user->hasRole('kontributor_utama')) {
-                    if ($user->hasRole('editor_utama')) {
+                    if ($user->hasRole('super_administrator') || $user->hasRole('editor_utama')) {
 
                         $btn = '<span class="badge bg-' . $nowColor . ' dropdown-toggle" id="btnGroupDrop1" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-original-title="" title="">' . $statusNow . '</span>';
                         $btn .= '<div class="dropdown-menu" aria-labelledby="btnGroupDrop1">';
