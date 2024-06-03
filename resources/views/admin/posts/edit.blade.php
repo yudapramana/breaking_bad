@@ -93,14 +93,18 @@
                                             <div class="form-group mb-3 row">
                                                 <label class="title" for="highlights">Highlights</label>
 
-                                                <div class="col-sm-3">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" id="is_featured" name="is_featured" {{ $post->is_featured ? 'checked' : '' }}>
-                                                        <label class="form-check-label" for="is_featured">
-                                                            Featured
-                                                        </label>
+
+                                                @if (!Auth::user()->hasRole('kontributor_daerah'))
+                                                    <div class="col-sm-3">
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" id="is_featured" name="is_featured" {{ $post->is_featured ? 'checked' : '' }}>
+                                                            <label class="form-check-label" for="is_featured">
+                                                                Featured
+                                                            </label>
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                @endif
+
 
                                                 <div class="col-sm-3">
                                                     <div class="form-check">

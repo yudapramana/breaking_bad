@@ -50,18 +50,15 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ $title }} List</h5>
 
-                            @if (!Auth::user()->hasRole('editor_utama'))
+                            {{-- @if (!Auth::user()->hasRole('editor_utama'))
                                 <div class="alert alert-warning  alert-dismissible fade show" role="alert">
                                     <h4 class="alert-heading m-0 p-0">Penting!</h4>
                                     <p class="m-0 p-0">Status <span class="badge bg-warning " id="btnGroupDrop1" type="button" data-bs-original-title="" title="">draft</span> berita akan berubah menjadi <span class="badge bg-success " id="btnGroupDrop1" type="button" data-bs-original-title="" title="">published</span>
                                         jika Editor Utama telah melakukan verval berita yang telah diinput.
                                     </p>
-                                    {{--
-                            <hr>
-                            <p class="mb-0">Temporibus quis et qui aspernatur laboriosam sit eveniet qui sunt.</p> --}}
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
-                            @endif
+                            @endif --}}
                             <table class='table table-bordered display' id="example" style="width:100%; font-size:11pt!important;">
                                 <thead>
                                     <tr>
