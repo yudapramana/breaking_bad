@@ -19,8 +19,14 @@ class Gallery extends Model
 
 
     public function getThumbnailImageAttribute(){
-        $separator = '/upload/';
-        $exp = explode($separator, $this->attributes['image_url']);
-        return $exp[0] . '/upload/q_5/' . $exp[1];
+
+        if($this->attributes['image_url']) {
+            $separator = '/upload/';
+            $exp = explode($separator, $this->attributes['image_url']);
+            return $exp[0] . '/upload/q_5/' . $exp[1];
+        } else {
+            return '-';
+        }
+        
     }
 }
