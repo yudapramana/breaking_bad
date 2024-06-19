@@ -604,7 +604,7 @@ Route::group(['middleware' => ['web']], function () {
         
         $posts = $query->get();
 
-        return $posts;
+        // return $posts;
 
 
 
