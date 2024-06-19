@@ -595,7 +595,7 @@ Route::group(['middleware' => ['web']], function () {
                 'posts.id_kabkota',
                 '=',
                 'kabkota.id_kabkota',
-                'where posts.status = published',
+                'where posts.status = "published"',
             )->whereNull('deleted_at')
             // ->whereYear('posts.created_at', $year)
             ->where('kabkota.id_kabkota', '!=', 0)
@@ -604,7 +604,7 @@ Route::group(['middleware' => ['web']], function () {
         
         $posts = $query->get();
 
-        // return $posts;
+        return $posts;
 
 
 
