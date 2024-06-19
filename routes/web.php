@@ -583,19 +583,32 @@ Route::group(['middleware' => ['web']], function () {
 
     Route::get('/summary/total_post/{year}', function ($year) {
 
-        $posts = DB::select("
-           SELECT kabkota.id_kabkota, kabkota.name, COUNT(posts.id_kabkota) AS total
-           FROM kabkota
-           LEFT JOIN posts ON posts.id_kabkota = kabkota.id_kabkota AND posts.status = 'published' AND YEAR(created_at) = ?
-           WHERE kabkota.id_kabkota != 0
-           GROUP BY kabkota.id_kabkota, kabkota.name
-           ORDER BY total DESC 
-        ", [$year]);
+        if($year == 'all_time') {
+            $posts = DB::select("
+            SELECT kabkota.id_kabkota, kabkota.name, COUNT(posts.id_kabkota) AS total
+            FROM kabkota
+            LEFT JOIN posts ON posts.id_kabkota = kabkota.id_kabkota AND posts.status = 'published'
+            WHERE kabkota.id_kabkota != 0
+            GROUP BY kabkota.id_kabkota, kabkota.name
+            ORDER BY total DESC 
+         ", [$year]);
+        } else {
+            $posts = DB::select("
+            SELECT kabkota.id_kabkota, kabkota.name, COUNT(posts.id_kabkota) AS total
+            FROM kabkota
+            LEFT JOIN posts ON posts.id_kabkota = kabkota.id_kabkota AND posts.status = 'published' AND YEAR(created_at) = ?
+            WHERE kabkota.id_kabkota != 0
+            GROUP BY kabkota.id_kabkota, kabkota.name
+            ORDER BY total DESC 
+         ", [$year]);
+        }
+
+       
 
         return view('landing.v2.summary', [
             'posts' => $posts,
             'year' => $year,
-            'title' => 'Contact - Web Kemenag Kanwil Prov Sumbar',
+            'title' => 'Ringkasan Ranking Berita - Web Kemenag Kanwil Prov Sumbar',
             'accountfb' => 'Kanwil Kemenag Sumbar',
             'account' => 'Kanwil Kemenag Sumbar',
             'channel' =>  '@Kanwil Kemenag Sumbar'
