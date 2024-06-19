@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Post extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
+    use SoftDeletes;
 
     protected $with = ['category', 'user', 'tags'];
 
@@ -56,7 +57,7 @@ class Post extends Model
     {
         if (auth()->id() == null) {
             return $this->view()
-                ->where('ip', '=',  request()->ip())->exists();
+                ->where('ip', '=', request()->ip())->exists();
         }
 
         return $this->view()
@@ -69,43 +70,60 @@ class Post extends Model
 
     public function getCoverSmallAttribute()
     {
-        if ($this->attributes['cover']) {
-            $separator = '/upload/';
-            $exp = explode($separator, $this->attributes['cover']);
 
-            return $exp[0] . '/upload/c_fill,ar_16:9,q_5,f_avif/' . $exp[1];
+        if(isset($this->attributes['cover'])) {
+
+
+            if ($this->attributes['cover']) {
+                $separator = '/upload/';
+                $exp = explode($separator, $this->attributes['cover']);
+
+                return $exp[0] . '/upload/c_fill,ar_16:9,q_5,f_avif/' . $exp[1];
+            } else {
+                return "http://res.cloudinary.com/dezj1x6xp/image/upload/v1698216019/PandanViewMandeh/video-placeholder_kfnvxm.jpg";
+            }
+
         } else {
-            return "http://res.cloudinary.com/dezj1x6xp/image/upload/v1698216019/PandanViewMandeh/video-placeholder_kfnvxm.jpg";
+            return '';
         }
     }
 
     public function getRectangleCoverImageAttribute()
     {
         $separator = '/upload/';
+        if(isset($this->attributes['cover'])) {
+            if ($this->attributes['cover']) {
+                $exp = explode($separator, $this->attributes['cover']);
 
-        if ($this->attributes['cover']) {
-            $exp = explode($separator, $this->attributes['cover']);
 
-
-            return $exp[0] . '/upload/c_fill,ar_16:9,q_50/' . $exp[1];
+                return $exp[0] . '/upload/c_fill,ar_16:9,q_50/' . $exp[1];
+            } else {
+                return "http://res.cloudinary.com/dezj1x6xp/image/upload/v1698216019/PandanViewMandeh/video-placeholder_kfnvxm.jpg";
+            }
         } else {
-            return "http://res.cloudinary.com/dezj1x6xp/image/upload/v1698216019/PandanViewMandeh/video-placeholder_kfnvxm.jpg";
+            return '';
         }
+
     }
 
     public function getSquareCoverImageAttribute()
     {
         $separator = '/upload/';
 
-        if ($this->attributes['cover']) {
+        if(isset($this->attributes['cover'])) {
+            if ($this->attributes['cover']) {
 
-            $exp = explode($separator, $this->attributes['cover']);
+                $exp = explode($separator, $this->attributes['cover']);
 
-            return $exp[0] . '/upload/c_fill,h_200,w_200,f_avif,q_50/' . $exp[1];
+                return $exp[0] . '/upload/c_fill,h_200,w_200,f_avif,q_50/' . $exp[1];
+            } else {
+                return "http://res.cloudinary.com/dezj1x6xp/image/upload/v1698216019/PandanViewMandeh/video-placeholder_kfnvxm.jpg";
+            }
+            // return $exp[0] . '/upload/c_fill,ar_4:3,q_50/' . $exp[1];
         } else {
-            return "http://res.cloudinary.com/dezj1x6xp/image/upload/v1698216019/PandanViewMandeh/video-placeholder_kfnvxm.jpg";
+            return '';
         }
-        // return $exp[0] . '/upload/c_fill,ar_4:3,q_50/' . $exp[1];
+
 
     }
 
@@ -113,25 +131,35 @@ class Post extends Model
     {
         $separator = '/upload/';
 
-        if ($this->attributes['cover']) {
 
-            $exp = explode($separator, $this->attributes['cover']);
+        if(isset($this->attributes['cover'])) {
+            if ($this->attributes['cover']) {
 
-            return $exp[0] . '/upload/c_fill,h_200,w_200/' . $exp[1];
+                $exp = explode($separator, $this->attributes['cover']);
+
+                return $exp[0] . '/upload/c_fill,h_200,w_200/' . $exp[1];
+            } else {
+                return "http://res.cloudinary.com/dezj1x6xp/image/upload/v1698216019/PandanViewMandeh/video-placeholder_kfnvxm.jpg";
+            }
+            // return $exp[0] . '/upload/c_fill,ar_4:3,q_50/' . $exp[1];
         } else {
-            return "http://res.cloudinary.com/dezj1x6xp/image/upload/v1698216019/PandanViewMandeh/video-placeholder_kfnvxm.jpg";
+            return '';
         }
-        // return $exp[0] . '/upload/c_fill,ar_4:3,q_50/' . $exp[1];
+
 
     }
 
 
     public function getTanggalAttribute()
     {
+        if(isset($this->attributes['created_at'])) {
+            setlocale(LC_TIME, 'id_ID');
+            \Carbon\Carbon::setLocale('id');
+            $data = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes['created_at'])->isoFormat('dddd, D MMMM Y');
+            return $data;
+        } else {
+            return '';
+        }
 
-        setlocale(LC_TIME, 'id_ID');
-        \Carbon\Carbon::setLocale('id');
-        $data = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes['created_at'])->isoFormat('dddd, D MMMM Y');
-        return $data;
     }
 }

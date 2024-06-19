@@ -581,6 +581,41 @@ Route::group(['middleware' => ['web']], function () {
         ]);
     });
 
+    Route::get('/summary/total_post', function () {
+
+        $query = DB::table('kabkota')
+            ->select(
+                'kabkota.id_kabkota',
+                'kabkota.name',
+                DB::raw(
+                'COUNT(posts.id_kabkota) AS total'
+                )
+            )->leftJoin(
+                'posts',
+                'posts.id_kabkota',
+                '=',
+                'kabkota.id_kabkota'
+            )->whereNull('deleted_at')
+            // ->whereYear('posts.created_at', $year)
+            ->where('kabkota.id_kabkota', '!=', 0)
+            ->groupBy('kabkota.id_kabkota')    
+            ->orderBy('total', 'DESC');
+        
+        $posts = $query->get();
+
+        // return $posts;
+
+
+
+        return view('landing.v2.summary', [
+            'posts' => $posts,
+            'title' => 'Contact - Web Kemenag Kanwil Prov Sumbar',
+            'accountfb' => 'Kanwil Kemenag Sumbar',
+            'account' => 'Kanwil Kemenag Sumbar',
+            'channel' =>  '@Kanwil Kemenag Sumbar'
+        ]);
+    });
+
     Route::get('/blog', function (Request $request) {
 
         $kabkotaname = '';
