@@ -50,12 +50,12 @@
                         <ol class="breadcrumb justify-content-sm-start">
                             <li class="breadcrumb-item"><a href="/">Beranda</a></li>
                             <li class="breadcrumb-item  active  " aria-current="page">
-                                Ringkasan Total Berita Daerah
+                                Ringkasan Total Berita Daerah Tahun {{ $year }}
                             </li>
                         </ol>
                     </nav>
                     <div class="page-title">
-                        <h1 class="greenext" style="border-bottom: 2px solid #dae0e5 !important;">Rangking Total Berita Daerah
+                        <h1 class="greenext" style="border-bottom: 2px solid #dae0e5 !important;">Ranking Total Berita Daerah Tahun {{ $year }}
                         </h1>
                     </div>
                 </div>

@@ -581,35 +581,20 @@ Route::group(['middleware' => ['web']], function () {
         ]);
     });
 
-    Route::get('/summary/total_post', function () {
+    Route::get('/summary/total_post/{year}', function ($year) {
 
-        $query = DB::table('kabkota')
-            ->select(
-                'kabkota.id_kabkota',
-                'kabkota.name',
-                DB::raw(
-                'COUNT(posts.id_kabkota) AS total'
-                )
-            )->leftJoin(
-                'posts',
-                'posts.id_kabkota',
-                '=',
-                'kabkota.id_kabkota',
-                'where posts.status = "published"',
-            )->whereNull('deleted_at')
-            // ->whereYear('posts.created_at', $year)
-            ->where('kabkota.id_kabkota', '!=', 0)
-            ->groupBy('kabkota.id_kabkota', 'kabkota.name')    
-            ->orderBy('total', 'DESC');
-        
-        $posts = $query->get();
-
-        // return $posts;
-
-
+        $posts = DB::select("
+           SELECT kabkota.id_kabkota, kabkota.name, COUNT(posts.id_kabkota) AS total
+           FROM kabkota
+           LEFT JOIN posts ON posts.id_kabkota = kabkota.id_kabkota AND posts.status = 'published' AND YEAR(created_at) = ?
+           WHERE kabkota.id_kabkota != 0
+           GROUP BY kabkota.id_kabkota, kabkota.name
+           ORDER BY total DESC 
+        ", [$year]);
 
         return view('landing.v2.summary', [
             'posts' => $posts,
+            'year' => $year,
             'title' => 'Contact - Web Kemenag Kanwil Prov Sumbar',
             'accountfb' => 'Kanwil Kemenag Sumbar',
             'account' => 'Kanwil Kemenag Sumbar',
