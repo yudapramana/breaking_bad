@@ -598,7 +598,7 @@ Route::group(['middleware' => ['web']], function () {
             )->whereNull('deleted_at')
             // ->whereYear('posts.created_at', $year)
             ->where('kabkota.id_kabkota', '!=', 0)
-            ->groupBy('kabkota.id_kabkota')    
+            ->groupBy('kabkota.id_kabkota', 'kabkota.name')    
             ->orderBy('total', 'DESC');
         
         $posts = $query->get();
