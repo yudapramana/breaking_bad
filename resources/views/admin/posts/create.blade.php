@@ -76,7 +76,7 @@
                                                     <button type="button" id="cover_image_url_btn" class="btn btn-secondary btn-sm">Unggah Cover</button>
 
                                                     <div class="show-cover-box" style="display:none;">
-                                                        <img class="mb-2" id="preview-cover" src="" alt="logo_instansi" height="200"><br>
+                                                        <img class="mb-2" id="preview-cover" src="" alt="logo_instansi" height="200" width="auto"><br>
                                                         <div class="mb-2">
                                                             <button type="button" id="retry-cover-btn" class="btn btn-secondary btn-sm">Unggah Ulang</button>
                                                         </div>

@@ -39,7 +39,7 @@ class PostController extends Controller
         }
 
         $user = Auth::user();
-        $pQuery = Post::query();;
+        $pQuery = Post::query();
 
 
         if ($user->hasRole('kontributor_daerah')) {
