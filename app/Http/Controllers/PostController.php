@@ -51,7 +51,7 @@ class PostController extends Controller
             $q->where('slug', $category);
         });
         $pQuery = $pQuery->orderBy('created_at', 'desc');
-        $posts = $pQuery->get();
+        $posts = $pQuery->take(20)->get();
 
 
         if ($request->ajax()) {
