@@ -59,6 +59,15 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
                             @endif --}}
+                            @if (!Auth::user()->hasRole('kontributor_daerah'))
+                                <div class="alert alert-primary">
+                                    <div class="row" id="filter_wrapper">
+
+                                    </div>
+                                </div>
+                            @endif
+
+
                             <table class='table table-bordered display' id="example" style="width:100%; font-size:11pt!important;">
                                 <thead>
                                     <tr>
@@ -189,10 +198,19 @@
         });
 
 
-
+        var id_kabkota_filter = 0;
+        var id_status_filter = 'draft';
 
         var table = $('#example').DataTable({
-            ajax: '{{ route('posts.index', ['category' => $category]) }}',
+            // ajax: '{{ route('posts.index', ['category' => $category]) }}',
+            ajax: {
+                "url": '{{ route('posts.index', ['category' => $category]) }}',
+                "type": "GET",
+                "data": function(d) {
+                    d.id_kabkota_filter = id_kabkota_filter;
+                    d.id_status_filter = id_status_filter;
+                }
+            },
             processing: true,
             serverSide: true,
             orderable: false,
@@ -247,8 +265,50 @@
                     }
                 }
             ],
-            initComplete: function(e, dt, node, config) {
+            initComplete: function(settings, json) {
+                console.log(json)
 
+                table.buttons().container()
+                    .appendTo('#example_wrapper .col-md-6:eq(0)');
+
+                // $(json.html_filter).appendTo('#example_wrapper .col-md-6:eq(0) .dt-buttons');
+                $(json.html_filter).appendTo('#filter_wrapper');
+
+                $('.select2-filter').select2({
+                    theme: 'bootstrap-5',
+                });
+
+                // $(document).on('change', '#id_unit_pengolah_filter', function(e) {
+                $(document).on('select2:select', '.id_kabkota_filter', function(e) {
+                    console.log('data filter')
+
+                    id_kabkota_filter = $(this).val();
+                    id_status_filter = $('.id_status_filter').val();
+
+
+                    console.log('id_kabkota_filter')
+                    console.log(id_kabkota_filter);
+                    table.ajax.reload();
+
+                });
+
+                $(document).on('select2:select', '.id_status_filter', function(e) {
+                    console.log('data filter')
+
+                    id_unit_pengolah_filter = $('.id_unit_pengolah_filter').val();
+                    id_status_filter = $(this).val();
+                    table.ajax.reload();
+                });
+
+                //     console.log('json')
+                //     console.log(json)
+                // $(json.html_filter).appendTo(".dt-buttons"); //example is our table id
+                // $(".dataTables_filter label").addClass("pull-right");
+                // $(document).on('change', '#usulan-status', function(e) {
+                //     status = $(this).val();
+                //     console.log('status');
+
+                // });
             },
             columns: [{
                 data: 'DT_RowIndex',

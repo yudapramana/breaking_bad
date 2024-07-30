@@ -9,10 +9,8 @@ use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\DB;
 
-
 class PostController extends Controller
 {
-
     /**
      * Create a new controller instance.
      *
@@ -38,15 +36,21 @@ class PostController extends Controller
             $category = 'utama';
         }
 
+
         $user = Auth::user();
         $pQuery = Post::query();
 
+        
 
         if ($user->hasRole('kontributor_daerah')) {
             $id_kabkota = $user->id_kabkota;
             $pQuery = $pQuery->where('id_kabkota', $id_kabkota);
-        } elseif ((!$user->hasRole('kontributor_daerah')) && $category == 'daerah' ) {
-            $pQuery = $pQuery->where('status', 'draft');
+        } elseif ((!$user->hasRole('kontributor_daerah')) && $category == 'daerah') {
+            $pQuery = $pQuery->where('status', $request->id_status_filter);
+            if($request->id_kabkota_filter) {
+            $pQuery = $pQuery->where('id_kabkota', $request->id_kabkota_filter);
+
+            }
         }
 
         $pQuery = $pQuery->whereHas('category', function ($q) use ($category) {
@@ -61,7 +65,7 @@ class PostController extends Controller
 
         if ($user->hasRole('kontributor_daerah')) {
             $posts = $pQuery->take(50)->get();
-        } elseif ((!$user->hasRole('kontributor_daerah')) && $category == 'daerah' ) {
+        } elseif ((!$user->hasRole('kontributor_daerah')) && $category == 'daerah') {
             $posts = $pQuery->take(100)->get();
         } else {
             $posts = $pQuery->take(100)->get();
@@ -70,8 +74,9 @@ class PostController extends Controller
 
         if ($request->ajax()) {
 
+            
 
-            return DataTables::of($posts)
+            $datatable = DataTables::of($posts)
                 ->addIndexColumn()
                 // ->addColumn('title_can', function ($post) {
                 //     $text = '<span style="font-weight:bolder;">' . $post->title . ' &nbsp; <br> <span class="text-muted" style="font-size:x-small">' . $post->created_at->format('d-m-Y') . '</span><br>
@@ -135,11 +140,11 @@ class PostController extends Controller
 
                     $btn .= '<a href="' . route('posts.edit', $post->id) . '" class="btn btn-sm btn-warning btn-xs"><i class="bi bi-pencil-square"></i></a>&nbsp;';
                     // $btn .= '<button id="editBtn" type="button" class="btn btn-sm btn-warning btn-xs" data-bs-toggle="modal" data-bs-target="#tambahGroup" data-bs-title="Edit Data" data-title="Edit Data Pengguna"><i class="bi bi-pencil-square"></i></button>&nbsp;';
-                    
+
                     if ($user->hasRole('super_administrator') || $user->hasRole('administrator') || $user->hasRole('kontributor_utama')) {
-                    $btn .= '<button id="destroyBtn" type="button" class="btn btn-sm btn-danger btn-xs" data-bs-id_item="' . $post->id  . '" data-id_item="' .  $post->id  . '"><i class="bi bi-trash-fill"></i></button>';
+                        $btn .= '<button id="destroyBtn" type="button" class="btn btn-sm btn-danger btn-xs" data-bs-id_item="' . $post->id  . '" data-id_item="' .  $post->id  . '"><i class="bi bi-trash-fill"></i></button>';
                     }
-                    
+
                     return $btn;
                 })
                 ->addColumn('datastatus', function ($item) use ($user) {
@@ -175,8 +180,40 @@ class PostController extends Controller
                     $html .= '<span class="text-muted preserveLines" style="font-size:smaller">View Count: ' . $post->view_count . ' Reads</span>';
                     return $html;
                 })
-                ->rawColumns(['highlights', 'category_title', 'action', 'desc_beautify', 'title_can', 'datastatus', 'date_add', 'author', 'image_url_can'])
-                ->make(true);
+                ->rawColumns(['highlights', 'category_title', 'action', 'desc_beautify', 'title_can', 'datastatus', 'date_add', 'author', 'image_url_can']);
+
+
+            $kabkotas = Kabkota::where('id_kabkota', '!=', 0)->get();
+
+            $html_filter = '<div class="col-md-6">
+                                <label for="kabkota" class="form-label fw-bold">Pilih Daerah</label>
+                                <select class="form-control select2-filter id_kabkota_filter" id="id_kabkota_filter">
+                                    <option value="0">Semua Daerah</option>';
+            foreach ($kabkotas as $key => $item) {
+                $html_filter .= '<option value="' . $item->id_kabkota . '">' . $item->name . '</option>';
+            }
+            $html_filter .= '  </select>
+
+                            </div>';
+
+            $html_filter .= '<div class="col-md-6 box-daftar-pelayanan">
+                                <label for="id_status_filter" class="form-label fw-bold">Pilih Status</label>
+
+                                <select class="form-control select2-filter id_status_filter" id="id_status_filter">
+                                    <option value="draft">Draft</option>
+                                    <option value="published">Published</option>
+                                    <option value="archived">Archived</option>';
+
+            $html_filter .= '  </select>
+
+                            </div>';
+
+
+            $datatable->with([
+                'html_filter' => $html_filter
+            ]);
+
+            return $datatable->make(true);
         }
         return view(
             'admin.posts.index',
@@ -186,7 +223,6 @@ class PostController extends Controller
                 'br2'  => ucwords($category),
                 'category'  => $category,
             ],
-
         );
     }
 
@@ -348,7 +384,7 @@ class PostController extends Controller
         $categorySlug = \App\Models\Category::find($request->category)->slug;
 
         return redirect()->route('posts.index', ['category' => $categorySlug])->with('success', 'Data added successfully');
-    
+
 
         // return redirect()->route('posts.index')->with('success', 'Data updated successfully');
     }
