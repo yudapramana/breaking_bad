@@ -215,6 +215,7 @@
             serverSide: true,
             orderable: false,
             searching: false,
+            deferRender: true,
             sort: false,
             order: false,
             lengthChange: true,
