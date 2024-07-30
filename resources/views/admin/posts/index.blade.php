@@ -214,6 +214,7 @@
             processing: true,
             serverSide: true,
             orderable: false,
+            searching: false,
             sort: false,
             order: false,
             lengthChange: true,
