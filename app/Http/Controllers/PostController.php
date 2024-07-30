@@ -40,41 +40,38 @@ class PostController extends Controller
         $user = Auth::user();
         $pQuery = Post::query();
 
-        
-
-        if ($user->hasRole('kontributor_daerah')) {
-            $id_kabkota = $user->id_kabkota;
-            $pQuery = $pQuery->where('id_kabkota', $id_kabkota);
-        } elseif ((!$user->hasRole('kontributor_daerah')) && $category == 'daerah') {
-            $pQuery = $pQuery->where('status', $request->id_status_filter);
-            if($request->id_kabkota_filter) {
-            $pQuery = $pQuery->where('id_kabkota', $request->id_kabkota_filter);
-
-            }
-        }
-
-        $pQuery = $pQuery->whereHas('category', function ($q) use ($category) {
-            $q->where('slug', $category);
-        });
-        $pQuery = $pQuery->orderBy('created_at', 'desc');
-
-
-        if ($user->hasRole('kontributor_daerah')) {
-
-        }
-
-        if ($user->hasRole('kontributor_daerah')) {
-            $posts = $pQuery->take(50)->get();
-        } elseif ((!$user->hasRole('kontributor_daerah')) && $category == 'daerah') {
-            $posts = $pQuery->take(100)->get();
-        } else {
-            $posts = $pQuery->take(100)->get();
-        }
-
 
         if ($request->ajax()) {
 
-            
+
+            if ($user->hasRole('kontributor_daerah')) {
+                $id_kabkota = $user->id_kabkota;
+                $pQuery = $pQuery->where('id_kabkota', $id_kabkota);
+            } else {
+
+                if($category == 'daerah') {
+                    $pQuery = $pQuery->where('status', 'draft');
+
+                    $pQuery = $pQuery->where('id_kabkota', $request->id_kabkota_filter);
+                }
+
+            }
+
+
+            $pQuery = $pQuery->whereHas('category', function ($q) use ($category) {
+                $q->where('slug', $category);
+            });
+            $pQuery = $pQuery->orderBy('created_at', 'desc');
+
+            if ($user->hasRole('kontributor_daerah')) {
+                $posts = $pQuery->take(50)->get();
+            } elseif ((!$user->hasRole('kontributor_daerah')) && $category == 'daerah') {
+                $posts = $pQuery->take(50)->get();
+            } else {
+                $posts = $pQuery->take(50)->get();
+            }
+
+
 
             $datatable = DataTables::of($posts)
                 ->addIndexColumn()
@@ -185,10 +182,10 @@ class PostController extends Controller
 
             $kabkotas = Kabkota::where('id_kabkota', '!=', 0)->get();
 
-            $html_filter = '<div class="col-md-6">
+            $html_filter = '<div class="col-md-12">
                                 <label for="kabkota" class="form-label fw-bold">Pilih Daerah</label>
                                 <select class="form-control select2-filter id_kabkota_filter" id="id_kabkota_filter">
-                                    <option value="0">Semua Daerah</option>';
+                                    <option value="0">Pilih Daerah</option>';
             foreach ($kabkotas as $key => $item) {
                 $html_filter .= '<option value="' . $item->id_kabkota . '">' . $item->name . '</option>';
             }
@@ -196,17 +193,17 @@ class PostController extends Controller
 
                             </div>';
 
-            $html_filter .= '<div class="col-md-6 box-daftar-pelayanan">
-                                <label for="id_status_filter" class="form-label fw-bold">Pilih Status</label>
+            // $html_filter .= '<div class="col-md-6 box-daftar-pelayanan">
+            //                     <label for="id_status_filter" class="form-label fw-bold">Pilih Status</label>
 
-                                <select class="form-control select2-filter id_status_filter" id="id_status_filter">
-                                    <option value="draft">Draft</option>
-                                    <option value="published">Published</option>
-                                    <option value="archived">Archived</option>';
+            //                     <select class="form-control select2-filter id_status_filter" id="id_status_filter">
+            //                         <option value="draft">Draft</option>
+            //                         <option value="published">Published</option>
+            //                         <option value="archived">Archived</option>';
 
-            $html_filter .= '  </select>
+            // $html_filter .= '  </select>
 
-                            </div>';
+            //                 </div>';
 
 
             $datatable->with([

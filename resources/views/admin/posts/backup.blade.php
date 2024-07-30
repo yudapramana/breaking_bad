@@ -202,14 +202,15 @@
         var id_status_filter = 'draft';
 
         var table = $('#example').DataTable({
-            // ajax: '{{ route('posts.index', ['category' => $category]) }}',
-            ajax: {
-                "url": '{{ route('posts.index', ['category' => $category]) }}',
-                "type": "GET",
-                "data": function(d) {
-                    d.id_kabkota_filter = id_kabkota_filter;
-                }
-            },
+            ajax: '{{ route('posts.index', ['category' => $category]) }}',
+            // ajax: {
+            //     "url": '{{ route('posts.index', ['category' => $category]) }}',
+            //     "type": "GET",
+            //     "data": function(d) {
+            //         d.id_kabkota_filter = id_kabkota_filter;
+            //         d.id_status_filter = id_status_filter;
+            //     }
+            // },
             processing: true,
             serverSide: true,
             orderable: false,
