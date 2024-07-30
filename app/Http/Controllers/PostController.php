@@ -45,13 +45,27 @@ class PostController extends Controller
         if ($user->hasRole('kontributor_daerah')) {
             $id_kabkota = $user->id_kabkota;
             $pQuery = $pQuery->where('id_kabkota', $id_kabkota);
+        } elseif ((!$user->hasRole('kontributor_daerah')) && $category == 'daerah' ) {
+            $pQuery = $pQuery->where('status', 'draft');
         }
 
         $pQuery = $pQuery->whereHas('category', function ($q) use ($category) {
             $q->where('slug', $category);
         });
         $pQuery = $pQuery->orderBy('created_at', 'desc');
-        $posts = $pQuery->take(20)->get();
+
+
+        if ($user->hasRole('kontributor_daerah')) {
+
+        }
+
+        if ($user->hasRole('kontributor_daerah')) {
+            $posts = $pQuery->take(50)->get();
+        } elseif ((!$user->hasRole('kontributor_daerah')) && $category == 'daerah' ) {
+            $posts = $pQuery->take(100)->get();
+        } else {
+            $posts = $pQuery->take(100)->get();
+        }
 
 
         if ($request->ajax()) {
