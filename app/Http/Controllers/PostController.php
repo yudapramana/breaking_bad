@@ -180,7 +180,7 @@ class PostController extends Controller
                 ->rawColumns(['highlights', 'category_title', 'action', 'desc_beautify', 'title_can', 'datastatus', 'date_add', 'author', 'image_url_can']);
 
 
-            $kabkotas = Kabkota::where('id_kabkota', '!=', 0)->get();
+            $kabkotas = Kabkota::get();
 
             $html_filter = '<div class="col-md-12">
                                 <label for="kabkota" class="form-label fw-bold">Pilih Daerah</label>
