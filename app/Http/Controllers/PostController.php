@@ -50,7 +50,7 @@ class PostController extends Controller
             } else {
 
                 if($category == 'daerah') {
-                    $pQuery = $pQuery->where('status', 'draft');
+                    // $pQuery = $pQuery->where('status', 'draft');
 
                     $pQuery = $pQuery->where('id_kabkota', $request->id_kabkota_filter);
                 }
